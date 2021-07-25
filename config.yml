@@ -24,3 +24,9 @@ host:
   prof: ":8947"
   grpc: "0.0.0.0:5473"
   api: "0.0.0.0:9876"
+config:
+  p2p:
+    upnp: true
+    addr_book_strict: false
+    persistent_peers: 38aa2bbf9adeb1ae3c6b50787e76f1b56caf0df6@165.22.110.111:23395
+  
