@@ -14,19 +14,25 @@ client:
   openapi:
     path: "docs/static/openapi.yml"
 genesis:
+  chain_id: "dig-testnet-1"
   app_state:
     staking:
       params:
         bond_denom: "dig"
+    mint:
+      params:
+        mint_denom: "dig"
+    gov:
+      deposit_params: 
+        min_deposit:
+          denom: "dig"
+    crisis:
+      constant_fee:
+        denom: "dig"
 host:
   rpc: "0.0.0.0:23394"
   p2p: "0.0.0.0:23395"
   prof: ":8947"
   grpc: "0.0.0.0:5473"
   api: "0.0.0.0:9876"
-config:
-  p2p:
-    upnp: true
-    addr_book_strict: false
-    persistent_peers: 38aa2bbf9adeb1ae3c6b50787e76f1b56caf0df6@165.22.110.111:23395
   
