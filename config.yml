@@ -4,6 +4,7 @@ accounts:
   - name: khanh
     coins: ["10000000dig"]
   - name: somemoney
+    coins: ["10000000dig"]
 validator:
   name: validatron
   staked: "100000000dig"
@@ -18,8 +19,8 @@ genesis:
       params:
         bond_denom: "dig"
 host:
-  rpc: ":23394"
-  p2p: ":23395"
+  rpc: "0.0.0.0:23394"
+  p2p: "0.0.0.0:23395"
   prof: ":8947"
-  grpc: ":5473"
-  api: ":9876"
+  grpc: "0.0.0.0:5473"
+  api: "0.0.0.0:9876"
