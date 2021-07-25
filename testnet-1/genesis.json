@@ -1,6 +1,6 @@
 {
   "genesis_time": "2021-07-25T18:55:29.281981541Z",
-  "chain_id": "dig-testnet-1",
+  "chain_id": "dig",
   "initial_height": "1",
   "consensus_params": {
     "block": {
