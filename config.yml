@@ -1,16 +1,25 @@
 accounts:
-  - name: alice
-    coins: ["20000token", "200000000stake"]
-  - name: bob
-    coins: ["10000token", "100000000stake"]
+  - name: validatron
+    coins: ["200000000dig"]
+  - name: khanh
+    coins: ["10000000dig"]
+  - name: somemoney
 validator:
-  name: alice
-  staked: "100000000stake"
+  name: validatron
+  staked: "100000000dig"
 client:
   vuex:
     path: "vue/src/store"
   openapi:
     path: "docs/static/openapi.yml"
-faucet:
-  name: bob
-  coins: ["5token", "100000stake"]
+genesis:
+  app_state:
+    staking:
+      params:
+        bond_denom: "dig"
+host:
+  rpc: ":23394"
+  p2p: ":23395"
+  prof: ":8947"
+  grpc: ":5473"
+  api: ":9876"
