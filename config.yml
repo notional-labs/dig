@@ -29,10 +29,3 @@ genesis:
     crisis:
       constant_fee:
         denom: "dig"
-host:
-  rpc: "0.0.0.0:23394"
-  p2p: "0.0.0.0:23395"
-  prof: ":8947"
-  grpc: "0.0.0.0:5473"
-  api: "0.0.0.0:9876"
-  
