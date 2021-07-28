@@ -11,6 +11,13 @@ import (
 )
 
 func main() {
+    
+    log.Printf("Server started")
+
+	router := sw.NewRouter()
+
+	log.Fatal(http.ListenAndServe(":8080", router))
+    
     privateKey, err := crypto.HexToECDSA("fad9c8855b740a0b7ed4c221dbad0f33a83a49cad6b3fe8d5817ac83d38b6a19")
     if err != nil {
         log.Fatal(err)
