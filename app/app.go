@@ -86,13 +86,12 @@ import (
 
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 	digmodule "github.com/faddat/dig/x/dig"
-	digkeeper "github.com/faddat/dig/x/dig/keeper"
-	digtypes "github.com/faddat/dig/x/dig/types"
+	digmodulekeeper "github.com/faddat/dig/x/dig/keeper"
+	digmoduletypes "github.com/faddat/dig/x/dig/types"
 	"github.com/irisnet/irismod/modules/nft"
 	nftkeeper "github.com/irisnet/irismod/modules/nft/keeper"
 	nfttypes "github.com/irisnet/irismod/modules/nft/types"
-  "github.com/tendermint/spm/cosmoscmd"
-
+	"github.com/tendermint/spm/cosmoscmd"
 )
 
 const (
@@ -144,8 +143,7 @@ var (
 		// this line is used by starport scaffolding # stargate/app/moduleBasic
 		nft.AppModuleBasic{},
 		digmodule.AppModuleBasic{},
-
-  )
+	)
 
 	// module account permissions
 	maccPerms = map[string][]string{
@@ -428,7 +426,6 @@ func New(
 		// this line is used by starport scaffolding # stargate/app/initGenesis
 		digmoduletypes.ModuleName,
 		nfttypes.ModuleName,
-
 	)
 
 	app.mm.RegisterInvariants(&app.CrisisKeeper)
