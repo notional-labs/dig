@@ -83,12 +83,16 @@ import (
 	"github.com/faddat/dig/docs"
 	tmjson "github.com/tendermint/tendermint/libs/json"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
+
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 	digmodule "github.com/faddat/dig/x/dig"
-	digmodulekeeper "github.com/faddat/dig/x/dig/keeper"
-	digmoduletypes "github.com/faddat/dig/x/dig/types"
+	digkeeper "github.com/faddat/dig/x/dig/keeper"
+	digtypes "github.com/faddat/dig/x/dig/types"
+	"github.com/irisnet/irismod/modules/nft"
+	nftkeeper "github.com/irisnet/irismod/modules/nft/keeper"
+	nfttypes "github.com/irisnet/irismod/modules/nft/types"
+  "github.com/tendermint/spm/cosmoscmd"
 
-	"github.com/tendermint/spm/cosmoscmd"
 )
 
 const (
@@ -138,8 +142,10 @@ var (
 		transfer.AppModuleBasic{},
 		vesting.AppModuleBasic{},
 		// this line is used by starport scaffolding # stargate/app/moduleBasic
+		nft.AppModuleBasic{},
 		digmodule.AppModuleBasic{},
-	)
+
+  )
 
 	// module account permissions
 	maccPerms = map[string][]string{
@@ -200,6 +206,7 @@ type App struct {
 	IBCKeeper        *ibckeeper.Keeper // IBC Keeper must be a pointer in the app, so we can SetRouter on it correctly
 	EvidenceKeeper   evidencekeeper.Keeper
 	TransferKeeper   ibctransferkeeper.Keeper
+	nftKeeper        nftkeeper.Keeper
 
 	// make scoped keepers public for test purposes
 	ScopedIBCKeeper      capabilitykeeper.ScopedKeeper
@@ -242,7 +249,7 @@ func New(
 		govtypes.StoreKey, paramstypes.StoreKey, ibchost.StoreKey, upgradetypes.StoreKey,
 		evidencetypes.StoreKey, ibctransfertypes.StoreKey, capabilitytypes.StoreKey,
 		// this line is used by starport scaffolding # stargate/app/storeKey
-		digmoduletypes.StoreKey,
+		nfttypes.StoreKey, digmoduletypes.StoreKey,
 	)
 	tkeys := sdk.NewTransientStoreKeys(paramstypes.TStoreKey)
 	memKeys := sdk.NewMemoryStoreKeys(capabilitytypes.MemStoreKey)
@@ -338,6 +345,7 @@ func New(
 		&stakingKeeper, govRouter,
 	)
 
+	app.nftKeeper = nftkeeper.NewKeeper(appCodec, keys[nfttypes.StoreKey])
 	app.DigKeeper = *digmodulekeeper.NewKeeper(
 		appCodec,
 		keys[digmoduletypes.StoreKey],
@@ -380,6 +388,7 @@ func New(
 		upgrade.NewAppModule(app.UpgradeKeeper),
 		evidence.NewAppModule(app.EvidenceKeeper),
 		ibc.NewAppModule(app.IBCKeeper),
+		nft.NewAppModule(appCodec, app.nftKeeper, app.AccountKeeper, app.BankKeeper),
 		params.NewAppModule(app.ParamsKeeper),
 		transferModule,
 		// this line is used by starport scaffolding # stargate/app/appModule
@@ -418,6 +427,8 @@ func New(
 		ibctransfertypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/initGenesis
 		digmoduletypes.ModuleName,
+		nfttypes.ModuleName,
+
 	)
 
 	app.mm.RegisterInvariants(&app.CrisisKeeper)
@@ -605,6 +616,7 @@ func initParamsKeeper(appCodec codec.BinaryMarshaler, legacyAmino *codec.LegacyA
 	paramsKeeper.Subspace(ibctransfertypes.ModuleName)
 	paramsKeeper.Subspace(ibchost.ModuleName)
 	// this line is used by starport scaffolding # stargate/app/paramSubspace
+	paramsKeeper.Subspace(nfttypes.ModuleName)
 	paramsKeeper.Subspace(digmoduletypes.ModuleName)
 
 	return paramsKeeper
