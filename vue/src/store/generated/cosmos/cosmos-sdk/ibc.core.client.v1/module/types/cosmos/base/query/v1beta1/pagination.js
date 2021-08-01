@@ -72,7 +72,8 @@ export const PageRequest = {
     },
     toJSON(message) {
         const obj = {};
-        message.key !== undefined && (obj.key = base64FromBytes(message.key !== undefined ? message.key : new Uint8Array()));
+        message.key !== undefined &&
+            (obj.key = base64FromBytes(message.key !== undefined ? message.key : new Uint8Array()));
         message.offset !== undefined && (obj.offset = message.offset);
         message.limit !== undefined && (obj.limit = message.limit);
         message.countTotal !== undefined && (obj.countTotal = message.countTotal);
@@ -153,7 +154,8 @@ export const PageResponse = {
     },
     toJSON(message) {
         const obj = {};
-        message.nextKey !== undefined && (obj.nextKey = base64FromBytes(message.nextKey !== undefined ? message.nextKey : new Uint8Array()));
+        message.nextKey !== undefined &&
+            (obj.nextKey = base64FromBytes(message.nextKey !== undefined ? message.nextKey : new Uint8Array()));
         message.total !== undefined && (obj.total = message.total);
         return obj;
     },
@@ -185,7 +187,8 @@ var globalThis = (() => {
         return global;
     throw 'Unable to locate global object';
 })();
-const atob = globalThis.atob || ((b64) => globalThis.Buffer.from(b64, 'base64').toString('binary'));
+const atob = globalThis.atob ||
+    ((b64) => globalThis.Buffer.from(b64, 'base64').toString('binary'));
 function bytesFromBase64(b64) {
     const bin = atob(b64);
     const arr = new Uint8Array(bin.length);
@@ -194,7 +197,8 @@ function bytesFromBase64(b64) {
     }
     return arr;
 }
-const btoa = globalThis.btoa || ((bin) => globalThis.Buffer.from(bin, 'binary').toString('base64'));
+const btoa = globalThis.btoa ||
+    ((bin) => globalThis.Buffer.from(bin, 'binary').toString('base64'));
 function base64FromBytes(arr) {
     const bin = [];
     for (let i = 0; i < arr.byteLength; ++i) {
