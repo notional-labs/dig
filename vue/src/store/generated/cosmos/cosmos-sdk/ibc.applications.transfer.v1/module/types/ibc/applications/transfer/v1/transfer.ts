@@ -53,10 +53,18 @@ export interface Params {
   receiveEnabled: boolean
 }
 
-const baseFungibleTokenPacketData: object = { denom: '', amount: 0, sender: '', receiver: '' }
+const baseFungibleTokenPacketData: object = {
+  denom: '',
+  amount: 0,
+  sender: '',
+  receiver: ''
+}
 
 export const FungibleTokenPacketData = {
-  encode(message: FungibleTokenPacketData, writer: Writer = Writer.create()): Writer {
+  encode(
+    message: FungibleTokenPacketData,
+    writer: Writer = Writer.create()
+  ): Writer {
     if (message.denom !== '') {
       writer.uint32(10).string(message.denom)
     }
@@ -75,7 +83,9 @@ export const FungibleTokenPacketData = {
   decode(input: Reader | Uint8Array, length?: number): FungibleTokenPacketData {
     const reader = input instanceof Uint8Array ? new Reader(input) : input
     let end = length === undefined ? reader.len : reader.pos + length
-    const message = { ...baseFungibleTokenPacketData } as FungibleTokenPacketData
+    const message = {
+      ...baseFungibleTokenPacketData
+    } as FungibleTokenPacketData
     while (reader.pos < end) {
       const tag = reader.uint32()
       switch (tag >>> 3) {
@@ -100,7 +110,9 @@ export const FungibleTokenPacketData = {
   },
 
   fromJSON(object: any): FungibleTokenPacketData {
-    const message = { ...baseFungibleTokenPacketData } as FungibleTokenPacketData
+    const message = {
+      ...baseFungibleTokenPacketData
+    } as FungibleTokenPacketData
     if (object.denom !== undefined && object.denom !== null) {
       message.denom = String(object.denom)
     } else {
@@ -133,8 +145,12 @@ export const FungibleTokenPacketData = {
     return obj
   },
 
-  fromPartial(object: DeepPartial<FungibleTokenPacketData>): FungibleTokenPacketData {
-    const message = { ...baseFungibleTokenPacketData } as FungibleTokenPacketData
+  fromPartial(
+    object: DeepPartial<FungibleTokenPacketData>
+  ): FungibleTokenPacketData {
+    const message = {
+      ...baseFungibleTokenPacketData
+    } as FungibleTokenPacketData
     if (object.denom !== undefined && object.denom !== null) {
       message.denom = object.denom
     } else {
@@ -283,7 +299,8 @@ export const Params = {
   toJSON(message: Params): unknown {
     const obj: any = {}
     message.sendEnabled !== undefined && (obj.sendEnabled = message.sendEnabled)
-    message.receiveEnabled !== undefined && (obj.receiveEnabled = message.receiveEnabled)
+    message.receiveEnabled !== undefined &&
+      (obj.receiveEnabled = message.receiveEnabled)
     return obj
   },
 

@@ -76,10 +76,22 @@ export const ConsensusParams = {
     },
     toJSON(message) {
         const obj = {};
-        message.block !== undefined && (obj.block = message.block ? BlockParams.toJSON(message.block) : undefined);
-        message.evidence !== undefined && (obj.evidence = message.evidence ? EvidenceParams.toJSON(message.evidence) : undefined);
-        message.validator !== undefined && (obj.validator = message.validator ? ValidatorParams.toJSON(message.validator) : undefined);
-        message.version !== undefined && (obj.version = message.version ? VersionParams.toJSON(message.version) : undefined);
+        message.block !== undefined &&
+            (obj.block = message.block
+                ? BlockParams.toJSON(message.block)
+                : undefined);
+        message.evidence !== undefined &&
+            (obj.evidence = message.evidence
+                ? EvidenceParams.toJSON(message.evidence)
+                : undefined);
+        message.validator !== undefined &&
+            (obj.validator = message.validator
+                ? ValidatorParams.toJSON(message.validator)
+                : undefined);
+        message.version !== undefined &&
+            (obj.version = message.version
+                ? VersionParams.toJSON(message.version)
+                : undefined);
         return obj;
     },
     fromPartial(object) {
@@ -239,7 +251,8 @@ export const EvidenceParams = {
     },
     fromJSON(object) {
         const message = { ...baseEvidenceParams };
-        if (object.maxAgeNumBlocks !== undefined && object.maxAgeNumBlocks !== null) {
+        if (object.maxAgeNumBlocks !== undefined &&
+            object.maxAgeNumBlocks !== null) {
             message.maxAgeNumBlocks = Number(object.maxAgeNumBlocks);
         }
         else {
@@ -261,14 +274,19 @@ export const EvidenceParams = {
     },
     toJSON(message) {
         const obj = {};
-        message.maxAgeNumBlocks !== undefined && (obj.maxAgeNumBlocks = message.maxAgeNumBlocks);
-        message.maxAgeDuration !== undefined && (obj.maxAgeDuration = message.maxAgeDuration ? Duration.toJSON(message.maxAgeDuration) : undefined);
+        message.maxAgeNumBlocks !== undefined &&
+            (obj.maxAgeNumBlocks = message.maxAgeNumBlocks);
+        message.maxAgeDuration !== undefined &&
+            (obj.maxAgeDuration = message.maxAgeDuration
+                ? Duration.toJSON(message.maxAgeDuration)
+                : undefined);
         message.maxBytes !== undefined && (obj.maxBytes = message.maxBytes);
         return obj;
     },
     fromPartial(object) {
         const message = { ...baseEvidenceParams };
-        if (object.maxAgeNumBlocks !== undefined && object.maxAgeNumBlocks !== null) {
+        if (object.maxAgeNumBlocks !== undefined &&
+            object.maxAgeNumBlocks !== null) {
             message.maxAgeNumBlocks = object.maxAgeNumBlocks;
         }
         else {
@@ -446,7 +464,8 @@ export const HashedParams = {
     },
     toJSON(message) {
         const obj = {};
-        message.blockMaxBytes !== undefined && (obj.blockMaxBytes = message.blockMaxBytes);
+        message.blockMaxBytes !== undefined &&
+            (obj.blockMaxBytes = message.blockMaxBytes);
         message.blockMaxGas !== undefined && (obj.blockMaxGas = message.blockMaxGas);
         return obj;
     },

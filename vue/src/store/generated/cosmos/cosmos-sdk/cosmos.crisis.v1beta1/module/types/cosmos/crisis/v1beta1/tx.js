@@ -1,7 +1,11 @@
 /* eslint-disable */
 import { Reader, Writer } from 'protobufjs/minimal';
 export const protobufPackage = 'cosmos.crisis.v1beta1';
-const baseMsgVerifyInvariant = { sender: '', invariantModuleName: '', invariantRoute: '' };
+const baseMsgVerifyInvariant = {
+    sender: '',
+    invariantModuleName: '',
+    invariantRoute: ''
+};
 export const MsgVerifyInvariant = {
     encode(message, writer = Writer.create()) {
         if (message.sender !== '') {
@@ -46,7 +50,8 @@ export const MsgVerifyInvariant = {
         else {
             message.sender = '';
         }
-        if (object.invariantModuleName !== undefined && object.invariantModuleName !== null) {
+        if (object.invariantModuleName !== undefined &&
+            object.invariantModuleName !== null) {
             message.invariantModuleName = String(object.invariantModuleName);
         }
         else {
@@ -63,8 +68,10 @@ export const MsgVerifyInvariant = {
     toJSON(message) {
         const obj = {};
         message.sender !== undefined && (obj.sender = message.sender);
-        message.invariantModuleName !== undefined && (obj.invariantModuleName = message.invariantModuleName);
-        message.invariantRoute !== undefined && (obj.invariantRoute = message.invariantRoute);
+        message.invariantModuleName !== undefined &&
+            (obj.invariantModuleName = message.invariantModuleName);
+        message.invariantRoute !== undefined &&
+            (obj.invariantRoute = message.invariantRoute);
         return obj;
     },
     fromPartial(object) {
@@ -75,7 +82,8 @@ export const MsgVerifyInvariant = {
         else {
             message.sender = '';
         }
-        if (object.invariantModuleName !== undefined && object.invariantModuleName !== null) {
+        if (object.invariantModuleName !== undefined &&
+            object.invariantModuleName !== null) {
             message.invariantModuleName = object.invariantModuleName;
         }
         else {
@@ -98,7 +106,9 @@ export const MsgVerifyInvariantResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = { ...baseMsgVerifyInvariantResponse };
+        const message = {
+            ...baseMsgVerifyInvariantResponse
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -110,7 +120,9 @@ export const MsgVerifyInvariantResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = { ...baseMsgVerifyInvariantResponse };
+        const message = {
+            ...baseMsgVerifyInvariantResponse
+        };
         return message;
     },
     toJSON(_) {
@@ -118,7 +130,9 @@ export const MsgVerifyInvariantResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = { ...baseMsgVerifyInvariantResponse };
+        const message = {
+            ...baseMsgVerifyInvariantResponse
+        };
         return message;
     }
 };

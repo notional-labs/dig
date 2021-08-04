@@ -133,8 +133,14 @@ export const MsgCreateClient = {
 
   toJSON(message: MsgCreateClient): unknown {
     const obj: any = {}
-    message.clientState !== undefined && (obj.clientState = message.clientState ? Any.toJSON(message.clientState) : undefined)
-    message.consensusState !== undefined && (obj.consensusState = message.consensusState ? Any.toJSON(message.consensusState) : undefined)
+    message.clientState !== undefined &&
+      (obj.clientState = message.clientState
+        ? Any.toJSON(message.clientState)
+        : undefined)
+    message.consensusState !== undefined &&
+      (obj.consensusState = message.consensusState
+        ? Any.toJSON(message.consensusState)
+        : undefined)
     message.signer !== undefined && (obj.signer = message.signer)
     return obj
   },
@@ -170,7 +176,9 @@ export const MsgCreateClientResponse = {
   decode(input: Reader | Uint8Array, length?: number): MsgCreateClientResponse {
     const reader = input instanceof Uint8Array ? new Reader(input) : input
     let end = length === undefined ? reader.len : reader.pos + length
-    const message = { ...baseMsgCreateClientResponse } as MsgCreateClientResponse
+    const message = {
+      ...baseMsgCreateClientResponse
+    } as MsgCreateClientResponse
     while (reader.pos < end) {
       const tag = reader.uint32()
       switch (tag >>> 3) {
@@ -183,7 +191,9 @@ export const MsgCreateClientResponse = {
   },
 
   fromJSON(_: any): MsgCreateClientResponse {
-    const message = { ...baseMsgCreateClientResponse } as MsgCreateClientResponse
+    const message = {
+      ...baseMsgCreateClientResponse
+    } as MsgCreateClientResponse
     return message
   },
 
@@ -192,8 +202,12 @@ export const MsgCreateClientResponse = {
     return obj
   },
 
-  fromPartial(_: DeepPartial<MsgCreateClientResponse>): MsgCreateClientResponse {
-    const message = { ...baseMsgCreateClientResponse } as MsgCreateClientResponse
+  fromPartial(
+    _: DeepPartial<MsgCreateClientResponse>
+  ): MsgCreateClientResponse {
+    const message = {
+      ...baseMsgCreateClientResponse
+    } as MsgCreateClientResponse
     return message
   }
 }
@@ -261,7 +275,8 @@ export const MsgUpdateClient = {
   toJSON(message: MsgUpdateClient): unknown {
     const obj: any = {}
     message.clientId !== undefined && (obj.clientId = message.clientId)
-    message.header !== undefined && (obj.header = message.header ? Any.toJSON(message.header) : undefined)
+    message.header !== undefined &&
+      (obj.header = message.header ? Any.toJSON(message.header) : undefined)
     message.signer !== undefined && (obj.signer = message.signer)
     return obj
   },
@@ -297,7 +312,9 @@ export const MsgUpdateClientResponse = {
   decode(input: Reader | Uint8Array, length?: number): MsgUpdateClientResponse {
     const reader = input instanceof Uint8Array ? new Reader(input) : input
     let end = length === undefined ? reader.len : reader.pos + length
-    const message = { ...baseMsgUpdateClientResponse } as MsgUpdateClientResponse
+    const message = {
+      ...baseMsgUpdateClientResponse
+    } as MsgUpdateClientResponse
     while (reader.pos < end) {
       const tag = reader.uint32()
       switch (tag >>> 3) {
@@ -310,7 +327,9 @@ export const MsgUpdateClientResponse = {
   },
 
   fromJSON(_: any): MsgUpdateClientResponse {
-    const message = { ...baseMsgUpdateClientResponse } as MsgUpdateClientResponse
+    const message = {
+      ...baseMsgUpdateClientResponse
+    } as MsgUpdateClientResponse
     return message
   },
 
@@ -319,8 +338,12 @@ export const MsgUpdateClientResponse = {
     return obj
   },
 
-  fromPartial(_: DeepPartial<MsgUpdateClientResponse>): MsgUpdateClientResponse {
-    const message = { ...baseMsgUpdateClientResponse } as MsgUpdateClientResponse
+  fromPartial(
+    _: DeepPartial<MsgUpdateClientResponse>
+  ): MsgUpdateClientResponse {
+    const message = {
+      ...baseMsgUpdateClientResponse
+    } as MsgUpdateClientResponse
     return message
   }
 }
@@ -400,11 +423,19 @@ export const MsgUpgradeClient = {
     } else {
       message.consensusState = undefined
     }
-    if (object.proofUpgradeClient !== undefined && object.proofUpgradeClient !== null) {
+    if (
+      object.proofUpgradeClient !== undefined &&
+      object.proofUpgradeClient !== null
+    ) {
       message.proofUpgradeClient = bytesFromBase64(object.proofUpgradeClient)
     }
-    if (object.proofUpgradeConsensusState !== undefined && object.proofUpgradeConsensusState !== null) {
-      message.proofUpgradeConsensusState = bytesFromBase64(object.proofUpgradeConsensusState)
+    if (
+      object.proofUpgradeConsensusState !== undefined &&
+      object.proofUpgradeConsensusState !== null
+    ) {
+      message.proofUpgradeConsensusState = bytesFromBase64(
+        object.proofUpgradeConsensusState
+      )
     }
     if (object.signer !== undefined && object.signer !== null) {
       message.signer = String(object.signer)
@@ -417,13 +448,25 @@ export const MsgUpgradeClient = {
   toJSON(message: MsgUpgradeClient): unknown {
     const obj: any = {}
     message.clientId !== undefined && (obj.clientId = message.clientId)
-    message.clientState !== undefined && (obj.clientState = message.clientState ? Any.toJSON(message.clientState) : undefined)
-    message.consensusState !== undefined && (obj.consensusState = message.consensusState ? Any.toJSON(message.consensusState) : undefined)
+    message.clientState !== undefined &&
+      (obj.clientState = message.clientState
+        ? Any.toJSON(message.clientState)
+        : undefined)
+    message.consensusState !== undefined &&
+      (obj.consensusState = message.consensusState
+        ? Any.toJSON(message.consensusState)
+        : undefined)
     message.proofUpgradeClient !== undefined &&
-      (obj.proofUpgradeClient = base64FromBytes(message.proofUpgradeClient !== undefined ? message.proofUpgradeClient : new Uint8Array()))
+      (obj.proofUpgradeClient = base64FromBytes(
+        message.proofUpgradeClient !== undefined
+          ? message.proofUpgradeClient
+          : new Uint8Array()
+      ))
     message.proofUpgradeConsensusState !== undefined &&
       (obj.proofUpgradeConsensusState = base64FromBytes(
-        message.proofUpgradeConsensusState !== undefined ? message.proofUpgradeConsensusState : new Uint8Array()
+        message.proofUpgradeConsensusState !== undefined
+          ? message.proofUpgradeConsensusState
+          : new Uint8Array()
       ))
     message.signer !== undefined && (obj.signer = message.signer)
     return obj
@@ -446,12 +489,18 @@ export const MsgUpgradeClient = {
     } else {
       message.consensusState = undefined
     }
-    if (object.proofUpgradeClient !== undefined && object.proofUpgradeClient !== null) {
+    if (
+      object.proofUpgradeClient !== undefined &&
+      object.proofUpgradeClient !== null
+    ) {
       message.proofUpgradeClient = object.proofUpgradeClient
     } else {
       message.proofUpgradeClient = new Uint8Array()
     }
-    if (object.proofUpgradeConsensusState !== undefined && object.proofUpgradeConsensusState !== null) {
+    if (
+      object.proofUpgradeConsensusState !== undefined &&
+      object.proofUpgradeConsensusState !== null
+    ) {
       message.proofUpgradeConsensusState = object.proofUpgradeConsensusState
     } else {
       message.proofUpgradeConsensusState = new Uint8Array()
@@ -468,14 +517,22 @@ export const MsgUpgradeClient = {
 const baseMsgUpgradeClientResponse: object = {}
 
 export const MsgUpgradeClientResponse = {
-  encode(_: MsgUpgradeClientResponse, writer: Writer = Writer.create()): Writer {
+  encode(
+    _: MsgUpgradeClientResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
     return writer
   },
 
-  decode(input: Reader | Uint8Array, length?: number): MsgUpgradeClientResponse {
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgUpgradeClientResponse {
     const reader = input instanceof Uint8Array ? new Reader(input) : input
     let end = length === undefined ? reader.len : reader.pos + length
-    const message = { ...baseMsgUpgradeClientResponse } as MsgUpgradeClientResponse
+    const message = {
+      ...baseMsgUpgradeClientResponse
+    } as MsgUpgradeClientResponse
     while (reader.pos < end) {
       const tag = reader.uint32()
       switch (tag >>> 3) {
@@ -488,7 +545,9 @@ export const MsgUpgradeClientResponse = {
   },
 
   fromJSON(_: any): MsgUpgradeClientResponse {
-    const message = { ...baseMsgUpgradeClientResponse } as MsgUpgradeClientResponse
+    const message = {
+      ...baseMsgUpgradeClientResponse
+    } as MsgUpgradeClientResponse
     return message
   },
 
@@ -497,8 +556,12 @@ export const MsgUpgradeClientResponse = {
     return obj
   },
 
-  fromPartial(_: DeepPartial<MsgUpgradeClientResponse>): MsgUpgradeClientResponse {
-    const message = { ...baseMsgUpgradeClientResponse } as MsgUpgradeClientResponse
+  fromPartial(
+    _: DeepPartial<MsgUpgradeClientResponse>
+  ): MsgUpgradeClientResponse {
+    const message = {
+      ...baseMsgUpgradeClientResponse
+    } as MsgUpgradeClientResponse
     return message
   }
 }
@@ -506,7 +569,10 @@ export const MsgUpgradeClientResponse = {
 const baseMsgSubmitMisbehaviour: object = { clientId: '', signer: '' }
 
 export const MsgSubmitMisbehaviour = {
-  encode(message: MsgSubmitMisbehaviour, writer: Writer = Writer.create()): Writer {
+  encode(
+    message: MsgSubmitMisbehaviour,
+    writer: Writer = Writer.create()
+  ): Writer {
     if (message.clientId !== '') {
       writer.uint32(10).string(message.clientId)
     }
@@ -566,12 +632,17 @@ export const MsgSubmitMisbehaviour = {
   toJSON(message: MsgSubmitMisbehaviour): unknown {
     const obj: any = {}
     message.clientId !== undefined && (obj.clientId = message.clientId)
-    message.misbehaviour !== undefined && (obj.misbehaviour = message.misbehaviour ? Any.toJSON(message.misbehaviour) : undefined)
+    message.misbehaviour !== undefined &&
+      (obj.misbehaviour = message.misbehaviour
+        ? Any.toJSON(message.misbehaviour)
+        : undefined)
     message.signer !== undefined && (obj.signer = message.signer)
     return obj
   },
 
-  fromPartial(object: DeepPartial<MsgSubmitMisbehaviour>): MsgSubmitMisbehaviour {
+  fromPartial(
+    object: DeepPartial<MsgSubmitMisbehaviour>
+  ): MsgSubmitMisbehaviour {
     const message = { ...baseMsgSubmitMisbehaviour } as MsgSubmitMisbehaviour
     if (object.clientId !== undefined && object.clientId !== null) {
       message.clientId = object.clientId
@@ -595,14 +666,22 @@ export const MsgSubmitMisbehaviour = {
 const baseMsgSubmitMisbehaviourResponse: object = {}
 
 export const MsgSubmitMisbehaviourResponse = {
-  encode(_: MsgSubmitMisbehaviourResponse, writer: Writer = Writer.create()): Writer {
+  encode(
+    _: MsgSubmitMisbehaviourResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
     return writer
   },
 
-  decode(input: Reader | Uint8Array, length?: number): MsgSubmitMisbehaviourResponse {
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgSubmitMisbehaviourResponse {
     const reader = input instanceof Uint8Array ? new Reader(input) : input
     let end = length === undefined ? reader.len : reader.pos + length
-    const message = { ...baseMsgSubmitMisbehaviourResponse } as MsgSubmitMisbehaviourResponse
+    const message = {
+      ...baseMsgSubmitMisbehaviourResponse
+    } as MsgSubmitMisbehaviourResponse
     while (reader.pos < end) {
       const tag = reader.uint32()
       switch (tag >>> 3) {
@@ -615,7 +694,9 @@ export const MsgSubmitMisbehaviourResponse = {
   },
 
   fromJSON(_: any): MsgSubmitMisbehaviourResponse {
-    const message = { ...baseMsgSubmitMisbehaviourResponse } as MsgSubmitMisbehaviourResponse
+    const message = {
+      ...baseMsgSubmitMisbehaviourResponse
+    } as MsgSubmitMisbehaviourResponse
     return message
   },
 
@@ -624,8 +705,12 @@ export const MsgSubmitMisbehaviourResponse = {
     return obj
   },
 
-  fromPartial(_: DeepPartial<MsgSubmitMisbehaviourResponse>): MsgSubmitMisbehaviourResponse {
-    const message = { ...baseMsgSubmitMisbehaviourResponse } as MsgSubmitMisbehaviourResponse
+  fromPartial(
+    _: DeepPartial<MsgSubmitMisbehaviourResponse>
+  ): MsgSubmitMisbehaviourResponse {
+    const message = {
+      ...baseMsgSubmitMisbehaviourResponse
+    } as MsgSubmitMisbehaviourResponse
     return message
   }
 }
@@ -639,7 +724,9 @@ export interface Msg {
   /** UpgradeClient defines a rpc handler method for MsgUpgradeClient. */
   UpgradeClient(request: MsgUpgradeClient): Promise<MsgUpgradeClientResponse>
   /** SubmitMisbehaviour defines a rpc handler method for MsgSubmitMisbehaviour. */
-  SubmitMisbehaviour(request: MsgSubmitMisbehaviour): Promise<MsgSubmitMisbehaviourResponse>
+  SubmitMisbehaviour(
+    request: MsgSubmitMisbehaviour
+  ): Promise<MsgSubmitMisbehaviourResponse>
 }
 
 export class MsgClientImpl implements Msg {
@@ -649,31 +736,61 @@ export class MsgClientImpl implements Msg {
   }
   CreateClient(request: MsgCreateClient): Promise<MsgCreateClientResponse> {
     const data = MsgCreateClient.encode(request).finish()
-    const promise = this.rpc.request('ibc.core.client.v1.Msg', 'CreateClient', data)
-    return promise.then((data) => MsgCreateClientResponse.decode(new Reader(data)))
+    const promise = this.rpc.request(
+      'ibc.core.client.v1.Msg',
+      'CreateClient',
+      data
+    )
+    return promise.then((data) =>
+      MsgCreateClientResponse.decode(new Reader(data))
+    )
   }
 
   UpdateClient(request: MsgUpdateClient): Promise<MsgUpdateClientResponse> {
     const data = MsgUpdateClient.encode(request).finish()
-    const promise = this.rpc.request('ibc.core.client.v1.Msg', 'UpdateClient', data)
-    return promise.then((data) => MsgUpdateClientResponse.decode(new Reader(data)))
+    const promise = this.rpc.request(
+      'ibc.core.client.v1.Msg',
+      'UpdateClient',
+      data
+    )
+    return promise.then((data) =>
+      MsgUpdateClientResponse.decode(new Reader(data))
+    )
   }
 
   UpgradeClient(request: MsgUpgradeClient): Promise<MsgUpgradeClientResponse> {
     const data = MsgUpgradeClient.encode(request).finish()
-    const promise = this.rpc.request('ibc.core.client.v1.Msg', 'UpgradeClient', data)
-    return promise.then((data) => MsgUpgradeClientResponse.decode(new Reader(data)))
+    const promise = this.rpc.request(
+      'ibc.core.client.v1.Msg',
+      'UpgradeClient',
+      data
+    )
+    return promise.then((data) =>
+      MsgUpgradeClientResponse.decode(new Reader(data))
+    )
   }
 
-  SubmitMisbehaviour(request: MsgSubmitMisbehaviour): Promise<MsgSubmitMisbehaviourResponse> {
+  SubmitMisbehaviour(
+    request: MsgSubmitMisbehaviour
+  ): Promise<MsgSubmitMisbehaviourResponse> {
     const data = MsgSubmitMisbehaviour.encode(request).finish()
-    const promise = this.rpc.request('ibc.core.client.v1.Msg', 'SubmitMisbehaviour', data)
-    return promise.then((data) => MsgSubmitMisbehaviourResponse.decode(new Reader(data)))
+    const promise = this.rpc.request(
+      'ibc.core.client.v1.Msg',
+      'SubmitMisbehaviour',
+      data
+    )
+    return promise.then((data) =>
+      MsgSubmitMisbehaviourResponse.decode(new Reader(data))
+    )
   }
 }
 
 interface Rpc {
-  request(service: string, method: string, data: Uint8Array): Promise<Uint8Array>
+  request(
+    service: string,
+    method: string,
+    data: Uint8Array
+  ): Promise<Uint8Array>
 }
 
 declare var self: any | undefined
@@ -686,7 +803,9 @@ var globalThis: any = (() => {
   throw 'Unable to locate global object'
 })()
 
-const atob: (b64: string) => string = globalThis.atob || ((b64) => globalThis.Buffer.from(b64, 'base64').toString('binary'))
+const atob: (b64: string) => string =
+  globalThis.atob ||
+  ((b64) => globalThis.Buffer.from(b64, 'base64').toString('binary'))
 function bytesFromBase64(b64: string): Uint8Array {
   const bin = atob(b64)
   const arr = new Uint8Array(bin.length)
@@ -696,7 +815,9 @@ function bytesFromBase64(b64: string): Uint8Array {
   return arr
 }
 
-const btoa: (bin: string) => string = globalThis.btoa || ((bin) => globalThis.Buffer.from(bin, 'binary').toString('base64'))
+const btoa: (bin: string) => string =
+  globalThis.btoa ||
+  ((bin) => globalThis.Buffer.from(bin, 'binary').toString('base64'))
 function base64FromBytes(arr: Uint8Array): string {
   const bin: string[] = []
   for (let i = 0; i < arr.byteLength; ++i) {
