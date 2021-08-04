@@ -19,7 +19,6 @@ import (
 	tmdb "github.com/tendermint/tm-db"
 
 	"github.com/faddat/dig/app"
-	// "github.com/faddat/dig/x/dig/types"
 )
 
 type (
@@ -69,9 +68,9 @@ func DefaultConfig() network.Config {
 		NumValidators:   1,
 		BondDenom:       sdk.DefaultBondDenom,
 		MinGasPrices:    fmt.Sprintf("0.000006%s", sdk.DefaultBondDenom),
-		AccountTokens:   sdk.TokensFromConsensusPower(1000, sdk.DefaultPowerReduction),
-		StakingTokens:   sdk.TokensFromConsensusPower(500, sdk.DefaultPowerReduction),
-		BondedTokens:    sdk.TokensFromConsensusPower(100, sdk.DefaultPowerReduction),
+		AccountTokens:   sdk.TokensFromConsensusPower(1000),
+		StakingTokens:   sdk.TokensFromConsensusPower(500),
+		BondedTokens:    sdk.TokensFromConsensusPower(100),
 		PruningStrategy: storetypes.PruningOptionNothing,
 		CleanupDir:      true,
 		SigningAlgo:     string(hd.Secp256k1Type),
