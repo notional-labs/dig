@@ -4,10 +4,10 @@ We're digging for new cities.
 
 Here's a little light background reading:
 
-https://blurt.blog/blurt/@jacobgadikian/baby-blockchains
-https://blurt.blog/blurt/@jacobgadikian/blockchain-application-tco
-https://1729.com/miami/
-https://podclips.com/ct/gBhDsq
+* https://blurt.blog/blurt/@jacobgadikian/baby-blockchains
+* https://blurt.blog/blurt/@jacobgadikian/blockchain-application-tco
+* https://1729.com/miami/
+* https://podclips.com/ct/gBhDsq
 
 ## Get started
 
