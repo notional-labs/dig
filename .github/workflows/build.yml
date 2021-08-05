@@ -26,10 +26,16 @@ jobs:
           GOOS: ${{ matrix.targetos }}
           GOARCH: ${{ matrix.arch }}
 
-      - name: Compile
+      - name: Compile dig
         run: |
           go mod download
           cd cmd/digd
+          go build .
+
+      - name: Compile airdrop
+        run: |
+          cd airdrop
+          go mod download
           go build .
 
       - uses: actions/upload-artifact@v2
