@@ -2,7 +2,16 @@
 
 We're digging for new cities.
 
+Here's a little light background reading:
+
+https://blurt.blog/blurt/@jacobgadikian/baby-blockchains
+https://blurt.blog/blurt/@jacobgadikian/blockchain-application-tco
+https://1729.com/miami/
+https://podclips.com/ct/gBhDsq
+
 ## Get started
+
+NB: Starport commands don't work right now because we're on Cosmos SDK 0.43.0.  It is likely they'll work again sometime soon!
 
 ```
 starport serve
