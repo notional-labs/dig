@@ -31,6 +31,9 @@ import (
 	authkeeper "github.com/cosmos/cosmos-sdk/x/auth/keeper"
 	authtx "github.com/cosmos/cosmos-sdk/x/auth/tx"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
+	authzrest "github.com/cosmos/cosmos-sdk/x/authz/client/rest"
+	authzkeeper "github.com/cosmos/cosmos-sdk/x/authz/keeper"
+	authzmodule "github.com/cosmos/cosmos-sdk/x/authz/module"
 	"github.com/cosmos/cosmos-sdk/x/auth/vesting"
 	"github.com/cosmos/cosmos-sdk/x/bank"
 	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
@@ -57,6 +60,7 @@ import (
 	govclient "github.com/cosmos/cosmos-sdk/x/gov/client"
 	govkeeper "github.com/cosmos/cosmos-sdk/x/gov/keeper"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
+	"github.com/cosmos/cosmos-sdk/x/group"
 	"github.com/cosmos/cosmos-sdk/x/mint"
 	mintkeeper "github.com/cosmos/cosmos-sdk/x/mint/keeper"
 	minttypes "github.com/cosmos/cosmos-sdk/x/mint/types"
@@ -122,12 +126,14 @@ var (
 	// and genesis verification.
 	ModuleBasics = module.NewBasicManager(
 		auth.AppModuleBasic{},
+		authzmodule.AppModuleBasic{},
 		genutil.AppModuleBasic{},
 		bank.AppModuleBasic{},
 		capability.AppModuleBasic{},
 		staking.AppModuleBasic{},
 		mint.AppModuleBasic{},
 		distr.AppModuleBasic{},
+		group.AppModuleBasic{},
 		gov.NewAppModuleBasic(getGovProposalHandlers()...),
 		params.AppModuleBasic{},
 		crisis.AppModuleBasic{},
@@ -187,6 +193,7 @@ type App struct {
 
 	// keepers
 	AccountKeeper    authkeeper.AccountKeeper
+	AuthzKeeper      authzkeeper.Keeper
 	BankKeeper       bankkeeper.Keeper
 	CapabilityKeeper *capabilitykeeper.Keeper
 	StakingKeeper    stakingkeeper.Keeper
@@ -194,6 +201,7 @@ type App struct {
 	MintKeeper       mintkeeper.Keeper
 	DistrKeeper      distrkeeper.Keeper
 	GovKeeper        govkeeper.Keeper
+	AuthzKeeper	 authzkeeper.Keeper
 	CrisisKeeper     crisiskeeper.Keeper
 	UpgradeKeeper    upgradekeeper.Keeper
 	ParamsKeeper     paramskeeper.Keeper
