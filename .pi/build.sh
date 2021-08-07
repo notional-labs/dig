@@ -88,9 +88,7 @@ sudo mkdir mnt/rootfs/boot
 
 
 # chill for a moment before unmounting
-sleep 20
 sudo umount mnt/boot mnt/rootfs
-sleep 20
 sudo losetup -d $LOOP # drop the loop mount
 
 
