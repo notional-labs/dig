@@ -39,9 +39,6 @@ gh pr create
 
 Your blockchain in development can be configured with `config.yml`. To learn more, see the [Starport docs](https://docs.starport.network).
 
-## Launch
-
-To launch your blockchain live on multiple nodes, use `starport network` commands. Learn more about [Starport Network](https://github.com/tendermint/spn).
 
 ## Web Frontend
 
