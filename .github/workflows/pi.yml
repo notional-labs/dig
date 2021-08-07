@@ -26,10 +26,10 @@ jobs:
           bash .pi/build.sh
           
       - name: Compress
-        run: xz -T $(nproc) .pi/images/dig.img
+        run: xz -T $(nproc) images/dig.img
 
       - name: Upload image
         uses: actions/upload-artifact@v2
         with:
           name: dig pi
-          path: .pi/images/dig.img.xz
+          path: images/dig.img.xz
