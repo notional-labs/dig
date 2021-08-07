@@ -1,4 +1,4 @@
-FROM ghcr.io/faddat/sos-lite:cache
+FROM ghcr.io/faddat/sos-lite
 
 COPY .pi/motd /etc/motd
 COPY .pi/dig.service /etc/systemd/system/dig.service
