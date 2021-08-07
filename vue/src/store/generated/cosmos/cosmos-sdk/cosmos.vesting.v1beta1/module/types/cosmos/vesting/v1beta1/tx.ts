@@ -20,10 +20,18 @@ export interface MsgCreateVestingAccount {
 /** MsgCreateVestingAccountResponse defines the Msg/CreateVestingAccount response type. */
 export interface MsgCreateVestingAccountResponse {}
 
-const baseMsgCreateVestingAccount: object = { fromAddress: '', toAddress: '', endTime: 0, delayed: false }
+const baseMsgCreateVestingAccount: object = {
+  fromAddress: '',
+  toAddress: '',
+  endTime: 0,
+  delayed: false
+}
 
 export const MsgCreateVestingAccount = {
-  encode(message: MsgCreateVestingAccount, writer: Writer = Writer.create()): Writer {
+  encode(
+    message: MsgCreateVestingAccount,
+    writer: Writer = Writer.create()
+  ): Writer {
     if (message.fromAddress !== '') {
       writer.uint32(10).string(message.fromAddress)
     }
@@ -45,7 +53,9 @@ export const MsgCreateVestingAccount = {
   decode(input: Reader | Uint8Array, length?: number): MsgCreateVestingAccount {
     const reader = input instanceof Uint8Array ? new Reader(input) : input
     let end = length === undefined ? reader.len : reader.pos + length
-    const message = { ...baseMsgCreateVestingAccount } as MsgCreateVestingAccount
+    const message = {
+      ...baseMsgCreateVestingAccount
+    } as MsgCreateVestingAccount
     message.amount = []
     while (reader.pos < end) {
       const tag = reader.uint32()
@@ -74,7 +84,9 @@ export const MsgCreateVestingAccount = {
   },
 
   fromJSON(object: any): MsgCreateVestingAccount {
-    const message = { ...baseMsgCreateVestingAccount } as MsgCreateVestingAccount
+    const message = {
+      ...baseMsgCreateVestingAccount
+    } as MsgCreateVestingAccount
     message.amount = []
     if (object.fromAddress !== undefined && object.fromAddress !== null) {
       message.fromAddress = String(object.fromAddress)
@@ -118,8 +130,12 @@ export const MsgCreateVestingAccount = {
     return obj
   },
 
-  fromPartial(object: DeepPartial<MsgCreateVestingAccount>): MsgCreateVestingAccount {
-    const message = { ...baseMsgCreateVestingAccount } as MsgCreateVestingAccount
+  fromPartial(
+    object: DeepPartial<MsgCreateVestingAccount>
+  ): MsgCreateVestingAccount {
+    const message = {
+      ...baseMsgCreateVestingAccount
+    } as MsgCreateVestingAccount
     message.amount = []
     if (object.fromAddress !== undefined && object.fromAddress !== null) {
       message.fromAddress = object.fromAddress
@@ -153,14 +169,22 @@ export const MsgCreateVestingAccount = {
 const baseMsgCreateVestingAccountResponse: object = {}
 
 export const MsgCreateVestingAccountResponse = {
-  encode(_: MsgCreateVestingAccountResponse, writer: Writer = Writer.create()): Writer {
+  encode(
+    _: MsgCreateVestingAccountResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
     return writer
   },
 
-  decode(input: Reader | Uint8Array, length?: number): MsgCreateVestingAccountResponse {
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): MsgCreateVestingAccountResponse {
     const reader = input instanceof Uint8Array ? new Reader(input) : input
     let end = length === undefined ? reader.len : reader.pos + length
-    const message = { ...baseMsgCreateVestingAccountResponse } as MsgCreateVestingAccountResponse
+    const message = {
+      ...baseMsgCreateVestingAccountResponse
+    } as MsgCreateVestingAccountResponse
     while (reader.pos < end) {
       const tag = reader.uint32()
       switch (tag >>> 3) {
@@ -173,7 +197,9 @@ export const MsgCreateVestingAccountResponse = {
   },
 
   fromJSON(_: any): MsgCreateVestingAccountResponse {
-    const message = { ...baseMsgCreateVestingAccountResponse } as MsgCreateVestingAccountResponse
+    const message = {
+      ...baseMsgCreateVestingAccountResponse
+    } as MsgCreateVestingAccountResponse
     return message
   },
 
@@ -182,8 +208,12 @@ export const MsgCreateVestingAccountResponse = {
     return obj
   },
 
-  fromPartial(_: DeepPartial<MsgCreateVestingAccountResponse>): MsgCreateVestingAccountResponse {
-    const message = { ...baseMsgCreateVestingAccountResponse } as MsgCreateVestingAccountResponse
+  fromPartial(
+    _: DeepPartial<MsgCreateVestingAccountResponse>
+  ): MsgCreateVestingAccountResponse {
+    const message = {
+      ...baseMsgCreateVestingAccountResponse
+    } as MsgCreateVestingAccountResponse
     return message
   }
 }
@@ -194,7 +224,9 @@ export interface Msg {
    * CreateVestingAccount defines a method that enables creating a vesting
    * account.
    */
-  CreateVestingAccount(request: MsgCreateVestingAccount): Promise<MsgCreateVestingAccountResponse>
+  CreateVestingAccount(
+    request: MsgCreateVestingAccount
+  ): Promise<MsgCreateVestingAccountResponse>
 }
 
 export class MsgClientImpl implements Msg {
@@ -202,15 +234,27 @@ export class MsgClientImpl implements Msg {
   constructor(rpc: Rpc) {
     this.rpc = rpc
   }
-  CreateVestingAccount(request: MsgCreateVestingAccount): Promise<MsgCreateVestingAccountResponse> {
+  CreateVestingAccount(
+    request: MsgCreateVestingAccount
+  ): Promise<MsgCreateVestingAccountResponse> {
     const data = MsgCreateVestingAccount.encode(request).finish()
-    const promise = this.rpc.request('cosmos.vesting.v1beta1.Msg', 'CreateVestingAccount', data)
-    return promise.then((data) => MsgCreateVestingAccountResponse.decode(new Reader(data)))
+    const promise = this.rpc.request(
+      'cosmos.vesting.v1beta1.Msg',
+      'CreateVestingAccount',
+      data
+    )
+    return promise.then((data) =>
+      MsgCreateVestingAccountResponse.decode(new Reader(data))
+    )
   }
 }
 
 interface Rpc {
-  request(service: string, method: string, data: Uint8Array): Promise<Uint8Array>
+  request(
+    service: string,
+    method: string,
+    data: Uint8Array
+  ): Promise<Uint8Array>
 }
 
 declare var self: any | undefined

@@ -385,7 +385,7 @@ export const FileDescriptorSet = {
     toJSON(message) {
         const obj = {};
         if (message.file) {
-            obj.file = message.file.map((e) => (e ? FileDescriptorProto.toJSON(e) : undefined));
+            obj.file = message.file.map((e) => e ? FileDescriptorProto.toJSON(e) : undefined);
         }
         else {
             obj.file = [];
@@ -403,7 +403,14 @@ export const FileDescriptorSet = {
         return message;
     }
 };
-const baseFileDescriptorProto = { name: '', package: '', dependency: '', publicDependency: 0, weakDependency: 0, syntax: '' };
+const baseFileDescriptorProto = {
+    name: '',
+    package: '',
+    dependency: '',
+    publicDependency: 0,
+    weakDependency: 0,
+    syntax: ''
+};
 export const FileDescriptorProto = {
     encode(message, writer = Writer.create()) {
         if (message.name !== '') {
@@ -547,7 +554,8 @@ export const FileDescriptorProto = {
                 message.dependency.push(String(e));
             }
         }
-        if (object.publicDependency !== undefined && object.publicDependency !== null) {
+        if (object.publicDependency !== undefined &&
+            object.publicDependency !== null) {
             for (const e of object.publicDependency) {
                 message.publicDependency.push(Number(e));
             }
@@ -620,31 +628,37 @@ export const FileDescriptorProto = {
             obj.weakDependency = [];
         }
         if (message.messageType) {
-            obj.messageType = message.messageType.map((e) => (e ? DescriptorProto.toJSON(e) : undefined));
+            obj.messageType = message.messageType.map((e) => e ? DescriptorProto.toJSON(e) : undefined);
         }
         else {
             obj.messageType = [];
         }
         if (message.enumType) {
-            obj.enumType = message.enumType.map((e) => (e ? EnumDescriptorProto.toJSON(e) : undefined));
+            obj.enumType = message.enumType.map((e) => e ? EnumDescriptorProto.toJSON(e) : undefined);
         }
         else {
             obj.enumType = [];
         }
         if (message.service) {
-            obj.service = message.service.map((e) => (e ? ServiceDescriptorProto.toJSON(e) : undefined));
+            obj.service = message.service.map((e) => e ? ServiceDescriptorProto.toJSON(e) : undefined);
         }
         else {
             obj.service = [];
         }
         if (message.extension) {
-            obj.extension = message.extension.map((e) => (e ? FieldDescriptorProto.toJSON(e) : undefined));
+            obj.extension = message.extension.map((e) => e ? FieldDescriptorProto.toJSON(e) : undefined);
         }
         else {
             obj.extension = [];
         }
-        message.options !== undefined && (obj.options = message.options ? FileOptions.toJSON(message.options) : undefined);
-        message.sourceCodeInfo !== undefined && (obj.sourceCodeInfo = message.sourceCodeInfo ? SourceCodeInfo.toJSON(message.sourceCodeInfo) : undefined);
+        message.options !== undefined &&
+            (obj.options = message.options
+                ? FileOptions.toJSON(message.options)
+                : undefined);
+        message.sourceCodeInfo !== undefined &&
+            (obj.sourceCodeInfo = message.sourceCodeInfo
+                ? SourceCodeInfo.toJSON(message.sourceCodeInfo)
+                : undefined);
         message.syntax !== undefined && (obj.syntax = message.syntax);
         return obj;
     },
@@ -674,7 +688,8 @@ export const FileDescriptorProto = {
                 message.dependency.push(e);
             }
         }
-        if (object.publicDependency !== undefined && object.publicDependency !== null) {
+        if (object.publicDependency !== undefined &&
+            object.publicDependency !== null) {
             for (const e of object.publicDependency) {
                 message.publicDependency.push(e);
             }
@@ -880,44 +895,47 @@ export const DescriptorProto = {
         const obj = {};
         message.name !== undefined && (obj.name = message.name);
         if (message.field) {
-            obj.field = message.field.map((e) => (e ? FieldDescriptorProto.toJSON(e) : undefined));
+            obj.field = message.field.map((e) => e ? FieldDescriptorProto.toJSON(e) : undefined);
         }
         else {
             obj.field = [];
         }
         if (message.extension) {
-            obj.extension = message.extension.map((e) => (e ? FieldDescriptorProto.toJSON(e) : undefined));
+            obj.extension = message.extension.map((e) => e ? FieldDescriptorProto.toJSON(e) : undefined);
         }
         else {
             obj.extension = [];
         }
         if (message.nestedType) {
-            obj.nestedType = message.nestedType.map((e) => (e ? DescriptorProto.toJSON(e) : undefined));
+            obj.nestedType = message.nestedType.map((e) => e ? DescriptorProto.toJSON(e) : undefined);
         }
         else {
             obj.nestedType = [];
         }
         if (message.enumType) {
-            obj.enumType = message.enumType.map((e) => (e ? EnumDescriptorProto.toJSON(e) : undefined));
+            obj.enumType = message.enumType.map((e) => e ? EnumDescriptorProto.toJSON(e) : undefined);
         }
         else {
             obj.enumType = [];
         }
         if (message.extensionRange) {
-            obj.extensionRange = message.extensionRange.map((e) => (e ? DescriptorProto_ExtensionRange.toJSON(e) : undefined));
+            obj.extensionRange = message.extensionRange.map((e) => e ? DescriptorProto_ExtensionRange.toJSON(e) : undefined);
         }
         else {
             obj.extensionRange = [];
         }
         if (message.oneofDecl) {
-            obj.oneofDecl = message.oneofDecl.map((e) => (e ? OneofDescriptorProto.toJSON(e) : undefined));
+            obj.oneofDecl = message.oneofDecl.map((e) => e ? OneofDescriptorProto.toJSON(e) : undefined);
         }
         else {
             obj.oneofDecl = [];
         }
-        message.options !== undefined && (obj.options = message.options ? MessageOptions.toJSON(message.options) : undefined);
+        message.options !== undefined &&
+            (obj.options = message.options
+                ? MessageOptions.toJSON(message.options)
+                : undefined);
         if (message.reservedRange) {
-            obj.reservedRange = message.reservedRange.map((e) => (e ? DescriptorProto_ReservedRange.toJSON(e) : undefined));
+            obj.reservedRange = message.reservedRange.map((e) => e ? DescriptorProto_ReservedRange.toJSON(e) : undefined);
         }
         else {
             obj.reservedRange = [];
@@ -1012,7 +1030,9 @@ export const DescriptorProto_ExtensionRange = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = { ...baseDescriptorProto_ExtensionRange };
+        const message = {
+            ...baseDescriptorProto_ExtensionRange
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -1033,7 +1053,9 @@ export const DescriptorProto_ExtensionRange = {
         return message;
     },
     fromJSON(object) {
-        const message = { ...baseDescriptorProto_ExtensionRange };
+        const message = {
+            ...baseDescriptorProto_ExtensionRange
+        };
         if (object.start !== undefined && object.start !== null) {
             message.start = Number(object.start);
         }
@@ -1058,11 +1080,16 @@ export const DescriptorProto_ExtensionRange = {
         const obj = {};
         message.start !== undefined && (obj.start = message.start);
         message.end !== undefined && (obj.end = message.end);
-        message.options !== undefined && (obj.options = message.options ? ExtensionRangeOptions.toJSON(message.options) : undefined);
+        message.options !== undefined &&
+            (obj.options = message.options
+                ? ExtensionRangeOptions.toJSON(message.options)
+                : undefined);
         return obj;
     },
     fromPartial(object) {
-        const message = { ...baseDescriptorProto_ExtensionRange };
+        const message = {
+            ...baseDescriptorProto_ExtensionRange
+        };
         if (object.start !== undefined && object.start !== null) {
             message.start = object.start;
         }
@@ -1098,7 +1125,9 @@ export const DescriptorProto_ReservedRange = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = { ...baseDescriptorProto_ReservedRange };
+        const message = {
+            ...baseDescriptorProto_ReservedRange
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -1116,7 +1145,9 @@ export const DescriptorProto_ReservedRange = {
         return message;
     },
     fromJSON(object) {
-        const message = { ...baseDescriptorProto_ReservedRange };
+        const message = {
+            ...baseDescriptorProto_ReservedRange
+        };
         if (object.start !== undefined && object.start !== null) {
             message.start = Number(object.start);
         }
@@ -1138,7 +1169,9 @@ export const DescriptorProto_ReservedRange = {
         return obj;
     },
     fromPartial(object) {
-        const message = { ...baseDescriptorProto_ReservedRange };
+        const message = {
+            ...baseDescriptorProto_ReservedRange
+        };
         if (object.start !== undefined && object.start !== null) {
             message.start = object.start;
         }
@@ -1183,7 +1216,8 @@ export const ExtensionRangeOptions = {
     fromJSON(object) {
         const message = { ...baseExtensionRangeOptions };
         message.uninterpretedOption = [];
-        if (object.uninterpretedOption !== undefined && object.uninterpretedOption !== null) {
+        if (object.uninterpretedOption !== undefined &&
+            object.uninterpretedOption !== null) {
             for (const e of object.uninterpretedOption) {
                 message.uninterpretedOption.push(UninterpretedOption.fromJSON(e));
             }
@@ -1193,7 +1227,7 @@ export const ExtensionRangeOptions = {
     toJSON(message) {
         const obj = {};
         if (message.uninterpretedOption) {
-            obj.uninterpretedOption = message.uninterpretedOption.map((e) => (e ? UninterpretedOption.toJSON(e) : undefined));
+            obj.uninterpretedOption = message.uninterpretedOption.map((e) => e ? UninterpretedOption.toJSON(e) : undefined);
         }
         else {
             obj.uninterpretedOption = [];
@@ -1203,7 +1237,8 @@ export const ExtensionRangeOptions = {
     fromPartial(object) {
         const message = { ...baseExtensionRangeOptions };
         message.uninterpretedOption = [];
-        if (object.uninterpretedOption !== undefined && object.uninterpretedOption !== null) {
+        if (object.uninterpretedOption !== undefined &&
+            object.uninterpretedOption !== null) {
             for (const e of object.uninterpretedOption) {
                 message.uninterpretedOption.push(UninterpretedOption.fromPartial(e));
             }
@@ -1381,15 +1416,22 @@ export const FieldDescriptorProto = {
         const obj = {};
         message.name !== undefined && (obj.name = message.name);
         message.number !== undefined && (obj.number = message.number);
-        message.label !== undefined && (obj.label = fieldDescriptorProto_LabelToJSON(message.label));
-        message.type !== undefined && (obj.type = fieldDescriptorProto_TypeToJSON(message.type));
+        message.label !== undefined &&
+            (obj.label = fieldDescriptorProto_LabelToJSON(message.label));
+        message.type !== undefined &&
+            (obj.type = fieldDescriptorProto_TypeToJSON(message.type));
         message.typeName !== undefined && (obj.typeName = message.typeName);
         message.extendee !== undefined && (obj.extendee = message.extendee);
-        message.defaultValue !== undefined && (obj.defaultValue = message.defaultValue);
+        message.defaultValue !== undefined &&
+            (obj.defaultValue = message.defaultValue);
         message.oneofIndex !== undefined && (obj.oneofIndex = message.oneofIndex);
         message.jsonName !== undefined && (obj.jsonName = message.jsonName);
-        message.options !== undefined && (obj.options = message.options ? FieldOptions.toJSON(message.options) : undefined);
-        message.proto3Optional !== undefined && (obj.proto3Optional = message.proto3Optional);
+        message.options !== undefined &&
+            (obj.options = message.options
+                ? FieldOptions.toJSON(message.options)
+                : undefined);
+        message.proto3Optional !== undefined &&
+            (obj.proto3Optional = message.proto3Optional);
         return obj;
     },
     fromPartial(object) {
@@ -1513,7 +1555,10 @@ export const OneofDescriptorProto = {
     toJSON(message) {
         const obj = {};
         message.name !== undefined && (obj.name = message.name);
-        message.options !== undefined && (obj.options = message.options ? OneofOptions.toJSON(message.options) : undefined);
+        message.options !== undefined &&
+            (obj.options = message.options
+                ? OneofOptions.toJSON(message.options)
+                : undefined);
         return obj;
     },
     fromPartial(object) {
@@ -1623,14 +1668,17 @@ export const EnumDescriptorProto = {
         const obj = {};
         message.name !== undefined && (obj.name = message.name);
         if (message.value) {
-            obj.value = message.value.map((e) => (e ? EnumValueDescriptorProto.toJSON(e) : undefined));
+            obj.value = message.value.map((e) => e ? EnumValueDescriptorProto.toJSON(e) : undefined);
         }
         else {
             obj.value = [];
         }
-        message.options !== undefined && (obj.options = message.options ? EnumOptions.toJSON(message.options) : undefined);
+        message.options !== undefined &&
+            (obj.options = message.options
+                ? EnumOptions.toJSON(message.options)
+                : undefined);
         if (message.reservedRange) {
-            obj.reservedRange = message.reservedRange.map((e) => (e ? EnumDescriptorProto_EnumReservedRange.toJSON(e) : undefined));
+            obj.reservedRange = message.reservedRange.map((e) => e ? EnumDescriptorProto_EnumReservedRange.toJSON(e) : undefined);
         }
         else {
             obj.reservedRange = [];
@@ -1692,7 +1740,9 @@ export const EnumDescriptorProto_EnumReservedRange = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = { ...baseEnumDescriptorProto_EnumReservedRange };
+        const message = {
+            ...baseEnumDescriptorProto_EnumReservedRange
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -1710,7 +1760,9 @@ export const EnumDescriptorProto_EnumReservedRange = {
         return message;
     },
     fromJSON(object) {
-        const message = { ...baseEnumDescriptorProto_EnumReservedRange };
+        const message = {
+            ...baseEnumDescriptorProto_EnumReservedRange
+        };
         if (object.start !== undefined && object.start !== null) {
             message.start = Number(object.start);
         }
@@ -1732,7 +1784,9 @@ export const EnumDescriptorProto_EnumReservedRange = {
         return obj;
     },
     fromPartial(object) {
-        const message = { ...baseEnumDescriptorProto_EnumReservedRange };
+        const message = {
+            ...baseEnumDescriptorProto_EnumReservedRange
+        };
         if (object.start !== undefined && object.start !== null) {
             message.start = object.start;
         }
@@ -1765,7 +1819,9 @@ export const EnumValueDescriptorProto = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = { ...baseEnumValueDescriptorProto };
+        const message = {
+            ...baseEnumValueDescriptorProto
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -1786,7 +1842,9 @@ export const EnumValueDescriptorProto = {
         return message;
     },
     fromJSON(object) {
-        const message = { ...baseEnumValueDescriptorProto };
+        const message = {
+            ...baseEnumValueDescriptorProto
+        };
         if (object.name !== undefined && object.name !== null) {
             message.name = String(object.name);
         }
@@ -1811,11 +1869,16 @@ export const EnumValueDescriptorProto = {
         const obj = {};
         message.name !== undefined && (obj.name = message.name);
         message.number !== undefined && (obj.number = message.number);
-        message.options !== undefined && (obj.options = message.options ? EnumValueOptions.toJSON(message.options) : undefined);
+        message.options !== undefined &&
+            (obj.options = message.options
+                ? EnumValueOptions.toJSON(message.options)
+                : undefined);
         return obj;
     },
     fromPartial(object) {
-        const message = { ...baseEnumValueDescriptorProto };
+        const message = {
+            ...baseEnumValueDescriptorProto
+        };
         if (object.name !== undefined && object.name !== null) {
             message.name = object.name;
         }
@@ -1901,12 +1964,15 @@ export const ServiceDescriptorProto = {
         const obj = {};
         message.name !== undefined && (obj.name = message.name);
         if (message.method) {
-            obj.method = message.method.map((e) => (e ? MethodDescriptorProto.toJSON(e) : undefined));
+            obj.method = message.method.map((e) => e ? MethodDescriptorProto.toJSON(e) : undefined);
         }
         else {
             obj.method = [];
         }
-        message.options !== undefined && (obj.options = message.options ? ServiceOptions.toJSON(message.options) : undefined);
+        message.options !== undefined &&
+            (obj.options = message.options
+                ? ServiceOptions.toJSON(message.options)
+                : undefined);
         return obj;
     },
     fromPartial(object) {
@@ -1932,7 +1998,13 @@ export const ServiceDescriptorProto = {
         return message;
     }
 };
-const baseMethodDescriptorProto = { name: '', inputType: '', outputType: '', clientStreaming: false, serverStreaming: false };
+const baseMethodDescriptorProto = {
+    name: '',
+    inputType: '',
+    outputType: '',
+    clientStreaming: false,
+    serverStreaming: false
+};
 export const MethodDescriptorProto = {
     encode(message, writer = Writer.create()) {
         if (message.name !== '') {
@@ -2013,13 +2085,15 @@ export const MethodDescriptorProto = {
         else {
             message.options = undefined;
         }
-        if (object.clientStreaming !== undefined && object.clientStreaming !== null) {
+        if (object.clientStreaming !== undefined &&
+            object.clientStreaming !== null) {
             message.clientStreaming = Boolean(object.clientStreaming);
         }
         else {
             message.clientStreaming = false;
         }
-        if (object.serverStreaming !== undefined && object.serverStreaming !== null) {
+        if (object.serverStreaming !== undefined &&
+            object.serverStreaming !== null) {
             message.serverStreaming = Boolean(object.serverStreaming);
         }
         else {
@@ -2032,9 +2106,14 @@ export const MethodDescriptorProto = {
         message.name !== undefined && (obj.name = message.name);
         message.inputType !== undefined && (obj.inputType = message.inputType);
         message.outputType !== undefined && (obj.outputType = message.outputType);
-        message.options !== undefined && (obj.options = message.options ? MethodOptions.toJSON(message.options) : undefined);
-        message.clientStreaming !== undefined && (obj.clientStreaming = message.clientStreaming);
-        message.serverStreaming !== undefined && (obj.serverStreaming = message.serverStreaming);
+        message.options !== undefined &&
+            (obj.options = message.options
+                ? MethodOptions.toJSON(message.options)
+                : undefined);
+        message.clientStreaming !== undefined &&
+            (obj.clientStreaming = message.clientStreaming);
+        message.serverStreaming !== undefined &&
+            (obj.serverStreaming = message.serverStreaming);
         return obj;
     },
     fromPartial(object) {
@@ -2063,13 +2142,15 @@ export const MethodDescriptorProto = {
         else {
             message.options = undefined;
         }
-        if (object.clientStreaming !== undefined && object.clientStreaming !== null) {
+        if (object.clientStreaming !== undefined &&
+            object.clientStreaming !== null) {
             message.clientStreaming = object.clientStreaming;
         }
         else {
             message.clientStreaming = false;
         }
-        if (object.serverStreaming !== undefined && object.serverStreaming !== null) {
+        if (object.serverStreaming !== undefined &&
+            object.serverStreaming !== null) {
             message.serverStreaming = object.serverStreaming;
         }
         else {
@@ -2254,25 +2335,29 @@ export const FileOptions = {
         else {
             message.javaPackage = '';
         }
-        if (object.javaOuterClassname !== undefined && object.javaOuterClassname !== null) {
+        if (object.javaOuterClassname !== undefined &&
+            object.javaOuterClassname !== null) {
             message.javaOuterClassname = String(object.javaOuterClassname);
         }
         else {
             message.javaOuterClassname = '';
         }
-        if (object.javaMultipleFiles !== undefined && object.javaMultipleFiles !== null) {
+        if (object.javaMultipleFiles !== undefined &&
+            object.javaMultipleFiles !== null) {
             message.javaMultipleFiles = Boolean(object.javaMultipleFiles);
         }
         else {
             message.javaMultipleFiles = false;
         }
-        if (object.javaGenerateEqualsAndHash !== undefined && object.javaGenerateEqualsAndHash !== null) {
+        if (object.javaGenerateEqualsAndHash !== undefined &&
+            object.javaGenerateEqualsAndHash !== null) {
             message.javaGenerateEqualsAndHash = Boolean(object.javaGenerateEqualsAndHash);
         }
         else {
             message.javaGenerateEqualsAndHash = false;
         }
-        if (object.javaStringCheckUtf8 !== undefined && object.javaStringCheckUtf8 !== null) {
+        if (object.javaStringCheckUtf8 !== undefined &&
+            object.javaStringCheckUtf8 !== null) {
             message.javaStringCheckUtf8 = Boolean(object.javaStringCheckUtf8);
         }
         else {
@@ -2290,25 +2375,29 @@ export const FileOptions = {
         else {
             message.goPackage = '';
         }
-        if (object.ccGenericServices !== undefined && object.ccGenericServices !== null) {
+        if (object.ccGenericServices !== undefined &&
+            object.ccGenericServices !== null) {
             message.ccGenericServices = Boolean(object.ccGenericServices);
         }
         else {
             message.ccGenericServices = false;
         }
-        if (object.javaGenericServices !== undefined && object.javaGenericServices !== null) {
+        if (object.javaGenericServices !== undefined &&
+            object.javaGenericServices !== null) {
             message.javaGenericServices = Boolean(object.javaGenericServices);
         }
         else {
             message.javaGenericServices = false;
         }
-        if (object.pyGenericServices !== undefined && object.pyGenericServices !== null) {
+        if (object.pyGenericServices !== undefined &&
+            object.pyGenericServices !== null) {
             message.pyGenericServices = Boolean(object.pyGenericServices);
         }
         else {
             message.pyGenericServices = false;
         }
-        if (object.phpGenericServices !== undefined && object.phpGenericServices !== null) {
+        if (object.phpGenericServices !== undefined &&
+            object.phpGenericServices !== null) {
             message.phpGenericServices = Boolean(object.phpGenericServices);
         }
         else {
@@ -2326,13 +2415,15 @@ export const FileOptions = {
         else {
             message.ccEnableArenas = false;
         }
-        if (object.objcClassPrefix !== undefined && object.objcClassPrefix !== null) {
+        if (object.objcClassPrefix !== undefined &&
+            object.objcClassPrefix !== null) {
             message.objcClassPrefix = String(object.objcClassPrefix);
         }
         else {
             message.objcClassPrefix = '';
         }
-        if (object.csharpNamespace !== undefined && object.csharpNamespace !== null) {
+        if (object.csharpNamespace !== undefined &&
+            object.csharpNamespace !== null) {
             message.csharpNamespace = String(object.csharpNamespace);
         }
         else {
@@ -2356,7 +2447,8 @@ export const FileOptions = {
         else {
             message.phpNamespace = '';
         }
-        if (object.phpMetadataNamespace !== undefined && object.phpMetadataNamespace !== null) {
+        if (object.phpMetadataNamespace !== undefined &&
+            object.phpMetadataNamespace !== null) {
             message.phpMetadataNamespace = String(object.phpMetadataNamespace);
         }
         else {
@@ -2368,7 +2460,8 @@ export const FileOptions = {
         else {
             message.rubyPackage = '';
         }
-        if (object.uninterpretedOption !== undefined && object.uninterpretedOption !== null) {
+        if (object.uninterpretedOption !== undefined &&
+            object.uninterpretedOption !== null) {
             for (const e of object.uninterpretedOption) {
                 message.uninterpretedOption.push(UninterpretedOption.fromJSON(e));
             }
@@ -2378,27 +2471,42 @@ export const FileOptions = {
     toJSON(message) {
         const obj = {};
         message.javaPackage !== undefined && (obj.javaPackage = message.javaPackage);
-        message.javaOuterClassname !== undefined && (obj.javaOuterClassname = message.javaOuterClassname);
-        message.javaMultipleFiles !== undefined && (obj.javaMultipleFiles = message.javaMultipleFiles);
-        message.javaGenerateEqualsAndHash !== undefined && (obj.javaGenerateEqualsAndHash = message.javaGenerateEqualsAndHash);
-        message.javaStringCheckUtf8 !== undefined && (obj.javaStringCheckUtf8 = message.javaStringCheckUtf8);
-        message.optimizeFor !== undefined && (obj.optimizeFor = fileOptions_OptimizeModeToJSON(message.optimizeFor));
+        message.javaOuterClassname !== undefined &&
+            (obj.javaOuterClassname = message.javaOuterClassname);
+        message.javaMultipleFiles !== undefined &&
+            (obj.javaMultipleFiles = message.javaMultipleFiles);
+        message.javaGenerateEqualsAndHash !== undefined &&
+            (obj.javaGenerateEqualsAndHash = message.javaGenerateEqualsAndHash);
+        message.javaStringCheckUtf8 !== undefined &&
+            (obj.javaStringCheckUtf8 = message.javaStringCheckUtf8);
+        message.optimizeFor !== undefined &&
+            (obj.optimizeFor = fileOptions_OptimizeModeToJSON(message.optimizeFor));
         message.goPackage !== undefined && (obj.goPackage = message.goPackage);
-        message.ccGenericServices !== undefined && (obj.ccGenericServices = message.ccGenericServices);
-        message.javaGenericServices !== undefined && (obj.javaGenericServices = message.javaGenericServices);
-        message.pyGenericServices !== undefined && (obj.pyGenericServices = message.pyGenericServices);
-        message.phpGenericServices !== undefined && (obj.phpGenericServices = message.phpGenericServices);
+        message.ccGenericServices !== undefined &&
+            (obj.ccGenericServices = message.ccGenericServices);
+        message.javaGenericServices !== undefined &&
+            (obj.javaGenericServices = message.javaGenericServices);
+        message.pyGenericServices !== undefined &&
+            (obj.pyGenericServices = message.pyGenericServices);
+        message.phpGenericServices !== undefined &&
+            (obj.phpGenericServices = message.phpGenericServices);
         message.deprecated !== undefined && (obj.deprecated = message.deprecated);
-        message.ccEnableArenas !== undefined && (obj.ccEnableArenas = message.ccEnableArenas);
-        message.objcClassPrefix !== undefined && (obj.objcClassPrefix = message.objcClassPrefix);
-        message.csharpNamespace !== undefined && (obj.csharpNamespace = message.csharpNamespace);
+        message.ccEnableArenas !== undefined &&
+            (obj.ccEnableArenas = message.ccEnableArenas);
+        message.objcClassPrefix !== undefined &&
+            (obj.objcClassPrefix = message.objcClassPrefix);
+        message.csharpNamespace !== undefined &&
+            (obj.csharpNamespace = message.csharpNamespace);
         message.swiftPrefix !== undefined && (obj.swiftPrefix = message.swiftPrefix);
-        message.phpClassPrefix !== undefined && (obj.phpClassPrefix = message.phpClassPrefix);
-        message.phpNamespace !== undefined && (obj.phpNamespace = message.phpNamespace);
-        message.phpMetadataNamespace !== undefined && (obj.phpMetadataNamespace = message.phpMetadataNamespace);
+        message.phpClassPrefix !== undefined &&
+            (obj.phpClassPrefix = message.phpClassPrefix);
+        message.phpNamespace !== undefined &&
+            (obj.phpNamespace = message.phpNamespace);
+        message.phpMetadataNamespace !== undefined &&
+            (obj.phpMetadataNamespace = message.phpMetadataNamespace);
         message.rubyPackage !== undefined && (obj.rubyPackage = message.rubyPackage);
         if (message.uninterpretedOption) {
-            obj.uninterpretedOption = message.uninterpretedOption.map((e) => (e ? UninterpretedOption.toJSON(e) : undefined));
+            obj.uninterpretedOption = message.uninterpretedOption.map((e) => e ? UninterpretedOption.toJSON(e) : undefined);
         }
         else {
             obj.uninterpretedOption = [];
@@ -2414,25 +2522,29 @@ export const FileOptions = {
         else {
             message.javaPackage = '';
         }
-        if (object.javaOuterClassname !== undefined && object.javaOuterClassname !== null) {
+        if (object.javaOuterClassname !== undefined &&
+            object.javaOuterClassname !== null) {
             message.javaOuterClassname = object.javaOuterClassname;
         }
         else {
             message.javaOuterClassname = '';
         }
-        if (object.javaMultipleFiles !== undefined && object.javaMultipleFiles !== null) {
+        if (object.javaMultipleFiles !== undefined &&
+            object.javaMultipleFiles !== null) {
             message.javaMultipleFiles = object.javaMultipleFiles;
         }
         else {
             message.javaMultipleFiles = false;
         }
-        if (object.javaGenerateEqualsAndHash !== undefined && object.javaGenerateEqualsAndHash !== null) {
+        if (object.javaGenerateEqualsAndHash !== undefined &&
+            object.javaGenerateEqualsAndHash !== null) {
             message.javaGenerateEqualsAndHash = object.javaGenerateEqualsAndHash;
         }
         else {
             message.javaGenerateEqualsAndHash = false;
         }
-        if (object.javaStringCheckUtf8 !== undefined && object.javaStringCheckUtf8 !== null) {
+        if (object.javaStringCheckUtf8 !== undefined &&
+            object.javaStringCheckUtf8 !== null) {
             message.javaStringCheckUtf8 = object.javaStringCheckUtf8;
         }
         else {
@@ -2450,25 +2562,29 @@ export const FileOptions = {
         else {
             message.goPackage = '';
         }
-        if (object.ccGenericServices !== undefined && object.ccGenericServices !== null) {
+        if (object.ccGenericServices !== undefined &&
+            object.ccGenericServices !== null) {
             message.ccGenericServices = object.ccGenericServices;
         }
         else {
             message.ccGenericServices = false;
         }
-        if (object.javaGenericServices !== undefined && object.javaGenericServices !== null) {
+        if (object.javaGenericServices !== undefined &&
+            object.javaGenericServices !== null) {
             message.javaGenericServices = object.javaGenericServices;
         }
         else {
             message.javaGenericServices = false;
         }
-        if (object.pyGenericServices !== undefined && object.pyGenericServices !== null) {
+        if (object.pyGenericServices !== undefined &&
+            object.pyGenericServices !== null) {
             message.pyGenericServices = object.pyGenericServices;
         }
         else {
             message.pyGenericServices = false;
         }
-        if (object.phpGenericServices !== undefined && object.phpGenericServices !== null) {
+        if (object.phpGenericServices !== undefined &&
+            object.phpGenericServices !== null) {
             message.phpGenericServices = object.phpGenericServices;
         }
         else {
@@ -2486,13 +2602,15 @@ export const FileOptions = {
         else {
             message.ccEnableArenas = false;
         }
-        if (object.objcClassPrefix !== undefined && object.objcClassPrefix !== null) {
+        if (object.objcClassPrefix !== undefined &&
+            object.objcClassPrefix !== null) {
             message.objcClassPrefix = object.objcClassPrefix;
         }
         else {
             message.objcClassPrefix = '';
         }
-        if (object.csharpNamespace !== undefined && object.csharpNamespace !== null) {
+        if (object.csharpNamespace !== undefined &&
+            object.csharpNamespace !== null) {
             message.csharpNamespace = object.csharpNamespace;
         }
         else {
@@ -2516,7 +2634,8 @@ export const FileOptions = {
         else {
             message.phpNamespace = '';
         }
-        if (object.phpMetadataNamespace !== undefined && object.phpMetadataNamespace !== null) {
+        if (object.phpMetadataNamespace !== undefined &&
+            object.phpMetadataNamespace !== null) {
             message.phpMetadataNamespace = object.phpMetadataNamespace;
         }
         else {
@@ -2528,7 +2647,8 @@ export const FileOptions = {
         else {
             message.rubyPackage = '';
         }
-        if (object.uninterpretedOption !== undefined && object.uninterpretedOption !== null) {
+        if (object.uninterpretedOption !== undefined &&
+            object.uninterpretedOption !== null) {
             for (const e of object.uninterpretedOption) {
                 message.uninterpretedOption.push(UninterpretedOption.fromPartial(e));
             }
@@ -2536,7 +2656,12 @@ export const FileOptions = {
         return message;
     }
 };
-const baseMessageOptions = { messageSetWireFormat: false, noStandardDescriptorAccessor: false, deprecated: false, mapEntry: false };
+const baseMessageOptions = {
+    messageSetWireFormat: false,
+    noStandardDescriptorAccessor: false,
+    deprecated: false,
+    mapEntry: false
+};
 export const MessageOptions = {
     encode(message, writer = Writer.create()) {
         if (message.messageSetWireFormat === true) {
@@ -2589,13 +2714,15 @@ export const MessageOptions = {
     fromJSON(object) {
         const message = { ...baseMessageOptions };
         message.uninterpretedOption = [];
-        if (object.messageSetWireFormat !== undefined && object.messageSetWireFormat !== null) {
+        if (object.messageSetWireFormat !== undefined &&
+            object.messageSetWireFormat !== null) {
             message.messageSetWireFormat = Boolean(object.messageSetWireFormat);
         }
         else {
             message.messageSetWireFormat = false;
         }
-        if (object.noStandardDescriptorAccessor !== undefined && object.noStandardDescriptorAccessor !== null) {
+        if (object.noStandardDescriptorAccessor !== undefined &&
+            object.noStandardDescriptorAccessor !== null) {
             message.noStandardDescriptorAccessor = Boolean(object.noStandardDescriptorAccessor);
         }
         else {
@@ -2613,7 +2740,8 @@ export const MessageOptions = {
         else {
             message.mapEntry = false;
         }
-        if (object.uninterpretedOption !== undefined && object.uninterpretedOption !== null) {
+        if (object.uninterpretedOption !== undefined &&
+            object.uninterpretedOption !== null) {
             for (const e of object.uninterpretedOption) {
                 message.uninterpretedOption.push(UninterpretedOption.fromJSON(e));
             }
@@ -2622,12 +2750,14 @@ export const MessageOptions = {
     },
     toJSON(message) {
         const obj = {};
-        message.messageSetWireFormat !== undefined && (obj.messageSetWireFormat = message.messageSetWireFormat);
-        message.noStandardDescriptorAccessor !== undefined && (obj.noStandardDescriptorAccessor = message.noStandardDescriptorAccessor);
+        message.messageSetWireFormat !== undefined &&
+            (obj.messageSetWireFormat = message.messageSetWireFormat);
+        message.noStandardDescriptorAccessor !== undefined &&
+            (obj.noStandardDescriptorAccessor = message.noStandardDescriptorAccessor);
         message.deprecated !== undefined && (obj.deprecated = message.deprecated);
         message.mapEntry !== undefined && (obj.mapEntry = message.mapEntry);
         if (message.uninterpretedOption) {
-            obj.uninterpretedOption = message.uninterpretedOption.map((e) => (e ? UninterpretedOption.toJSON(e) : undefined));
+            obj.uninterpretedOption = message.uninterpretedOption.map((e) => e ? UninterpretedOption.toJSON(e) : undefined);
         }
         else {
             obj.uninterpretedOption = [];
@@ -2637,13 +2767,15 @@ export const MessageOptions = {
     fromPartial(object) {
         const message = { ...baseMessageOptions };
         message.uninterpretedOption = [];
-        if (object.messageSetWireFormat !== undefined && object.messageSetWireFormat !== null) {
+        if (object.messageSetWireFormat !== undefined &&
+            object.messageSetWireFormat !== null) {
             message.messageSetWireFormat = object.messageSetWireFormat;
         }
         else {
             message.messageSetWireFormat = false;
         }
-        if (object.noStandardDescriptorAccessor !== undefined && object.noStandardDescriptorAccessor !== null) {
+        if (object.noStandardDescriptorAccessor !== undefined &&
+            object.noStandardDescriptorAccessor !== null) {
             message.noStandardDescriptorAccessor = object.noStandardDescriptorAccessor;
         }
         else {
@@ -2661,7 +2793,8 @@ export const MessageOptions = {
         else {
             message.mapEntry = false;
         }
-        if (object.uninterpretedOption !== undefined && object.uninterpretedOption !== null) {
+        if (object.uninterpretedOption !== undefined &&
+            object.uninterpretedOption !== null) {
             for (const e of object.uninterpretedOption) {
                 message.uninterpretedOption.push(UninterpretedOption.fromPartial(e));
             }
@@ -2669,7 +2802,14 @@ export const MessageOptions = {
         return message;
     }
 };
-const baseFieldOptions = { ctype: 0, packed: false, jstype: 0, lazy: false, deprecated: false, weak: false };
+const baseFieldOptions = {
+    ctype: 0,
+    packed: false,
+    jstype: 0,
+    lazy: false,
+    deprecated: false,
+    weak: false
+};
 export const FieldOptions = {
     encode(message, writer = Writer.create()) {
         if (message.ctype !== 0) {
@@ -2770,7 +2910,8 @@ export const FieldOptions = {
         else {
             message.weak = false;
         }
-        if (object.uninterpretedOption !== undefined && object.uninterpretedOption !== null) {
+        if (object.uninterpretedOption !== undefined &&
+            object.uninterpretedOption !== null) {
             for (const e of object.uninterpretedOption) {
                 message.uninterpretedOption.push(UninterpretedOption.fromJSON(e));
             }
@@ -2779,14 +2920,16 @@ export const FieldOptions = {
     },
     toJSON(message) {
         const obj = {};
-        message.ctype !== undefined && (obj.ctype = fieldOptions_CTypeToJSON(message.ctype));
+        message.ctype !== undefined &&
+            (obj.ctype = fieldOptions_CTypeToJSON(message.ctype));
         message.packed !== undefined && (obj.packed = message.packed);
-        message.jstype !== undefined && (obj.jstype = fieldOptions_JSTypeToJSON(message.jstype));
+        message.jstype !== undefined &&
+            (obj.jstype = fieldOptions_JSTypeToJSON(message.jstype));
         message.lazy !== undefined && (obj.lazy = message.lazy);
         message.deprecated !== undefined && (obj.deprecated = message.deprecated);
         message.weak !== undefined && (obj.weak = message.weak);
         if (message.uninterpretedOption) {
-            obj.uninterpretedOption = message.uninterpretedOption.map((e) => (e ? UninterpretedOption.toJSON(e) : undefined));
+            obj.uninterpretedOption = message.uninterpretedOption.map((e) => e ? UninterpretedOption.toJSON(e) : undefined);
         }
         else {
             obj.uninterpretedOption = [];
@@ -2832,7 +2975,8 @@ export const FieldOptions = {
         else {
             message.weak = false;
         }
-        if (object.uninterpretedOption !== undefined && object.uninterpretedOption !== null) {
+        if (object.uninterpretedOption !== undefined &&
+            object.uninterpretedOption !== null) {
             for (const e of object.uninterpretedOption) {
                 message.uninterpretedOption.push(UninterpretedOption.fromPartial(e));
             }
@@ -2869,7 +3013,8 @@ export const OneofOptions = {
     fromJSON(object) {
         const message = { ...baseOneofOptions };
         message.uninterpretedOption = [];
-        if (object.uninterpretedOption !== undefined && object.uninterpretedOption !== null) {
+        if (object.uninterpretedOption !== undefined &&
+            object.uninterpretedOption !== null) {
             for (const e of object.uninterpretedOption) {
                 message.uninterpretedOption.push(UninterpretedOption.fromJSON(e));
             }
@@ -2879,7 +3024,7 @@ export const OneofOptions = {
     toJSON(message) {
         const obj = {};
         if (message.uninterpretedOption) {
-            obj.uninterpretedOption = message.uninterpretedOption.map((e) => (e ? UninterpretedOption.toJSON(e) : undefined));
+            obj.uninterpretedOption = message.uninterpretedOption.map((e) => e ? UninterpretedOption.toJSON(e) : undefined);
         }
         else {
             obj.uninterpretedOption = [];
@@ -2889,7 +3034,8 @@ export const OneofOptions = {
     fromPartial(object) {
         const message = { ...baseOneofOptions };
         message.uninterpretedOption = [];
-        if (object.uninterpretedOption !== undefined && object.uninterpretedOption !== null) {
+        if (object.uninterpretedOption !== undefined &&
+            object.uninterpretedOption !== null) {
             for (const e of object.uninterpretedOption) {
                 message.uninterpretedOption.push(UninterpretedOption.fromPartial(e));
             }
@@ -2950,7 +3096,8 @@ export const EnumOptions = {
         else {
             message.deprecated = false;
         }
-        if (object.uninterpretedOption !== undefined && object.uninterpretedOption !== null) {
+        if (object.uninterpretedOption !== undefined &&
+            object.uninterpretedOption !== null) {
             for (const e of object.uninterpretedOption) {
                 message.uninterpretedOption.push(UninterpretedOption.fromJSON(e));
             }
@@ -2962,7 +3109,7 @@ export const EnumOptions = {
         message.allowAlias !== undefined && (obj.allowAlias = message.allowAlias);
         message.deprecated !== undefined && (obj.deprecated = message.deprecated);
         if (message.uninterpretedOption) {
-            obj.uninterpretedOption = message.uninterpretedOption.map((e) => (e ? UninterpretedOption.toJSON(e) : undefined));
+            obj.uninterpretedOption = message.uninterpretedOption.map((e) => e ? UninterpretedOption.toJSON(e) : undefined);
         }
         else {
             obj.uninterpretedOption = [];
@@ -2984,7 +3131,8 @@ export const EnumOptions = {
         else {
             message.deprecated = false;
         }
-        if (object.uninterpretedOption !== undefined && object.uninterpretedOption !== null) {
+        if (object.uninterpretedOption !== undefined &&
+            object.uninterpretedOption !== null) {
             for (const e of object.uninterpretedOption) {
                 message.uninterpretedOption.push(UninterpretedOption.fromPartial(e));
             }
@@ -3033,7 +3181,8 @@ export const EnumValueOptions = {
         else {
             message.deprecated = false;
         }
-        if (object.uninterpretedOption !== undefined && object.uninterpretedOption !== null) {
+        if (object.uninterpretedOption !== undefined &&
+            object.uninterpretedOption !== null) {
             for (const e of object.uninterpretedOption) {
                 message.uninterpretedOption.push(UninterpretedOption.fromJSON(e));
             }
@@ -3044,7 +3193,7 @@ export const EnumValueOptions = {
         const obj = {};
         message.deprecated !== undefined && (obj.deprecated = message.deprecated);
         if (message.uninterpretedOption) {
-            obj.uninterpretedOption = message.uninterpretedOption.map((e) => (e ? UninterpretedOption.toJSON(e) : undefined));
+            obj.uninterpretedOption = message.uninterpretedOption.map((e) => e ? UninterpretedOption.toJSON(e) : undefined);
         }
         else {
             obj.uninterpretedOption = [];
@@ -3060,7 +3209,8 @@ export const EnumValueOptions = {
         else {
             message.deprecated = false;
         }
-        if (object.uninterpretedOption !== undefined && object.uninterpretedOption !== null) {
+        if (object.uninterpretedOption !== undefined &&
+            object.uninterpretedOption !== null) {
             for (const e of object.uninterpretedOption) {
                 message.uninterpretedOption.push(UninterpretedOption.fromPartial(e));
             }
@@ -3109,7 +3259,8 @@ export const ServiceOptions = {
         else {
             message.deprecated = false;
         }
-        if (object.uninterpretedOption !== undefined && object.uninterpretedOption !== null) {
+        if (object.uninterpretedOption !== undefined &&
+            object.uninterpretedOption !== null) {
             for (const e of object.uninterpretedOption) {
                 message.uninterpretedOption.push(UninterpretedOption.fromJSON(e));
             }
@@ -3120,7 +3271,7 @@ export const ServiceOptions = {
         const obj = {};
         message.deprecated !== undefined && (obj.deprecated = message.deprecated);
         if (message.uninterpretedOption) {
-            obj.uninterpretedOption = message.uninterpretedOption.map((e) => (e ? UninterpretedOption.toJSON(e) : undefined));
+            obj.uninterpretedOption = message.uninterpretedOption.map((e) => e ? UninterpretedOption.toJSON(e) : undefined);
         }
         else {
             obj.uninterpretedOption = [];
@@ -3136,7 +3287,8 @@ export const ServiceOptions = {
         else {
             message.deprecated = false;
         }
-        if (object.uninterpretedOption !== undefined && object.uninterpretedOption !== null) {
+        if (object.uninterpretedOption !== undefined &&
+            object.uninterpretedOption !== null) {
             for (const e of object.uninterpretedOption) {
                 message.uninterpretedOption.push(UninterpretedOption.fromPartial(e));
             }
@@ -3191,13 +3343,15 @@ export const MethodOptions = {
         else {
             message.deprecated = false;
         }
-        if (object.idempotencyLevel !== undefined && object.idempotencyLevel !== null) {
+        if (object.idempotencyLevel !== undefined &&
+            object.idempotencyLevel !== null) {
             message.idempotencyLevel = methodOptions_IdempotencyLevelFromJSON(object.idempotencyLevel);
         }
         else {
             message.idempotencyLevel = 0;
         }
-        if (object.uninterpretedOption !== undefined && object.uninterpretedOption !== null) {
+        if (object.uninterpretedOption !== undefined &&
+            object.uninterpretedOption !== null) {
             for (const e of object.uninterpretedOption) {
                 message.uninterpretedOption.push(UninterpretedOption.fromJSON(e));
             }
@@ -3207,9 +3361,10 @@ export const MethodOptions = {
     toJSON(message) {
         const obj = {};
         message.deprecated !== undefined && (obj.deprecated = message.deprecated);
-        message.idempotencyLevel !== undefined && (obj.idempotencyLevel = methodOptions_IdempotencyLevelToJSON(message.idempotencyLevel));
+        message.idempotencyLevel !== undefined &&
+            (obj.idempotencyLevel = methodOptions_IdempotencyLevelToJSON(message.idempotencyLevel));
         if (message.uninterpretedOption) {
-            obj.uninterpretedOption = message.uninterpretedOption.map((e) => (e ? UninterpretedOption.toJSON(e) : undefined));
+            obj.uninterpretedOption = message.uninterpretedOption.map((e) => e ? UninterpretedOption.toJSON(e) : undefined);
         }
         else {
             obj.uninterpretedOption = [];
@@ -3225,13 +3380,15 @@ export const MethodOptions = {
         else {
             message.deprecated = false;
         }
-        if (object.idempotencyLevel !== undefined && object.idempotencyLevel !== null) {
+        if (object.idempotencyLevel !== undefined &&
+            object.idempotencyLevel !== null) {
             message.idempotencyLevel = object.idempotencyLevel;
         }
         else {
             message.idempotencyLevel = 0;
         }
-        if (object.uninterpretedOption !== undefined && object.uninterpretedOption !== null) {
+        if (object.uninterpretedOption !== undefined &&
+            object.uninterpretedOption !== null) {
             for (const e of object.uninterpretedOption) {
                 message.uninterpretedOption.push(UninterpretedOption.fromPartial(e));
             }
@@ -3239,7 +3396,13 @@ export const MethodOptions = {
         return message;
     }
 };
-const baseUninterpretedOption = { identifierValue: '', positiveIntValue: 0, negativeIntValue: 0, doubleValue: 0, aggregateValue: '' };
+const baseUninterpretedOption = {
+    identifierValue: '',
+    positiveIntValue: 0,
+    negativeIntValue: 0,
+    doubleValue: 0,
+    aggregateValue: ''
+};
 export const UninterpretedOption = {
     encode(message, writer = Writer.create()) {
         for (const v of message.name) {
@@ -3309,19 +3472,22 @@ export const UninterpretedOption = {
                 message.name.push(UninterpretedOption_NamePart.fromJSON(e));
             }
         }
-        if (object.identifierValue !== undefined && object.identifierValue !== null) {
+        if (object.identifierValue !== undefined &&
+            object.identifierValue !== null) {
             message.identifierValue = String(object.identifierValue);
         }
         else {
             message.identifierValue = '';
         }
-        if (object.positiveIntValue !== undefined && object.positiveIntValue !== null) {
+        if (object.positiveIntValue !== undefined &&
+            object.positiveIntValue !== null) {
             message.positiveIntValue = Number(object.positiveIntValue);
         }
         else {
             message.positiveIntValue = 0;
         }
-        if (object.negativeIntValue !== undefined && object.negativeIntValue !== null) {
+        if (object.negativeIntValue !== undefined &&
+            object.negativeIntValue !== null) {
             message.negativeIntValue = Number(object.negativeIntValue);
         }
         else {
@@ -3347,17 +3513,24 @@ export const UninterpretedOption = {
     toJSON(message) {
         const obj = {};
         if (message.name) {
-            obj.name = message.name.map((e) => (e ? UninterpretedOption_NamePart.toJSON(e) : undefined));
+            obj.name = message.name.map((e) => e ? UninterpretedOption_NamePart.toJSON(e) : undefined);
         }
         else {
             obj.name = [];
         }
-        message.identifierValue !== undefined && (obj.identifierValue = message.identifierValue);
-        message.positiveIntValue !== undefined && (obj.positiveIntValue = message.positiveIntValue);
-        message.negativeIntValue !== undefined && (obj.negativeIntValue = message.negativeIntValue);
+        message.identifierValue !== undefined &&
+            (obj.identifierValue = message.identifierValue);
+        message.positiveIntValue !== undefined &&
+            (obj.positiveIntValue = message.positiveIntValue);
+        message.negativeIntValue !== undefined &&
+            (obj.negativeIntValue = message.negativeIntValue);
         message.doubleValue !== undefined && (obj.doubleValue = message.doubleValue);
-        message.stringValue !== undefined && (obj.stringValue = base64FromBytes(message.stringValue !== undefined ? message.stringValue : new Uint8Array()));
-        message.aggregateValue !== undefined && (obj.aggregateValue = message.aggregateValue);
+        message.stringValue !== undefined &&
+            (obj.stringValue = base64FromBytes(message.stringValue !== undefined
+                ? message.stringValue
+                : new Uint8Array()));
+        message.aggregateValue !== undefined &&
+            (obj.aggregateValue = message.aggregateValue);
         return obj;
     },
     fromPartial(object) {
@@ -3368,19 +3541,22 @@ export const UninterpretedOption = {
                 message.name.push(UninterpretedOption_NamePart.fromPartial(e));
             }
         }
-        if (object.identifierValue !== undefined && object.identifierValue !== null) {
+        if (object.identifierValue !== undefined &&
+            object.identifierValue !== null) {
             message.identifierValue = object.identifierValue;
         }
         else {
             message.identifierValue = '';
         }
-        if (object.positiveIntValue !== undefined && object.positiveIntValue !== null) {
+        if (object.positiveIntValue !== undefined &&
+            object.positiveIntValue !== null) {
             message.positiveIntValue = object.positiveIntValue;
         }
         else {
             message.positiveIntValue = 0;
         }
-        if (object.negativeIntValue !== undefined && object.negativeIntValue !== null) {
+        if (object.negativeIntValue !== undefined &&
+            object.negativeIntValue !== null) {
             message.negativeIntValue = object.negativeIntValue;
         }
         else {
@@ -3407,7 +3583,10 @@ export const UninterpretedOption = {
         return message;
     }
 };
-const baseUninterpretedOption_NamePart = { namePart: '', isExtension: false };
+const baseUninterpretedOption_NamePart = {
+    namePart: '',
+    isExtension: false
+};
 export const UninterpretedOption_NamePart = {
     encode(message, writer = Writer.create()) {
         if (message.namePart !== '') {
@@ -3421,7 +3600,9 @@ export const UninterpretedOption_NamePart = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = { ...baseUninterpretedOption_NamePart };
+        const message = {
+            ...baseUninterpretedOption_NamePart
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -3439,7 +3620,9 @@ export const UninterpretedOption_NamePart = {
         return message;
     },
     fromJSON(object) {
-        const message = { ...baseUninterpretedOption_NamePart };
+        const message = {
+            ...baseUninterpretedOption_NamePart
+        };
         if (object.namePart !== undefined && object.namePart !== null) {
             message.namePart = String(object.namePart);
         }
@@ -3461,7 +3644,9 @@ export const UninterpretedOption_NamePart = {
         return obj;
     },
     fromPartial(object) {
-        const message = { ...baseUninterpretedOption_NamePart };
+        const message = {
+            ...baseUninterpretedOption_NamePart
+        };
         if (object.namePart !== undefined && object.namePart !== null) {
             message.namePart = object.namePart;
         }
@@ -3516,7 +3701,7 @@ export const SourceCodeInfo = {
     toJSON(message) {
         const obj = {};
         if (message.location) {
-            obj.location = message.location.map((e) => (e ? SourceCodeInfo_Location.toJSON(e) : undefined));
+            obj.location = message.location.map((e) => e ? SourceCodeInfo_Location.toJSON(e) : undefined);
         }
         else {
             obj.location = [];
@@ -3534,7 +3719,13 @@ export const SourceCodeInfo = {
         return message;
     }
 };
-const baseSourceCodeInfo_Location = { path: 0, span: 0, leadingComments: '', trailingComments: '', leadingDetachedComments: '' };
+const baseSourceCodeInfo_Location = {
+    path: 0,
+    span: 0,
+    leadingComments: '',
+    trailingComments: '',
+    leadingDetachedComments: ''
+};
 export const SourceCodeInfo_Location = {
     encode(message, writer = Writer.create()) {
         writer.uint32(10).fork();
@@ -3561,7 +3752,9 @@ export const SourceCodeInfo_Location = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = { ...baseSourceCodeInfo_Location };
+        const message = {
+            ...baseSourceCodeInfo_Location
+        };
         message.path = [];
         message.span = [];
         message.leadingDetachedComments = [];
@@ -3607,7 +3800,9 @@ export const SourceCodeInfo_Location = {
         return message;
     },
     fromJSON(object) {
-        const message = { ...baseSourceCodeInfo_Location };
+        const message = {
+            ...baseSourceCodeInfo_Location
+        };
         message.path = [];
         message.span = [];
         message.leadingDetachedComments = [];
@@ -3621,19 +3816,22 @@ export const SourceCodeInfo_Location = {
                 message.span.push(Number(e));
             }
         }
-        if (object.leadingComments !== undefined && object.leadingComments !== null) {
+        if (object.leadingComments !== undefined &&
+            object.leadingComments !== null) {
             message.leadingComments = String(object.leadingComments);
         }
         else {
             message.leadingComments = '';
         }
-        if (object.trailingComments !== undefined && object.trailingComments !== null) {
+        if (object.trailingComments !== undefined &&
+            object.trailingComments !== null) {
             message.trailingComments = String(object.trailingComments);
         }
         else {
             message.trailingComments = '';
         }
-        if (object.leadingDetachedComments !== undefined && object.leadingDetachedComments !== null) {
+        if (object.leadingDetachedComments !== undefined &&
+            object.leadingDetachedComments !== null) {
             for (const e of object.leadingDetachedComments) {
                 message.leadingDetachedComments.push(String(e));
             }
@@ -3654,8 +3852,10 @@ export const SourceCodeInfo_Location = {
         else {
             obj.span = [];
         }
-        message.leadingComments !== undefined && (obj.leadingComments = message.leadingComments);
-        message.trailingComments !== undefined && (obj.trailingComments = message.trailingComments);
+        message.leadingComments !== undefined &&
+            (obj.leadingComments = message.leadingComments);
+        message.trailingComments !== undefined &&
+            (obj.trailingComments = message.trailingComments);
         if (message.leadingDetachedComments) {
             obj.leadingDetachedComments = message.leadingDetachedComments.map((e) => e);
         }
@@ -3665,7 +3865,9 @@ export const SourceCodeInfo_Location = {
         return obj;
     },
     fromPartial(object) {
-        const message = { ...baseSourceCodeInfo_Location };
+        const message = {
+            ...baseSourceCodeInfo_Location
+        };
         message.path = [];
         message.span = [];
         message.leadingDetachedComments = [];
@@ -3679,19 +3881,22 @@ export const SourceCodeInfo_Location = {
                 message.span.push(e);
             }
         }
-        if (object.leadingComments !== undefined && object.leadingComments !== null) {
+        if (object.leadingComments !== undefined &&
+            object.leadingComments !== null) {
             message.leadingComments = object.leadingComments;
         }
         else {
             message.leadingComments = '';
         }
-        if (object.trailingComments !== undefined && object.trailingComments !== null) {
+        if (object.trailingComments !== undefined &&
+            object.trailingComments !== null) {
             message.trailingComments = object.trailingComments;
         }
         else {
             message.trailingComments = '';
         }
-        if (object.leadingDetachedComments !== undefined && object.leadingDetachedComments !== null) {
+        if (object.leadingDetachedComments !== undefined &&
+            object.leadingDetachedComments !== null) {
             for (const e of object.leadingDetachedComments) {
                 message.leadingDetachedComments.push(e);
             }
@@ -3738,7 +3943,7 @@ export const GeneratedCodeInfo = {
     toJSON(message) {
         const obj = {};
         if (message.annotation) {
-            obj.annotation = message.annotation.map((e) => (e ? GeneratedCodeInfo_Annotation.toJSON(e) : undefined));
+            obj.annotation = message.annotation.map((e) => e ? GeneratedCodeInfo_Annotation.toJSON(e) : undefined);
         }
         else {
             obj.annotation = [];
@@ -3756,7 +3961,12 @@ export const GeneratedCodeInfo = {
         return message;
     }
 };
-const baseGeneratedCodeInfo_Annotation = { path: 0, sourceFile: '', begin: 0, end: 0 };
+const baseGeneratedCodeInfo_Annotation = {
+    path: 0,
+    sourceFile: '',
+    begin: 0,
+    end: 0
+};
 export const GeneratedCodeInfo_Annotation = {
     encode(message, writer = Writer.create()) {
         writer.uint32(10).fork();
@@ -3778,7 +3988,9 @@ export const GeneratedCodeInfo_Annotation = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = { ...baseGeneratedCodeInfo_Annotation };
+        const message = {
+            ...baseGeneratedCodeInfo_Annotation
+        };
         message.path = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -3811,7 +4023,9 @@ export const GeneratedCodeInfo_Annotation = {
         return message;
     },
     fromJSON(object) {
-        const message = { ...baseGeneratedCodeInfo_Annotation };
+        const message = {
+            ...baseGeneratedCodeInfo_Annotation
+        };
         message.path = [];
         if (object.path !== undefined && object.path !== null) {
             for (const e of object.path) {
@@ -3852,7 +4066,9 @@ export const GeneratedCodeInfo_Annotation = {
         return obj;
     },
     fromPartial(object) {
-        const message = { ...baseGeneratedCodeInfo_Annotation };
+        const message = {
+            ...baseGeneratedCodeInfo_Annotation
+        };
         message.path = [];
         if (object.path !== undefined && object.path !== null) {
             for (const e of object.path) {
@@ -3891,7 +4107,8 @@ var globalThis = (() => {
         return global;
     throw 'Unable to locate global object';
 })();
-const atob = globalThis.atob || ((b64) => globalThis.Buffer.from(b64, 'base64').toString('binary'));
+const atob = globalThis.atob ||
+    ((b64) => globalThis.Buffer.from(b64, 'base64').toString('binary'));
 function bytesFromBase64(b64) {
     const bin = atob(b64);
     const arr = new Uint8Array(bin.length);
@@ -3900,7 +4117,8 @@ function bytesFromBase64(b64) {
     }
     return arr;
 }
-const btoa = globalThis.btoa || ((bin) => globalThis.Buffer.from(bin, 'binary').toString('base64'));
+const btoa = globalThis.btoa ||
+    ((bin) => globalThis.Buffer.from(bin, 'binary').toString('base64'));
 function base64FromBytes(arr) {
     const bin = [];
     for (let i = 0; i < arr.byteLength; ++i) {
