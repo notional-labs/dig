@@ -30,14 +30,32 @@
         "sig_verify_cost_ed25519": "590",
         "sig_verify_cost_secp256k1": "1000"
       },
-      "accounts": []
+      "accounts": [
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "dig1m4judpg7cyqumytc9fqknm2xwp9fwamg89j8mh",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        }
+      ]
     },
     "bank": {
       "params": {
         "send_enabled": [],
         "default_send_enabled": true
       },
-      "balances": [],
+      "balances": [
+        {
+          "address": "dig1m4judpg7cyqumytc9fqknm2xwp9fwamg89j8mh",
+          "coins": [
+            {
+              "denom": "udig",
+              "amount": "500000000000000"
+            }
+          ]
+        }
+      ],
       "supply": [],
       "denom_metadata": []
     },
@@ -47,7 +65,7 @@
     },
     "crisis": {
       "constant_fee": {
-        "denom": "dig",
+        "denom": "udig",
         "amount": "1000"
       }
     },
@@ -155,7 +173,7 @@
       "params": {
         "signed_blocks_window": "2000",
         "min_signed_per_window": "0.020000000000000000",
-        "downtime_jail_duration": "5s",
+        "downtime_jail_duration": "60s",
         "slash_fraction_double_sign": "0.100000000000000000",
         "slash_fraction_downtime": "0.000000000000000000"
       },
