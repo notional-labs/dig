@@ -24,6 +24,8 @@ jobs:
           go-version: 1.16
         env:
           GOOS: ${{ matrix.targetos }}
+          GOPATH: ~/go
+          PATH: $PATH:~/go/bin
           GOARCH: ${{ matrix.arch }}
 
       - name: Compile dig
