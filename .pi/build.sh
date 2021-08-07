@@ -29,6 +29,9 @@ docker save --output ./.tmp/result-rootfs.tar dig
 # Extract the image using docker-extract
 docker run --rm --tty --volume $(pwd)/./.tmp:/root/./.tmp --workdir /root/./.tmp/.. faddat/toolbox /tools/docker-extract --root ./.tmp/result-rootfs  ./.tmp/result-rootfs.tar
 
+# prune images for CI so it doesn't explode the disk when rsyncing.  disable if not building in github actions. 
+docker image prune -f
+
 # New rootfs extraction
 # https://chromium.googlesource.com/external/github.com/docker/containerd/+/refs/tags/v0.2.0/docs/bundle.md
 # create the container with a temp name so that we can export it
