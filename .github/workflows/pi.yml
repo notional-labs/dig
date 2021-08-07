@@ -1,4 +1,4 @@
-name: gaia
+name: dig pi
 
 on: [push,pull_request,workflow_dispatch]
 
@@ -23,14 +23,13 @@ jobs:
 
       - name: Build
         run: |
-          cd .pi
-          bash build.sh
+          bash .pi/build.sh
+          
       - name: Compress
         run: xz -T $(nproc) .pi/images/dig.img
-    
 
       - name: Upload image
         uses: actions/upload-artifact@v2
         with:
-          name: gaia
+          name: dig pi
           path: .pi/images/dig.img.xz
