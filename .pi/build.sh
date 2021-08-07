@@ -31,18 +31,8 @@ docker run --rm --tty --volume $(pwd)/./.tmp:/root/./.tmp --workdir /root/./.tmp
 
 # prune images for CI so it doesn't explode the disk when rsyncing.  disable if not building in github actions. 
 docker image prune -f
-
-# New rootfs extraction
-# https://chromium.googlesource.com/external/github.com/docker/containerd/+/refs/tags/v0.2.0/docs/bundle.md
-# create the container with a temp name so that we can export it
-# docker create --name tempmegadrive $CI_REGISTRY_IMAGE/megadrive /bin/bash
-
-# export it into the rootfs directory
-# docker export tempmegadrive | tar -C ./.tmp/result-rootfs -xf -
-
-# remove the container now that we have exported
-# docker rm tempmegadrive
-
+docker image rm dig
+docker container prune -f
 
 # ===================================================================================
 # IMAGE: Make a .img file and compress it.
@@ -52,24 +42,24 @@ docker image prune -f
 
 
 # Unmount anything on the loop device
-sudo umount /dev/loop0p2 || true
-sudo umount /dev/loop0p1 || true
+# sudo umount /dev/loop0p2 || true
+# sudo umount /dev/loop0p1 || true
 
 
 # Detach from the loop device
-sudo losetup -d /dev/loop0 || true
+# sudo losetup -d /dev/loop0 || true
 
 # Unmount anything on the loop device
-sudo umount /dev/loop0p2 || true
-sudo umount /dev/loop0p1 || true
+# sudo umount /dev/loop0p2 || true
+# sudo umount /dev/loop0p1 || true
 
 
 # Create a folder for images
-rm -rf images || true
+# rm -rf images || true
 mkdir -p images
 
 # Make the image file
-fallocate -l 4G "images/dig.img"
+fallocate -l 3G "images/dig.img"
 
 # loop-mount the image file so it becomes a disk
 export LOOP=$(sudo losetup --find --show images/dig.img)
@@ -110,5 +100,5 @@ sudo losetup -d $LOOP # drop the loop mount
 
 
 # Delete .tmp and mnt
-sudo rm -rf .tmp
-sudo rm -rf mnt
+#sudo rm -rf .tmp
+#sudo rm -rf mnt
