@@ -24,7 +24,7 @@ jobs:
           go-version: 1.16
         env:
           GOOS: ${{ matrix.targetos }}
-          GOPATH: ~/go
+          GOPATH: $HOME/go
           GOARCH: ${{ matrix.arch }}
 
       - name: Compile dig
@@ -43,7 +43,7 @@ jobs:
           
       - name: Check Genesis transactions
         run: |
-          export PATH=$PATH:~/go/bin
+          export PATH=$PATH:$HOME/go/bin
           digd init test
           cp -r networks/testnet-2/* ~/.dig/config
           digd collect-gentxs
