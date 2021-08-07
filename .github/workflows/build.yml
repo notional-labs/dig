@@ -25,7 +25,6 @@ jobs:
         env:
           GOOS: ${{ matrix.targetos }}
           GOPATH: ~/go
-          PATH: $PATH:~/go/bin
           GOARCH: ${{ matrix.arch }}
 
       - name: Compile dig
@@ -40,9 +39,11 @@ jobs:
           cd airdrop
           go mod download
           go build .
+          go install .
           
       - name: Check Genesis transactions
         run: |
+          export PATH=$PATH:~/go/bin
           digd init test
           cp -r networks/testnet-2/* ~/.dig/config
           digd collect-gentxs
@@ -53,8 +54,4 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: digd ${{ matrix.targetos }} ${{ matrix.arch }}
-          path: cmd/digd/
-          
-
-        
-
+          path: cmd/digd
