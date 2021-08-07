@@ -460,7 +460,6 @@ func New(
 		// that in-memory capabilities get regenerated on app restart.
 		// Note that since this reads from the store, we can only perform it when
 		// `loadLatest` is set to true.
-		ctx := app.BaseApp.NewUncachedContext(true, tmproto.Header{})
 	}
 
 	app.ScopedIBCKeeper = scopedIBCKeeper
