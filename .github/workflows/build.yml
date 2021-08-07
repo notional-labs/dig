@@ -42,7 +42,8 @@ jobs:
       - name: Check Genesis transactions
         run: |
           digd init test
-          cp -r networks/testnet-2/* ~/.dig/config
+          cp networks/testnet-2/genesis.json ~/.dig/config
+          cp -r networks/testnet-2/gentx ~/.dig/config
           digd collect-gentxs
           cp ~/.dig/config/genesis.json cmd/digd
           
