@@ -3,7 +3,7 @@ name: dig pi
 on: [push,pull_request,workflow_dispatch]
 
 jobs:
-  dig pi:
+  pi:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
