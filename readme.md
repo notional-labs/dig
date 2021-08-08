@@ -34,12 +34,6 @@ gh auth login
 gh pr create
 ```
 
-
-## Configure
-
-Your blockchain in development can be configured with `config.yml`. To learn more, see the [Starport docs](https://docs.starport.network).
-
-
 ## Web Frontend
 
 Starport has scaffolded a Vue.js-based web app in the `vue` directory. Run the following commands to install dependencies and start the app:
