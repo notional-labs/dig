@@ -26,7 +26,7 @@ cp dig/networks/testnet-2/genesis.json ~/.dig/config
 digd keys add validator
 digd add-genesis-account validator 100000000udig
 digd gentx validator 900000000udig --chain-id dig-testnet-2
-cp ~/.dig/condig/genesis.json ~/dig/networks/testnet-2/
+cp ~/.dig/config/genesis.json ~/dig/networks/testnet-2/
 cp ~/.dig/config/gentx/* ~/dig/networks/testnet-2/gentx
 cd dig
 git add networks
