@@ -12,6 +12,12 @@ Here's a little light background reading:
 ## Get started
 We are accepting genesis transactions.  Here are some generic linux instructions for doing those.  They assume that you have the github cli installed.
 
+If you are using ubuntu, please do not use its native golang package, it is two years old.  Instead:
+
+```bash
+wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.16.7
+```
+
 ```bash
 cd ~/
 git clone https://github.com/faddat/dig
