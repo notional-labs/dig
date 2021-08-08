@@ -9,6 +9,7 @@ Here's a little light background reading:
 * https://blurt.blog/blurt/@jacobgadikian/blockchain-application-tco
 * https://1729.com/miami/
 * https://podclips.com/ct/gBhDsq
+* https://twitter.com/gadikian/status/1424392074078523397
 
 ## Get started
 We are accepting genesis transactions.  Here are some generic linux instructions for doing those.  They assume that you have the github cli installed.
