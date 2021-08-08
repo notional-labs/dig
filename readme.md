@@ -1,6 +1,7 @@
 # dig
 
-We're digging for new cities.
+Dig is a hub blockchain that interconnects physical plots of land, which will each be governed by a locally operated blockchain.  Due to the regulatory challenges involved, dig splits itself up into many chains which can each follow appropriate legislation.  This is the beginning of the "Dig Network."
+
 
 Here's a little light background reading:
 
