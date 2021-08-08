@@ -51,6 +51,27 @@
           "pub_key": null,
           "account_number": "0",
           "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "dig1fv7dcwg98566kzrtck065w2k2pj23ue2lcms5j",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "dig1n0mvxekzmlkmx7kagkyhzxg2hgf82uewspuvu4",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "dig1lu3at7mda24anr9eecdhyt9wsq8dwhrn95u7ah",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
         }
       ]
     },
@@ -79,11 +100,38 @@
           ]
         },
         {
+          "address": "dig1fv7dcwg98566kzrtck065w2k2pj23ue2lcms5j",
+          "coins": [
+            {
+              "denom": "udig",
+              "amount": "1000000000"
+            }
+          ]
+        },
+        {
+          "address": "dig1n0mvxekzmlkmx7kagkyhzxg2hgf82uewspuvu4",
+          "coins": [
+            {
+              "denom": "udig",
+              "amount": "1000000000"
+            }
+          ]
+        },
+        {
           "address": "dig1m4judpg7cyqumytc9fqknm2xwp9fwamg89j8mh",
           "coins": [
             {
               "denom": "udig",
               "amount": "500000000000000"
+            }
+          ]
+        },
+        {
+          "address": "dig1lu3at7mda24anr9eecdhyt9wsq8dwhrn95u7ah",
+          "coins": [
+            {
+              "denom": "udig",
+              "amount": "1000000000"
             }
           ]
         }
