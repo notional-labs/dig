@@ -1,5 +1,5 @@
 {
-  "genesis_time": "2021-08-08T07:03:32.156294Z",
+  "genesis_time": "2021-08-08T17:09:21.780572053Z",
   "chain_id": "dig-testnet-2",
   "initial_height": "1",
   "consensus_params": {
@@ -33,56 +33,7 @@
       "accounts": [
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "dig1m4judpg7cyqumytc9fqknm2xwp9fwamg89j8mh",
-          "pub_key": null,
-          "account_number": "0",
-          "sequence": "0"
-        },
-        {
-          "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "dig1zugsk4t03m2yd53df968686agsk82hqfvaps0g",
-          "pub_key": null,
-          "account_number": "0",
-          "sequence": "0"
-        },
-        {
-          "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "dig18ars0xkfh8knwgae3gkll2euy0emenf9hnrtwg",
-          "pub_key": null,
-          "account_number": "0",
-          "sequence": "0"
-        },
-        {
-          "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "dig1fv7dcwg98566kzrtck065w2k2pj23ue2lcms5j",
-          "pub_key": null,
-          "account_number": "0",
-          "sequence": "0"
-        },
-        {
-          "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "dig1n0mvxekzmlkmx7kagkyhzxg2hgf82uewspuvu4",
-          "pub_key": null,
-          "account_number": "0",
-          "sequence": "0"
-        },
-        {
-          "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "dig1lu3at7mda24anr9eecdhyt9wsq8dwhrn95u7ah",
-          "pub_key": null,
-          "account_number": "0",
-          "sequence": "0"
-        },
-        {
-          "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "dig180l443l80ujf6u20xwahprr093tx5g443yfg9d",
-          "pub_key": null,
-          "account_number": "0",
-          "sequence": "0"
-        },
-        {
-          "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "dig15y7y3ep5xjww3z4ujqaz3qp2vw7rn3fgde7rha",
+          "address": "dig1f78qhmz53kefxj69zvx3pnhqnn5mvukr5pyqha",
           "pub_key": null,
           "account_number": "0",
           "sequence": "0"
@@ -96,70 +47,7 @@
       },
       "balances": [
         {
-          "address": "dig1zugsk4t03m2yd53df968686agsk82hqfvaps0g",
-          "coins": [
-            {
-              "denom": "udig",
-              "amount": "1000000000"
-            }
-          ]
-        },
-        {
-          "address": "dig180l443l80ujf6u20xwahprr093tx5g443yfg9d",
-          "coins": [
-            {
-              "denom": "udig",
-              "amount": "100000000"
-            }
-          ]
-        },
-        {
-          "address": "dig18ars0xkfh8knwgae3gkll2euy0emenf9hnrtwg",
-          "coins": [
-            {
-              "denom": "udig",
-              "amount": "900000000000"
-            }
-          ]
-        },
-        {
-          "address": "dig1fv7dcwg98566kzrtck065w2k2pj23ue2lcms5j",
-          "coins": [
-            {
-              "denom": "udig",
-              "amount": "1000000000"
-            }
-          ]
-        },
-        {
-          "address": "dig1n0mvxekzmlkmx7kagkyhzxg2hgf82uewspuvu4",
-          "coins": [
-            {
-              "denom": "udig",
-              "amount": "1000000000"
-            }
-          ]
-        },
-        {
-          "address": "dig15y7y3ep5xjww3z4ujqaz3qp2vw7rn3fgde7rha",
-          "coins": [
-            {
-              "denom": "udig",
-              "amount": "100000000"
-            }
-          ]
-        },
-        {
-          "address": "dig1m4judpg7cyqumytc9fqknm2xwp9fwamg89j8mh",
-          "coins": [
-            {
-              "denom": "udig",
-              "amount": "500000000000000"
-            }
-          ]
-        },
-        {
-          "address": "dig1lu3at7mda24anr9eecdhyt9wsq8dwhrn95u7ah",
+          "address": "dig1f78qhmz53kefxj69zvx3pnhqnn5mvukr5pyqha",
           "coins": [
             {
               "denom": "udig",
@@ -184,9 +72,9 @@
     "dig": {},
     "distribution": {
       "params": {
-        "community_tax": "0.050000000000000000",
+        "community_tax": "0.020000000000000000",
         "base_proposer_reward": "0.010000000000000000",
-        "bonus_proposer_reward": "0.000000000000000000",
+        "bonus_proposer_reward": "0.040000000000000000",
         "withdraw_addr_enabled": true
       },
       "fee_pool": {
@@ -218,7 +106,7 @@
       "deposit_params": {
         "min_deposit": [
           {
-            "denom": "udig",
+            "denom": "stake",
             "amount": "10000000"
           }
         ],
@@ -228,8 +116,8 @@
         "voting_period": "172800s"
       },
       "tally_params": {
-        "quorum": "0.670000000000000000",
-        "threshold": "0.670000000000000000",
+        "quorum": "0.334000000000000000",
+        "threshold": "0.500000000000000000",
         "veto_threshold": "0.334000000000000000"
       }
     },
@@ -268,26 +156,26 @@
     },
     "mint": {
       "minter": {
-        "inflation": "0.700000000000000000",
+        "inflation": "0.130000000000000000",
         "annual_provisions": "0.000000000000000000"
       },
       "params": {
-        "mint_denom": "udig",
-        "inflation_rate_change": "0.20000000000000000",
-        "inflation_max": "1.000000000000000000",
-        "inflation_min": "0.500000000000000000",
-        "goal_bonded": "0.850000000000000000",
+        "mint_denom": "stake",
+        "inflation_rate_change": "0.130000000000000000",
+        "inflation_max": "0.200000000000000000",
+        "inflation_min": "0.070000000000000000",
+        "goal_bonded": "0.670000000000000000",
         "blocks_per_year": "6311520"
       }
     },
     "params": null,
     "slashing": {
       "params": {
-        "signed_blocks_window": "1000",
+        "signed_blocks_window": "100",
         "min_signed_per_window": "0.500000000000000000",
-        "downtime_jail_duration": "60s",
-        "slash_fraction_double_sign": "0.150000000000000000",
-        "slash_fraction_downtime": "0.000000000000000000"
+        "downtime_jail_duration": "600s",
+        "slash_fraction_double_sign": "0.050000000000000000",
+        "slash_fraction_downtime": "0.010000000000000000"
       },
       "signing_infos": [],
       "missed_blocks": []
@@ -295,10 +183,10 @@
     "staking": {
       "params": {
         "unbonding_time": "1814400s",
-        "max_validators": 500,
+        "max_validators": 100,
         "max_entries": 7,
         "historical_entries": 10000,
-        "bond_denom": "udig"
+        "bond_denom": "stake"
       },
       "last_total_power": "0",
       "last_validator_powers": [],
