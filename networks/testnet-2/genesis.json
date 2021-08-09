@@ -175,6 +175,15 @@
           ]
         },
         {
+          "address": "dig17yjyu38s086gqk35kprdgkdc39xwxr26a5tu33",
+          "coins": [
+            {
+              "denom": "udig",
+              "amount": "100000000"
+            }
+          ]
+        },
+        {
           "address": "dig1lu3at7mda24anr9eecdhyt9wsq8dwhrn95u7ah",
           "coins": [
             {
