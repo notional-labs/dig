@@ -46,6 +46,7 @@ jobs:
           cp -r networks/testnet-2/gentx ~/.dig/config
           digd collect-gentxs
           cp ~/.dig/config/genesis.json cmd/digd
+          digd validate-genesis
           
           
 # now uploads genesis.json and bin
