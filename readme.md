@@ -12,7 +12,7 @@ Here's a little light background reading:
 * https://twitter.com/gadikian/status/1424392074078523397
 
 ## Get started
-We are accepting genesis transactions.  Here are some generic linux instructions for doing those.  They assume that you have the github cli installed.
+We are accepting genesis transactions until we say that we're no longer accepting genesis transactions :).  Here are some generic linux instructions for doing those.  They assume that you have the github cli installed.
 
 If you are using ubuntu, please do not use its native golang package, it is two years old.  Instead:
 
