@@ -32,9 +32,7 @@ digd init yourname
 cp dig/networks/testnet-2/genesis.json ~/.dig/config
 # DEAR GOD KEEP YOUR SEED PHRASE.
 digd keys add validator
-digd add-genesis-account validator 100000000udig
 digd gentx validator 100000000udig --chain-id dig-testnet-2
-cp ~/.dig/config/genesis.json ~/dig/networks/testnet-2/
 cp ~/.dig/config/gentx/* ~/dig/networks/testnet-2/gentx
 cd dig
 git add networks
@@ -43,14 +41,4 @@ gh auth login
 gh pr create
 ```
 
-## Web Frontend
 
-Starport has scaffolded a Vue.js-based web app in the `vue` directory. Run the following commands to install dependencies and start the app:
-
-```
-cd vue
-npm install
-npm run serve
-```
-
-The frontend app is built using the `@starport/vue` and `@starport/vuex` packages. For details, see the [monorepo for Starport front-end development](https://github.com/tendermint/vue).
