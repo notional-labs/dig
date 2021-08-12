@@ -10,7 +10,7 @@ COPY .pi/dig.service /etc/systemd/system/dig.service
 RUN sed -i -e "s/^CheckSpace/#!!!CheckSpace/g" /etc/pacman.conf && \
         pacman -Syyu --noconfirm wget sudo git dstat iotop nethogs docker && \
 	systemctl enable docker && \
-	wget https://github.com/faddat/dig/releases/download/latest/dig_latest_linux_arm64.tar.gz && \
+	wget https://github.com/faddat/dig/releases/download/testnet-2/dig_latest_linux_arm64.tar.gz && \
 	tar xvf dig_latest_linux_arm64.tar.gz && \
 	mv digd /usr/bin && \
 	mv airdrop /usr/bin && \
