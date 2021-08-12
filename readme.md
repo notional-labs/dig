@@ -32,6 +32,7 @@ digd init yourname
 cp dig/networks/testnet-2/genesis.json ~/.dig/config
 # DEAR GOD KEEP YOUR SEED PHRASE.
 digd keys add validator
+digd add-genesis-account validator 1000000000udig
 digd gentx validator 100000000udig --chain-id dig-testnet-2
 cp ~/.dig/config/gentx/* ~/dig/networks/testnet-2/gentx
 cd dig
