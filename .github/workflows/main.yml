@@ -9,7 +9,7 @@ on: [push, pull_request, workflow_dispatch]
 # This workflow makes x86_64 binaries for mac, windows, and linux.
 
 jobs:
-  validate genesis:
+  genesis:
     runs-on: ubuntu-latest
     name: validate genesis
     steps:
