@@ -13,7 +13,7 @@ Here's a little light background reading:
 
 
 
-## Get started
+## ~~Genesis Transactions~~
 **Genesis Transactions for Testnet-2 are now closed.  If Testnet-2 functions as desired, there will be no Testnet-3**
 
 If you are using ubuntu, please do not use its native golang package, it is two years old.  Instead:
