@@ -3,10 +3,8 @@ version: "2.0"
 
 services:
   akash:
-    image: ghcr.io/faddat/dig:latest
-    cmd: digd start
+    image: faddat/dig:buttmonkey
     env:
-      - DIGD_MONIKER=bus-bar
       - DIGD_P2P_MAX_NUM_INBOUND_PEERS=500
       - DIGD_P2P_MAX_NUM_OUTBOUND_PEERS=60
     expose:
@@ -35,7 +33,7 @@ profiles:
       pricing:
         akash:
           denom: uakt
-          amount: 10
+          amount: 1000
 
 deployment:
   akash:
