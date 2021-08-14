@@ -34,7 +34,7 @@ jobs:
           push: true
           tags: ghcr.io/faddat/dig/chain:latest
           
-    docker-normie:
+  omnibus:
     runs-on: ubuntu-latest
     steps:
       -
