@@ -12,3 +12,4 @@ RUN cd /dig
 FROM ghcr.io/faddat/sos/sos-lite
 
 COPY --from=builder /go/bin/digd /usr/bin/digd
+COPY --from=builder /dig/networks/testnet-2/genesis.json /genesis.json
