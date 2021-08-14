@@ -12,6 +12,8 @@ Here's a little light background reading:
 * https://twitter.com/gadikian/status/1424392074078523397
 
 
+## Join Testnet
+
 
 ## ~~Genesis Transactions~~
 **Genesis Transactions for Testnet-2 are now closed.  If Testnet-2 functions as desired, there will be no Testnet-3**
