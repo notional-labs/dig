@@ -11,8 +11,10 @@ Here's a little light background reading:
 * https://podclips.com/ct/gBhDsq
 * https://twitter.com/gadikian/status/1424392074078523397
 
+
+
 ## Get started
-We are accepting genesis transactions until we say that we're no longer accepting genesis transactions :).  Here are some generic linux instructions for doing those.  They assume that you have the github cli installed.
+**Genesis Transactions for Testnet-2 are now closed.  If Testnet-2 functions as desired, there will be no Testnet-3**
 
 If you are using ubuntu, please do not use its native golang package, it is two years old.  Instead:
 
@@ -42,4 +44,29 @@ gh auth login
 gh pr create
 ```
 
+## Roadmap
 
+- [x] Concept development by Jacob Gadikian and Adam Christopher Chaplin
+- [x] Prototype
+- [x] Airdrop Prototype code and OpenAPI spec
+- [x] Testnet-1:  Results showed that we needed to work on the genesis parameters in Testnet-2
+- [x] Omniflix Testnet-1: Participating in the OmniFlix testnet proved the viablity of a large validator set.  Testnet-2 allows 250 validators.
+- [x] Upgrade to Cosmos SDK 0.43.0
+- [x] IBC Testing
+- [x] NFT Implementation by Khanh Nguyen (not included in testnet-2)
+- [x] Genesis transactions for testnet-2: Completed August 14, 2021
+- [x] Keplr integration
+- [ ] Akash-based Bus bar
+- [ ] Launch testnet-2
+- [ ] Clean airdrop code
+  - [ ] Ionization
+  - [ ] Test airdrop code for ethereum-style addresses using the Osmosis Cosmos SDK fork
+  - [ ] Refactor airdrop if this works
+- [ ] Community Security Audit: 0.1% of Dig tokens reserved for community members who provide a detailed, contextual audit
+- [ ] Block explorer
+- [ ] Mainnet Launch
+- [ ] Osmosis Integration
+- [ ] Emeris Integration
+- [ ] Sif Integration
+- [ ] Microtick Integration
+- [ ] Announcement of candidate Real Estate development sites and their regulatory requirements
