@@ -70,3 +70,6 @@ gh pr create
 - [ ] Sif Integration
 - [ ] Microtick Integration
 - [ ] Announcement of candidate Real Estate development sites and their regulatory requirements
+- [ ] DFY Integration
+- [ ] Blurt Integration
+- [ ] First update to dig mainnet
