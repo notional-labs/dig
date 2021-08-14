@@ -63,6 +63,11 @@ gh pr create
 
 * Chains in the dig network will launch from the code in this repository, as well.   
 
+
+## Financing
+
+We're comitted to transparency in all matters, including the composition of genesis allocations.  Dig has raised $0.  Adam has funded development work.  If we take funding, informaiton on that will go right here.  We will only accept funding from parties who are aligned with the long-term vision of the project and willing to have their tokens on exactly the same terms as those who get them in an airdrop.
+
 ## Roadmap
 
 - [x] Concept development by Jacob Gadikian and Adam Christopher Chaplin
