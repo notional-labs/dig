@@ -65,6 +65,7 @@ gh pr create
 - [ ] Community Security Audit: 0.1% of Dig tokens reserved for community members who provide a detailed, contextual audit
 - [ ] Block explorer
 - [ ] Mainnet Launch
+- [ ] IBC Integration via Notional and Chandra Station Relayers
 - [ ] Osmosis Integration
 - [ ] Emeris Integration
 - [ ] Sif Integration
