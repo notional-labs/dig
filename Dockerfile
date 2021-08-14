@@ -21,4 +21,4 @@ RUN pacman -Syyu --noconfirm
 COPY --from=builder /go/bin/digd /usr/bin/digd
 COPY --from=builder /dig/networks/testnet-2/genesis.json /genesis.json
 
-CMD digd init busbar && cp /genesis.json /root/.dig/config/genesis.json && digd start
+CMD /usr/bin/digd init busbar && cp /genesis.json /root/.dig/config/genesis.json && /usr/bin/digd start
