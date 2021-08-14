@@ -1,0 +1,44 @@
+---
+version: "2.0"
+
+services:
+  akash:
+    image: ghcr.io/faddat/dig:latest
+    cmd: digd start
+    env:
+      - DIGD_MONIKER=bus-bar
+      - DIGD_P2P_MAX_NUM_INBOUND_PEERS=500
+      - DIGD_P2P_MAX_NUM_OUTBOUND_PEERS=60
+    expose:
+      - port: 26656
+        to:
+          - global: true
+      - port: 26657
+        as: 80
+        to:
+          - global: true
+
+profiles:
+  compute:
+    akash:
+      resources:
+        cpu:
+          units: 1
+        memory:
+          size: 2Gi
+        storage:
+          size: 32Gi
+  placement:
+    dcloud:
+      attributes:
+        host: akash
+      pricing:
+        akash:
+          denom: uakt
+          amount: 10
+
+deployment:
+  akash:
+    dcloud:
+      profile: akash
+      count: 1
