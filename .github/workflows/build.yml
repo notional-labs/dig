@@ -15,6 +15,9 @@ jobs:
       matrix:
         arch: [amd64, arm64]
         targetos: [darwin, linux]
+        include:
+          - targetos: windows
+            arch: amd64
     name: dig ${{ matrix.arch }} for ${{ matrix.targetos }}
     steps:
       - uses: actions/checkout@v2
