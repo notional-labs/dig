@@ -44,6 +44,25 @@ gh auth login
 gh pr create
 ```
 
+## Design
+
+* Software-wise, dig is a monorepo.  All of its essential code lives in this repository:
+  * Genesis
+  * Go App Code
+  * Javascript Front End Code
+  * Mobile App
+  * Block explorer
+
+
+* The dig mainnet is as minimal as possible.  While we may add a few things before mainnet, it's our preference to remove things.  The dig mainnet is for coordinating the efforts of like-minded people who'd like to see:
+  * Liquid Land: Blockchain style real estate investing
+  * Charter Cities: Land where the rules are laid out on the chain that constitutes them
+  * Hierarchical transparent governance: The trouble with hierarchical orgs is opacity, not hierarchy itself.
+  * Research and development of blockchain governance in physical and virtual spaces.    
+
+
+* Chains in the dig network will launch from the code in this repository, as well.   
+
 ## Roadmap
 
 - [x] Concept development by Jacob Gadikian and Adam Christopher Chaplin
