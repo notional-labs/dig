@@ -1,41 +1,27 @@
 # This is a basic workflow that is manually triggered
 
-name: dig
+name: Validate genesis
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 
 # This workflow makes x86_64 binaries for mac, windows, and linux.
 
 jobs:
-  build:
+  validate genesis:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        arch: [amd64, arm64]
-        targetos: [darwin, linux]
-    name: dig ${{ matrix.arch }} for ${{ matrix.targetos }}
+    name: validate genesis
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-go@v2.1.3
         with: 
           go-version: '^1.16.7'
-        env:
-          GOOS: ${{ matrix.targetos }}
-          GOARCH: ${{ matrix.arch }}
 
       - name: Compile dig
         run: |
           go mod download
           cd cmd/digd
-          go build .
-          go install .
-
-      - name: Compile airdrop
-        run: |
-          cd airdrop
-          go mod download
           go build .
           go install .
           
@@ -52,5 +38,4 @@ jobs:
 # now uploads genesis.json and bin
       - uses: actions/upload-artifact@v2
         with:
-          name: digd ${{ matrix.targetos }} ${{ matrix.arch }}
-          path: cmd/digd
+          path: .dig/config/genesis.json
