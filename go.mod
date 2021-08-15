@@ -20,6 +20,7 @@ require (
 	google.golang.org/genproto v0.0.0-20210804223703-f1db76f3300d
 	google.golang.org/grpc v1.39.0
 	github.com/irisnet/irismod v1.4.0
+	github.com/tendermint/spm v0.14.0
 )
 
 replace google.golang.org/grpc => google.golang.org/grpc v1.33.2
@@ -27,3 +28,5 @@ replace google.golang.org/grpc => google.golang.org/grpc v1.33.2
 replace github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
 
 replace github.com/irisnet/irismod => github.com/romelukaku/irismod v1.5.1
+
+replace github.com/tendermint/spm => github.com/faddat/spm v0.43.8
