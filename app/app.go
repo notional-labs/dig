@@ -83,21 +83,27 @@ import (
 	porttypes "github.com/cosmos/ibc-go/modules/core/05-port/types"
 	ibchost "github.com/cosmos/ibc-go/modules/core/24-host"
 	ibckeeper "github.com/cosmos/ibc-go/modules/core/keeper"
-	appparams "github.com/faddat/dig/app/params"
+
+	// appparams "github.com/faddat/dig/app/params"
 	"github.com/faddat/dig/docs"
 	tmjson "github.com/tendermint/tendermint/libs/json"
 
 	// this line is used by starport scaffolding # stargate/app/moduleImport
-	"github.com/faddat/dig/x/dig"
-	digkeeper "github.com/faddat/dig/x/dig/keeper"
-	digtypes "github.com/faddat/dig/x/dig/types"
+	// "github.com/faddat/dig/x/dig"
+	// digkeeper "github.com/faddat/dig/x/dig/keeper"
+	// digtypes "github.com/faddat/dig/x/dig/types"
 
 	"github.com/irisnet/irismod/modules/nft"
 	nftkeeper "github.com/irisnet/irismod/modules/nft/keeper"
 	nfttypes "github.com/irisnet/irismod/modules/nft/types"
+
+	"github.com/tendermint/spm/cosmoscmd"
 )
 
-const Name = "dig"
+const (
+	AccountAddressPrefix = "dig"
+	Name                 = "dig"
+)
 
 // this line is used by starport scaffolding # stargate/wasm/app/enabledProposals
 
@@ -142,7 +148,7 @@ var (
 		vesting.AppModuleBasic{},
 		feegrantmodule.AppModuleBasic{},
 		// this line is used by starport scaffolding # stargate/app/moduleBasic
-		dig.AppModuleBasic{},
+		// dig.AppModuleBasic{},
 		nft.AppModuleBasic{},
 	)
 
@@ -159,7 +165,8 @@ var (
 )
 
 var (
-	_ CosmosApp               = (*App)(nil)
+	// _ CosmosApp               = (*App)(nil)
+	_ cosmoscmd.CosmosApp     = (*App)(nil)
 	_ servertypes.Application = (*App)(nil)
 )
 
@@ -215,7 +222,7 @@ type App struct {
 
 	// this line is used by starport scaffolding # stargate/app/keeperDeclaration
 
-	DigKeeper digkeeper.Keeper
+	// DigKeeper digkeeper.Keeper
 
 	// the module manager
 	mm *module.Manager
@@ -224,13 +231,20 @@ type App struct {
 // New returns a reference to an initialized Gaia.
 // NewSimApp returns a reference to an initialized SimApp.
 func New(
-	logger log.Logger, db dbm.DB, traceStore io.Writer, loadLatest bool, skipUpgradeHeights map[int64]bool,
-	homePath string, invCheckPeriod uint, encodingConfig appparams.EncodingConfig,
+	logger log.Logger,
+	db dbm.DB,
+	traceStore io.Writer,
+	loadLatest bool,
+	skipUpgradeHeights map[int64]bool,
+	homePath string,
+	invCheckPeriod uint,
+	encodingConfig cosmoscmd.EncodingConfig,
 	// this line is used by starport scaffolding # stargate/app/newArgument
-	appOpts servertypes.AppOptions, baseAppOptions ...func(*baseapp.BaseApp),
-) *App {
+	appOpts servertypes.AppOptions,
+	baseAppOptions ...func(*baseapp.BaseApp),
+) cosmoscmd.App {
 
-	appCodec := encodingConfig.Marshaler
+	appCodec := encodingConfig.Codec
 	cdc := encodingConfig.Amino
 	interfaceRegistry := encodingConfig.InterfaceRegistry
 
@@ -245,7 +259,8 @@ func New(
 		govtypes.StoreKey, paramstypes.StoreKey, ibchost.StoreKey, upgradetypes.StoreKey,
 		evidencetypes.StoreKey, ibctransfertypes.StoreKey, capabilitytypes.StoreKey,
 		// this line is used by starport scaffolding # stargate/app/storeKey
-		digtypes.StoreKey, feegrant.StoreKey, nfttypes.StoreKey,
+		// digtypes.StoreKey,
+		feegrant.StoreKey, nfttypes.StoreKey,
 	)
 	tkeys := sdk.NewTransientStoreKeys(paramstypes.TStoreKey)
 	memKeys := sdk.NewMemoryStoreKeys(capabilitytypes.MemStoreKey)
@@ -338,12 +353,12 @@ func New(
 
 	// this line is used by starport scaffolding # stargate/app/keeperDefinition
 
-	app.DigKeeper = *digkeeper.NewKeeper(
-		appCodec,
-		keys[digtypes.StoreKey],
-		keys[digtypes.MemStoreKey],
-	)
-	digModule := dig.NewAppModule(appCodec, app.DigKeeper)
+	// app.DigKeeper = *digkeeper.NewKeeper(
+	// 	appCodec,
+	// 	keys[digtypes.StoreKey],
+	// 	keys[digtypes.MemStoreKey],
+	// )
+	// digModule := dig.NewAppModule(appCodec, app.DigKeeper)
 
 	app.GovKeeper = govkeeper.NewKeeper(
 		appCodec, keys[govtypes.StoreKey], app.GetSubspace(govtypes.ModuleName), app.AccountKeeper, app.BankKeeper,
@@ -389,7 +404,7 @@ func New(
 		feegrantmodule.NewAppModule(appCodec, app.AccountKeeper, app.BankKeeper, app.FeegrantKeeper, app.interfaceRegistry),
 		transferModule,
 		// this line is used by starport scaffolding # stargate/app/appModule
-		digModule,
+		// digModule,
 	)
 
 	// During begin block slashing happens after distr.BeginBlocker so that
@@ -424,7 +439,7 @@ func New(
 		ibctransfertypes.ModuleName,
 		feegrant.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/initGenesis
-		digtypes.ModuleName,
+		// digtypes.ModuleName,
 		nfttypes.ModuleName,
 	)
 
@@ -621,7 +636,7 @@ func initParamsKeeper(appCodec codec.BinaryCodec, legacyAmino *codec.LegacyAmino
 	paramsKeeper.Subspace(ibctransfertypes.ModuleName)
 	paramsKeeper.Subspace(ibchost.ModuleName)
 	// this line is used by starport scaffolding # stargate/app/paramSubspace
-	paramsKeeper.Subspace(digtypes.ModuleName)
+	// paramsKeeper.Subspace(digtypes.ModuleName)
 	paramsKeeper.Subspace(nfttypes.ModuleName)
 	return paramsKeeper
 }

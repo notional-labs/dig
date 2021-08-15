@@ -5,11 +5,18 @@ import (
 
 	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
 	"github.com/faddat/dig/app"
-	"github.com/faddat/dig/cmd/digd/cmd"
+	"github.com/tendermint/spm/cosmoscmd"
 )
 
 func main() {
-	rootCmd, _ := cmd.NewRootCmd()
+	rootCmd, _ := cosmoscmd.NewRootCmd(
+		app.Name,
+		app.AccountAddressPrefix,
+		app.DefaultNodeHome,
+		app.Name,
+		app.ModuleBasics,
+		app.New,
+	)
 	if err := svrcmd.Execute(rootCmd, app.DefaultNodeHome); err != nil {
 		os.Exit(1)
 	}

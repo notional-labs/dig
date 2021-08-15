@@ -1007,6 +1007,8 @@ github.com/romelukaku/irismod v1.5.0 h1:v3u4msp/2+saRa93in5Rz7Eru1+Tz3mDVJvGHfSk
 github.com/romelukaku/irismod v1.5.0/go.mod h1:yLWR5yPZkIgPGI8WJV8HHzroNoLAXIp6HUKuPtZbB64=
 github.com/romelukaku/irismod v1.5.1 h1:uVNxWsfey/EOPZOEhjoXrZ1HsDDniriqcyeo/hKQFhk=
 github.com/romelukaku/irismod v1.5.1/go.mod h1:yLWR5yPZkIgPGI8WJV8HHzroNoLAXIp6HUKuPtZbB64=
+github.com/romelukaku/irismod v1.5.2 h1:QXlxByfmOAfW0TLQP6qJIbZY63QAHp6clpt90Z6mZAU=
+github.com/romelukaku/irismod v1.5.2/go.mod h1:yLWR5yPZkIgPGI8WJV8HHzroNoLAXIp6HUKuPtZbB64=
 github.com/rs/cors v0.0.0-20160617231935-a62a804a8a00/go.mod h1:gFx+x8UowdsKA9AchylcLynDq+nNFfI8FkUZdN/jGCU=
 github.com/rs/cors v1.7.0 h1:+88SsELBHx5r+hZ8TCkggzSstaWNbDvThkVK8H6f9ik=
 github.com/rs/cors v1.7.0/go.mod h1:gFx+x8UowdsKA9AchylcLynDq+nNFfI8FkUZdN/jGCU=
