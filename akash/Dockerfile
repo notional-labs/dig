@@ -17,7 +17,7 @@ ARG REPOSITORY=https://github.com/faddat/dig
 
 # Clone and build project
 WORKDIR /data
-RUN wget https://github.com/faddat/dig/releases/download/testnet-2/dig_latest_linux_amd64.tar.gz
+RUN wget https://github.com/faddat/dig/releases/download/latest/dig_latest_linux_amd64.tar.gz
 RUN gunzip dig_latest_linux_amd64.tar.gz
 RUN tar -xvf dig_latest_linux_amd64.tar
 RUN mv digd /usr/bin 

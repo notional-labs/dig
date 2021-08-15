@@ -13,6 +13,50 @@ Here's a little light background reading:
 
 
 
+
+
+
+## Join Testnet
+
+Linux amd64:
+
+```bash
+wget https://github.com/faddat/dig/releases/download/latest/dig_latest_linux_amd64.tar.gz
+tar xvf dig_latest_linux_amd64.tar.gz
+mv digd /usr/bin
+digd unsafe-reset-all
+wget -O ~/.dig/config/genesis.json https://raw.githubusercontent.com/faddat/dig/master/networks/testnet-2/genesis.json
+digd start --p2p.persistent_peers 1da97dd40866948f65b3aff3d8630b7d76ab20ea@95.217.196.54:2090
+```
+
+```bash
+wget https://github.com/faddat/dig/releases/download/latest/dig_latest_linux_arm64.tar.gz
+tar xvf dig_latest_linux_amd64.tar.gz
+mv digd /usr/bin
+digd unsafe-reset-all
+wget -O ~/.dig/config/genesis.json https://raw.githubusercontent.com/faddat/dig/master/networks/testnet-2/genesis.json
+digd start --p2p.persistent_peers 1da97dd40866948f65b3aff3d8630b7d76ab20ea@95.217.196.54:2090
+```
+
+Bounties, paid in dig, for further documentation.
+
+
+## Dig is DIFFERENT
+
+on a cosmos network, if you go offline while validating, you go to jail and are slashed 1% of delegated stake.
+
+but it doesn't matter if you go offline, not really.  The key thing is to have 2/3rds of total delegated stake online continuously.
+
+You won't be slashed for going offline on dig, but you will go to jail.  Later, dig will check itself like: am I a validator?  am I in jail?
+
+and if dig is in jail it'll unjail itself.  This will involve the use of a less-secure wallet that is kept in the filesystem to be used for this purpose only.  Getting out of jail will be cheap.  
+
+**double signing**
+
+Signing the same block twice with the same key is even more heavily punished on Dig.  We think that you should keep your keys close to your chest.  I am typing this on my validator, by the way.  It's a MacBook.  
+
+
+
 ## ~~Genesis Transactions~~
 **Genesis Transactions for Testnet-2 are now closed.  If Testnet-2 functions as desired, there will be no Testnet-3**
 
@@ -74,20 +118,21 @@ We're comitted to transparency in all matters, including the composition of gene
 - [x] Prototype
 - [x] Airdrop Prototype code and OpenAPI spec
 - [x] Testnet-1:  Results showed that we needed to work on the genesis parameters in Testnet-2
-- [x] Omniflix Testnet-1: Participating in the OmniFlix testnet proved the viablity of a large validator set.  Testnet-2 allows 250 validators.
+- [x] Omniflix Testnet-1: Participating in the OmniFlix testnet proved the viablity of a large validator set.  Testnet-2 allows 500 validators.
 - [x] Upgrade to Cosmos SDK 0.43.0
 - [x] IBC Testing
 - [x] NFT Implementation by Khanh Nguyen (not included in testnet-2)
 - [x] Genesis transactions for testnet-2: Completed August 14, 2021
 - [x] Keplr integration
 - [ ] Akash-based Bus bar
-- [ ] Launch testnet-2
+- [x] Launch testnet-2
 - [ ] Clean airdrop code
   - [ ] Ionization
   - [ ] Test airdrop code for ethereum-style addresses using the Osmosis Cosmos SDK fork
   - [ ] Refactor airdrop if this works
 - [ ] Community Security Audit: 0.1% of Dig tokens reserved for community members who provide a detailed, contextual audit
-- [ ] Block explorer
+- [ ] Block explorers
+  - [x] gex
 - [ ] Mainnet Launch
 - [ ] IBC Integration via Notional and Chandra Station Relayers
 - [ ] Osmosis Integration

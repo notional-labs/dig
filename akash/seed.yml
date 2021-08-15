@@ -6,7 +6,9 @@ services:
     image: chandrastation/dig
     env:
       - CHAIN_ID=dig-testnet-2
-      - GENESIS_URL=https://github.com/faddat/dig/blob/master/networks/testnet-2/genesis.json?raw=true
+      - GENESIS_URL=https://github.com/faddat/dig/raw/master/networks/testnet-2/genesis.json
+      - DIGD_P2P_MAX_NUM_INBOUND_PEERS=500
+      - DIGD_P2P_MAX_NUM_OUTBOUND_PEERS=100
     expose:
       - port: 26656
         to:
