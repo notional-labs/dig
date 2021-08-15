@@ -118,20 +118,21 @@ We're comitted to transparency in all matters, including the composition of gene
 - [x] Prototype
 - [x] Airdrop Prototype code and OpenAPI spec
 - [x] Testnet-1:  Results showed that we needed to work on the genesis parameters in Testnet-2
-- [x] Omniflix Testnet-1: Participating in the OmniFlix testnet proved the viablity of a large validator set.  Testnet-2 allows 250 validators.
+- [x] Omniflix Testnet-1: Participating in the OmniFlix testnet proved the viablity of a large validator set.  Testnet-2 allows 500 validators.
 - [x] Upgrade to Cosmos SDK 0.43.0
 - [x] IBC Testing
 - [x] NFT Implementation by Khanh Nguyen (not included in testnet-2)
 - [x] Genesis transactions for testnet-2: Completed August 14, 2021
 - [x] Keplr integration
 - [ ] Akash-based Bus bar
-- [ ] Launch testnet-2
+- [x] Launch testnet-2
 - [ ] Clean airdrop code
   - [ ] Ionization
   - [ ] Test airdrop code for ethereum-style addresses using the Osmosis Cosmos SDK fork
   - [ ] Refactor airdrop if this works
 - [ ] Community Security Audit: 0.1% of Dig tokens reserved for community members who provide a detailed, contextual audit
-- [ ] Block explorer
+- [ ] Block explorers
+  - [x] gex
 - [ ] Mainnet Launch
 - [ ] IBC Integration via Notional and Chandra Station Relayers
 - [ ] Osmosis Integration
