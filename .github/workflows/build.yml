@@ -44,6 +44,7 @@ jobs:
           digd init test
           cp networks/testnet-2/genesis.json ~/.dig/config
           cp -r networks/testnet-2/gentx ~/.dig/config
+          bash auto-add-genesis-account.sh
           digd collect-gentxs
           cp ~/.dig/config/genesis.json cmd/digd
           digd validate-genesis
