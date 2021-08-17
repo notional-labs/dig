@@ -12,7 +12,10 @@ Here's a little light background reading:
 * https://twitter.com/gadikian/status/1424392074078523397
 
 
+## Status
+Testnet two launched August 15-16.
 
+We will need a testnet three becuase we'd like to use sign-mode EIP and that will require testing.  It will allow ethereum formatted addresses to be used natively on dig.
 
 
 
@@ -90,6 +93,7 @@ gh pr create
 
 ## Design
 
+**form**
 * Software-wise, dig is a monorepo.  All of its essential code lives in this repository:
   * Genesis
   * Go App Code
@@ -97,7 +101,7 @@ gh pr create
   * Mobile App
   * Block explorer
 
-
+**function**
 * The dig mainnet is as minimal as possible.  While we may add a few things before mainnet, it's our preference to remove things.  The dig mainnet is for coordinating the efforts of like-minded people who'd like to see:
   * Liquid Land: Blockchain style real estate investing
   * Charter Cities: Land where the rules are laid out on the chain that constitutes them
