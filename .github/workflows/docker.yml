@@ -32,7 +32,7 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ghcr.io/faddat/dig/chain:latest
+          tags: ghcr.io/${{ github.repository_owner }}/dig/chain:latest
           
   omnibus:
     runs-on: ubuntu-latest
@@ -61,5 +61,5 @@ jobs:
           dockerfile: akash/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ghcr.io/faddat/dig/omnibus:latest
+          tags: ghcr.io/${{ github.repository_owner }}/dig/omnibus:latest
 
