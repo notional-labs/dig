@@ -1,5 +1,12 @@
 # dig
 
+[![Software Release](https://github.com/notional-labs/dig/actions/workflows/release.yml/badge.svg)](https://github.com/notional-labs/dig/actions/workflows/release.yml)
+[![dig blockchain](https://github.com/notional-labs/dig/actions/workflows/build.yml/badge.svg)](https://github.com/notional-labs/dig/actions/workflows/build.yml)
+[![Android](https://github.com/notional-labs/dig/actions/workflows/flutter.yml/badge.svg)](https://github.com/notional-labs/dig/actions/workflows/flutter.yml)
+[![Genesis](https://github.com/notional-labs/dig/actions/workflows/main.yml/badge.svg)](https://github.com/notional-labs/dig/actions/workflows/main.yml)
+[![Raspberry Pi](https://github.com/notional-labs/dig/actions/workflows/pi.yml/badge.svg)](https://github.com/notional-labs/dig/actions/workflows/pi.yml)
+[![Security Check](https://github.com/notional-labs/dig/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/notional-labs/dig/actions/workflows/codeql-analysis.yml)
+
 Dig is a hub blockchain that interconnects physical plots of land, which will each be governed by a locally operated blockchain.  Due to the regulatory challenges involved, dig splits itself up into many chains which can each follow appropriate legislation.  This is the beginning of the "Dig Network."
 
 
