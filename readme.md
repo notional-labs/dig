@@ -28,6 +28,10 @@ We will need a testnet three becuase we'd like to use sign-mode EIP and that wil
 
 ## Join Testnet
 
+We are currently on testnet-2 and the master branch reflects that.  Work on testnet-3 is in the branch testnet-3.  Genesis state can be found on ipfs at:
+
+Qme9pLVu3ZDzi5BTapqfHkuvacGT1FizQ3KVpuSyxzbmiN
+
 Linux amd64:
 
 ```bash
@@ -135,15 +139,18 @@ We're comitted to transparency in all matters, including the composition of gene
 - [x] NFT Implementation by Khanh Nguyen (not included in testnet-2)
 - [x] Genesis transactions for testnet-2: Completed August 14, 2021
 - [x] Keplr integration
-- [ ] Akash-based Bus bar
+- [x] Akash-based Bus bar
 - [x] Launch testnet-2
+- [x] IPFS-based genesis hosting and download
+- [x] Configuration overrides
 - [ ] Clean airdrop code
   - [ ] Ionization
   - [ ] Test airdrop code for ethereum-style addresses using the Osmosis Cosmos SDK fork
   - [ ] Refactor airdrop if this works
 - [ ] Community Security Audit: 0.1% of Dig tokens reserved for community members who provide a detailed, contextual audit
-- [ ] Block explorers
+- [x] Block explorers
   - [x] gex
+  - [x] big dipper
 - [ ] Mainnet Launch
 - [ ] IBC Integration via Notional and Chandra Station Relayers
 - [ ] Osmosis Integration
