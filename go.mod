@@ -31,4 +31,4 @@ replace github.com/irisnet/irismod => github.com/romelukaku/irismod v1.5.1
 
 replace github.com/tendermint/spm => github.com/faddat/spm v0.43.8
 
-replace github.com/cosmos/cosmos-sdk => github.com/romelukaku/cosmos-sdk v0.43.1
+replace github.com/cosmos/cosmos-sdk => github.com/romelukaku/cosmos-sdk v0.43.2
