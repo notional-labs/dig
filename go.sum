@@ -1009,6 +1009,8 @@ github.com/romelukaku/cosmos-sdk v0.43.1 h1:KDO7eviCRnklX4fltzd9eZ+tMzcAEYZkGQhu
 github.com/romelukaku/cosmos-sdk v0.43.1/go.mod h1:jWI6703hb0E57vXCB0p7Lx3W01mAeY0v1p8O8eOGvlI=
 github.com/romelukaku/cosmos-sdk v0.43.2 h1:22mTSZ8hBgOOdhdccgIm0wGBHMhVYAQeOyMVBgzV8Ns=
 github.com/romelukaku/cosmos-sdk v0.43.2/go.mod h1:jWI6703hb0E57vXCB0p7Lx3W01mAeY0v1p8O8eOGvlI=
+github.com/romelukaku/cosmos-sdk v0.43.3 h1:6kTxApEKTBgM0eMWMMbxbwiY6VwkwdqlULMzbr5E9rc=
+github.com/romelukaku/cosmos-sdk v0.43.3/go.mod h1:jWI6703hb0E57vXCB0p7Lx3W01mAeY0v1p8O8eOGvlI=
 github.com/romelukaku/irismod v1.5.0 h1:v3u4msp/2+saRa93in5Rz7Eru1+Tz3mDVJvGHfSk2EM=
 github.com/romelukaku/irismod v1.5.0/go.mod h1:yLWR5yPZkIgPGI8WJV8HHzroNoLAXIp6HUKuPtZbB64=
 github.com/romelukaku/irismod v1.5.1 h1:uVNxWsfey/EOPZOEhjoXrZ1HsDDniriqcyeo/hKQFhk=
