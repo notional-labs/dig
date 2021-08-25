@@ -10,9 +10,9 @@ import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'staking.pb.dart' as $11;
-import '../../../google/protobuf/any.pb.dart' as $8;
-import '../../base/v1beta1/coin.pb.dart' as $10;
-import '../../../google/protobuf/timestamp.pb.dart' as $5;
+import '../../../google/protobuf/any.pb.dart' as $9;
+import '../../base/v1beta1/coin.pb.dart' as $2;
+import '../../../google/protobuf/timestamp.pb.dart' as $6;
 
 class MsgCreateValidator extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgCreateValidator', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.staking.v1beta1'), createEmptyInstance: create)
@@ -21,8 +21,8 @@ class MsgCreateValidator extends $pb.GeneratedMessage {
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'minSelfDelegation')
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'delegatorAddress')
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'validatorAddress')
-    ..aOM<$8.Any>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pubkey', subBuilder: $8.Any.create)
-    ..aOM<$10.Coin>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'value', subBuilder: $10.Coin.create)
+    ..aOM<$9.Any>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pubkey', subBuilder: $9.Any.create)
+    ..aOM<$2.Coin>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'value', subBuilder: $2.Coin.create)
     ..hasRequiredFields = false
   ;
 
@@ -99,26 +99,26 @@ class MsgCreateValidator extends $pb.GeneratedMessage {
   void clearValidatorAddress() => clearField(5);
 
   @$pb.TagNumber(6)
-  $8.Any get pubkey => $_getN(5);
+  $9.Any get pubkey => $_getN(5);
   @$pb.TagNumber(6)
-  set pubkey($8.Any v) { setField(6, v); }
+  set pubkey($9.Any v) { setField(6, v); }
   @$pb.TagNumber(6)
   $core.bool hasPubkey() => $_has(5);
   @$pb.TagNumber(6)
   void clearPubkey() => clearField(6);
   @$pb.TagNumber(6)
-  $8.Any ensurePubkey() => $_ensure(5);
+  $9.Any ensurePubkey() => $_ensure(5);
 
   @$pb.TagNumber(7)
-  $10.Coin get value => $_getN(6);
+  $2.Coin get value => $_getN(6);
   @$pb.TagNumber(7)
-  set value($10.Coin v) { setField(7, v); }
+  set value($2.Coin v) { setField(7, v); }
   @$pb.TagNumber(7)
   $core.bool hasValue() => $_has(6);
   @$pb.TagNumber(7)
   void clearValue() => clearField(7);
   @$pb.TagNumber(7)
-  $10.Coin ensureValue() => $_ensure(6);
+  $2.Coin ensureValue() => $_ensure(6);
 }
 
 class MsgCreateValidatorResponse extends $pb.GeneratedMessage {
@@ -254,7 +254,7 @@ class MsgDelegate extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgDelegate', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.staking.v1beta1'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'delegatorAddress')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'validatorAddress')
-    ..aOM<$10.Coin>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'amount', subBuilder: $10.Coin.create)
+    ..aOM<$2.Coin>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'amount', subBuilder: $2.Coin.create)
     ..hasRequiredFields = false
   ;
 
@@ -300,15 +300,15 @@ class MsgDelegate extends $pb.GeneratedMessage {
   void clearValidatorAddress() => clearField(2);
 
   @$pb.TagNumber(3)
-  $10.Coin get amount => $_getN(2);
+  $2.Coin get amount => $_getN(2);
   @$pb.TagNumber(3)
-  set amount($10.Coin v) { setField(3, v); }
+  set amount($2.Coin v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasAmount() => $_has(2);
   @$pb.TagNumber(3)
   void clearAmount() => clearField(3);
   @$pb.TagNumber(3)
-  $10.Coin ensureAmount() => $_ensure(2);
+  $2.Coin ensureAmount() => $_ensure(2);
 }
 
 class MsgDelegateResponse extends $pb.GeneratedMessage {
@@ -345,7 +345,7 @@ class MsgBeginRedelegate extends $pb.GeneratedMessage {
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'delegatorAddress')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'validatorSrcAddress')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'validatorDstAddress')
-    ..aOM<$10.Coin>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'amount', subBuilder: $10.Coin.create)
+    ..aOM<$2.Coin>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'amount', subBuilder: $2.Coin.create)
     ..hasRequiredFields = false
   ;
 
@@ -400,20 +400,20 @@ class MsgBeginRedelegate extends $pb.GeneratedMessage {
   void clearValidatorDstAddress() => clearField(3);
 
   @$pb.TagNumber(4)
-  $10.Coin get amount => $_getN(3);
+  $2.Coin get amount => $_getN(3);
   @$pb.TagNumber(4)
-  set amount($10.Coin v) { setField(4, v); }
+  set amount($2.Coin v) { setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasAmount() => $_has(3);
   @$pb.TagNumber(4)
   void clearAmount() => clearField(4);
   @$pb.TagNumber(4)
-  $10.Coin ensureAmount() => $_ensure(3);
+  $2.Coin ensureAmount() => $_ensure(3);
 }
 
 class MsgBeginRedelegateResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgBeginRedelegateResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.staking.v1beta1'), createEmptyInstance: create)
-    ..aOM<$5.Timestamp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'completionTime', subBuilder: $5.Timestamp.create)
+    ..aOM<$6.Timestamp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'completionTime', subBuilder: $6.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -441,22 +441,22 @@ class MsgBeginRedelegateResponse extends $pb.GeneratedMessage {
   static MsgBeginRedelegateResponse _defaultInstance;
 
   @$pb.TagNumber(1)
-  $5.Timestamp get completionTime => $_getN(0);
+  $6.Timestamp get completionTime => $_getN(0);
   @$pb.TagNumber(1)
-  set completionTime($5.Timestamp v) { setField(1, v); }
+  set completionTime($6.Timestamp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCompletionTime() => $_has(0);
   @$pb.TagNumber(1)
   void clearCompletionTime() => clearField(1);
   @$pb.TagNumber(1)
-  $5.Timestamp ensureCompletionTime() => $_ensure(0);
+  $6.Timestamp ensureCompletionTime() => $_ensure(0);
 }
 
 class MsgUndelegate extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgUndelegate', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.staking.v1beta1'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'delegatorAddress')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'validatorAddress')
-    ..aOM<$10.Coin>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'amount', subBuilder: $10.Coin.create)
+    ..aOM<$2.Coin>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'amount', subBuilder: $2.Coin.create)
     ..hasRequiredFields = false
   ;
 
@@ -502,20 +502,20 @@ class MsgUndelegate extends $pb.GeneratedMessage {
   void clearValidatorAddress() => clearField(2);
 
   @$pb.TagNumber(3)
-  $10.Coin get amount => $_getN(2);
+  $2.Coin get amount => $_getN(2);
   @$pb.TagNumber(3)
-  set amount($10.Coin v) { setField(3, v); }
+  set amount($2.Coin v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasAmount() => $_has(2);
   @$pb.TagNumber(3)
   void clearAmount() => clearField(3);
   @$pb.TagNumber(3)
-  $10.Coin ensureAmount() => $_ensure(2);
+  $2.Coin ensureAmount() => $_ensure(2);
 }
 
 class MsgUndelegateResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgUndelegateResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.staking.v1beta1'), createEmptyInstance: create)
-    ..aOM<$5.Timestamp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'completionTime', subBuilder: $5.Timestamp.create)
+    ..aOM<$6.Timestamp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'completionTime', subBuilder: $6.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -543,14 +543,14 @@ class MsgUndelegateResponse extends $pb.GeneratedMessage {
   static MsgUndelegateResponse _defaultInstance;
 
   @$pb.TagNumber(1)
-  $5.Timestamp get completionTime => $_getN(0);
+  $6.Timestamp get completionTime => $_getN(0);
   @$pb.TagNumber(1)
-  set completionTime($5.Timestamp v) { setField(1, v); }
+  set completionTime($6.Timestamp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCompletionTime() => $_has(0);
   @$pb.TagNumber(1)
   void clearCompletionTime() => clearField(1);
   @$pb.TagNumber(1)
-  $5.Timestamp ensureCompletionTime() => $_ensure(0);
+  $6.Timestamp ensureCompletionTime() => $_ensure(0);
 }
 

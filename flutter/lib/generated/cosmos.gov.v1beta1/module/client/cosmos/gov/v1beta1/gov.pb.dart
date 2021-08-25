@@ -19,6 +19,55 @@ import 'gov.pbenum.dart';
 
 export 'gov.pbenum.dart';
 
+class WeightedVoteOption extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'WeightedVoteOption', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.gov.v1beta1'), createEmptyInstance: create)
+    ..e<VoteOption>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'option', $pb.PbFieldType.OE, defaultOrMaker: VoteOption.VOTE_OPTION_UNSPECIFIED, valueOf: VoteOption.valueOf, enumValues: VoteOption.values)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'weight')
+    ..hasRequiredFields = false
+  ;
+
+  WeightedVoteOption._() : super();
+  factory WeightedVoteOption() => create();
+  factory WeightedVoteOption.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory WeightedVoteOption.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  WeightedVoteOption clone() => WeightedVoteOption()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  WeightedVoteOption copyWith(void Function(WeightedVoteOption) updates) => super.copyWith((message) => updates(message as WeightedVoteOption)); // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static WeightedVoteOption create() => WeightedVoteOption._();
+  WeightedVoteOption createEmptyInstance() => create();
+  static $pb.PbList<WeightedVoteOption> createRepeated() => $pb.PbList<WeightedVoteOption>();
+  @$core.pragma('dart2js:noInline')
+  static WeightedVoteOption getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<WeightedVoteOption>(create);
+  static WeightedVoteOption _defaultInstance;
+
+  @$pb.TagNumber(1)
+  VoteOption get option => $_getN(0);
+  @$pb.TagNumber(1)
+  set option(VoteOption v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasOption() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearOption() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get weight => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set weight($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasWeight() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearWeight() => clearField(2);
+}
+
 class TextProposal extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'TextProposal', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.gov.v1beta1'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'title')
@@ -320,6 +369,7 @@ class Vote extends $pb.GeneratedMessage {
     ..a<$fixnum.Int64>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'proposalId', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'voter')
     ..e<VoteOption>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'option', $pb.PbFieldType.OE, defaultOrMaker: VoteOption.VOTE_OPTION_UNSPECIFIED, valueOf: VoteOption.valueOf, enumValues: VoteOption.values)
+    ..pc<WeightedVoteOption>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'options', $pb.PbFieldType.PM, subBuilder: WeightedVoteOption.create)
     ..hasRequiredFields = false
   ;
 
@@ -364,14 +414,21 @@ class Vote extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearVoter() => clearField(2);
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(3)
   VoteOption get option => $_getN(2);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(3)
   set option(VoteOption v) { setField(3, v); }
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(3)
   $core.bool hasOption() => $_has(2);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(3)
   void clearOption() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.List<WeightedVoteOption> get options => $_getList(3);
 }
 
 class DepositParams extends $pb.GeneratedMessage {

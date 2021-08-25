@@ -10,10 +10,10 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../crypto/proof.pb.dart' as $3;
-import '../version/types.pb.dart' as $4;
-import '../../google/protobuf/timestamp.pb.dart' as $5;
-import 'validator.pb.dart' as $6;
+import '../crypto/proof.pb.dart' as $4;
+import '../version/types.pb.dart' as $5;
+import '../../google/protobuf/timestamp.pb.dart' as $6;
+import 'validator.pb.dart' as $7;
 
 import 'types.pbenum.dart';
 
@@ -72,7 +72,7 @@ class Part extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Part', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'tendermint.types'), createEmptyInstance: create)
     ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'index', $pb.PbFieldType.OU3)
     ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'bytes', $pb.PbFieldType.OY)
-    ..aOM<$3.Proof>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'proof', subBuilder: $3.Proof.create)
+    ..aOM<$4.Proof>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'proof', subBuilder: $4.Proof.create)
     ..hasRequiredFields = false
   ;
 
@@ -118,15 +118,15 @@ class Part extends $pb.GeneratedMessage {
   void clearBytes() => clearField(2);
 
   @$pb.TagNumber(3)
-  $3.Proof get proof => $_getN(2);
+  $4.Proof get proof => $_getN(2);
   @$pb.TagNumber(3)
-  set proof($3.Proof v) { setField(3, v); }
+  set proof($4.Proof v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasProof() => $_has(2);
   @$pb.TagNumber(3)
   void clearProof() => clearField(3);
   @$pb.TagNumber(3)
-  $3.Proof ensureProof() => $_ensure(2);
+  $4.Proof ensureProof() => $_ensure(2);
 }
 
 class BlockID extends $pb.GeneratedMessage {
@@ -182,10 +182,10 @@ class BlockID extends $pb.GeneratedMessage {
 
 class Header extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Header', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'tendermint.types'), createEmptyInstance: create)
-    ..aOM<$4.Consensus>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'version', subBuilder: $4.Consensus.create)
+    ..aOM<$5.Consensus>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'version', subBuilder: $5.Consensus.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'chainId')
     ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'height')
-    ..aOM<$5.Timestamp>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'time', subBuilder: $5.Timestamp.create)
+    ..aOM<$6.Timestamp>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'time', subBuilder: $6.Timestamp.create)
     ..aOM<BlockID>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lastBlockId', subBuilder: BlockID.create)
     ..a<$core.List<$core.int>>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lastCommitHash', $pb.PbFieldType.OY)
     ..a<$core.List<$core.int>>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'dataHash', $pb.PbFieldType.OY)
@@ -223,15 +223,15 @@ class Header extends $pb.GeneratedMessage {
   static Header _defaultInstance;
 
   @$pb.TagNumber(1)
-  $4.Consensus get version => $_getN(0);
+  $5.Consensus get version => $_getN(0);
   @$pb.TagNumber(1)
-  set version($4.Consensus v) { setField(1, v); }
+  set version($5.Consensus v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasVersion() => $_has(0);
   @$pb.TagNumber(1)
   void clearVersion() => clearField(1);
   @$pb.TagNumber(1)
-  $4.Consensus ensureVersion() => $_ensure(0);
+  $5.Consensus ensureVersion() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get chainId => $_getSZ(1);
@@ -252,15 +252,15 @@ class Header extends $pb.GeneratedMessage {
   void clearHeight() => clearField(3);
 
   @$pb.TagNumber(4)
-  $5.Timestamp get time => $_getN(3);
+  $6.Timestamp get time => $_getN(3);
   @$pb.TagNumber(4)
-  set time($5.Timestamp v) { setField(4, v); }
+  set time($6.Timestamp v) { setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasTime() => $_has(3);
   @$pb.TagNumber(4)
   void clearTime() => clearField(4);
   @$pb.TagNumber(4)
-  $5.Timestamp ensureTime() => $_ensure(3);
+  $6.Timestamp ensureTime() => $_ensure(3);
 
   @$pb.TagNumber(5)
   BlockID get lastBlockId => $_getN(4);
@@ -394,7 +394,7 @@ class Vote extends $pb.GeneratedMessage {
     ..aInt64(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'height')
     ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'round', $pb.PbFieldType.O3)
     ..aOM<BlockID>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'blockId', subBuilder: BlockID.create)
-    ..aOM<$5.Timestamp>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'timestamp', subBuilder: $5.Timestamp.create)
+    ..aOM<$6.Timestamp>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'timestamp', subBuilder: $6.Timestamp.create)
     ..a<$core.List<$core.int>>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'validatorAddress', $pb.PbFieldType.OY)
     ..a<$core.int>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'validatorIndex', $pb.PbFieldType.O3)
     ..a<$core.List<$core.int>>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'signature', $pb.PbFieldType.OY)
@@ -463,15 +463,15 @@ class Vote extends $pb.GeneratedMessage {
   BlockID ensureBlockId() => $_ensure(3);
 
   @$pb.TagNumber(5)
-  $5.Timestamp get timestamp => $_getN(4);
+  $6.Timestamp get timestamp => $_getN(4);
   @$pb.TagNumber(5)
-  set timestamp($5.Timestamp v) { setField(5, v); }
+  set timestamp($6.Timestamp v) { setField(5, v); }
   @$pb.TagNumber(5)
   $core.bool hasTimestamp() => $_has(4);
   @$pb.TagNumber(5)
   void clearTimestamp() => clearField(5);
   @$pb.TagNumber(5)
-  $5.Timestamp ensureTimestamp() => $_ensure(4);
+  $6.Timestamp ensureTimestamp() => $_ensure(4);
 
   @$pb.TagNumber(6)
   $core.List<$core.int> get validatorAddress => $_getN(5);
@@ -570,7 +570,7 @@ class CommitSig extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CommitSig', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'tendermint.types'), createEmptyInstance: create)
     ..e<BlockIDFlag>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'blockIdFlag', $pb.PbFieldType.OE, defaultOrMaker: BlockIDFlag.BLOCK_ID_FLAG_UNKNOWN, valueOf: BlockIDFlag.valueOf, enumValues: BlockIDFlag.values)
     ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'validatorAddress', $pb.PbFieldType.OY)
-    ..aOM<$5.Timestamp>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'timestamp', subBuilder: $5.Timestamp.create)
+    ..aOM<$6.Timestamp>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'timestamp', subBuilder: $6.Timestamp.create)
     ..a<$core.List<$core.int>>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'signature', $pb.PbFieldType.OY)
     ..hasRequiredFields = false
   ;
@@ -617,15 +617,15 @@ class CommitSig extends $pb.GeneratedMessage {
   void clearValidatorAddress() => clearField(2);
 
   @$pb.TagNumber(3)
-  $5.Timestamp get timestamp => $_getN(2);
+  $6.Timestamp get timestamp => $_getN(2);
   @$pb.TagNumber(3)
-  set timestamp($5.Timestamp v) { setField(3, v); }
+  set timestamp($6.Timestamp v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasTimestamp() => $_has(2);
   @$pb.TagNumber(3)
   void clearTimestamp() => clearField(3);
   @$pb.TagNumber(3)
-  $5.Timestamp ensureTimestamp() => $_ensure(2);
+  $6.Timestamp ensureTimestamp() => $_ensure(2);
 
   @$pb.TagNumber(4)
   $core.List<$core.int> get signature => $_getN(3);
@@ -644,7 +644,7 @@ class Proposal extends $pb.GeneratedMessage {
     ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'round', $pb.PbFieldType.O3)
     ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'polRound', $pb.PbFieldType.O3)
     ..aOM<BlockID>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'blockId', subBuilder: BlockID.create)
-    ..aOM<$5.Timestamp>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'timestamp', subBuilder: $5.Timestamp.create)
+    ..aOM<$6.Timestamp>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'timestamp', subBuilder: $6.Timestamp.create)
     ..a<$core.List<$core.int>>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'signature', $pb.PbFieldType.OY)
     ..hasRequiredFields = false
   ;
@@ -720,15 +720,15 @@ class Proposal extends $pb.GeneratedMessage {
   BlockID ensureBlockId() => $_ensure(4);
 
   @$pb.TagNumber(6)
-  $5.Timestamp get timestamp => $_getN(5);
+  $6.Timestamp get timestamp => $_getN(5);
   @$pb.TagNumber(6)
-  set timestamp($5.Timestamp v) { setField(6, v); }
+  set timestamp($6.Timestamp v) { setField(6, v); }
   @$pb.TagNumber(6)
   $core.bool hasTimestamp() => $_has(5);
   @$pb.TagNumber(6)
   void clearTimestamp() => clearField(6);
   @$pb.TagNumber(6)
-  $5.Timestamp ensureTimestamp() => $_ensure(5);
+  $6.Timestamp ensureTimestamp() => $_ensure(5);
 
   @$pb.TagNumber(7)
   $core.List<$core.int> get signature => $_getN(6);
@@ -796,7 +796,7 @@ class SignedHeader extends $pb.GeneratedMessage {
 class LightBlock extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LightBlock', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'tendermint.types'), createEmptyInstance: create)
     ..aOM<SignedHeader>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'signedHeader', subBuilder: SignedHeader.create)
-    ..aOM<$6.ValidatorSet>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'validatorSet', subBuilder: $6.ValidatorSet.create)
+    ..aOM<$7.ValidatorSet>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'validatorSet', subBuilder: $7.ValidatorSet.create)
     ..hasRequiredFields = false
   ;
 
@@ -835,15 +835,15 @@ class LightBlock extends $pb.GeneratedMessage {
   SignedHeader ensureSignedHeader() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $6.ValidatorSet get validatorSet => $_getN(1);
+  $7.ValidatorSet get validatorSet => $_getN(1);
   @$pb.TagNumber(2)
-  set validatorSet($6.ValidatorSet v) { setField(2, v); }
+  set validatorSet($7.ValidatorSet v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasValidatorSet() => $_has(1);
   @$pb.TagNumber(2)
   void clearValidatorSet() => clearField(2);
   @$pb.TagNumber(2)
-  $6.ValidatorSet ensureValidatorSet() => $_ensure(1);
+  $7.ValidatorSet ensureValidatorSet() => $_ensure(1);
 }
 
 class BlockMeta extends $pb.GeneratedMessage {
@@ -923,7 +923,7 @@ class TxProof extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'TxProof', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'tendermint.types'), createEmptyInstance: create)
     ..a<$core.List<$core.int>>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'rootHash', $pb.PbFieldType.OY)
     ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'data', $pb.PbFieldType.OY)
-    ..aOM<$3.Proof>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'proof', subBuilder: $3.Proof.create)
+    ..aOM<$4.Proof>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'proof', subBuilder: $4.Proof.create)
     ..hasRequiredFields = false
   ;
 
@@ -969,14 +969,14 @@ class TxProof extends $pb.GeneratedMessage {
   void clearData() => clearField(2);
 
   @$pb.TagNumber(3)
-  $3.Proof get proof => $_getN(2);
+  $4.Proof get proof => $_getN(2);
   @$pb.TagNumber(3)
-  set proof($3.Proof v) { setField(3, v); }
+  set proof($4.Proof v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasProof() => $_has(2);
   @$pb.TagNumber(3)
   void clearProof() => clearField(3);
   @$pb.TagNumber(3)
-  $3.Proof ensureProof() => $_ensure(2);
+  $4.Proof ensureProof() => $_ensure(2);
 }
 

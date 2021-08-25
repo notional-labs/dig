@@ -30,6 +30,14 @@ const ProposalStatus$json = const {
   '3': const {},
 };
 
+const WeightedVoteOption$json = const {
+  '1': 'WeightedVoteOption',
+  '2': const [
+    const {'1': 'option', '3': 1, '4': 1, '5': 14, '6': '.cosmos.gov.v1beta1.VoteOption', '10': 'option'},
+    const {'1': 'weight', '3': 2, '4': 1, '5': 9, '8': const {}, '10': 'weight'},
+  ],
+};
+
 const TextProposal$json = const {
   '1': 'TextProposal',
   '2': const [
@@ -81,7 +89,16 @@ const Vote$json = const {
   '2': const [
     const {'1': 'proposal_id', '3': 1, '4': 1, '5': 4, '8': const {}, '10': 'proposalId'},
     const {'1': 'voter', '3': 2, '4': 1, '5': 9, '10': 'voter'},
-    const {'1': 'option', '3': 3, '4': 1, '5': 14, '6': '.cosmos.gov.v1beta1.VoteOption', '10': 'option'},
+    const {
+      '1': 'option',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.cosmos.gov.v1beta1.VoteOption',
+      '8': const {'3': true},
+      '10': 'option',
+    },
+    const {'1': 'options', '3': 4, '4': 3, '5': 11, '6': '.cosmos.gov.v1beta1.WeightedVoteOption', '8': const {}, '10': 'options'},
   ],
   '7': const {},
 };

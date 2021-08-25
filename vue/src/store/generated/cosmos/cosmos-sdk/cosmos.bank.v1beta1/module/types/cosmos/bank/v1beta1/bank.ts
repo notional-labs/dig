@@ -34,6 +34,9 @@ export interface Output {
 /**
  * Supply represents a struct that passively keeps track of the total supply
  * amounts in the network.
+ * This message is deprecated now that supply is indexed by denom.
+ *
+ * @deprecated
  */
 export interface Supply {
   total: Coin[]
@@ -73,6 +76,13 @@ export interface Metadata {
    * displayed in clients.
    */
   display: string
+  /** name defines the name of the token (eg: Cosmos Atom) */
+  name: string
+  /**
+   * symbol is the token symbol usually shown on exchanges (eg: ATOM). This can
+   * be the same as the display.
+   */
+  symbol: string
 }
 
 const baseParams: object = { defaultSendEnabled: false }
@@ -542,7 +552,7 @@ export const DenomUnit = {
   }
 }
 
-const baseMetadata: object = { description: '', base: '', display: '' }
+const baseMetadata: object = { description: '', base: '', display: '', name: '', symbol: '' }
 
 export const Metadata = {
   encode(message: Metadata, writer: Writer = Writer.create()): Writer {
@@ -557,6 +567,12 @@ export const Metadata = {
     }
     if (message.display !== '') {
       writer.uint32(34).string(message.display)
+    }
+    if (message.name !== '') {
+      writer.uint32(42).string(message.name)
+    }
+    if (message.symbol !== '') {
+      writer.uint32(50).string(message.symbol)
     }
     return writer
   },
@@ -580,6 +596,12 @@ export const Metadata = {
           break
         case 4:
           message.display = reader.string()
+          break
+        case 5:
+          message.name = reader.string()
+          break
+        case 6:
+          message.symbol = reader.string()
           break
         default:
           reader.skipType(tag & 7)
@@ -612,6 +634,16 @@ export const Metadata = {
     } else {
       message.display = ''
     }
+    if (object.name !== undefined && object.name !== null) {
+      message.name = String(object.name)
+    } else {
+      message.name = ''
+    }
+    if (object.symbol !== undefined && object.symbol !== null) {
+      message.symbol = String(object.symbol)
+    } else {
+      message.symbol = ''
+    }
     return message
   },
 
@@ -625,6 +657,8 @@ export const Metadata = {
     }
     message.base !== undefined && (obj.base = message.base)
     message.display !== undefined && (obj.display = message.display)
+    message.name !== undefined && (obj.name = message.name)
+    message.symbol !== undefined && (obj.symbol = message.symbol)
     return obj
   },
 
@@ -650,6 +684,16 @@ export const Metadata = {
       message.display = object.display
     } else {
       message.display = ''
+    }
+    if (object.name !== undefined && object.name !== null) {
+      message.name = object.name
+    } else {
+      message.name = ''
+    }
+    if (object.symbol !== undefined && object.symbol !== null) {
+      message.symbol = object.symbol
+    } else {
+      message.symbol = ''
     }
     return message
   }

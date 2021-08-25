@@ -58,6 +58,12 @@ export interface V1Beta1Metadata {
      * displayed in clients.
      */
     display?: string;
+    name?: string;
+    /**
+     * symbol is the token symbol usually shown on exchanges (eg: ATOM). This can
+     * be the same as the display.
+     */
+    symbol?: string;
 }
 /**
  * MsgMultiSendResponse defines the Msg/MultiSend response type.
@@ -108,6 +114,8 @@ export interface V1Beta1PageRequest {
      * is set.
      */
     countTotal?: boolean;
+    /** reverse is set to true if results are to be returned in the descending order. */
+    reverse?: boolean;
 }
 /**
 * PageResponse is to be embedded in gRPC response messages where the
@@ -182,6 +190,8 @@ export interface V1Beta1QuerySupplyOfResponse {
 }
 export interface V1Beta1QueryTotalSupplyResponse {
     supply?: V1Beta1Coin[];
+    /** pagination defines the pagination in the response. */
+    pagination?: V1Beta1PageResponse;
 }
 /**
 * SendEnabled maps coin denom to a send_enabled status (whether a denom is
@@ -245,7 +255,7 @@ export declare class HttpClient<SecurityDataType = unknown> {
     request: <T = any, E = any>({ body, secure, path, type, query, format, baseUrl, cancelToken, ...params }: FullRequestParams) => Promise<HttpResponse<T, E>>;
 }
 /**
- * @title cosmos/bank/v1beta1/bank.proto
+ * @title cosmos/bank/v1beta1/authz.proto
  * @version version not set
  */
 export declare class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDataType> {
@@ -262,6 +272,7 @@ export declare class Api<SecurityDataType extends unknown> extends HttpClient<Se
         "pagination.offset"?: string;
         "pagination.limit"?: string;
         "pagination.countTotal"?: boolean;
+        "pagination.reverse"?: boolean;
     }, params?: RequestParams) => Promise<HttpResponse<V1Beta1QueryAllBalancesResponse, RpcStatus>>;
     /**
      * No description
@@ -285,6 +296,7 @@ export declare class Api<SecurityDataType extends unknown> extends HttpClient<Se
         "pagination.offset"?: string;
         "pagination.limit"?: string;
         "pagination.countTotal"?: boolean;
+        "pagination.reverse"?: boolean;
     }, params?: RequestParams) => Promise<HttpResponse<V1Beta1QueryDenomsMetadataResponse, RpcStatus>>;
     /**
      * No description
@@ -312,7 +324,13 @@ export declare class Api<SecurityDataType extends unknown> extends HttpClient<Se
      * @summary TotalSupply queries the total supply of all coins.
      * @request GET:/cosmos/bank/v1beta1/supply
      */
-    queryTotalSupply: (params?: RequestParams) => Promise<HttpResponse<V1Beta1QueryTotalSupplyResponse, RpcStatus>>;
+    queryTotalSupply: (query?: {
+        "pagination.key"?: string;
+        "pagination.offset"?: string;
+        "pagination.limit"?: string;
+        "pagination.countTotal"?: boolean;
+        "pagination.reverse"?: boolean;
+    }, params?: RequestParams) => Promise<HttpResponse<V1Beta1QueryTotalSupplyResponse, RpcStatus>>;
     /**
      * No description
      *

@@ -40,12 +40,17 @@ const QueryAllBalancesResponse$json = const {
 
 const QueryTotalSupplyRequest$json = const {
   '1': 'QueryTotalSupplyRequest',
+  '2': const [
+    const {'1': 'pagination', '3': 1, '4': 1, '5': 11, '6': '.cosmos.base.query.v1beta1.PageRequest', '10': 'pagination'},
+  ],
+  '7': const {},
 };
 
 const QueryTotalSupplyResponse$json = const {
   '1': 'QueryTotalSupplyResponse',
   '2': const [
     const {'1': 'supply', '3': 1, '4': 3, '5': 11, '6': '.cosmos.base.v1beta1.Coin', '8': const {}, '10': 'supply'},
+    const {'1': 'pagination', '3': 2, '4': 1, '5': 11, '6': '.cosmos.base.query.v1beta1.PageResponse', '10': 'pagination'},
   ],
 };
 

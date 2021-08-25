@@ -266,3 +266,44 @@ class PeriodicVestingAccount extends $pb.GeneratedMessage {
   $core.List<Period> get vestingPeriods => $_getList(2);
 }
 
+class PermanentLockedAccount extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PermanentLockedAccount', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.vesting.v1beta1'), createEmptyInstance: create)
+    ..aOM<BaseVestingAccount>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'baseVestingAccount', subBuilder: BaseVestingAccount.create)
+    ..hasRequiredFields = false
+  ;
+
+  PermanentLockedAccount._() : super();
+  factory PermanentLockedAccount() => create();
+  factory PermanentLockedAccount.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PermanentLockedAccount.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  PermanentLockedAccount clone() => PermanentLockedAccount()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  PermanentLockedAccount copyWith(void Function(PermanentLockedAccount) updates) => super.copyWith((message) => updates(message as PermanentLockedAccount)); // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static PermanentLockedAccount create() => PermanentLockedAccount._();
+  PermanentLockedAccount createEmptyInstance() => create();
+  static $pb.PbList<PermanentLockedAccount> createRepeated() => $pb.PbList<PermanentLockedAccount>();
+  @$core.pragma('dart2js:noInline')
+  static PermanentLockedAccount getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PermanentLockedAccount>(create);
+  static PermanentLockedAccount _defaultInstance;
+
+  @$pb.TagNumber(1)
+  BaseVestingAccount get baseVestingAccount => $_getN(0);
+  @$pb.TagNumber(1)
+  set baseVestingAccount(BaseVestingAccount v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasBaseVestingAccount() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearBaseVestingAccount() => clearField(1);
+  @$pb.TagNumber(1)
+  BaseVestingAccount ensureBaseVestingAccount() => $_ensure(0);
+}
+

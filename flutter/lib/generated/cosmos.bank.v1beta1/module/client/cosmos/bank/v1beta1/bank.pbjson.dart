@@ -46,7 +46,7 @@ const Supply$json = const {
   '2': const [
     const {'1': 'total', '3': 1, '4': 3, '5': 11, '6': '.cosmos.base.v1beta1.Coin', '8': const {}, '10': 'total'},
   ],
-  '7': const {},
+  '7': const {'3': true},
 };
 
 const DenomUnit$json = const {
@@ -65,6 +65,8 @@ const Metadata$json = const {
     const {'1': 'denom_units', '3': 2, '4': 3, '5': 11, '6': '.cosmos.bank.v1beta1.DenomUnit', '10': 'denomUnits'},
     const {'1': 'base', '3': 3, '4': 1, '5': 9, '10': 'base'},
     const {'1': 'display', '3': 4, '4': 1, '5': 9, '10': 'display'},
+    const {'1': 'name', '3': 5, '4': 1, '5': 9, '10': 'name'},
+    const {'1': 'symbol', '3': 6, '4': 1, '5': 9, '10': 'symbol'},
   ],
 };
 

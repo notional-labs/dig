@@ -16,6 +16,7 @@ class PageRequest extends $pb.GeneratedMessage {
     ..a<$fixnum.Int64>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'offset', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
     ..a<$fixnum.Int64>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'limit', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
     ..aOB(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'countTotal')
+    ..aOB(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'reverse')
     ..hasRequiredFields = false
   ;
 
@@ -77,6 +78,15 @@ class PageRequest extends $pb.GeneratedMessage {
   $core.bool hasCountTotal() => $_has(3);
   @$pb.TagNumber(4)
   void clearCountTotal() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.bool get reverse => $_getBF(4);
+  @$pb.TagNumber(5)
+  set reverse($core.bool v) { $_setBool(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasReverse() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearReverse() => clearField(5);
 }
 
 class PageResponse extends $pb.GeneratedMessage {

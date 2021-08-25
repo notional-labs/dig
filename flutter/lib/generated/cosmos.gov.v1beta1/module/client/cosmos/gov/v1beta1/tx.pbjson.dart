@@ -36,6 +36,20 @@ const MsgVoteResponse$json = const {
   '1': 'MsgVoteResponse',
 };
 
+const MsgVoteWeighted$json = const {
+  '1': 'MsgVoteWeighted',
+  '2': const [
+    const {'1': 'proposal_id', '3': 1, '4': 1, '5': 4, '8': const {}, '10': 'proposalId'},
+    const {'1': 'voter', '3': 2, '4': 1, '5': 9, '10': 'voter'},
+    const {'1': 'options', '3': 3, '4': 3, '5': 11, '6': '.cosmos.gov.v1beta1.WeightedVoteOption', '8': const {}, '10': 'options'},
+  ],
+  '7': const {},
+};
+
+const MsgVoteWeightedResponse$json = const {
+  '1': 'MsgVoteWeightedResponse',
+};
+
 const MsgDeposit$json = const {
   '1': 'MsgDeposit',
   '2': const [

@@ -34,8 +34,19 @@ const ClientUpdateProposal$json = const {
   '2': const [
     const {'1': 'title', '3': 1, '4': 1, '5': 9, '10': 'title'},
     const {'1': 'description', '3': 2, '4': 1, '5': 9, '10': 'description'},
-    const {'1': 'client_id', '3': 3, '4': 1, '5': 9, '8': const {}, '10': 'clientId'},
-    const {'1': 'header', '3': 4, '4': 1, '5': 11, '6': '.google.protobuf.Any', '10': 'header'},
+    const {'1': 'subject_client_id', '3': 3, '4': 1, '5': 9, '8': const {}, '10': 'subjectClientId'},
+    const {'1': 'substitute_client_id', '3': 4, '4': 1, '5': 9, '8': const {}, '10': 'substituteClientId'},
+  ],
+  '7': const {},
+};
+
+const UpgradeProposal$json = const {
+  '1': 'UpgradeProposal',
+  '2': const [
+    const {'1': 'title', '3': 1, '4': 1, '5': 9, '10': 'title'},
+    const {'1': 'description', '3': 2, '4': 1, '5': 9, '10': 'description'},
+    const {'1': 'plan', '3': 3, '4': 1, '5': 11, '6': '.cosmos.upgrade.v1beta1.Plan', '8': const {}, '10': 'plan'},
+    const {'1': 'upgraded_client_state', '3': 4, '4': 1, '5': 11, '6': '.google.protobuf.Any', '8': const {}, '10': 'upgradedClientState'},
   ],
   '7': const {},
 };

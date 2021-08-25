@@ -10,17 +10,17 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../../../cosmos/base/v1beta1/coin.pb.dart' as $6;
-import '../../../core/client/v1/client.pb.dart' as $7;
+import '../../../../cosmos/base/v1beta1/coin.pb.dart' as $8;
+import '../../../core/client/v1/client.pb.dart' as $9;
 
 class MsgTransfer extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgTransfer', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ibc.applications.transfer.v1'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sourcePort')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sourceChannel')
-    ..aOM<$6.Coin>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'token', subBuilder: $6.Coin.create)
+    ..aOM<$8.Coin>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'token', subBuilder: $8.Coin.create)
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sender')
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'receiver')
-    ..aOM<$7.Height>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'timeoutHeight', subBuilder: $7.Height.create)
+    ..aOM<$9.Height>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'timeoutHeight', subBuilder: $9.Height.create)
     ..a<$fixnum.Int64>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'timeoutTimestamp', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
     ..hasRequiredFields = false
   ;
@@ -67,15 +67,15 @@ class MsgTransfer extends $pb.GeneratedMessage {
   void clearSourceChannel() => clearField(2);
 
   @$pb.TagNumber(3)
-  $6.Coin get token => $_getN(2);
+  $8.Coin get token => $_getN(2);
   @$pb.TagNumber(3)
-  set token($6.Coin v) { setField(3, v); }
+  set token($8.Coin v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasToken() => $_has(2);
   @$pb.TagNumber(3)
   void clearToken() => clearField(3);
   @$pb.TagNumber(3)
-  $6.Coin ensureToken() => $_ensure(2);
+  $8.Coin ensureToken() => $_ensure(2);
 
   @$pb.TagNumber(4)
   $core.String get sender => $_getSZ(3);
@@ -96,15 +96,15 @@ class MsgTransfer extends $pb.GeneratedMessage {
   void clearReceiver() => clearField(5);
 
   @$pb.TagNumber(6)
-  $7.Height get timeoutHeight => $_getN(5);
+  $9.Height get timeoutHeight => $_getN(5);
   @$pb.TagNumber(6)
-  set timeoutHeight($7.Height v) { setField(6, v); }
+  set timeoutHeight($9.Height v) { setField(6, v); }
   @$pb.TagNumber(6)
   $core.bool hasTimeoutHeight() => $_has(5);
   @$pb.TagNumber(6)
   void clearTimeoutHeight() => clearField(6);
   @$pb.TagNumber(6)
-  $7.Height ensureTimeoutHeight() => $_ensure(5);
+  $9.Height ensureTimeoutHeight() => $_ensure(5);
 
   @$pb.TagNumber(7)
   $fixnum.Int64 get timeoutTimestamp => $_getI64(6);

@@ -273,7 +273,10 @@ export const QueryAllBalancesResponse = {
 };
 const baseQueryTotalSupplyRequest = {};
 export const QueryTotalSupplyRequest = {
-    encode(_, writer = Writer.create()) {
+    encode(message, writer = Writer.create()) {
+        if (message.pagination !== undefined) {
+            PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
+        }
         return writer;
     },
     decode(input, length) {
@@ -283,6 +286,9 @@ export const QueryTotalSupplyRequest = {
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
+                case 1:
+                    message.pagination = PageRequest.decode(reader, reader.uint32());
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -290,16 +296,29 @@ export const QueryTotalSupplyRequest = {
         }
         return message;
     },
-    fromJSON(_) {
+    fromJSON(object) {
         const message = { ...baseQueryTotalSupplyRequest };
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageRequest.fromJSON(object.pagination);
+        }
+        else {
+            message.pagination = undefined;
+        }
         return message;
     },
-    toJSON(_) {
+    toJSON(message) {
         const obj = {};
+        message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
         return obj;
     },
-    fromPartial(_) {
+    fromPartial(object) {
         const message = { ...baseQueryTotalSupplyRequest };
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageRequest.fromPartial(object.pagination);
+        }
+        else {
+            message.pagination = undefined;
+        }
         return message;
     }
 };
@@ -308,6 +327,9 @@ export const QueryTotalSupplyResponse = {
     encode(message, writer = Writer.create()) {
         for (const v of message.supply) {
             Coin.encode(v, writer.uint32(10).fork()).ldelim();
+        }
+        if (message.pagination !== undefined) {
+            PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
         }
         return writer;
     },
@@ -321,6 +343,9 @@ export const QueryTotalSupplyResponse = {
             switch (tag >>> 3) {
                 case 1:
                     message.supply.push(Coin.decode(reader, reader.uint32()));
+                    break;
+                case 2:
+                    message.pagination = PageResponse.decode(reader, reader.uint32());
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -337,6 +362,12 @@ export const QueryTotalSupplyResponse = {
                 message.supply.push(Coin.fromJSON(e));
             }
         }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageResponse.fromJSON(object.pagination);
+        }
+        else {
+            message.pagination = undefined;
+        }
         return message;
     },
     toJSON(message) {
@@ -347,6 +378,7 @@ export const QueryTotalSupplyResponse = {
         else {
             obj.supply = [];
         }
+        message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
         return obj;
     },
     fromPartial(object) {
@@ -356,6 +388,12 @@ export const QueryTotalSupplyResponse = {
             for (const e of object.supply) {
                 message.supply.push(Coin.fromPartial(e));
             }
+        }
+        if (object.pagination !== undefined && object.pagination !== null) {
+            message.pagination = PageResponse.fromPartial(object.pagination);
+        }
+        else {
+            message.pagination = undefined;
         }
         return message;
     }

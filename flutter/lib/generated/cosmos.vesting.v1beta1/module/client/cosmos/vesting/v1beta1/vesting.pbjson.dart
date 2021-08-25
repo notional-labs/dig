@@ -53,3 +53,11 @@ const PeriodicVestingAccount$json = const {
   '7': const {},
 };
 
+const PermanentLockedAccount$json = const {
+  '1': 'PermanentLockedAccount',
+  '2': const [
+    const {'1': 'base_vesting_account', '3': 1, '4': 1, '5': 11, '6': '.cosmos.vesting.v1beta1.BaseVestingAccount', '8': const {}, '10': 'baseVestingAccount'},
+  ],
+  '7': const {},
+};
+

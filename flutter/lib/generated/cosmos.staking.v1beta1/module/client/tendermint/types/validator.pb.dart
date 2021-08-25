@@ -10,7 +10,7 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../crypto/keys.pb.dart' as $2;
+import '../crypto/keys.pb.dart' as $3;
 
 class ValidatorSet extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ValidatorSet', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'tendermint.types'), createEmptyInstance: create)
@@ -70,7 +70,7 @@ class ValidatorSet extends $pb.GeneratedMessage {
 class Validator extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Validator', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'tendermint.types'), createEmptyInstance: create)
     ..a<$core.List<$core.int>>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'address', $pb.PbFieldType.OY)
-    ..aOM<$2.PublicKey>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pubKey', subBuilder: $2.PublicKey.create)
+    ..aOM<$3.PublicKey>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pubKey', subBuilder: $3.PublicKey.create)
     ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'votingPower')
     ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'proposerPriority')
     ..hasRequiredFields = false
@@ -109,15 +109,15 @@ class Validator extends $pb.GeneratedMessage {
   void clearAddress() => clearField(1);
 
   @$pb.TagNumber(2)
-  $2.PublicKey get pubKey => $_getN(1);
+  $3.PublicKey get pubKey => $_getN(1);
   @$pb.TagNumber(2)
-  set pubKey($2.PublicKey v) { setField(2, v); }
+  set pubKey($3.PublicKey v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasPubKey() => $_has(1);
   @$pb.TagNumber(2)
   void clearPubKey() => clearField(2);
   @$pb.TagNumber(2)
-  $2.PublicKey ensurePubKey() => $_ensure(1);
+  $3.PublicKey ensurePubKey() => $_ensure(1);
 
   @$pb.TagNumber(3)
   $fixnum.Int64 get votingPower => $_getI64(2);
@@ -140,7 +140,7 @@ class Validator extends $pb.GeneratedMessage {
 
 class SimpleValidator extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SimpleValidator', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'tendermint.types'), createEmptyInstance: create)
-    ..aOM<$2.PublicKey>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pubKey', subBuilder: $2.PublicKey.create)
+    ..aOM<$3.PublicKey>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pubKey', subBuilder: $3.PublicKey.create)
     ..aInt64(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'votingPower')
     ..hasRequiredFields = false
   ;
@@ -169,15 +169,15 @@ class SimpleValidator extends $pb.GeneratedMessage {
   static SimpleValidator _defaultInstance;
 
   @$pb.TagNumber(1)
-  $2.PublicKey get pubKey => $_getN(0);
+  $3.PublicKey get pubKey => $_getN(0);
   @$pb.TagNumber(1)
-  set pubKey($2.PublicKey v) { setField(1, v); }
+  set pubKey($3.PublicKey v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasPubKey() => $_has(0);
   @$pb.TagNumber(1)
   void clearPubKey() => clearField(1);
   @$pb.TagNumber(1)
-  $2.PublicKey ensurePubKey() => $_ensure(0);
+  $3.PublicKey ensurePubKey() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $fixnum.Int64 get votingPower => $_getI64(1);

@@ -24,6 +24,12 @@ class MsgClient extends $grpc.Client {
       '/cosmos.gov.v1beta1.Msg/Vote',
       ($1.MsgVote value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.MsgVoteResponse.fromBuffer(value));
+  static final _$voteWeighted =
+      $grpc.ClientMethod<$1.MsgVoteWeighted, $1.MsgVoteWeightedResponse>(
+          '/cosmos.gov.v1beta1.Msg/VoteWeighted',
+          ($1.MsgVoteWeighted value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $1.MsgVoteWeightedResponse.fromBuffer(value));
   static final _$deposit =
       $grpc.ClientMethod<$1.MsgDeposit, $1.MsgDepositResponse>(
           '/cosmos.gov.v1beta1.Msg/Deposit',
@@ -45,6 +51,12 @@ class MsgClient extends $grpc.Client {
   $grpc.ResponseFuture<$1.MsgVoteResponse> vote($1.MsgVote request,
       {$grpc.CallOptions options}) {
     return $createUnaryCall(_$vote, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$1.MsgVoteWeightedResponse> voteWeighted(
+      $1.MsgVoteWeighted request,
+      {$grpc.CallOptions options}) {
+    return $createUnaryCall(_$voteWeighted, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.MsgDepositResponse> deposit($1.MsgDeposit request,
@@ -73,6 +85,15 @@ abstract class MsgServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $1.MsgVote.fromBuffer(value),
         ($1.MsgVoteResponse value) => value.writeToBuffer()));
+    $addMethod(
+        $grpc.ServiceMethod<$1.MsgVoteWeighted, $1.MsgVoteWeightedResponse>(
+            'VoteWeighted',
+            voteWeighted_Pre,
+            false,
+            false,
+            ($core.List<$core.int> value) =>
+                $1.MsgVoteWeighted.fromBuffer(value),
+            ($1.MsgVoteWeightedResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$1.MsgDeposit, $1.MsgDepositResponse>(
         'Deposit',
         deposit_Pre,
@@ -93,6 +114,11 @@ abstract class MsgServiceBase extends $grpc.Service {
     return vote(call, await request);
   }
 
+  $async.Future<$1.MsgVoteWeightedResponse> voteWeighted_Pre(
+      $grpc.ServiceCall call, $async.Future<$1.MsgVoteWeighted> request) async {
+    return voteWeighted(call, await request);
+  }
+
   $async.Future<$1.MsgDepositResponse> deposit_Pre(
       $grpc.ServiceCall call, $async.Future<$1.MsgDeposit> request) async {
     return deposit(call, await request);
@@ -102,6 +128,8 @@ abstract class MsgServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $1.MsgSubmitProposal request);
   $async.Future<$1.MsgVoteResponse> vote(
       $grpc.ServiceCall call, $1.MsgVote request);
+  $async.Future<$1.MsgVoteWeightedResponse> voteWeighted(
+      $grpc.ServiceCall call, $1.MsgVoteWeighted request);
   $async.Future<$1.MsgDepositResponse> deposit(
       $grpc.ServiceCall call, $1.MsgDeposit request);
 }

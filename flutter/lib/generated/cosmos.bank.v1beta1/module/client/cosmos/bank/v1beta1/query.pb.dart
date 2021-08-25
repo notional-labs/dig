@@ -201,6 +201,7 @@ class QueryAllBalancesResponse extends $pb.GeneratedMessage {
 
 class QueryTotalSupplyRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryTotalSupplyRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.bank.v1beta1'), createEmptyInstance: create)
+    ..aOM<$5.PageRequest>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pagination', subBuilder: $5.PageRequest.create)
     ..hasRequiredFields = false
   ;
 
@@ -226,11 +227,23 @@ class QueryTotalSupplyRequest extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static QueryTotalSupplyRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<QueryTotalSupplyRequest>(create);
   static QueryTotalSupplyRequest _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $5.PageRequest get pagination => $_getN(0);
+  @$pb.TagNumber(1)
+  set pagination($5.PageRequest v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasPagination() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearPagination() => clearField(1);
+  @$pb.TagNumber(1)
+  $5.PageRequest ensurePagination() => $_ensure(0);
 }
 
 class QueryTotalSupplyResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryTotalSupplyResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.bank.v1beta1'), createEmptyInstance: create)
     ..pc<$2.Coin>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supply', $pb.PbFieldType.PM, subBuilder: $2.Coin.create)
+    ..aOM<$5.PageResponse>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pagination', subBuilder: $5.PageResponse.create)
     ..hasRequiredFields = false
   ;
 
@@ -259,6 +272,17 @@ class QueryTotalSupplyResponse extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(1)
   $core.List<$2.Coin> get supply => $_getList(0);
+
+  @$pb.TagNumber(2)
+  $5.PageResponse get pagination => $_getN(1);
+  @$pb.TagNumber(2)
+  set pagination($5.PageResponse v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPagination() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPagination() => clearField(2);
+  @$pb.TagNumber(2)
+  $5.PageResponse ensurePagination() => $_ensure(1);
 }
 
 class QuerySupplyOfRequest extends $pb.GeneratedMessage {

@@ -12,6 +12,7 @@ const PageRequest$json = const {
     const {'1': 'offset', '3': 2, '4': 1, '5': 4, '10': 'offset'},
     const {'1': 'limit', '3': 3, '4': 1, '5': 4, '10': 'limit'},
     const {'1': 'count_total', '3': 4, '4': 1, '5': 8, '10': 'countTotal'},
+    const {'1': 'reverse', '3': 5, '4': 1, '5': 8, '10': 'reverse'},
   ],
 };
 

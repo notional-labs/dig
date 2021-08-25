@@ -444,6 +444,58 @@ export const PeriodicVestingAccount = {
         return message;
     }
 };
+const basePermanentLockedAccount = {};
+export const PermanentLockedAccount = {
+    encode(message, writer = Writer.create()) {
+        if (message.baseVestingAccount !== undefined) {
+            BaseVestingAccount.encode(message.baseVestingAccount, writer.uint32(10).fork()).ldelim();
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof Uint8Array ? new Reader(input) : input;
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...basePermanentLockedAccount };
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.baseVestingAccount = BaseVestingAccount.decode(reader, reader.uint32());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        const message = { ...basePermanentLockedAccount };
+        if (object.baseVestingAccount !== undefined && object.baseVestingAccount !== null) {
+            message.baseVestingAccount = BaseVestingAccount.fromJSON(object.baseVestingAccount);
+        }
+        else {
+            message.baseVestingAccount = undefined;
+        }
+        return message;
+    },
+    toJSON(message) {
+        const obj = {};
+        message.baseVestingAccount !== undefined &&
+            (obj.baseVestingAccount = message.baseVestingAccount ? BaseVestingAccount.toJSON(message.baseVestingAccount) : undefined);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = { ...basePermanentLockedAccount };
+        if (object.baseVestingAccount !== undefined && object.baseVestingAccount !== null) {
+            message.baseVestingAccount = BaseVestingAccount.fromPartial(object.baseVestingAccount);
+        }
+        else {
+            message.baseVestingAccount = undefined;
+        }
+        return message;
+    }
+};
 var globalThis = (() => {
     if (typeof globalThis !== 'undefined')
         return globalThis;

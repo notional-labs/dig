@@ -38,6 +38,8 @@ export interface PageRequest {
    * is set.
    */
   countTotal: boolean
+  /** reverse is set to true if results are to be returned in the descending order. */
+  reverse: boolean
 }
 
 /**
@@ -62,7 +64,7 @@ export interface PageResponse {
   total: number
 }
 
-const basePageRequest: object = { offset: 0, limit: 0, countTotal: false }
+const basePageRequest: object = { offset: 0, limit: 0, countTotal: false, reverse: false }
 
 export const PageRequest = {
   encode(message: PageRequest, writer: Writer = Writer.create()): Writer {
@@ -77,6 +79,9 @@ export const PageRequest = {
     }
     if (message.countTotal === true) {
       writer.uint32(32).bool(message.countTotal)
+    }
+    if (message.reverse === true) {
+      writer.uint32(40).bool(message.reverse)
     }
     return writer
   },
@@ -99,6 +104,9 @@ export const PageRequest = {
           break
         case 4:
           message.countTotal = reader.bool()
+          break
+        case 5:
+          message.reverse = reader.bool()
           break
         default:
           reader.skipType(tag & 7)
@@ -128,6 +136,11 @@ export const PageRequest = {
     } else {
       message.countTotal = false
     }
+    if (object.reverse !== undefined && object.reverse !== null) {
+      message.reverse = Boolean(object.reverse)
+    } else {
+      message.reverse = false
+    }
     return message
   },
 
@@ -137,6 +150,7 @@ export const PageRequest = {
     message.offset !== undefined && (obj.offset = message.offset)
     message.limit !== undefined && (obj.limit = message.limit)
     message.countTotal !== undefined && (obj.countTotal = message.countTotal)
+    message.reverse !== undefined && (obj.reverse = message.reverse)
     return obj
   },
 
@@ -161,6 +175,11 @@ export const PageRequest = {
       message.countTotal = object.countTotal
     } else {
       message.countTotal = false
+    }
+    if (object.reverse !== undefined && object.reverse !== null) {
+      message.reverse = object.reverse
+    } else {
+      message.reverse = false
     }
     return message
   }
