@@ -3,7 +3,6 @@ import { ContinuousVestingAccount } from "./module/types/cosmos/vesting/v1beta1/
 import { DelayedVestingAccount } from "./module/types/cosmos/vesting/v1beta1/vesting";
 import { Period } from "./module/types/cosmos/vesting/v1beta1/vesting";
 import { PeriodicVestingAccount } from "./module/types/cosmos/vesting/v1beta1/vesting";
-import { PermanentLockedAccount } from "./module/types/cosmos/vesting/v1beta1/vesting";
-export { BaseVestingAccount, ContinuousVestingAccount, DelayedVestingAccount, Period, PeriodicVestingAccount, PermanentLockedAccount };
+export { BaseVestingAccount, ContinuousVestingAccount, DelayedVestingAccount, Period, PeriodicVestingAccount };
 declare const _default;
 export default _default;

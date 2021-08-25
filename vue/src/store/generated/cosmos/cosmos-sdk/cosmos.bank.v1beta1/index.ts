@@ -2,7 +2,6 @@ import { txClient, queryClient, MissingWalletError } from './module'
 // @ts-ignore
 import { SpVuexError } from '@starport/vuex'
 
-import { SendAuthorization } from "./module/types/cosmos/bank/v1beta1/authz"
 import { Params } from "./module/types/cosmos/bank/v1beta1/bank"
 import { SendEnabled } from "./module/types/cosmos/bank/v1beta1/bank"
 import { Input } from "./module/types/cosmos/bank/v1beta1/bank"
@@ -13,7 +12,7 @@ import { Metadata } from "./module/types/cosmos/bank/v1beta1/bank"
 import { Balance } from "./module/types/cosmos/bank/v1beta1/genesis"
 
 
-export { SendAuthorization, Params, SendEnabled, Input, Output, Supply, DenomUnit, Metadata, Balance };
+export { Params, SendEnabled, Input, Output, Supply, DenomUnit, Metadata, Balance };
 
 async function initTxClient(vuexGetters) {
 	return await txClient(vuexGetters['common/wallet/signer'], {
@@ -60,7 +59,6 @@ const getDefaultState = () => {
 				DenomsMetadata: {},
 				
 				_Structure: {
-						SendAuthorization: getStructure(SendAuthorization.fromPartial({})),
 						Params: getStructure(Params.fromPartial({})),
 						SendEnabled: getStructure(SendEnabled.fromPartial({})),
 						Input: getStructure(Input.fromPartial({})),
@@ -222,13 +220,9 @@ export default {
 		async QueryTotalSupply({ commit, rootGetters, getters }, { options: { subscribe, all} = { subscribe:false, all:false}, params: {...key}, query=null }) {
 			try {
 				const queryClient=await initQueryClient(rootGetters)
-				let value= (await queryClient.queryTotalSupply(query)).data
+				let value= (await queryClient.queryTotalSupply()).data
 				
 					
-				while (all && (<any> value).pagination && (<any> value).pagination.nextKey!=null) {
-					let next_values=(await queryClient.queryTotalSupply({...query, 'pagination.key':(<any> value).pagination.nextKey})).data
-					value = mergeResults(value, next_values);
-				}
 				commit('QUERY', { query: 'TotalSupply', key: { params: {...key}, query}, value })
 				if (subscribe) commit('SUBSCRIBE', { action: 'QueryTotalSupply', payload: { options: { all }, params: {...key},query }})
 				return getters['getTotalSupply']( { params: {...key}, query}) ?? {}

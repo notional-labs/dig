@@ -1,31 +1,16 @@
 accounts:
-  - name: validatron
-    coins: ["200000000dig"]
-  - name: khanh
-    coins: ["10000000dig"]
-  - name: somemoney
-    coins: ["10000000dig"]
+  - name: alice
+    coins: ["20000token", "200000000stake"]
+  - name: bob
+    coins: ["10000token", "100000000stake"]
 validator:
-  name: validatron
-  staked: "100000000dig"
+  name: alice
+  staked: "100000000stake"
 client:
   vuex:
     path: "vue/src/store"
   openapi:
     path: "docs/static/openapi.yml"
-genesis:
-  chain_id: "dig-testnet-1"
-  app_state:
-    staking:
-      params:
-        bond_denom: "dig"
-    mint:
-      params:
-        mint_denom: "dig"
-    gov:
-      deposit_params: 
-        min_deposit:
-          denom: "dig"
-    crisis:
-      constant_fee:
-        denom: "dig"
+faucet:
+  name: bob
+  coins: ["5token", "100000stake"]

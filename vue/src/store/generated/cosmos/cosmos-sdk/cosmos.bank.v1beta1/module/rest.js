@@ -130,7 +130,7 @@ export class HttpClient {
     }
 }
 /**
- * @title cosmos/bank/v1beta1/authz.proto
+ * @title cosmos/bank/v1beta1/bank.proto
  * @version version not set
  */
 export class Api extends HttpClient {
@@ -216,10 +216,9 @@ export class Api extends HttpClient {
          * @summary TotalSupply queries the total supply of all coins.
          * @request GET:/cosmos/bank/v1beta1/supply
          */
-        this.queryTotalSupply = (query, params = {}) => this.request({
+        this.queryTotalSupply = (params = {}) => this.request({
             path: `/cosmos/bank/v1beta1/supply`,
             method: "GET",
-            query: query,
             format: "json",
             ...params,
         });

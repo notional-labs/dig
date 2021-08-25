@@ -2,8 +2,6 @@ import { txClient, queryClient, MissingWalletError } from './module'
 // @ts-ignore
 import { SpVuexError } from '@starport/vuex'
 
-import { StakeAuthorization } from "./module/types/cosmos/staking/v1beta1/authz"
-import { Validators } from "./module/types/cosmos/staking/v1beta1/authz"
 import { LastValidatorPower } from "./module/types/cosmos/staking/v1beta1/genesis"
 import { HistoricalInfo } from "./module/types/cosmos/staking/v1beta1/staking"
 import { CommissionRates } from "./module/types/cosmos/staking/v1beta1/staking"
@@ -27,7 +25,7 @@ import { RedelegationResponse } from "./module/types/cosmos/staking/v1beta1/stak
 import { Pool } from "./module/types/cosmos/staking/v1beta1/staking"
 
 
-export { StakeAuthorization, Validators, LastValidatorPower, HistoricalInfo, CommissionRates, Commission, Description, Validator, ValAddresses, DVPair, DVPairs, DVVTriplet, DVVTriplets, Delegation, UnbondingDelegation, UnbondingDelegationEntry, RedelegationEntry, Redelegation, Params, DelegationResponse, RedelegationEntryResponse, RedelegationResponse, Pool };
+export { LastValidatorPower, HistoricalInfo, CommissionRates, Commission, Description, Validator, ValAddresses, DVPair, DVPairs, DVVTriplet, DVVTriplets, Delegation, UnbondingDelegation, UnbondingDelegationEntry, RedelegationEntry, Redelegation, Params, DelegationResponse, RedelegationEntryResponse, RedelegationResponse, Pool };
 
 async function initTxClient(vuexGetters) {
 	return await txClient(vuexGetters['common/wallet/signer'], {
@@ -81,8 +79,6 @@ const getDefaultState = () => {
 				Params: {},
 				
 				_Structure: {
-						StakeAuthorization: getStructure(StakeAuthorization.fromPartial({})),
-						Validators: getStructure(Validators.fromPartial({})),
 						LastValidatorPower: getStructure(LastValidatorPower.fromPartial({})),
 						HistoricalInfo: getStructure(HistoricalInfo.fromPartial({})),
 						CommissionRates: getStructure(CommissionRates.fromPartial({})),
@@ -567,18 +563,18 @@ export default {
 		},
 		
 		
-		async sendMsgEditValidator({ rootGetters }, { value, fee = [], memo = '' }) {
+		async sendMsgUndelegate({ rootGetters }, { value, fee = [], memo = '' }) {
 			try {
 				const txClient=await initTxClient(rootGetters)
-				const msg = await txClient.msgEditValidator(value)
+				const msg = await txClient.msgUndelegate(value)
 				const result = await txClient.signAndBroadcast([msg], {fee: { amount: fee, 
 	gas: "200000" }, memo})
 				return result
 			} catch (e) {
 				if (e == MissingWalletError) {
-					throw new SpVuexError('TxClient:MsgEditValidator:Init', 'Could not initialize signing client. Wallet is required.')
+					throw new SpVuexError('TxClient:MsgUndelegate:Init', 'Could not initialize signing client. Wallet is required.')
 				}else{
-					throw new SpVuexError('TxClient:MsgEditValidator:Send', 'Could not broadcast Tx: '+ e.message)
+					throw new SpVuexError('TxClient:MsgUndelegate:Send', 'Could not broadcast Tx: '+ e.message)
 				}
 			}
 		},
@@ -627,32 +623,32 @@ export default {
 				}
 			}
 		},
-		async sendMsgUndelegate({ rootGetters }, { value, fee = [], memo = '' }) {
+		async sendMsgEditValidator({ rootGetters }, { value, fee = [], memo = '' }) {
 			try {
 				const txClient=await initTxClient(rootGetters)
-				const msg = await txClient.msgUndelegate(value)
+				const msg = await txClient.msgEditValidator(value)
 				const result = await txClient.signAndBroadcast([msg], {fee: { amount: fee, 
 	gas: "200000" }, memo})
 				return result
 			} catch (e) {
 				if (e == MissingWalletError) {
-					throw new SpVuexError('TxClient:MsgUndelegate:Init', 'Could not initialize signing client. Wallet is required.')
+					throw new SpVuexError('TxClient:MsgEditValidator:Init', 'Could not initialize signing client. Wallet is required.')
 				}else{
-					throw new SpVuexError('TxClient:MsgUndelegate:Send', 'Could not broadcast Tx: '+ e.message)
+					throw new SpVuexError('TxClient:MsgEditValidator:Send', 'Could not broadcast Tx: '+ e.message)
 				}
 			}
 		},
 		
-		async MsgEditValidator({ rootGetters }, { value }) {
+		async MsgUndelegate({ rootGetters }, { value }) {
 			try {
 				const txClient=await initTxClient(rootGetters)
-				const msg = await txClient.msgEditValidator(value)
+				const msg = await txClient.msgUndelegate(value)
 				return msg
 			} catch (e) {
 				if (e == MissingWalletError) {
-					throw new SpVuexError('TxClient:MsgEditValidator:Init', 'Could not initialize signing client. Wallet is required.')
+					throw new SpVuexError('TxClient:MsgUndelegate:Init', 'Could not initialize signing client. Wallet is required.')
 				}else{
-					throw new SpVuexError('TxClient:MsgEditValidator:Create', 'Could not create message: ' + e.message)
+					throw new SpVuexError('TxClient:MsgUndelegate:Create', 'Could not create message: ' + e.message)
 					
 				}
 			}
@@ -699,16 +695,16 @@ export default {
 				}
 			}
 		},
-		async MsgUndelegate({ rootGetters }, { value }) {
+		async MsgEditValidator({ rootGetters }, { value }) {
 			try {
 				const txClient=await initTxClient(rootGetters)
-				const msg = await txClient.msgUndelegate(value)
+				const msg = await txClient.msgEditValidator(value)
 				return msg
 			} catch (e) {
 				if (e == MissingWalletError) {
-					throw new SpVuexError('TxClient:MsgUndelegate:Init', 'Could not initialize signing client. Wallet is required.')
+					throw new SpVuexError('TxClient:MsgEditValidator:Init', 'Could not initialize signing client. Wallet is required.')
 				}else{
-					throw new SpVuexError('TxClient:MsgUndelegate:Create', 'Could not create message: ' + e.message)
+					throw new SpVuexError('TxClient:MsgEditValidator:Create', 'Could not create message: ' + e.message)
 					
 				}
 			}

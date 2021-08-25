@@ -27,9 +27,6 @@ export interface Output {
 /**
  * Supply represents a struct that passively keeps track of the total supply
  * amounts in the network.
- * This message is deprecated now that supply is indexed by denom.
- *
- * @deprecated
  */
 export interface Supply {
     total: Coin[];
@@ -67,13 +64,6 @@ export interface Metadata {
      * displayed in clients.
      */
     display: string;
-    /** name defines the name of the token (eg: Cosmos Atom) */
-    name: string;
-    /**
-     * symbol is the token symbol usually shown on exchanges (eg: ATOM). This can
-     * be the same as the display.
-     */
-    symbol: string;
 }
 export declare const Params: {
     encode(message: Params, writer?: Writer): Writer;
