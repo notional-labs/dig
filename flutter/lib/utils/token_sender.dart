@@ -1,6 +1,6 @@
-import 'package:starport_template/entities/balance.dart';
-import 'package:alan/proto/cosmos/bank/v1beta1/export.dart' as bank;
 import 'package:alan/alan.dart' as alan;
+import 'package:alan/proto/cosmos/bank/v1beta1/export.dart' as bank;
+import 'package:starport_template/entities/balance.dart';
 import 'package:starport_template/starport_app.dart';
 import 'package:transaction_signing_gateway/alan/alan_transaction.dart';
 import 'package:transaction_signing_gateway/gateway/transaction_signing_gateway.dart';
@@ -34,7 +34,8 @@ class TokenSender {
       password: StarportApp.password,
     );
 
-    final signedAlanTransaction = await transactionSigningGateway.signTransaction(
+    final signedAlanTransaction =
+        await transactionSigningGateway.signTransaction(
       transaction: unsignedTransaction,
       walletLookupKey: walletLookupKey,
     );
