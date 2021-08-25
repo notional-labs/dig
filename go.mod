@@ -112,8 +112,20 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
 
+require (
+	filippo.io/edwards25519 v1.0.0-beta.2 // indirect
+	github.com/coinbase/rosetta-sdk-go v0.6.10 // indirect
+	github.com/desertbit/timer v0.0.0-20180107155436-c41aec40b27f // indirect
+	github.com/hdevalence/ed25519consensus v0.0.0-20210204194344-59a8610d2b87 // indirect
+	github.com/improbable-eng/grpc-web v0.14.0 // indirect
+	github.com/klauspost/compress v1.10.3 // indirect
+	nhooyr.io/websocket v1.8.6 // indirect
+)
+
 replace google.golang.org/grpc => google.golang.org/grpc v1.33.2
 
 replace github.com/tendermint/tendermint => github.com/tendermint/tendermint v0.34.12
+
+replace github.com/tendermint/spm => github.com/faddat/spm v0.43.8
 
 replace github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
