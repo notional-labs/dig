@@ -1,3 +1,122 @@
 vue/node_modules
 vue/dist
 secret.yml
+
+# Miscellaneous
+*.class
+*.lock
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Visual Studio Code related
+.classpath
+.project
+.settings/
+.vscode/
+
+# Flutter repo-specific
+flutter/bin/cache/
+flutter/bin/internal/bootstrap.bat
+flutter/bin/internal/bootstrap.sh
+flutter/bin/mingit/
+flutter/dev/benchmarks/mega_gallery/
+flutter/dev/bots/.recipe_deps
+flutter/dev/bots/android_tools/
+flutter/dev/devicelab/ABresults*.json
+flutter/dev/docs/doc/
+flutter/dev/docs/flutter.docs.zip
+flutter/dev/docs/lib/
+flutter/dev/docs/pubspec.yaml
+flutter/dev/integration_tests/**/xcuserdata
+flutter/dev/integration_tests/**/Pods
+flutter/packages/flutter/coverage/
+flutter/version
+flutter/analysis_benchmark.json
+
+# packages file containing multi-root paths
+flutter/.packages.generated
+
+# Flutter/Dart/Pub related
+flutter/**/doc/api/
+flutter/.dart_tool/
+flutter/.flutter-plugins
+flutter/.flutter-plugins-dependencies
+flutter/**/generated_plugin_registrant.dart
+flutter/.packages
+flutter/.pub-cache/
+flutter/.pub/
+flutter/build/
+flutter/flutter_*.png
+flutter/linked_*.ds
+flutter/unlinked.ds
+flutter/unlinked_spec.ds
+
+# Android related
+flutter/**/android/**/gradle-wrapper.jar
+flutter/**/android/.gradle
+flutter/**/android/captures/
+flutter/**/android/gradlew
+flutter/**/android/gradlew.bat
+flutter/**/android/local.properties
+flutter/**/android/**/GeneratedPluginRegistrant.java
+flutter/**/android/key.properties
+flutter/*.jks
+
+# iOS/XCode related
+flutter/**/ios/**/*.mode1v3
+flutter/**/ios/**/*.mode2v3
+flutter/**/ios/**/*.moved-aside
+flutter/**/ios/**/*.pbxuser
+flutter/**/ios/**/*.perspectivev3
+flutter/**/ios/**/*sync/
+flutter/**/ios/**/.sconsign.dblite
+flutter/**/ios/**/.tags*
+flutter/**/ios/**/.vagrant/
+flutter/**/ios/**/DerivedData/
+flutter/**/ios/**/Icon?
+flutter/**/ios/**/Pods/
+flutter/**/ios/**/.symlinks/
+flutter/**/ios/**/profile
+flutter/**/ios/**/xcuserdata
+flutter/**/ios/.generated/
+flutter/**/ios/Flutter/.last_build_id
+flutter/**/ios/Flutter/App.framework
+flutter/**/ios/Flutter/Flutter.framework
+flutter/**/ios/Flutter/Flutter.podspec
+flutter/**/ios/Flutter/Generated.xcconfig
+flutter/**/ios/Flutter/ephemeral
+flutter/**/ios/Flutter/app.flx
+flutter/**/ios/Flutter/app.zip
+flutter/**/ios/Flutter/flutter_assets/
+flutter/**/ios/Flutter/flutter_export_environment.sh
+flutter/**/ios/ServiceDefinitions.json
+flutter/**/ios/Runner/GeneratedPluginRegistrant.*
+
+# macOS
+flutter/**/macos/Flutter/GeneratedPluginRegistrant.swift
+
+# Coverage
+flutter/coverage/
+
+# Symbols
+flutter/app.*.symbols
+
+# Exceptions to above rules.
+flutter/!**/ios/**/default.mode1v3
+flutter/!**/ios/**/default.mode2v3
+flutter/!**/ios/**/default.pbxuser
+flutter/!**/ios/**/default.perspectivev3
+flutter/!/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+flutter/!/dev/ci/**/Gemfile.lock
