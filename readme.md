@@ -153,11 +153,14 @@ We're comitted to transparency in all matters, including the composition of gene
   - [x] big dipper
 - [ ] Mainnet Launch
 - [ ] IBC Integration via Notional and Chandra Station Relayers
-- [ ] Osmosis Integration
-- [ ] Emeris Integration
-- [ ] Sif Integration
-- [ ] Microtick Integration
+  - [ ] Osmosis Integration
+  - [ ] Emeris Integration
+  - [ ] Sif Integration
+  - [ ] Microtick Integration
 - [ ] Announcement of candidate Real Estate development sites and their regulatory requirements
+
+
 - [ ] DFY Integration
 - [ ] Blurt Integration
 - [ ] First update to dig mainnet
+- [ ] First launch of a chain adjacent to dig with live real estate, governed and developed by the chain.
