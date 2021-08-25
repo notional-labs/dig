@@ -111,9 +111,6 @@ export interface V1Beta1PageRequest {
    * is set.
    */
   countTotal?: boolean;
-
-  /** reverse is set to true if results are to be returned in the descending order. */
-  reverse?: boolean;
 }
 
 /**
@@ -598,7 +595,6 @@ validator.
       "pagination.offset"?: string;
       "pagination.limit"?: string;
       "pagination.countTotal"?: boolean;
-      "pagination.reverse"?: boolean;
     },
     params: RequestParams = {},
   ) =>

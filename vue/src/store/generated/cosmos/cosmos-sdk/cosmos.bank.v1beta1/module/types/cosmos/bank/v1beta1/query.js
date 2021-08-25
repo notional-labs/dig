@@ -111,7 +111,8 @@ export const QueryBalanceResponse = {
     },
     toJSON(message) {
         const obj = {};
-        message.balance !== undefined && (obj.balance = message.balance ? Coin.toJSON(message.balance) : undefined);
+        message.balance !== undefined &&
+            (obj.balance = message.balance ? Coin.toJSON(message.balance) : undefined);
         return obj;
     },
     fromPartial(object) {
@@ -139,7 +140,9 @@ export const QueryAllBalancesRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = { ...baseQueryAllBalancesRequest };
+        const message = {
+            ...baseQueryAllBalancesRequest
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -157,7 +160,9 @@ export const QueryAllBalancesRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = { ...baseQueryAllBalancesRequest };
+        const message = {
+            ...baseQueryAllBalancesRequest
+        };
         if (object.address !== undefined && object.address !== null) {
             message.address = String(object.address);
         }
@@ -175,11 +180,16 @@ export const QueryAllBalancesRequest = {
     toJSON(message) {
         const obj = {};
         message.address !== undefined && (obj.address = message.address);
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
+        message.pagination !== undefined &&
+            (obj.pagination = message.pagination
+                ? PageRequest.toJSON(message.pagination)
+                : undefined);
         return obj;
     },
     fromPartial(object) {
-        const message = { ...baseQueryAllBalancesRequest };
+        const message = {
+            ...baseQueryAllBalancesRequest
+        };
         if (object.address !== undefined && object.address !== null) {
             message.address = object.address;
         }
@@ -209,7 +219,9 @@ export const QueryAllBalancesResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = { ...baseQueryAllBalancesResponse };
+        const message = {
+            ...baseQueryAllBalancesResponse
+        };
         message.balances = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -228,7 +240,9 @@ export const QueryAllBalancesResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = { ...baseQueryAllBalancesResponse };
+        const message = {
+            ...baseQueryAllBalancesResponse
+        };
         message.balances = [];
         if (object.balances !== undefined && object.balances !== null) {
             for (const e of object.balances) {
@@ -246,16 +260,21 @@ export const QueryAllBalancesResponse = {
     toJSON(message) {
         const obj = {};
         if (message.balances) {
-            obj.balances = message.balances.map((e) => (e ? Coin.toJSON(e) : undefined));
+            obj.balances = message.balances.map((e) => e ? Coin.toJSON(e) : undefined);
         }
         else {
             obj.balances = [];
         }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
+        message.pagination !== undefined &&
+            (obj.pagination = message.pagination
+                ? PageResponse.toJSON(message.pagination)
+                : undefined);
         return obj;
     },
     fromPartial(object) {
-        const message = { ...baseQueryAllBalancesResponse };
+        const message = {
+            ...baseQueryAllBalancesResponse
+        };
         message.balances = [];
         if (object.balances !== undefined && object.balances !== null) {
             for (const e of object.balances) {
@@ -273,22 +292,18 @@ export const QueryAllBalancesResponse = {
 };
 const baseQueryTotalSupplyRequest = {};
 export const QueryTotalSupplyRequest = {
-    encode(message, writer = Writer.create()) {
-        if (message.pagination !== undefined) {
-            PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
-        }
+    encode(_, writer = Writer.create()) {
         return writer;
     },
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = { ...baseQueryTotalSupplyRequest };
+        const message = {
+            ...baseQueryTotalSupplyRequest
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
-                case 1:
-                    message.pagination = PageRequest.decode(reader, reader.uint32());
-                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -296,29 +311,20 @@ export const QueryTotalSupplyRequest = {
         }
         return message;
     },
-    fromJSON(object) {
-        const message = { ...baseQueryTotalSupplyRequest };
-        if (object.pagination !== undefined && object.pagination !== null) {
-            message.pagination = PageRequest.fromJSON(object.pagination);
-        }
-        else {
-            message.pagination = undefined;
-        }
+    fromJSON(_) {
+        const message = {
+            ...baseQueryTotalSupplyRequest
+        };
         return message;
     },
-    toJSON(message) {
+    toJSON(_) {
         const obj = {};
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
         return obj;
     },
-    fromPartial(object) {
-        const message = { ...baseQueryTotalSupplyRequest };
-        if (object.pagination !== undefined && object.pagination !== null) {
-            message.pagination = PageRequest.fromPartial(object.pagination);
-        }
-        else {
-            message.pagination = undefined;
-        }
+    fromPartial(_) {
+        const message = {
+            ...baseQueryTotalSupplyRequest
+        };
         return message;
     }
 };
@@ -328,24 +334,20 @@ export const QueryTotalSupplyResponse = {
         for (const v of message.supply) {
             Coin.encode(v, writer.uint32(10).fork()).ldelim();
         }
-        if (message.pagination !== undefined) {
-            PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
-        }
         return writer;
     },
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = { ...baseQueryTotalSupplyResponse };
+        const message = {
+            ...baseQueryTotalSupplyResponse
+        };
         message.supply = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
                     message.supply.push(Coin.decode(reader, reader.uint32()));
-                    break;
-                case 2:
-                    message.pagination = PageResponse.decode(reader, reader.uint32());
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -355,18 +357,14 @@ export const QueryTotalSupplyResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = { ...baseQueryTotalSupplyResponse };
+        const message = {
+            ...baseQueryTotalSupplyResponse
+        };
         message.supply = [];
         if (object.supply !== undefined && object.supply !== null) {
             for (const e of object.supply) {
                 message.supply.push(Coin.fromJSON(e));
             }
-        }
-        if (object.pagination !== undefined && object.pagination !== null) {
-            message.pagination = PageResponse.fromJSON(object.pagination);
-        }
-        else {
-            message.pagination = undefined;
         }
         return message;
     },
@@ -378,22 +376,17 @@ export const QueryTotalSupplyResponse = {
         else {
             obj.supply = [];
         }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
         return obj;
     },
     fromPartial(object) {
-        const message = { ...baseQueryTotalSupplyResponse };
+        const message = {
+            ...baseQueryTotalSupplyResponse
+        };
         message.supply = [];
         if (object.supply !== undefined && object.supply !== null) {
             for (const e of object.supply) {
                 message.supply.push(Coin.fromPartial(e));
             }
-        }
-        if (object.pagination !== undefined && object.pagination !== null) {
-            message.pagination = PageResponse.fromPartial(object.pagination);
-        }
-        else {
-            message.pagination = undefined;
         }
         return message;
     }
@@ -486,7 +479,8 @@ export const QuerySupplyOfResponse = {
     },
     toJSON(message) {
         const obj = {};
-        message.amount !== undefined && (obj.amount = message.amount ? Coin.toJSON(message.amount) : undefined);
+        message.amount !== undefined &&
+            (obj.amount = message.amount ? Coin.toJSON(message.amount) : undefined);
         return obj;
     },
     fromPartial(object) {
@@ -569,7 +563,8 @@ export const QueryParamsResponse = {
     },
     toJSON(message) {
         const obj = {};
-        message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
+        message.params !== undefined &&
+            (obj.params = message.params ? Params.toJSON(message.params) : undefined);
         return obj;
     },
     fromPartial(object) {
@@ -594,7 +589,9 @@ export const QueryDenomsMetadataRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = { ...baseQueryDenomsMetadataRequest };
+        const message = {
+            ...baseQueryDenomsMetadataRequest
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -609,7 +606,9 @@ export const QueryDenomsMetadataRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = { ...baseQueryDenomsMetadataRequest };
+        const message = {
+            ...baseQueryDenomsMetadataRequest
+        };
         if (object.pagination !== undefined && object.pagination !== null) {
             message.pagination = PageRequest.fromJSON(object.pagination);
         }
@@ -620,11 +619,16 @@ export const QueryDenomsMetadataRequest = {
     },
     toJSON(message) {
         const obj = {};
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
+        message.pagination !== undefined &&
+            (obj.pagination = message.pagination
+                ? PageRequest.toJSON(message.pagination)
+                : undefined);
         return obj;
     },
     fromPartial(object) {
-        const message = { ...baseQueryDenomsMetadataRequest };
+        const message = {
+            ...baseQueryDenomsMetadataRequest
+        };
         if (object.pagination !== undefined && object.pagination !== null) {
             message.pagination = PageRequest.fromPartial(object.pagination);
         }
@@ -648,7 +652,9 @@ export const QueryDenomsMetadataResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = { ...baseQueryDenomsMetadataResponse };
+        const message = {
+            ...baseQueryDenomsMetadataResponse
+        };
         message.metadatas = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -667,7 +673,9 @@ export const QueryDenomsMetadataResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = { ...baseQueryDenomsMetadataResponse };
+        const message = {
+            ...baseQueryDenomsMetadataResponse
+        };
         message.metadatas = [];
         if (object.metadatas !== undefined && object.metadatas !== null) {
             for (const e of object.metadatas) {
@@ -685,16 +693,21 @@ export const QueryDenomsMetadataResponse = {
     toJSON(message) {
         const obj = {};
         if (message.metadatas) {
-            obj.metadatas = message.metadatas.map((e) => (e ? Metadata.toJSON(e) : undefined));
+            obj.metadatas = message.metadatas.map((e) => e ? Metadata.toJSON(e) : undefined);
         }
         else {
             obj.metadatas = [];
         }
-        message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
+        message.pagination !== undefined &&
+            (obj.pagination = message.pagination
+                ? PageResponse.toJSON(message.pagination)
+                : undefined);
         return obj;
     },
     fromPartial(object) {
-        const message = { ...baseQueryDenomsMetadataResponse };
+        const message = {
+            ...baseQueryDenomsMetadataResponse
+        };
         message.metadatas = [];
         if (object.metadatas !== undefined && object.metadatas !== null) {
             for (const e of object.metadatas) {
@@ -721,7 +734,9 @@ export const QueryDenomMetadataRequest = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = { ...baseQueryDenomMetadataRequest };
+        const message = {
+            ...baseQueryDenomMetadataRequest
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -736,7 +751,9 @@ export const QueryDenomMetadataRequest = {
         return message;
     },
     fromJSON(object) {
-        const message = { ...baseQueryDenomMetadataRequest };
+        const message = {
+            ...baseQueryDenomMetadataRequest
+        };
         if (object.denom !== undefined && object.denom !== null) {
             message.denom = String(object.denom);
         }
@@ -751,7 +768,9 @@ export const QueryDenomMetadataRequest = {
         return obj;
     },
     fromPartial(object) {
-        const message = { ...baseQueryDenomMetadataRequest };
+        const message = {
+            ...baseQueryDenomMetadataRequest
+        };
         if (object.denom !== undefined && object.denom !== null) {
             message.denom = object.denom;
         }
@@ -772,7 +791,9 @@ export const QueryDenomMetadataResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = { ...baseQueryDenomMetadataResponse };
+        const message = {
+            ...baseQueryDenomMetadataResponse
+        };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -787,7 +808,9 @@ export const QueryDenomMetadataResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = { ...baseQueryDenomMetadataResponse };
+        const message = {
+            ...baseQueryDenomMetadataResponse
+        };
         if (object.metadata !== undefined && object.metadata !== null) {
             message.metadata = Metadata.fromJSON(object.metadata);
         }
@@ -798,11 +821,16 @@ export const QueryDenomMetadataResponse = {
     },
     toJSON(message) {
         const obj = {};
-        message.metadata !== undefined && (obj.metadata = message.metadata ? Metadata.toJSON(message.metadata) : undefined);
+        message.metadata !== undefined &&
+            (obj.metadata = message.metadata
+                ? Metadata.toJSON(message.metadata)
+                : undefined);
         return obj;
     },
     fromPartial(object) {
-        const message = { ...baseQueryDenomMetadataResponse };
+        const message = {
+            ...baseQueryDenomMetadataResponse
+        };
         if (object.metadata !== undefined && object.metadata !== null) {
             message.metadata = Metadata.fromPartial(object.metadata);
         }

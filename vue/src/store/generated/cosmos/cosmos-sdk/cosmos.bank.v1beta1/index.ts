@@ -2,7 +2,6 @@ import { txClient, queryClient, MissingWalletError } from './module'
 // @ts-ignore
 import { SpVuexError } from '@starport/vuex'
 
-import { SendAuthorization } from "./module/types/cosmos/bank/v1beta1/authz"
 import { Params } from "./module/types/cosmos/bank/v1beta1/bank"
 import { SendEnabled } from "./module/types/cosmos/bank/v1beta1/bank"
 import { Input } from "./module/types/cosmos/bank/v1beta1/bank"
@@ -13,7 +12,7 @@ import { Metadata } from "./module/types/cosmos/bank/v1beta1/bank"
 import { Balance } from "./module/types/cosmos/bank/v1beta1/genesis"
 
 
-export { SendAuthorization, Params, SendEnabled, Input, Output, Supply, DenomUnit, Metadata, Balance };
+export { Params, SendEnabled, Input, Output, Supply, DenomUnit, Metadata, Balance };
 
 async function initTxClient(vuexGetters) {
 	return await txClient(vuexGetters['common/wallet/signer'], {
@@ -60,7 +59,6 @@ const getDefaultState = () => {
 				DenomsMetadata: {},
 				
 				_Structure: {
-						SendAuthorization: getStructure(SendAuthorization.fromPartial({})),
 						Params: getStructure(Params.fromPartial({})),
 						SendEnabled: getStructure(SendEnabled.fromPartial({})),
 						Input: getStructure(Input.fromPartial({})),
@@ -222,13 +220,9 @@ export default {
 		async QueryTotalSupply({ commit, rootGetters, getters }, { options: { subscribe, all} = { subscribe:false, all:false}, params: {...key}, query=null }) {
 			try {
 				const queryClient=await initQueryClient(rootGetters)
-				let value= (await queryClient.queryTotalSupply(query)).data
+				let value= (await queryClient.queryTotalSupply()).data
 				
 					
-				while (all && (<any> value).pagination && (<any> value).pagination.nextKey!=null) {
-					let next_values=(await queryClient.queryTotalSupply({...query, 'pagination.key':(<any> value).pagination.nextKey})).data
-					value = mergeResults(value, next_values);
-				}
 				commit('QUERY', { query: 'TotalSupply', key: { params: {...key}, query}, value })
 				if (subscribe) commit('SUBSCRIBE', { action: 'QueryTotalSupply', payload: { options: { all }, params: {...key},query }})
 				return getters['getTotalSupply']( { params: {...key}, query}) ?? {}
@@ -327,21 +321,6 @@ export default {
 		},
 		
 		
-		async sendMsgMultiSend({ rootGetters }, { value, fee = [], memo = '' }) {
-			try {
-				const txClient=await initTxClient(rootGetters)
-				const msg = await txClient.msgMultiSend(value)
-				const result = await txClient.signAndBroadcast([msg], {fee: { amount: fee, 
-	gas: "200000" }, memo})
-				return result
-			} catch (e) {
-				if (e == MissingWalletError) {
-					throw new SpVuexError('TxClient:MsgMultiSend:Init', 'Could not initialize signing client. Wallet is required.')
-				}else{
-					throw new SpVuexError('TxClient:MsgMultiSend:Send', 'Could not broadcast Tx: '+ e.message)
-				}
-			}
-		},
 		async sendMsgSend({ rootGetters }, { value, fee = [], memo = '' }) {
 			try {
 				const txClient=await initTxClient(rootGetters)
@@ -357,21 +336,22 @@ export default {
 				}
 			}
 		},
-		
-		async MsgMultiSend({ rootGetters }, { value }) {
+		async sendMsgMultiSend({ rootGetters }, { value, fee = [], memo = '' }) {
 			try {
 				const txClient=await initTxClient(rootGetters)
 				const msg = await txClient.msgMultiSend(value)
-				return msg
+				const result = await txClient.signAndBroadcast([msg], {fee: { amount: fee, 
+	gas: "200000" }, memo})
+				return result
 			} catch (e) {
 				if (e == MissingWalletError) {
 					throw new SpVuexError('TxClient:MsgMultiSend:Init', 'Could not initialize signing client. Wallet is required.')
 				}else{
-					throw new SpVuexError('TxClient:MsgMultiSend:Create', 'Could not create message: ' + e.message)
-					
+					throw new SpVuexError('TxClient:MsgMultiSend:Send', 'Could not broadcast Tx: '+ e.message)
 				}
 			}
 		},
+		
 		async MsgSend({ rootGetters }, { value }) {
 			try {
 				const txClient=await initTxClient(rootGetters)
@@ -382,6 +362,20 @@ export default {
 					throw new SpVuexError('TxClient:MsgSend:Init', 'Could not initialize signing client. Wallet is required.')
 				}else{
 					throw new SpVuexError('TxClient:MsgSend:Create', 'Could not create message: ' + e.message)
+					
+				}
+			}
+		},
+		async MsgMultiSend({ rootGetters }, { value }) {
+			try {
+				const txClient=await initTxClient(rootGetters)
+				const msg = await txClient.msgMultiSend(value)
+				return msg
+			} catch (e) {
+				if (e == MissingWalletError) {
+					throw new SpVuexError('TxClient:MsgMultiSend:Init', 'Could not initialize signing client. Wallet is required.')
+				}else{
+					throw new SpVuexError('TxClient:MsgMultiSend:Create', 'Could not create message: ' + e.message)
 					
 				}
 			}
