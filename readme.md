@@ -163,3 +163,4 @@ We're comitted to transparency in all matters, including the composition of gene
 - [ ] DFY Integration
 - [ ] Blurt Integration
 - [ ] First update to dig mainnet
+- [ ] First launch of a chain adjacent to dig with live real estate, governed and developed by the chain.
