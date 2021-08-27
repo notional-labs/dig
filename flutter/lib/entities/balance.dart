@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:equatable/equatable.dart';
 import 'package:starport_template/entities/amount.dart';
 import 'package:starport_template/entities/denom.dart';

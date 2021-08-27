@@ -16,7 +16,8 @@ class WalletsListPage extends StatefulWidget {
 }
 
 class _WalletsListPageState extends State<WalletsListPage> {
-  List<WalletPublicInfo> get publicInfos => StarportApp.walletsStore.wallets.value;
+  List<WalletPublicInfo> get publicInfos =>
+      StarportApp.walletsStore.wallets.value;
 
   List<WalletInfo> get walletInfos => publicInfos
       .map(
@@ -37,17 +38,18 @@ class _WalletsListPageState extends State<WalletsListPage> {
         title: 'Starport',
       ),
       body: ContentStateSwitcher(
-          emptyChild: const EmptyListMessage(
-            message: "No wallets found. Add one.",
+        emptyChild: const EmptyListMessage(
+          message: "No wallets found. Add one.",
+        ),
+        isEmpty: walletInfos.isEmpty,
+        contentChild: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: CosmosWalletsListView(
+            list: walletInfos,
+            onClicked: (index) => _walletClicked(index),
           ),
-          isEmpty: walletInfos.isEmpty,
-          contentChild: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: CosmosWalletsListView(
-              list: walletInfos,
-              onClicked: (index) => _walletClicked(index),
-            ),
-          )),
+        ),
+      ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => _addWalletClicked(),
         label: const Text("Import a wallet"),
@@ -63,7 +65,8 @@ class _WalletsListPageState extends State<WalletsListPage> {
 
   void _walletClicked(int index) => Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => WalletDetailsPage(walletInfo: walletInfos[index]),
+          builder: (context) =>
+              WalletDetailsPage(walletInfo: walletInfos[index]),
         ),
       );
 }

@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:alan/alan.dart' as alan;
 import 'package:alan/proto/cosmos/bank/v1beta1/export.dart' as bank;
 import 'package:starport_template/entities/balance.dart';
@@ -42,7 +44,9 @@ class TokenSender {
     await signedAlanTransaction.fold<Future?>(
       (fail) => null,
       (signedTransaction) => transactionSigningGateway.broadcastTransaction(
-          walletLookupKey: walletLookupKey, transaction: signedTransaction),
+        walletLookupKey: walletLookupKey,
+        transaction: signedTransaction,
+      ),
     );
   }
 }

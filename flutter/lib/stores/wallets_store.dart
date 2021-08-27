@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:alan/alan.dart' as alan;
 import 'package:mobx/mobx.dart';
 import 'package:starport_template/entities/balance.dart';
@@ -25,15 +27,18 @@ class WalletsStore {
 
   bool get areWalletsLoading => _areWalletsLoading.value;
 
-  set areWalletsLoading(bool val) => Action(() => _areWalletsLoading.value = val)();
+  set areWalletsLoading(bool val) =>
+      Action(() => _areWalletsLoading.value = val)();
 
   bool get isSendMoneyError => _isSendMoneyError.value;
 
-  set isSendMoneyError(bool val) => Action(() => _isSendMoneyError.value = val)();
+  set isSendMoneyError(bool val) =>
+      Action(() => _isSendMoneyError.value = val)();
 
   bool get isSendMoneyLoading => _isSendMoneyLoading.value;
 
-  set isSendMoneyLoading(bool val) => Action(() => _isSendMoneyLoading.value = val)();
+  set isSendMoneyLoading(bool val) =>
+      Action(() => _isSendMoneyLoading.value = val)();
 
   bool get isError => _isError.value;
 
@@ -41,11 +46,13 @@ class WalletsStore {
 
   bool get isBalancesLoading => _isBalancesLoading.value;
 
-  set isBalancesLoading(bool val) => Action(() => _isBalancesLoading.value = val)();
+  set isBalancesLoading(bool val) =>
+      Action(() => _isBalancesLoading.value = val)();
 
   final Observable<List<Balance>> balancesList = Observable([]);
 
-  final Observable<CredentialsStorageFailure?> loadWalletsFailure = Observable(null);
+  final Observable<CredentialsStorageFailure?> loadWalletsFailure =
+      Observable(null);
 
   Observable<List<WalletPublicInfo>> wallets = Observable([]);
 
@@ -62,7 +69,8 @@ class WalletsStore {
     isError = false;
     isBalancesLoading = true;
     try {
-      balancesList.value = await CosmosBalances(baseEnv).getBalances(walletAddress);
+      balancesList.value =
+          await CosmosBalances(baseEnv).getBalances(walletAddress);
     } catch (error) {
       isError = false;
     }

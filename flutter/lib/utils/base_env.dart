@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:alan/alan.dart';
 
 class BaseEnv {
@@ -32,4 +34,5 @@ const lcdPort = String.fromEnvironment('LCD_PORT', defaultValue: '1317');
 const grpcPort = String.fromEnvironment('GRPC_PORT', defaultValue: '9091');
 const lcdUrl = String.fromEnvironment('LCD_URL', defaultValue: 'localhost');
 const grpcUrl = String.fromEnvironment('GRPC_URL', defaultValue: 'localhost');
-const ethUrl = String.fromEnvironment('ETH_URL', defaultValue: 'HTTP://127.0.0.1:7545');
+const ethUrl =
+    String.fromEnvironment('ETH_URL', defaultValue: 'HTTP://127.0.0.1:7545');
