@@ -120,3 +120,8 @@ flutter/!**/ios/**/default.pbxuser
 flutter/!**/ios/**/default.perspectivev3
 flutter/!/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 flutter/!/dev/ci/**/Gemfile.lock
+
+
+# Staking data collection
+airdrop/sdc/node_modules
+airdrop/sdc/.DS_Store

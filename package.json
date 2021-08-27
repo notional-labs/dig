@@ -1,0 +1,28 @@
+{
+  "name": "bs-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/services/bsc_scan.js",
+    "scan": "node src/services/staking_collection.js",
+    "scanerr": "node src/services/staking_collection_err.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/edsolabs/edsolabs-defi/bc-service.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/edsolabs/edsolabs-defi/bc-service/issues"
+  },
+  "homepage": "https://gitlab.com/edsolabs/edsolabs-defi/bc-service#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "csv-parser": "^3.0.0",
+    "csv-writer": "^1.6.0",
+    "web3": "^1.3.4"
+  }
+}
