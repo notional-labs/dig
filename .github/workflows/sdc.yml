@@ -23,5 +23,17 @@ jobs:
         run: | 
           cd airdrop/sdc
           npm i
-          npm run build
 
+      - name: run
+        run: |
+          node src/services/staking_collection.js
+          
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          # Artifact name
+          name: data
+          # A file, directory or wildcard pattern that describes what to upload
+          path: ./*.csv
+          
+          
