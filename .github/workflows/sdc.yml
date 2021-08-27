@@ -29,6 +29,7 @@ jobs:
 
       - name: run
         run: |
+          cd airdrop/sdc
           node src/services/staking_collection.js
           
       - name: Upload a Build Artifact
