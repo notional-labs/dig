@@ -35,5 +35,6 @@ void _buildDependencies() {
       grpcPort: grpcPort,
       ethUrl: ethUrl,
     );
-  StarportApp.walletsStore = WalletsStore(StarportApp.signingGateway, StarportApp.baseEnv);
+  StarportApp.walletsStore =
+      WalletsStore(StarportApp.signingGateway, StarportApp.baseEnv);
 }

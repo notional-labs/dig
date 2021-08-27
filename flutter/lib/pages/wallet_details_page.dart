@@ -13,14 +13,16 @@ import 'package:starport_template/widgets/send_money_sheet.dart';
 class WalletDetailsPage extends StatefulWidget {
   final WalletInfo walletInfo;
 
-  const WalletDetailsPage({Key? key, required this.walletInfo}) : super(key: key);
+  const WalletDetailsPage({Key? key, required this.walletInfo})
+      : super(key: key);
 
   @override
   _WalletDetailsPageState createState() => _WalletDetailsPageState();
 }
 
 class _WalletDetailsPageState extends State<WalletDetailsPage> {
-  Observable<List<Balance>>? get balancesList => StarportApp.walletsStore.balancesList;
+  Observable<List<Balance>>? get balancesList =>
+      StarportApp.walletsStore.balancesList;
 
   bool get isBalancesLoading => StarportApp.walletsStore.isBalancesLoading;
 
@@ -58,8 +60,10 @@ class _WalletDetailsPageState extends State<WalletDetailsPage> {
                             .map(
                               (balance) => BalanceCard(
                                 denomText: balance.denom.text,
-                                amountDisplayText: balance.amount.value.toString(),
-                                onTransferPressed: () => _transferPressed(balance),
+                                amountDisplayText:
+                                    balance.amount.value.toString(),
+                                onTransferPressed: () =>
+                                    _transferPressed(balance),
                               ),
                             )
                             .toList(),

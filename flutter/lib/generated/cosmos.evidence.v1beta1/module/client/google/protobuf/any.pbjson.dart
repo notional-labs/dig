@@ -12,4 +12,3 @@ const Any$json = const {
     const {'1': 'value', '3': 2, '4': 1, '5': 12, '10': 'value'},
   ],
 };
-

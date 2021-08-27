@@ -8,7 +8,15 @@
 const GenesisState$json = const {
   '1': 'GenesisState',
   '2': const [
-    const {'1': 'authorization', '3': 1, '4': 3, '5': 11, '6': '.cosmos.authz.v1beta1.GrantAuthorization', '8': const {}, '10': 'authorization'},
+    const {
+      '1': 'authorization',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.cosmos.authz.v1beta1.GrantAuthorization',
+      '8': const {},
+      '10': 'authorization'
+    },
   ],
 };
 
@@ -17,8 +25,23 @@ const GrantAuthorization$json = const {
   '2': const [
     const {'1': 'granter', '3': 1, '4': 1, '5': 9, '10': 'granter'},
     const {'1': 'grantee', '3': 2, '4': 1, '5': 9, '10': 'grantee'},
-    const {'1': 'authorization', '3': 3, '4': 1, '5': 11, '6': '.google.protobuf.Any', '8': const {}, '10': 'authorization'},
-    const {'1': 'expiration', '3': 4, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': const {}, '10': 'expiration'},
+    const {
+      '1': 'authorization',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Any',
+      '8': const {},
+      '10': 'authorization'
+    },
+    const {
+      '1': 'expiration',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Timestamp',
+      '8': const {},
+      '10': 'expiration'
+    },
   ],
 };
-

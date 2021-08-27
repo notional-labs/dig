@@ -22,14 +22,16 @@ class _PasswordSetupSheetState extends State<PasswordSetupSheet> {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: CosmosAppTheme.spacingM),
+          padding:
+              const EdgeInsets.symmetric(horizontal: CosmosAppTheme.spacingM),
           child: CosmosPasswordField(
             onPasswordUpdated: (value) => setState(() => password = value),
           ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: password == null ? null : () => widget.submitClicked(password!),
+        onPressed:
+            password == null ? null : () => widget.submitClicked(password!),
         child: const Icon(Icons.arrow_forward),
       ),
     );

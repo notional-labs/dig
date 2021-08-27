@@ -8,7 +8,14 @@
 const MsgUnjail$json = const {
   '1': 'MsgUnjail',
   '2': const [
-    const {'1': 'validator_addr', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'validatorAddr'},
+    const {
+      '1': 'validator_addr',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'validatorAddr'
+    },
   ],
   '7': const {},
 };
@@ -16,4 +23,3 @@ const MsgUnjail$json = const {
 const MsgUnjailResponse$json = const {
   '1': 'MsgUnjailResponse',
 };
-

@@ -19,7 +19,14 @@ const ValueOp$json = const {
   '1': 'ValueOp',
   '2': const [
     const {'1': 'key', '3': 1, '4': 1, '5': 12, '10': 'key'},
-    const {'1': 'proof', '3': 2, '4': 1, '5': 11, '6': '.tendermint.crypto.Proof', '10': 'proof'},
+    const {
+      '1': 'proof',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.tendermint.crypto.Proof',
+      '10': 'proof'
+    },
   ],
 };
 
@@ -44,7 +51,14 @@ const ProofOp$json = const {
 const ProofOps$json = const {
   '1': 'ProofOps',
   '2': const [
-    const {'1': 'ops', '3': 1, '4': 3, '5': 11, '6': '.tendermint.crypto.ProofOp', '8': const {}, '10': 'ops'},
+    const {
+      '1': 'ops',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.tendermint.crypto.ProofOp',
+      '8': const {},
+      '10': 'ops'
+    },
   ],
 };
-

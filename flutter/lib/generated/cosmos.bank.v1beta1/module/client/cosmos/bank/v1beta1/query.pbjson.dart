@@ -17,7 +17,14 @@ const QueryBalanceRequest$json = const {
 const QueryBalanceResponse$json = const {
   '1': 'QueryBalanceResponse',
   '2': const [
-    const {'1': 'balance', '3': 1, '4': 1, '5': 11, '6': '.cosmos.base.v1beta1.Coin', '10': 'balance'},
+    const {
+      '1': 'balance',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.cosmos.base.v1beta1.Coin',
+      '10': 'balance'
+    },
   ],
 };
 
@@ -25,7 +32,14 @@ const QueryAllBalancesRequest$json = const {
   '1': 'QueryAllBalancesRequest',
   '2': const [
     const {'1': 'address', '3': 1, '4': 1, '5': 9, '10': 'address'},
-    const {'1': 'pagination', '3': 2, '4': 1, '5': 11, '6': '.cosmos.base.query.v1beta1.PageRequest', '10': 'pagination'},
+    const {
+      '1': 'pagination',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.cosmos.base.query.v1beta1.PageRequest',
+      '10': 'pagination'
+    },
   ],
   '7': const {},
 };
@@ -33,15 +47,37 @@ const QueryAllBalancesRequest$json = const {
 const QueryAllBalancesResponse$json = const {
   '1': 'QueryAllBalancesResponse',
   '2': const [
-    const {'1': 'balances', '3': 1, '4': 3, '5': 11, '6': '.cosmos.base.v1beta1.Coin', '8': const {}, '10': 'balances'},
-    const {'1': 'pagination', '3': 2, '4': 1, '5': 11, '6': '.cosmos.base.query.v1beta1.PageResponse', '10': 'pagination'},
+    const {
+      '1': 'balances',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.cosmos.base.v1beta1.Coin',
+      '8': const {},
+      '10': 'balances'
+    },
+    const {
+      '1': 'pagination',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.cosmos.base.query.v1beta1.PageResponse',
+      '10': 'pagination'
+    },
   ],
 };
 
 const QueryTotalSupplyRequest$json = const {
   '1': 'QueryTotalSupplyRequest',
   '2': const [
-    const {'1': 'pagination', '3': 1, '4': 1, '5': 11, '6': '.cosmos.base.query.v1beta1.PageRequest', '10': 'pagination'},
+    const {
+      '1': 'pagination',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.cosmos.base.query.v1beta1.PageRequest',
+      '10': 'pagination'
+    },
   ],
   '7': const {},
 };
@@ -49,8 +85,23 @@ const QueryTotalSupplyRequest$json = const {
 const QueryTotalSupplyResponse$json = const {
   '1': 'QueryTotalSupplyResponse',
   '2': const [
-    const {'1': 'supply', '3': 1, '4': 3, '5': 11, '6': '.cosmos.base.v1beta1.Coin', '8': const {}, '10': 'supply'},
-    const {'1': 'pagination', '3': 2, '4': 1, '5': 11, '6': '.cosmos.base.query.v1beta1.PageResponse', '10': 'pagination'},
+    const {
+      '1': 'supply',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.cosmos.base.v1beta1.Coin',
+      '8': const {},
+      '10': 'supply'
+    },
+    const {
+      '1': 'pagination',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.cosmos.base.query.v1beta1.PageResponse',
+      '10': 'pagination'
+    },
   ],
 };
 
@@ -64,7 +115,15 @@ const QuerySupplyOfRequest$json = const {
 const QuerySupplyOfResponse$json = const {
   '1': 'QuerySupplyOfResponse',
   '2': const [
-    const {'1': 'amount', '3': 1, '4': 1, '5': 11, '6': '.cosmos.base.v1beta1.Coin', '8': const {}, '10': 'amount'},
+    const {
+      '1': 'amount',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.cosmos.base.v1beta1.Coin',
+      '8': const {},
+      '10': 'amount'
+    },
   ],
 };
 
@@ -75,22 +134,52 @@ const QueryParamsRequest$json = const {
 const QueryParamsResponse$json = const {
   '1': 'QueryParamsResponse',
   '2': const [
-    const {'1': 'params', '3': 1, '4': 1, '5': 11, '6': '.cosmos.bank.v1beta1.Params', '8': const {}, '10': 'params'},
+    const {
+      '1': 'params',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.cosmos.bank.v1beta1.Params',
+      '8': const {},
+      '10': 'params'
+    },
   ],
 };
 
 const QueryDenomsMetadataRequest$json = const {
   '1': 'QueryDenomsMetadataRequest',
   '2': const [
-    const {'1': 'pagination', '3': 1, '4': 1, '5': 11, '6': '.cosmos.base.query.v1beta1.PageRequest', '10': 'pagination'},
+    const {
+      '1': 'pagination',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.cosmos.base.query.v1beta1.PageRequest',
+      '10': 'pagination'
+    },
   ],
 };
 
 const QueryDenomsMetadataResponse$json = const {
   '1': 'QueryDenomsMetadataResponse',
   '2': const [
-    const {'1': 'metadatas', '3': 1, '4': 3, '5': 11, '6': '.cosmos.bank.v1beta1.Metadata', '8': const {}, '10': 'metadatas'},
-    const {'1': 'pagination', '3': 2, '4': 1, '5': 11, '6': '.cosmos.base.query.v1beta1.PageResponse', '10': 'pagination'},
+    const {
+      '1': 'metadatas',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.cosmos.bank.v1beta1.Metadata',
+      '8': const {},
+      '10': 'metadatas'
+    },
+    const {
+      '1': 'pagination',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.cosmos.base.query.v1beta1.PageResponse',
+      '10': 'pagination'
+    },
   ],
 };
 
@@ -104,7 +193,14 @@ const QueryDenomMetadataRequest$json = const {
 const QueryDenomMetadataResponse$json = const {
   '1': 'QueryDenomMetadataResponse',
   '2': const [
-    const {'1': 'metadata', '3': 1, '4': 1, '5': 11, '6': '.cosmos.bank.v1beta1.Metadata', '8': const {}, '10': 'metadata'},
+    const {
+      '1': 'metadata',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.cosmos.bank.v1beta1.Metadata',
+      '8': const {},
+      '10': 'metadata'
+    },
   ],
 };
-

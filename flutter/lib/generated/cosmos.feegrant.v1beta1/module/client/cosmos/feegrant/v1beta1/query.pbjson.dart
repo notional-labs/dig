@@ -16,7 +16,14 @@ const QueryAllowanceRequest$json = const {
 const QueryAllowanceResponse$json = const {
   '1': 'QueryAllowanceResponse',
   '2': const [
-    const {'1': 'allowance', '3': 1, '4': 1, '5': 11, '6': '.cosmos.feegrant.v1beta1.Grant', '10': 'allowance'},
+    const {
+      '1': 'allowance',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.cosmos.feegrant.v1beta1.Grant',
+      '10': 'allowance'
+    },
   ],
 };
 
@@ -24,15 +31,35 @@ const QueryAllowancesRequest$json = const {
   '1': 'QueryAllowancesRequest',
   '2': const [
     const {'1': 'grantee', '3': 1, '4': 1, '5': 9, '10': 'grantee'},
-    const {'1': 'pagination', '3': 2, '4': 1, '5': 11, '6': '.cosmos.base.query.v1beta1.PageRequest', '10': 'pagination'},
+    const {
+      '1': 'pagination',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.cosmos.base.query.v1beta1.PageRequest',
+      '10': 'pagination'
+    },
   ],
 };
 
 const QueryAllowancesResponse$json = const {
   '1': 'QueryAllowancesResponse',
   '2': const [
-    const {'1': 'allowances', '3': 1, '4': 3, '5': 11, '6': '.cosmos.feegrant.v1beta1.Grant', '10': 'allowances'},
-    const {'1': 'pagination', '3': 2, '4': 1, '5': 11, '6': '.cosmos.base.query.v1beta1.PageResponse', '10': 'pagination'},
+    const {
+      '1': 'allowances',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.cosmos.feegrant.v1beta1.Grant',
+      '10': 'allowances'
+    },
+    const {
+      '1': 'pagination',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.cosmos.base.query.v1beta1.PageResponse',
+      '10': 'pagination'
+    },
   ],
 };
-

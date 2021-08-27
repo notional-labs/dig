@@ -8,7 +8,14 @@
 const GenesisState$json = const {
   '1': 'GenesisState',
   '2': const [
-    const {'1': 'constant_fee', '3': 3, '4': 1, '5': 11, '6': '.cosmos.base.v1beta1.Coin', '8': const {}, '10': 'constantFee'},
+    const {
+      '1': 'constant_fee',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.cosmos.base.v1beta1.Coin',
+      '8': const {},
+      '10': 'constantFee'
+    },
   ],
 };
-

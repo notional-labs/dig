@@ -25,7 +25,8 @@ class _MnemonicOnboardingPageState extends State<MnemonicOnboardingPage> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: CosmosAppTheme.spacingM),
+          padding:
+              const EdgeInsets.symmetric(horizontal: CosmosAppTheme.spacingM),
           child: ContentStateSwitcher(
             isEmpty: mnemonic.isEmpty,
             emptyChild: Center(
@@ -62,7 +63,8 @@ class _MnemonicOnboardingPageState extends State<MnemonicOnboardingPage> {
     );
   }
 
-  void _generateMnemonicClicked() => setState(() => mnemonic = generateMnemonic());
+  void _generateMnemonicClicked() =>
+      setState(() => mnemonic = generateMnemonic());
 
   void _proceedClicked() => showModalBottomSheet(
         context: context,
@@ -78,6 +80,7 @@ class _MnemonicOnboardingPageState extends State<MnemonicOnboardingPage> {
     if (!mounted) {
       return;
     }
-    Navigator.of(context).push(MaterialPageRoute(builder: (_) => const WalletsListPage()));
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (_) => const WalletsListPage()));
   }
 }

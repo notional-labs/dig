@@ -26,9 +26,11 @@ class _RoutingPageState extends State<RoutingPage> {
         return;
       }
       if (store.wallets.value.isEmpty) {
-        Navigator.of(context).push(MaterialPageRoute(builder: (_) => const MnemonicOnboardingPage()));
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (_) => const MnemonicOnboardingPage()));
       } else {
-        Navigator.of(context).push(MaterialPageRoute(builder: (_) => const WalletsListPage()));
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (_) => const WalletsListPage()));
       }
     }
   }
