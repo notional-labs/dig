@@ -32,6 +32,18 @@ jobs:
           cd airdrop/sdc
           node src/services/staking_collection.js
           
+      - name: ipfs install
+        run: |
+          wget https://dist.ipfs.io/go-ipfs/v0.9.1/go-ipfs_v0.9.1_linux-amd64.tar.gz
+          tar -xvzf go-ipfs_v0.9.1_linux-amd64.tar.gz
+          cd go-ipfs
+          sudo bash install.sh
+          
+      - name: ipfs cid
+        run: ipfs add airdrop/sdc/collected_data.csv
+          
+
+          
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.2.4
         with:
