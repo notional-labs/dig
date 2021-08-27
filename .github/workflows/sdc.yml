@@ -38,13 +38,13 @@ jobs:
           tar -xvzf go-ipfs_v0.9.1_linux-amd64.tar.gz
           cd go-ipfs
           sudo bash install.sh
+          ipfs init
           
       - name: ipfs cid
         run: ipfs add airdrop/sdc/collected_data.csv
         
       - name: line count
         run: wc -l airdrop/sdc/collected_data.csv
-          
 
           
       - name: Upload a Build Artifact
