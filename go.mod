@@ -3,12 +3,11 @@ module github.com/notional-labs/dig
 go 1.17
 
 require (
-	github.com/cosmos/cosmos-sdk v0.43.0
+	github.com/cosmos/cosmos-sdk v0.43.1-0.20210831170030-0155244d2a10
 	github.com/ethereum/go-ethereum v1.10.8
 	github.com/google/go-cmp v0.5.6 // indirect
 	github.com/gorilla/mux v1.8.0
-	github.com/spf13/cast v1.4.0
-	github.com/tendermint/spm v0.1.4
+	github.com/spf13/cast v1.4.1
 	github.com/tendermint/tendermint v0.34.12
 	github.com/tendermint/tm-db v0.6.4
 	google.golang.org/genproto v0.0.0-20210804223703-f1db76f3300d // indirect
@@ -29,7 +28,7 @@ require (
 	github.com/confio/ics23/go v0.6.6 // indirect
 	github.com/cosmos/go-bip39 v1.0.0 // indirect
 	github.com/cosmos/iavl v0.16.0 // indirect
-	github.com/cosmos/ibc-go v1.0.0
+	github.com/cosmos/ibc-go v1.0.0-beta1
 	github.com/cosmos/ledger-cosmos-go v0.11.1 // indirect
 	github.com/cosmos/ledger-go v0.9.2 // indirect
 	github.com/danieljoos/wincred v1.0.2 // indirect
@@ -79,13 +78,13 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/prometheus/client_golang v1.11.0 // indirect
 	github.com/prometheus/client_model v0.2.0 // indirect
-	github.com/prometheus/common v0.29.0 // indirect
+	github.com/prometheus/common v0.30.0 // indirect
 	github.com/prometheus/procfs v0.6.0 // indirect
 	github.com/rakyll/statik v0.1.7 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20200313005456-10cdbea86bc0 // indirect
 	github.com/regen-network/cosmos-proto v0.3.1 // indirect
 	github.com/rs/cors v1.7.0 // indirect
-	github.com/rs/zerolog v1.23.0 // indirect
+	github.com/rs/zerolog v1.24.0 // indirect
 	github.com/sasha-s/go-deadlock v0.2.1-0.20190427202633-1595213edefa // indirect
 	github.com/spf13/afero v1.6.0 // indirect
 	github.com/spf13/cobra v1.2.1 // indirect
@@ -99,6 +98,7 @@ require (
 	github.com/tendermint/btcd v0.1.1 // indirect
 	github.com/tendermint/crypto v0.0.0-20191022145703-50d29ede1e15 // indirect
 	github.com/tendermint/go-amino v0.16.0 // indirect
+	github.com/tendermint/spm v0.0.0-00010101000000-000000000000
 	github.com/zondax/hid v0.9.0 // indirect
 	go.etcd.io/bbolt v1.3.5 // indirect
 	golang.org/x/crypto v0.0.0-20210322153248-0c34fe9e7dc2 // indirect
@@ -106,7 +106,7 @@ require (
 	golang.org/x/sys v0.0.0-20210816183151-1e6c022a8912 // indirect
 	golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1 // indirect
 	golang.org/x/text v0.3.6 // indirect
-	google.golang.org/grpc v1.39.0 // indirect
+	google.golang.org/grpc v1.40.0 // indirect
 	google.golang.org/protobuf v1.27.1 // indirect
 	gopkg.in/ini.v1 v1.62.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
@@ -116,12 +116,9 @@ require (
 	filippo.io/edwards25519 v1.0.0-beta.2 // indirect
 	github.com/coinbase/rosetta-sdk-go v0.6.10 // indirect
 	github.com/desertbit/timer v0.0.0-20180107155436-c41aec40b27f // indirect
-	github.com/ghodss/yaml v1.0.0 // indirect
-	github.com/golang/glog v0.0.0-20210429001901-424d2337a529 // indirect
-	github.com/grpc-ecosystem/grpc-gateway/v2 v2.5.0 // indirect
 	github.com/hdevalence/ed25519consensus v0.0.0-20210204194344-59a8610d2b87 // indirect
-	github.com/improbable-eng/grpc-web v0.14.0 // indirect
-	github.com/klauspost/compress v1.10.3 // indirect
+	github.com/improbable-eng/grpc-web v0.14.1 // indirect
+	github.com/klauspost/compress v1.11.7 // indirect
 	nhooyr.io/websocket v1.8.6 // indirect
 )
 
