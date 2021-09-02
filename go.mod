@@ -3,7 +3,7 @@ module github.com/notional-labs/dig
 go 1.17
 
 require (
-	github.com/cosmos/cosmos-sdk v0.43.1-0.20210831170030-0155244d2a10
+	github.com/cosmos/cosmos-sdk v0.44.0
 	github.com/ethereum/go-ethereum v1.10.8
 	github.com/google/go-cmp v0.5.6 // indirect
 	github.com/gorilla/mux v1.8.0
