@@ -8,6 +8,7 @@ require (
 	github.com/google/go-cmp v0.5.6 // indirect
 	github.com/gorilla/mux v1.8.0
 	github.com/spf13/cast v1.4.1
+	github.com/tendermint/spm v0.14.0
 	github.com/tendermint/tendermint v0.34.12
 	github.com/tendermint/tm-db v0.6.4
 	google.golang.org/genproto v0.0.0-20210804223703-f1db76f3300d // indirect
@@ -98,7 +99,6 @@ require (
 	github.com/tendermint/btcd v0.1.1 // indirect
 	github.com/tendermint/crypto v0.0.0-20191022145703-50d29ede1e15 // indirect
 	github.com/tendermint/go-amino v0.16.0 // indirect
-	github.com/tendermint/spm v0.0.0-00010101000000-000000000000
 	github.com/zondax/hid v0.9.0 // indirect
 	go.etcd.io/bbolt v1.3.5 // indirect
 	golang.org/x/crypto v0.0.0-20210322153248-0c34fe9e7dc2 // indirect
@@ -124,8 +124,6 @@ require (
 
 replace google.golang.org/grpc => google.golang.org/grpc v1.33.2
 
-replace github.com/tendermint/tendermint => github.com/tendermint/tendermint v0.34.12
-
-replace github.com/tendermint/spm => github.com/faddat/spm v0.43.8
+replace github.com/tendermint/spm => github.com/faddat/spm v0.44.0
 
 replace github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
