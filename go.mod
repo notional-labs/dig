@@ -124,7 +124,7 @@ require (
 
 replace google.golang.org/grpc => google.golang.org/grpc v1.33.2
 
-replace github.com/tendermint/spm => github.com/faddat/spm v0.44.0
+replace github.com/tendermint/spm => github.com/faddat/spm v0.44.1
 
 replace github.com/tendermint/tendermint => github.com/tendermint/tendermint v0.34.12
 
