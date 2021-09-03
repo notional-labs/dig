@@ -30,7 +30,7 @@ jobs:
       - name: run
         run: |
           cd airdrop/sdc
-          node src/services/staking_collection.js
+          node -max-old-space-size=4096 src/services/staking_collection.js
           sort collected_data.csv
           
       - name: ipfs install
