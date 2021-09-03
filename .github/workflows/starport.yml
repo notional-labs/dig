@@ -1,6 +1,6 @@
 # This is a basic workflow that is manually triggered
 
-name: compile dig
+name: Starport
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
@@ -15,7 +15,7 @@ jobs:
       - name: kick tires
         run: |
           curl https://get.starport.network/starport! | bash
-          starport serve
+          starport chain serve
 
 
 
