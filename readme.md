@@ -155,7 +155,8 @@ We're comitted to transparency in all matters, including the composition of gene
 - [ ] IBC Integration via Notional and Chandra Station Relayers
   - [ ] Osmosis Integration
   - [ ] Emeris Integration
-  - [ ] Sif Integration
+  - [x] ~~Sif Integration~~
+    - [x] we really don't like IBC whitelisting.  No sif.
   - [ ] Microtick Integration
 - [ ] Announcement of candidate Real Estate development sites and their regulatory requirements
 
