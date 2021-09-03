@@ -31,3 +31,5 @@ replace github.com/tendermint/spm => github.com/faddat/spm v0.44.1
 replace github.com/tendermint/tendermint => github.com/tendermint/tendermint v0.34.12
 
 replace github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
+
+replace github.com/cosmos/cosmos-sdk => github.com/notional-labs/cosmos-sdk v0.44.1-0.20210903153730-8096d0c5eda8
