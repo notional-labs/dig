@@ -12,7 +12,8 @@ jobs:
   starport:
     runs-on: ubuntu-latest
     steps:
-      - name: kick tires
+      - uses: actions/checkout@v2
+      - name: Starport
         run: |
           curl https://get.starport.network/starport! | bash
           starport chain serve
