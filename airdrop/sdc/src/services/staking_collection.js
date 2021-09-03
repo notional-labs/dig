@@ -1,35 +1,44 @@
+// import general js libs
 const {createObjectCsvWriter} = require('csv-writer');
 const BigNumber = require('bignumber.js');
 const fs = require('fs');
 const csvParser = require('csv-parser');
 
+// Define staking contract ABI
 const abi = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"_toAddress","type":"address"},{"indexed":false,"internalType":"uint256","name":"_reward","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_sid","type":"uint256"}],"name":"Claim","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"_pid","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_apy","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_duration","type":"uint256"}],"name":"NewPool","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"account","type":"address"}],"name":"Paused","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"_staker","type":"address"},{"indexed":false,"internalType":"uint256","name":"_pid","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_sid","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_amount","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_stakeFrom","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_stakeTo","type":"uint256"}],"name":"Stake","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"account","type":"address"}],"name":"Unpaused","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"_pid","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_apy","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_duration","type":"uint256"}],"name":"UpdatePool","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"_toAddress","type":"address"},{"indexed":false,"internalType":"uint256","name":"_sid","type":"uint256"}],"name":"Withdraw","type":"event"},{"inputs":[],"name":"DAY_IN_YEAR","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"DFY","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"SECOND_IN_DAY","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"ZOOM","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"admin","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"claim","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"coldWallet","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"emergencyWithdraw","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"minStakeAmount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_apy","type":"uint256"},{"internalType":"uint256","name":"_duration","type":"uint256"}],"name":"newPool","outputs":[{"internalType":"uint256","name":"_idx","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"numberPools","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"numberStakeTime","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"pause","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"paused","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_staker","type":"address"},{"internalType":"uint256","name":"_sid","type":"uint256"}],"name":"reward","outputs":[{"internalType":"uint256","name":"_reward","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_admin","type":"address"}],"name":"setAdmin","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_pid","type":"uint256"},{"internalType":"uint256","name":"_amount","type":"uint256"}],"name":"stake","outputs":[{"internalType":"uint256","name":"_sid","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"stakingData","outputs":[{"internalType":"uint256","name":"balance","type":"uint256"},{"internalType":"uint256","name":"stakeFrom","type":"uint256"},{"internalType":"uint256","name":"pid","type":"uint256"},{"internalType":"uint256","name":"stakeTo","type":"uint256"},{"internalType":"uint256","name":"apy","type":"uint256"},{"internalType":"enum Staking.StakingStatus","name":"status","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"stakingPools","outputs":[{"internalType":"address","name":"token","type":"address"},{"internalType":"uint256","name":"apy","type":"uint256"},{"internalType":"uint256","name":"duration","type":"uint256"},{"internalType":"enum Staking.PoolStatus","name":"status","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_staker","type":"address"}],"name":"totalReward","outputs":[{"internalType":"uint256","name":"_totalReward","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalVolume","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"unPause","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_pid","type":"uint256"},{"internalType":"uint256","name":"_apy","type":"uint256"},{"internalType":"uint256","name":"_duration","type":"uint256"},{"internalType":"uint256","name":"_status","type":"uint256"}],"name":"updatePool","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"withdraw","outputs":[],"stateMutability":"nonpayable","type":"function"}];
 
+// Import bsc related libraries
 const bscWeb3 = require("../configs/blockchain/web3");
 const {tokenContract} = require("../configs/blockchain/contract");
 const numberOfQueue = bscWeb3.length
 
+// Set output file paths
 const resultData = 'collected_data.csv';
 const errorData = 'errorCollectWallet.csv';
 const pathResult = `./${resultData}`;
 const pathErr = `./${errorData}`;
 
+// define stop and start height
+// start height is always dfy contract initation height
 let blockStart = parseInt(process.env.BLOCK_START);
+
+// stop height is the snapshot height
 let blockStop = parseInt(process.env.BLOCK_END);
 
+// define map variables
 let processedMap = {};
 let processingMap = {};
-
 let errorProcessedMap = [];
 
-
+// writes successful output
 const csvWriter = createObjectCsvWriter({
     path: pathResult,
-    header: [{id: 'wallet', title: 'wallet'}, {id: 'stake', title: 'stake'}, {id: 'balance', title: 'balance'}],
+    header: [{id: 'wallet', title: 'wallet'}, {id: 'balance', title: 'balance'}],
     alwaysQuote: false,
     append: true
 })
 
+// writes error output
 const csvWriterErr = createObjectCsvWriter({
     path: pathErr,
     header: [{id: 'wallet', title: 'wallet'}],
@@ -37,16 +46,19 @@ const csvWriterErr = createObjectCsvWriter({
     append: true
 })
 
-async function writeToResultCSV(wallet_address, staking_amount, balance_amount) {
+
+
+async function writeToResultCSV(wallet_address, balance_amount) {
     if(wallet_address in processedMap) {
         return;
     } else {
-        processedMap[wallet_address] = {balance: balance_amount, stake: staking_amount};
-        let row = [{wallet: wallet_address, stake: staking_amount, balance: balance_amount}]
+        processedMap[wallet_address] = {balance: balance_amount};
+        let row = [{wallet: wallet_address, balance: balance_amount}]
         await csvWriter.writeRecords(row)
     }
 }
 
+// Writes the errors to the csv file for errors
 async function writeToErrorCSV(wallet_address) {
     if(!errorProcessedMap.includes(wallet_address)) {
         return;
@@ -55,6 +67,8 @@ async function writeToErrorCSV(wallet_address) {
     }
 }
 
+
+// reads data after collection
 async function readCollectedData(path) {
     const readline = require("readline");
     if(fs.existsSync(path)) {
@@ -75,6 +89,7 @@ async function readCollectedData(path) {
     }
 }
 
+// write wallets that cannot be fetched to the error file path
 function readErrorData(pathErr) {
     if(fs.existsSync(pathErr)) {
         fs.createReadStream(pathErr)
@@ -148,6 +163,7 @@ async function queryStakeData(pastEvent, stakingContract) {
             // dữ liệu tại thời điểm current block/tức là block cuối cùng
             let stakeData = await stakingContract.methods.stakingData(wallet, sid).call({}, blockStop);
             
+
             if(stakeData.status == 0) {
                 let blockEndData = await bscWeb3[0].eth.getBlock(blockStop); 
                 if(stakeData.stakeTo >= blockEndData.timestamp) {
@@ -168,10 +184,15 @@ async function queryStakeData(pastEvent, stakingContract) {
         // balance tính tới thời điểm current block/tức là block cuối cùng
         let balanceTmp = await tokenContract().methods.balanceOf(wallet).call({}, blockStop);
         balance = balance.plus(new BigNumber(balanceTmp));
+        // ensures that users get all reward fund
         let stakeSum = stakingAmount.plus(rewardAmount);
-        //  stakeSum = stakeSum.multipliedBy(1.5) // nếu muốn nhân 1.5 ở stake_amount
-        console.log("result: " + wallet + " - " + stakeSum.toFixed() + " - " + balance.toFixed());
-        await writeToResultCSV(wallet, stakeSum.toFixed(), balance.toFixed());
+        giftStake = stakeSum.multipliedBy(1.5) // nếu muốn nhân 1.5 ở stake_amount
+        // write to console
+        let digBalance = (giftStake + balance)
+        console.log("result: " + wallet + " - " + digBalance.toFixed());
+        // write to file
+        await writeToResultCSV(wallet, digBalance.toFixed());
+        // if error, write to error file
     } catch (error) {
         console.log(`error ${wallet}\n`);
         console.log(error);
