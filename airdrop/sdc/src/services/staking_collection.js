@@ -47,7 +47,7 @@ const csvWriterErr = createObjectCsvWriter({
 })
 
 
-
+// writeToResultCSV writes new rows to the csv output file
 async function writeToResultCSV(wallet_address, balance_amount) {
     if(wallet_address in processedMap) {
         return;
@@ -204,6 +204,7 @@ async function queryStakeData(pastEvent, stakingContract) {
     }
 }
 
+// handles scanning the chain
 async function scan() {
     await readCollectedData(pathResult);
 
