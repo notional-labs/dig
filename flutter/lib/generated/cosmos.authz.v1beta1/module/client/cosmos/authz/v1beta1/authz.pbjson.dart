@@ -16,23 +16,8 @@ const GenericAuthorization$json = const {
 const Grant$json = const {
   '1': 'Grant',
   '2': const [
-    const {
-      '1': 'authorization',
-      '3': 1,
-      '4': 1,
-      '5': 11,
-      '6': '.google.protobuf.Any',
-      '8': const {},
-      '10': 'authorization'
-    },
-    const {
-      '1': 'expiration',
-      '3': 2,
-      '4': 1,
-      '5': 11,
-      '6': '.google.protobuf.Timestamp',
-      '8': const {},
-      '10': 'expiration'
-    },
+    const {'1': 'authorization', '3': 1, '4': 1, '5': 11, '6': '.google.protobuf.Any', '8': const {}, '10': 'authorization'},
+    const {'1': 'expiration', '3': 2, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': const {}, '10': 'expiration'},
   ],
 };
+

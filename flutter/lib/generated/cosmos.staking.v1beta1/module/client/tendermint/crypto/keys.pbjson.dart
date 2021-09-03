@@ -9,17 +9,11 @@ const PublicKey$json = const {
   '1': 'PublicKey',
   '2': const [
     const {'1': 'ed25519', '3': 1, '4': 1, '5': 12, '9': 0, '10': 'ed25519'},
-    const {
-      '1': 'secp256k1',
-      '3': 2,
-      '4': 1,
-      '5': 12,
-      '9': 0,
-      '10': 'secp256k1'
-    },
+    const {'1': 'secp256k1', '3': 2, '4': 1, '5': 12, '9': 0, '10': 'secp256k1'},
   ],
   '7': const {},
   '8': const [
     const {'1': 'sum'},
   ],
 };
+

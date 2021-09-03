@@ -10,15 +10,7 @@ const MsgGrantAllowance$json = const {
   '2': const [
     const {'1': 'granter', '3': 1, '4': 1, '5': 9, '10': 'granter'},
     const {'1': 'grantee', '3': 2, '4': 1, '5': 9, '10': 'grantee'},
-    const {
-      '1': 'allowance',
-      '3': 3,
-      '4': 1,
-      '5': 11,
-      '6': '.google.protobuf.Any',
-      '8': const {},
-      '10': 'allowance'
-    },
+    const {'1': 'allowance', '3': 3, '4': 1, '5': 11, '6': '.google.protobuf.Any', '8': const {}, '10': 'allowance'},
   ],
 };
 
@@ -37,3 +29,4 @@ const MsgRevokeAllowance$json = const {
 const MsgRevokeAllowanceResponse$json = const {
   '1': 'MsgRevokeAllowanceResponse',
 };
+

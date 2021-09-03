@@ -9,22 +9,8 @@ const MsgVerifyInvariant$json = const {
   '1': 'MsgVerifyInvariant',
   '2': const [
     const {'1': 'sender', '3': 1, '4': 1, '5': 9, '10': 'sender'},
-    const {
-      '1': 'invariant_module_name',
-      '3': 2,
-      '4': 1,
-      '5': 9,
-      '8': const {},
-      '10': 'invariantModuleName'
-    },
-    const {
-      '1': 'invariant_route',
-      '3': 3,
-      '4': 1,
-      '5': 9,
-      '8': const {},
-      '10': 'invariantRoute'
-    },
+    const {'1': 'invariant_module_name', '3': 2, '4': 1, '5': 9, '8': const {}, '10': 'invariantModuleName'},
+    const {'1': 'invariant_route', '3': 3, '4': 1, '5': 9, '8': const {}, '10': 'invariantRoute'},
   ],
   '7': const {},
 };
@@ -32,3 +18,4 @@ const MsgVerifyInvariant$json = const {
 const MsgVerifyInvariantResponse$json = const {
   '1': 'MsgVerifyInvariantResponse',
 };
+

@@ -22,3 +22,4 @@ const EventRevoke$json = const {
     const {'1': 'grantee', '3': 4, '4': 1, '5': 9, '10': 'grantee'},
   ],
 };
+

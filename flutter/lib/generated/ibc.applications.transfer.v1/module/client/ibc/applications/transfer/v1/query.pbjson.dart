@@ -15,51 +15,22 @@ const QueryDenomTraceRequest$json = const {
 const QueryDenomTraceResponse$json = const {
   '1': 'QueryDenomTraceResponse',
   '2': const [
-    const {
-      '1': 'denom_trace',
-      '3': 1,
-      '4': 1,
-      '5': 11,
-      '6': '.ibc.applications.transfer.v1.DenomTrace',
-      '10': 'denomTrace'
-    },
+    const {'1': 'denom_trace', '3': 1, '4': 1, '5': 11, '6': '.ibc.applications.transfer.v1.DenomTrace', '10': 'denomTrace'},
   ],
 };
 
 const QueryDenomTracesRequest$json = const {
   '1': 'QueryDenomTracesRequest',
   '2': const [
-    const {
-      '1': 'pagination',
-      '3': 1,
-      '4': 1,
-      '5': 11,
-      '6': '.cosmos.base.query.v1beta1.PageRequest',
-      '10': 'pagination'
-    },
+    const {'1': 'pagination', '3': 1, '4': 1, '5': 11, '6': '.cosmos.base.query.v1beta1.PageRequest', '10': 'pagination'},
   ],
 };
 
 const QueryDenomTracesResponse$json = const {
   '1': 'QueryDenomTracesResponse',
   '2': const [
-    const {
-      '1': 'denom_traces',
-      '3': 1,
-      '4': 3,
-      '5': 11,
-      '6': '.ibc.applications.transfer.v1.DenomTrace',
-      '8': const {},
-      '10': 'denomTraces'
-    },
-    const {
-      '1': 'pagination',
-      '3': 2,
-      '4': 1,
-      '5': 11,
-      '6': '.cosmos.base.query.v1beta1.PageResponse',
-      '10': 'pagination'
-    },
+    const {'1': 'denom_traces', '3': 1, '4': 3, '5': 11, '6': '.ibc.applications.transfer.v1.DenomTrace', '8': const {}, '10': 'denomTraces'},
+    const {'1': 'pagination', '3': 2, '4': 1, '5': 11, '6': '.cosmos.base.query.v1beta1.PageResponse', '10': 'pagination'},
   ],
 };
 
@@ -70,13 +41,7 @@ const QueryParamsRequest$json = const {
 const QueryParamsResponse$json = const {
   '1': 'QueryParamsResponse',
   '2': const [
-    const {
-      '1': 'params',
-      '3': 1,
-      '4': 1,
-      '5': 11,
-      '6': '.ibc.applications.transfer.v1.Params',
-      '10': 'params'
-    },
+    const {'1': 'params', '3': 1, '4': 1, '5': 11, '6': '.ibc.applications.transfer.v1.Params', '10': 'params'},
   ],
 };
+

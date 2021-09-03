@@ -8,42 +8,10 @@
 const ConsensusParams$json = const {
   '1': 'ConsensusParams',
   '2': const [
-    const {
-      '1': 'block',
-      '3': 1,
-      '4': 1,
-      '5': 11,
-      '6': '.tendermint.types.BlockParams',
-      '8': const {},
-      '10': 'block'
-    },
-    const {
-      '1': 'evidence',
-      '3': 2,
-      '4': 1,
-      '5': 11,
-      '6': '.tendermint.types.EvidenceParams',
-      '8': const {},
-      '10': 'evidence'
-    },
-    const {
-      '1': 'validator',
-      '3': 3,
-      '4': 1,
-      '5': 11,
-      '6': '.tendermint.types.ValidatorParams',
-      '8': const {},
-      '10': 'validator'
-    },
-    const {
-      '1': 'version',
-      '3': 4,
-      '4': 1,
-      '5': 11,
-      '6': '.tendermint.types.VersionParams',
-      '8': const {},
-      '10': 'version'
-    },
+    const {'1': 'block', '3': 1, '4': 1, '5': 11, '6': '.tendermint.types.BlockParams', '8': const {}, '10': 'block'},
+    const {'1': 'evidence', '3': 2, '4': 1, '5': 11, '6': '.tendermint.types.EvidenceParams', '8': const {}, '10': 'evidence'},
+    const {'1': 'validator', '3': 3, '4': 1, '5': 11, '6': '.tendermint.types.ValidatorParams', '8': const {}, '10': 'validator'},
+    const {'1': 'version', '3': 4, '4': 1, '5': 11, '6': '.tendermint.types.VersionParams', '8': const {}, '10': 'version'},
   ],
 };
 
@@ -59,22 +27,8 @@ const BlockParams$json = const {
 const EvidenceParams$json = const {
   '1': 'EvidenceParams',
   '2': const [
-    const {
-      '1': 'max_age_num_blocks',
-      '3': 1,
-      '4': 1,
-      '5': 3,
-      '10': 'maxAgeNumBlocks'
-    },
-    const {
-      '1': 'max_age_duration',
-      '3': 2,
-      '4': 1,
-      '5': 11,
-      '6': '.google.protobuf.Duration',
-      '8': const {},
-      '10': 'maxAgeDuration'
-    },
+    const {'1': 'max_age_num_blocks', '3': 1, '4': 1, '5': 3, '10': 'maxAgeNumBlocks'},
+    const {'1': 'max_age_duration', '3': 2, '4': 1, '5': 11, '6': '.google.protobuf.Duration', '8': const {}, '10': 'maxAgeDuration'},
     const {'1': 'max_bytes', '3': 3, '4': 1, '5': 3, '10': 'maxBytes'},
   ],
 };
@@ -98,13 +52,8 @@ const VersionParams$json = const {
 const HashedParams$json = const {
   '1': 'HashedParams',
   '2': const [
-    const {
-      '1': 'block_max_bytes',
-      '3': 1,
-      '4': 1,
-      '5': 3,
-      '10': 'blockMaxBytes'
-    },
+    const {'1': 'block_max_bytes', '3': 1, '4': 1, '5': 3, '10': 'blockMaxBytes'},
     const {'1': 'block_max_gas', '3': 2, '4': 1, '5': 3, '10': 'blockMaxGas'},
   ],
 };
+

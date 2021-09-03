@@ -18,41 +18,10 @@ const AuthorizationType$json = const {
 const StakeAuthorization$json = const {
   '1': 'StakeAuthorization',
   '2': const [
-    const {
-      '1': 'max_tokens',
-      '3': 1,
-      '4': 1,
-      '5': 11,
-      '6': '.cosmos.base.v1beta1.Coin',
-      '8': const {},
-      '10': 'maxTokens'
-    },
-    const {
-      '1': 'allow_list',
-      '3': 2,
-      '4': 1,
-      '5': 11,
-      '6': '.cosmos.staking.v1beta1.StakeAuthorization.Validators',
-      '9': 0,
-      '10': 'allowList'
-    },
-    const {
-      '1': 'deny_list',
-      '3': 3,
-      '4': 1,
-      '5': 11,
-      '6': '.cosmos.staking.v1beta1.StakeAuthorization.Validators',
-      '9': 0,
-      '10': 'denyList'
-    },
-    const {
-      '1': 'authorization_type',
-      '3': 4,
-      '4': 1,
-      '5': 14,
-      '6': '.cosmos.staking.v1beta1.AuthorizationType',
-      '10': 'authorizationType'
-    },
+    const {'1': 'max_tokens', '3': 1, '4': 1, '5': 11, '6': '.cosmos.base.v1beta1.Coin', '8': const {}, '10': 'maxTokens'},
+    const {'1': 'allow_list', '3': 2, '4': 1, '5': 11, '6': '.cosmos.staking.v1beta1.StakeAuthorization.Validators', '9': 0, '10': 'allowList'},
+    const {'1': 'deny_list', '3': 3, '4': 1, '5': 11, '6': '.cosmos.staking.v1beta1.StakeAuthorization.Validators', '9': 0, '10': 'denyList'},
+    const {'1': 'authorization_type', '3': 4, '4': 1, '5': 14, '6': '.cosmos.staking.v1beta1.AuthorizationType', '10': 'authorizationType'},
   ],
   '3': const [StakeAuthorization_Validators$json],
   '7': const {},
@@ -67,3 +36,4 @@ const StakeAuthorization_Validators$json = const {
     const {'1': 'address', '3': 1, '4': 3, '5': 9, '10': 'address'},
   ],
 };
+

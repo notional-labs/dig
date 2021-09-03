@@ -8,42 +8,10 @@
 const GenesisState$json = const {
   '1': 'GenesisState',
   '2': const [
-    const {
-      '1': 'params',
-      '3': 1,
-      '4': 1,
-      '5': 11,
-      '6': '.cosmos.bank.v1beta1.Params',
-      '8': const {},
-      '10': 'params'
-    },
-    const {
-      '1': 'balances',
-      '3': 2,
-      '4': 3,
-      '5': 11,
-      '6': '.cosmos.bank.v1beta1.Balance',
-      '8': const {},
-      '10': 'balances'
-    },
-    const {
-      '1': 'supply',
-      '3': 3,
-      '4': 3,
-      '5': 11,
-      '6': '.cosmos.base.v1beta1.Coin',
-      '8': const {},
-      '10': 'supply'
-    },
-    const {
-      '1': 'denom_metadata',
-      '3': 4,
-      '4': 3,
-      '5': 11,
-      '6': '.cosmos.bank.v1beta1.Metadata',
-      '8': const {},
-      '10': 'denomMetadata'
-    },
+    const {'1': 'params', '3': 1, '4': 1, '5': 11, '6': '.cosmos.bank.v1beta1.Params', '8': const {}, '10': 'params'},
+    const {'1': 'balances', '3': 2, '4': 3, '5': 11, '6': '.cosmos.bank.v1beta1.Balance', '8': const {}, '10': 'balances'},
+    const {'1': 'supply', '3': 3, '4': 3, '5': 11, '6': '.cosmos.base.v1beta1.Coin', '8': const {}, '10': 'supply'},
+    const {'1': 'denom_metadata', '3': 4, '4': 3, '5': 11, '6': '.cosmos.bank.v1beta1.Metadata', '8': const {}, '10': 'denomMetadata'},
   ],
 };
 
@@ -51,15 +19,8 @@ const Balance$json = const {
   '1': 'Balance',
   '2': const [
     const {'1': 'address', '3': 1, '4': 1, '5': 9, '10': 'address'},
-    const {
-      '1': 'coins',
-      '3': 2,
-      '4': 3,
-      '5': 11,
-      '6': '.cosmos.base.v1beta1.Coin',
-      '8': const {},
-      '10': 'coins'
-    },
+    const {'1': 'coins', '3': 2, '4': 3, '5': 11, '6': '.cosmos.base.v1beta1.Coin', '8': const {}, '10': 'coins'},
   ],
   '7': const {},
 };
+

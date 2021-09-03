@@ -9,24 +9,10 @@ const Equivocation$json = const {
   '1': 'Equivocation',
   '2': const [
     const {'1': 'height', '3': 1, '4': 1, '5': 3, '10': 'height'},
-    const {
-      '1': 'time',
-      '3': 2,
-      '4': 1,
-      '5': 11,
-      '6': '.google.protobuf.Timestamp',
-      '8': const {},
-      '10': 'time'
-    },
+    const {'1': 'time', '3': 2, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '8': const {}, '10': 'time'},
     const {'1': 'power', '3': 3, '4': 1, '5': 3, '10': 'power'},
-    const {
-      '1': 'consensus_address',
-      '3': 4,
-      '4': 1,
-      '5': 9,
-      '8': const {},
-      '10': 'consensusAddress'
-    },
+    const {'1': 'consensus_address', '3': 4, '4': 1, '5': 9, '8': const {}, '10': 'consensusAddress'},
   ],
   '7': const {},
 };
+

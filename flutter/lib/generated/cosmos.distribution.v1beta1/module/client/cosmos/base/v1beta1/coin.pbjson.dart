@@ -9,14 +9,7 @@ const Coin$json = const {
   '1': 'Coin',
   '2': const [
     const {'1': 'denom', '3': 1, '4': 1, '5': 9, '10': 'denom'},
-    const {
-      '1': 'amount',
-      '3': 2,
-      '4': 1,
-      '5': 9,
-      '8': const {},
-      '10': 'amount'
-    },
+    const {'1': 'amount', '3': 2, '4': 1, '5': 9, '8': const {}, '10': 'amount'},
   ],
   '7': const {},
 };
@@ -25,14 +18,7 @@ const DecCoin$json = const {
   '1': 'DecCoin',
   '2': const [
     const {'1': 'denom', '3': 1, '4': 1, '5': 9, '10': 'denom'},
-    const {
-      '1': 'amount',
-      '3': 2,
-      '4': 1,
-      '5': 9,
-      '8': const {},
-      '10': 'amount'
-    },
+    const {'1': 'amount', '3': 2, '4': 1, '5': 9, '8': const {}, '10': 'amount'},
   ],
   '7': const {},
 };
@@ -50,3 +36,4 @@ const DecProto$json = const {
     const {'1': 'dec', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'dec'},
   ],
 };
+

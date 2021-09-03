@@ -8,23 +8,8 @@
 const Params$json = const {
   '1': 'Params',
   '2': const [
-    const {
-      '1': 'send_enabled',
-      '3': 1,
-      '4': 3,
-      '5': 11,
-      '6': '.cosmos.bank.v1beta1.SendEnabled',
-      '8': const {},
-      '10': 'sendEnabled'
-    },
-    const {
-      '1': 'default_send_enabled',
-      '3': 2,
-      '4': 1,
-      '5': 8,
-      '8': const {},
-      '10': 'defaultSendEnabled'
-    },
+    const {'1': 'send_enabled', '3': 1, '4': 3, '5': 11, '6': '.cosmos.bank.v1beta1.SendEnabled', '8': const {}, '10': 'sendEnabled'},
+    const {'1': 'default_send_enabled', '3': 2, '4': 1, '5': 8, '8': const {}, '10': 'defaultSendEnabled'},
   ],
   '7': const {},
 };
@@ -42,15 +27,7 @@ const Input$json = const {
   '1': 'Input',
   '2': const [
     const {'1': 'address', '3': 1, '4': 1, '5': 9, '10': 'address'},
-    const {
-      '1': 'coins',
-      '3': 2,
-      '4': 3,
-      '5': 11,
-      '6': '.cosmos.base.v1beta1.Coin',
-      '8': const {},
-      '10': 'coins'
-    },
+    const {'1': 'coins', '3': 2, '4': 3, '5': 11, '6': '.cosmos.base.v1beta1.Coin', '8': const {}, '10': 'coins'},
   ],
   '7': const {},
 };
@@ -59,15 +36,7 @@ const Output$json = const {
   '1': 'Output',
   '2': const [
     const {'1': 'address', '3': 1, '4': 1, '5': 9, '10': 'address'},
-    const {
-      '1': 'coins',
-      '3': 2,
-      '4': 3,
-      '5': 11,
-      '6': '.cosmos.base.v1beta1.Coin',
-      '8': const {},
-      '10': 'coins'
-    },
+    const {'1': 'coins', '3': 2, '4': 3, '5': 11, '6': '.cosmos.base.v1beta1.Coin', '8': const {}, '10': 'coins'},
   ],
   '7': const {},
 };
@@ -75,15 +44,7 @@ const Output$json = const {
 const Supply$json = const {
   '1': 'Supply',
   '2': const [
-    const {
-      '1': 'total',
-      '3': 1,
-      '4': 3,
-      '5': 11,
-      '6': '.cosmos.base.v1beta1.Coin',
-      '8': const {},
-      '10': 'total'
-    },
+    const {'1': 'total', '3': 1, '4': 3, '5': 11, '6': '.cosmos.base.v1beta1.Coin', '8': const {}, '10': 'total'},
   ],
   '7': const {'3': true},
 };
@@ -101,17 +62,11 @@ const Metadata$json = const {
   '1': 'Metadata',
   '2': const [
     const {'1': 'description', '3': 1, '4': 1, '5': 9, '10': 'description'},
-    const {
-      '1': 'denom_units',
-      '3': 2,
-      '4': 3,
-      '5': 11,
-      '6': '.cosmos.bank.v1beta1.DenomUnit',
-      '10': 'denomUnits'
-    },
+    const {'1': 'denom_units', '3': 2, '4': 3, '5': 11, '6': '.cosmos.bank.v1beta1.DenomUnit', '10': 'denomUnits'},
     const {'1': 'base', '3': 3, '4': 1, '5': 9, '10': 'base'},
     const {'1': 'display', '3': 4, '4': 1, '5': 9, '10': 'display'},
     const {'1': 'name', '3': 5, '4': 1, '5': 9, '10': 'name'},
     const {'1': 'symbol', '3': 6, '4': 1, '5': 9, '10': 'symbol'},
   ],
 };
+

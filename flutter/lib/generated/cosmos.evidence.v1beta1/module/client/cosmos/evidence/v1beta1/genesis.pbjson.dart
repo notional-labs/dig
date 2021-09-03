@@ -8,13 +8,7 @@
 const GenesisState$json = const {
   '1': 'GenesisState',
   '2': const [
-    const {
-      '1': 'evidence',
-      '3': 1,
-      '4': 3,
-      '5': 11,
-      '6': '.google.protobuf.Any',
-      '10': 'evidence'
-    },
+    const {'1': 'evidence', '3': 1, '4': 3, '5': 11, '6': '.google.protobuf.Any', '10': 'evidence'},
   ],
 };
+
