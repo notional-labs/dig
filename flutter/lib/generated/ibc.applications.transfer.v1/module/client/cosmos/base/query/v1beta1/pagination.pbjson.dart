@@ -22,4 +22,3 @@ const PageResponse$json = const {
     const {'1': 'total', '3': 2, '4': 1, '5': 4, '10': 'total'},
   ],
 };
-

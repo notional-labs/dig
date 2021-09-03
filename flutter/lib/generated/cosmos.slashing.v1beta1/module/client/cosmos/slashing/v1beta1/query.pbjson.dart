@@ -12,7 +12,15 @@ const QueryParamsRequest$json = const {
 const QueryParamsResponse$json = const {
   '1': 'QueryParamsResponse',
   '2': const [
-    const {'1': 'params', '3': 1, '4': 1, '5': 11, '6': '.cosmos.slashing.v1beta1.Params', '8': const {}, '10': 'params'},
+    const {
+      '1': 'params',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.cosmos.slashing.v1beta1.Params',
+      '8': const {},
+      '10': 'params'
+    },
   ],
 };
 
@@ -26,22 +34,51 @@ const QuerySigningInfoRequest$json = const {
 const QuerySigningInfoResponse$json = const {
   '1': 'QuerySigningInfoResponse',
   '2': const [
-    const {'1': 'val_signing_info', '3': 1, '4': 1, '5': 11, '6': '.cosmos.slashing.v1beta1.ValidatorSigningInfo', '8': const {}, '10': 'valSigningInfo'},
+    const {
+      '1': 'val_signing_info',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.cosmos.slashing.v1beta1.ValidatorSigningInfo',
+      '8': const {},
+      '10': 'valSigningInfo'
+    },
   ],
 };
 
 const QuerySigningInfosRequest$json = const {
   '1': 'QuerySigningInfosRequest',
   '2': const [
-    const {'1': 'pagination', '3': 1, '4': 1, '5': 11, '6': '.cosmos.base.query.v1beta1.PageRequest', '10': 'pagination'},
+    const {
+      '1': 'pagination',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.cosmos.base.query.v1beta1.PageRequest',
+      '10': 'pagination'
+    },
   ],
 };
 
 const QuerySigningInfosResponse$json = const {
   '1': 'QuerySigningInfosResponse',
   '2': const [
-    const {'1': 'info', '3': 1, '4': 3, '5': 11, '6': '.cosmos.slashing.v1beta1.ValidatorSigningInfo', '8': const {}, '10': 'info'},
-    const {'1': 'pagination', '3': 2, '4': 1, '5': 11, '6': '.cosmos.base.query.v1beta1.PageResponse', '10': 'pagination'},
+    const {
+      '1': 'info',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.cosmos.slashing.v1beta1.ValidatorSigningInfo',
+      '8': const {},
+      '10': 'info'
+    },
+    const {
+      '1': 'pagination',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.cosmos.base.query.v1beta1.PageResponse',
+      '10': 'pagination'
+    },
   ],
 };
-

@@ -26,8 +26,21 @@ const DenomTrace$json = const {
 const Params$json = const {
   '1': 'Params',
   '2': const [
-    const {'1': 'send_enabled', '3': 1, '4': 1, '5': 8, '8': const {}, '10': 'sendEnabled'},
-    const {'1': 'receive_enabled', '3': 2, '4': 1, '5': 8, '8': const {}, '10': 'receiveEnabled'},
+    const {
+      '1': 'send_enabled',
+      '3': 1,
+      '4': 1,
+      '5': 8,
+      '8': const {},
+      '10': 'sendEnabled'
+    },
+    const {
+      '1': 'receive_enabled',
+      '3': 2,
+      '4': 1,
+      '5': 8,
+      '8': const {},
+      '10': 'receiveEnabled'
+    },
   ],
 };
-

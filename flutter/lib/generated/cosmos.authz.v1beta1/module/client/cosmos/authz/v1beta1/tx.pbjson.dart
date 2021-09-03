@@ -10,7 +10,15 @@ const MsgGrant$json = const {
   '2': const [
     const {'1': 'granter', '3': 1, '4': 1, '5': 9, '10': 'granter'},
     const {'1': 'grantee', '3': 2, '4': 1, '5': 9, '10': 'grantee'},
-    const {'1': 'grant', '3': 3, '4': 1, '5': 11, '6': '.cosmos.authz.v1beta1.Grant', '8': const {}, '10': 'grant'},
+    const {
+      '1': 'grant',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.cosmos.authz.v1beta1.Grant',
+      '8': const {},
+      '10': 'grant'
+    },
   ],
 };
 
@@ -25,7 +33,15 @@ const MsgExec$json = const {
   '1': 'MsgExec',
   '2': const [
     const {'1': 'grantee', '3': 1, '4': 1, '5': 9, '10': 'grantee'},
-    const {'1': 'msgs', '3': 2, '4': 3, '5': 11, '6': '.google.protobuf.Any', '8': const {}, '10': 'msgs'},
+    const {
+      '1': 'msgs',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.google.protobuf.Any',
+      '8': const {},
+      '10': 'msgs'
+    },
   ],
 };
 
@@ -45,4 +61,3 @@ const MsgRevoke$json = const {
 const MsgRevokeResponse$json = const {
   '1': 'MsgRevokeResponse',
 };
-

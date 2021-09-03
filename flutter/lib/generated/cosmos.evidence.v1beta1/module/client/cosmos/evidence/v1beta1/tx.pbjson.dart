@@ -9,7 +9,15 @@ const MsgSubmitEvidence$json = const {
   '1': 'MsgSubmitEvidence',
   '2': const [
     const {'1': 'submitter', '3': 1, '4': 1, '5': 9, '10': 'submitter'},
-    const {'1': 'evidence', '3': 2, '4': 1, '5': 11, '6': '.google.protobuf.Any', '8': const {}, '10': 'evidence'},
+    const {
+      '1': 'evidence',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Any',
+      '8': const {},
+      '10': 'evidence'
+    },
   ],
   '7': const {},
 };
@@ -20,4 +28,3 @@ const MsgSubmitEvidenceResponse$json = const {
     const {'1': 'hash', '3': 4, '4': 1, '5': 12, '10': 'hash'},
   ],
 };
-
