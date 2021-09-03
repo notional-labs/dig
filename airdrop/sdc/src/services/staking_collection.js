@@ -187,8 +187,11 @@ async function queryStakeData(pastEvent, stakingContract) {
         // ensures that users get all reward fund
         let stakeSum = stakingAmount.plus(rewardAmount);
         giftStake = stakeSum.multipliedBy(1.5) // nếu muốn nhân 1.5 ở stake_amount
-        // write to console
-        let digBalance = (giftStake + balance)
+        // define temporary dig balance before numerical conversion
+        let digBalanceTmp = (giftStake + balance)
+        //format the number for digBalance correctly
+        digBalance = balance.plus(new BigNumber(digBalanceTmp));
+        // write to log
         console.log("result: " + wallet + " - " + digBalance.toFixed());
         // write to file
         await writeToResultCSV(wallet, digBalance.toFixed());
