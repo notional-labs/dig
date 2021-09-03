@@ -1,0 +1,30 @@
+# This is a basic workflow that is manually triggered
+
+name: Starport
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on: [push, pull_request, workflow_dispatch]
+
+# This workflow makes x86_64 binaries for mac, windows, and linux.
+
+jobs:
+  starport:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v2.1.3
+        with: 
+          go-version: '^1.17'
+
+      - name: Starport
+        run: |
+          curl https://get.starport.network/starport! | bash
+          starport chain serve
+
+
+
+        
+          
+          
+
