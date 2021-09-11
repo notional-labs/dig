@@ -3,7 +3,6 @@
 [![Software Release](https://github.com/notional-labs/dig/actions/workflows/release.yml/badge.svg)](https://github.com/notional-labs/dig/actions/workflows/release.yml)
 [![dig blockchain](https://github.com/notional-labs/dig/actions/workflows/build.yml/badge.svg)](https://github.com/notional-labs/dig/actions/workflows/build.yml)
 [![Android](https://github.com/notional-labs/dig/actions/workflows/flutter.yml/badge.svg)](https://github.com/notional-labs/dig/actions/workflows/flutter.yml)
-[![Genesis](https://github.com/notional-labs/dig/actions/workflows/main.yml/badge.svg)](https://github.com/notional-labs/dig/actions/workflows/main.yml)
 [![Raspberry Pi](https://github.com/notional-labs/dig/actions/workflows/pi.yml/badge.svg)](https://github.com/notional-labs/dig/actions/workflows/pi.yml)
 [![Security Check](https://github.com/notional-labs/dig/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/notional-labs/dig/actions/workflows/codeql-analysis.yml)
 
@@ -145,14 +144,14 @@ We're comitted to transparency in all matters, including the composition of gene
 - [x] Launch testnet-2
 - [x] IPFS-based genesis hosting and download
 - [x] Configuration overrides
-- [ ] Clean airdrop code
-  - [ ] Ionization
+- [x] Clean airdrop code https://github.com/notional-labs/c17 and https://github.com/notional-labs/staking-data-collection
   - [ ] Test airdrop code for ethereum-style addresses using the Osmosis Cosmos SDK fork
   - [ ] Refactor airdrop if this works
 - [ ] Community Security Audit: 0.1% of Dig tokens reserved for community members who provide a detailed, contextual audit
 - [x] Block explorers
   - [x] gex
   - [x] big dipper
+- [ ] Ionization 
 - [ ] Mainnet Launch
 - [ ] IBC Integration via Notional and Chandra Station Relayers
   - [ ] Osmosis Integration
