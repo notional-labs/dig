@@ -9,7 +9,7 @@ require (
 	github.com/gorilla/mux v1.8.0
 	github.com/spf13/cast v1.4.1
 	github.com/tendermint/spm v0.14.0
-	github.com/tendermint/tendermint v0.34.12
+	github.com/tendermint/tendermint v0.34.13
 	github.com/tendermint/tm-db v0.6.4
 	google.golang.org/genproto v0.0.0-20210804223703-f1db76f3300d // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
@@ -29,7 +29,7 @@ require (
 	github.com/confio/ics23/go v0.6.6 // indirect
 	github.com/cosmos/go-bip39 v1.0.0 // indirect
 	github.com/cosmos/iavl v0.16.0 // indirect
-	github.com/cosmos/ibc-go v1.0.0-beta1
+	github.com/cosmos/ibc-go v1.1.0
 	github.com/cosmos/ledger-cosmos-go v0.11.1 // indirect
 	github.com/cosmos/ledger-go v0.9.2 // indirect
 	github.com/danieljoos/wincred v1.0.2 // indirect
@@ -102,8 +102,8 @@ require (
 	github.com/zondax/hid v0.9.0 // indirect
 	go.etcd.io/bbolt v1.3.5 // indirect
 	golang.org/x/crypto v0.0.0-20210322153248-0c34fe9e7dc2 // indirect
-	golang.org/x/net v0.0.0-20210805182204-aaa1db679c0d // indirect
-	golang.org/x/sys v0.0.0-20210816183151-1e6c022a8912 // indirect
+	golang.org/x/net v0.0.0-20210903162142-ad29c8ab022f // indirect
+	golang.org/x/sys v0.0.0-20210903071746-97244b99971b // indirect
 	golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1 // indirect
 	golang.org/x/text v0.3.6 // indirect
 	google.golang.org/grpc v1.40.0 // indirect
@@ -127,8 +127,8 @@ replace google.golang.org/grpc => google.golang.org/grpc v1.33.2
 
 replace github.com/tendermint/spm => github.com/faddat/spm v0.44.1
 
-replace github.com/tendermint/tendermint => github.com/tendermint/tendermint v0.34.12
+replace github.com/tendermint/tendermint => github.com/tendermint/tendermint v0.34.13
 
 replace github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
 
-replace github.com/cosmos/cosmos-sdk => github.com/notional-labs/cosmos-sdk v0.44.1-0.20210903153730-8096d0c5eda8
+replace github.com/cosmos/cosmos-sdk => github.com/notional-labs/cosmos-sdk v0.44.1-0.20210911133231-8cad4b889216
