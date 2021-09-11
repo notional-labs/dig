@@ -12,16 +12,22 @@ We expect to launch mainnet and integrate with dexes shortly after the public te
 **Before this process, you should add your dfy/dig key like thus**
 
 ```bash
-# clone dig source code
+# 1. clone dig source code
 git clone https://github.com/notional-labs/dig
 cd dig
-# install dig
+# 2. install dig
 go install ./...
-# name your node and write configuration to ~/.dig
+# 3. name your node and write configuration to ~/.dig
 digd init moniker
-# put genesis.json in place
+# 
+# IF you get an error that 'digd not found' then your gopath is not setup properly.
+# You can try:
+# export GOPATH=~/go
+# export PATH=$PATH:~/go/bin
+#
+# 4. put genesis.json in place
 cp networks/testnet-3/genesis.json ~/.dig/config
-# define the amount you want to stake
+# 5. define the amount you want to stake
 digd gentx keyname 100000udig --chain-id dig-testnet-3
 #
 cp ~/.dig/config/gentx/* networks/testnet-3/
