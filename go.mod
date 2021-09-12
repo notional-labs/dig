@@ -131,4 +131,4 @@ replace github.com/tendermint/tendermint => github.com/tendermint/tendermint v0.
 
 replace github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
 
-replace github.com/cosmos/cosmos-sdk => github.com/notional-labs/cosmos-sdk v0.44.1-0.20210911133231-8cad4b889216
+replace github.com/cosmos/cosmos-sdk => github.com/notional-labs/cosmos-sdk v0.44.1-0.20210912095359-7cc5ea43a123

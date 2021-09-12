@@ -17,10 +17,11 @@ The dig folder will be overwritten with the new build; the important .dig folder
 
 If you dont have keys created from a previous testnet, please do the following after step 4:
 
+```bash
 # 4.1. Create Validator keys
 digd keys add validator
 # Save the output including the mneumonic seed phrase in a safe place
-
+```
 
 You may not have GCC installed as this was not used in testnet-2, install as follows:
 
@@ -81,6 +82,7 @@ gh pr create
 # Press 'ENTER' for Title and again body
 # Select "Submit" and press 'ENTER'
 ```
+
 ## Note Well Please
 * THIS IS A TESTNET, AND THE STATE OF GENESIS CAN/MAY/WILL CHANGE BEFORE MAINNET
   * For example, we've added 100m to ensure that consensus gets rolling and will take that out for mainnet.
