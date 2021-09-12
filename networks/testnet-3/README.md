@@ -18,7 +18,6 @@ The dig folder will be overwritten with the new build; the important .dig folder
 If you dont have keys created from a previous testnet, please do the following after step 4:
 
 # 4.1. Create Validator keys
-cd /usr/bin
 digd keys add validator
 # Save the output including the mneumonic seed phrase in a safe place
 
