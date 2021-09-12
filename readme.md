@@ -25,35 +25,12 @@ We will need a testnet three becuase we'd like to use sign-mode EIP and that wil
 
 
 
-## Join Testnet
+## [Join Testnet](networks/testnet-3)
 
 #### Validators who haven't put a star on this repo, won't have gentxs accepted for testnet 3.
 
-We are currently on testnet-2 and the master branch reflects that.  Work on testnet-3 is in the branch testnet-3.  Genesis state can be found on ipfs at:
 
-Qme9pLVu3ZDzi5BTapqfHkuvacGT1FizQ3KVpuSyxzbmiN
 
-Linux amd64:
-
-```bash
-wget https://github.com/faddat/dig/releases/download/latest/dig_latest_linux_amd64.tar.gz
-tar xvf dig_latest_linux_amd64.tar.gz
-mv digd /usr/bin
-digd unsafe-reset-all
-wget -O ~/.dig/config/genesis.json https://raw.githubusercontent.com/faddat/dig/master/networks/testnet-2/genesis.json
-digd start --p2p.persistent_peers 1da97dd40866948f65b3aff3d8630b7d76ab20ea@95.217.196.54:2090
-```
-
-```bash
-wget https://github.com/faddat/dig/releases/download/latest/dig_latest_linux_arm64.tar.gz
-tar xvf dig_latest_linux_amd64.tar.gz
-mv digd /usr/bin
-digd unsafe-reset-all
-wget -O ~/.dig/config/genesis.json https://raw.githubusercontent.com/faddat/dig/master/networks/testnet-2/genesis.json
-digd start --p2p.persistent_peers 1da97dd40866948f65b3aff3d8630b7d76ab20ea@95.217.196.54:2090
-```
-
-Bounties, paid in dig, for further documentation.
 
 
 ## Dig is DIFFERENT
