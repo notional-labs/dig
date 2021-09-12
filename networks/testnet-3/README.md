@@ -56,10 +56,10 @@ digd keys list
 digd tendermint show-validator
 #
 # 7. Assign yourself a balance, replace "keyname" with the name of your keys from step 5
-digd add-genesis-account keyname 100000000udig
+digd add-genesis-account {validator dig address from step 6} 100000000udig
 #
 # 8. define the amount you want to stake, replace "keyname" with the name of your keys from step 5
-digd gentx keyname 100000udig --chain-id dig-testnet-3
+digd gentx validator 100000udig --chain-id dig-testnet-3
 # The above may say that filename.json already exists, simply delete this file by replacing the path and file name below:
 rm filepath/filename.json
 # Repeat Step 8 and you should now get an output like:
