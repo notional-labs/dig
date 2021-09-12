@@ -27,10 +27,6 @@ We will need a testnet three becuase we'd like to use sign-mode EIP and that wil
 
 ## [Join Testnet](networks/testnet-3)
 
-#### Validators who haven't put a star on this repo, won't have gentxs accepted for testnet 3.
-
-
-
 
 
 ## Design
