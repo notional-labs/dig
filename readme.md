@@ -55,7 +55,7 @@ Signing the same block twice with the same key is even more heavily punished on 
 If you are using ubuntu, please do not use its native golang package, it is two years old.  Instead:
 
 ```bash
-wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.16.7
+wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.17
 ```
 
 ```bash
