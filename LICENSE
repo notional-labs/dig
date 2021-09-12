@@ -13,7 +13,7 @@ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
-* If you use the code in the `airdrop` folder to create a new blockchain,
+* If you use the code in https://github.com/notional-labs/c17 or https://github.com/notional-labs/staking-data-collection to create a new blockchain,
 1% of its primary/infrastructure/staking token must be donated to the dig
 token holders.
 
