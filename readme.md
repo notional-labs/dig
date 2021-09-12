@@ -33,53 +33,6 @@ We will need a testnet three becuase we'd like to use sign-mode EIP and that wil
 
 
 
-## Dig is DIFFERENT
-
-on a cosmos network, if you go offline while validating, you go to jail and are slashed 1% of delegated stake.
-
-but it doesn't matter if you go offline, not really.  The key thing is to have 2/3rds of total delegated stake online continuously.
-
-You won't be slashed for going offline on dig, but you will go to jail.  Later, dig will check itself like: am I a validator?  am I in jail?
-
-and if dig is in jail it'll unjail itself.  This will involve the use of a less-secure wallet that is kept in the filesystem to be used for this purpose only.  Getting out of jail will be cheap.  
-
-**double signing**
-
-Signing the same block twice with the same key is even more heavily punished on Dig.  We think that you should keep your keys close to your chest.  I am typing this on my validator, by the way.  It's a MacBook.  
-
-
-
-## ~~Genesis Transactions~~
-**Genesis Transactions for Testnet-2 are now closed.  If Testnet-2 functions as desired, there will be no Testnet-3**
-
-If you are using ubuntu, please do not use its native golang package, it is two years old.  Instead:
-
-```bash
-wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.17
-```
-
-```bash
-cd ~/
-git clone https://github.com/faddat/dig
-cd dig
-go mod tidy
-cd cmd/digd
-go install .
-cd ~/
-digd init yourname
-cp dig/networks/testnet-2/genesis.json ~/.dig/config
-# DEAR GOD KEEP YOUR SEED PHRASE.
-digd keys add validator
-digd add-genesis-account validator 1000000000udig
-digd gentx validator 100000000udig --chain-id dig-testnet-2
-cp ~/.dig/config/gentx/* ~/dig/networks/testnet-2/gentx
-cd dig
-git add networks
-git commit -m "gentx yourvalidatormoniker"
-gh auth login
-gh pr create
-```
-
 ## Design
 
 **form**
