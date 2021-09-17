@@ -34,7 +34,7 @@ digd keys add validator_name --recover
 ```bash
 digd init validator_name -o --chain-id dig-testnet-3
 
-wget -O ~/.dig/config/genesis.json https://cloudflare-ipfs.com/ipfs/QmNMQysuxgQw3JWYyTBuHbw7HyRBbb4L7ShrX6GVRvR2ar
+wget -O ~/.dig/config/genesis.json https://raw.githubusercontent.com/notional-labs/dig/master/networks/testnet-3/genesis.json
 
 digd keys show validator_name
 # This will show detail of your account. Keep them in safe place.
