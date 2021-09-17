@@ -6,7 +6,7 @@ Remember, replace "`validator_name`" by your desired name in these following ste
 
 ```bash
 git clone https://github.com/notional-labs/dig
-cd git
+cd dig
 go install ./...
 export PATH=$PATH:~/go/bin
 export GOPATH=~/go
