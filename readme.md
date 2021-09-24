@@ -19,13 +19,10 @@ Here's a little light background reading:
 
 
 ## Status
-Testnet two launched August 15-16.
-
-We will need a testnet three becuase we'd like to use sign-mode EIP and that will require testing.  It will allow ethereum formatted addresses to be used natively on dig.
+We're entering a fourth testnet, which is just for testing mainnet code.  We are bundling the block explorer and wallet with this release. 
 
 
-
-## [Join Testnet](networks/testnet-3)
+## [Join Testnet](networks/testnet-4)
 
 
 
@@ -71,8 +68,8 @@ We're comitted to transparency in all matters, including the composition of gene
 - [x] IPFS-based genesis hosting and download
 - [x] Configuration overrides
 - [x] Clean airdrop code https://github.com/notional-labs/c17 and https://github.com/notional-labs/staking-data-collection
-  - [ ] Test airdrop code for ethereum-style addresses using the Osmosis Cosmos SDK fork
-  - [ ] Refactor airdrop if this works
+  - [x] Test airdrop code for ethereum-style addresses using the Khanh's Cosmos SDK fork
+  - [x] Refactor airdrop if this works
 - [ ] Community Security Audit: 0.1% of Dig tokens reserved for community members who provide a detailed, contextual audit
 - [x] Block explorers
   - [x] gex
@@ -84,8 +81,6 @@ We're comitted to transparency in all matters, including the composition of gene
   - [ ] Emeris Integration
   - [ ] Microtick Integration
 - [ ] Announcement of candidate Real Estate development sites and their regulatory requirements
-
-
 - [ ] DFY Integration
 - [ ] Blurt Integration
 - [ ] First update to dig mainnet
