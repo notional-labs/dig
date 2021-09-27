@@ -41,6 +41,14 @@ digd keys show validator_name
 
 digd start --p2p.persistent_peers d13bb8332dd3b6acdbf5a34c26980e8194b11d7a@95.217.131.55:26656,1a0f4a6ead797ddce80fadf58e0092cbe152c2f8@65.21.74.62:2090
 ```
+If you see this error:
+```bash
+Error: provided algorithm "ethsecp256k1" is not supported
+```
+Maybe your go version is outdated. Reinstall go with:
+```bash
+wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.17
+```
 # For validators
 If you want to check if you are validator or not, run this
 ```
