@@ -1,12 +1,12 @@
 {
   "name": "@starport/template",
-  "version": "0.1.49",
+  "version": "0.1.53",
   "description": "A Vue 3 boilerplate project utilizing @starport/vue and @starport/vuex",
   "author": "Tendermint, Inc <hello@tendermint.com>",
   "private": true,
   "scripts": {
-    "dev": "npm install && vue-cli-service serve",
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --mode=production",
+    "dev": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
     "build": "vue-cli-service build",
     "test": "echo \"Error: run tests from root\" && exit 1"
@@ -15,8 +15,8 @@
     "@cosmjs/launchpad": "0.25.0",
     "@cosmjs/proto-signing": "0.25.0",
     "@cosmjs/stargate": "0.25.0",
-    "@starport/vue": "^0.1.49",
-    "@starport/vuex": "^0.1.49",
+    "@starport/vue": "^0.1.53",
+    "@starport/vuex": "^0.1.53",
     "@vue/compiler-sfc": "^3.0.11",
     "bip39": "^3.0.4",
     "core-js": "^3.11.2",
