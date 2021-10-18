@@ -1,87 +1,56 @@
 # dig
+**dig** is a blockchain built using Cosmos SDK and Tendermint and created with [Starport](https://github.com/tendermint/starport).
 
-[![Software Release](https://github.com/notional-labs/dig/actions/workflows/release.yml/badge.svg)](https://github.com/notional-labs/dig/actions/workflows/release.yml)
-[![dig blockchain](https://github.com/notional-labs/dig/actions/workflows/build.yml/badge.svg)](https://github.com/notional-labs/dig/actions/workflows/build.yml)
-[![Android](https://github.com/notional-labs/dig/actions/workflows/flutter.yml/badge.svg)](https://github.com/notional-labs/dig/actions/workflows/flutter.yml)
-[![Raspberry Pi](https://github.com/notional-labs/dig/actions/workflows/pi.yml/badge.svg)](https://github.com/notional-labs/dig/actions/workflows/pi.yml)
-[![Security Check](https://github.com/notional-labs/dig/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/notional-labs/dig/actions/workflows/codeql-analysis.yml)
+## Get started
 
-Dig is a hub blockchain that interconnects physical plots of land, which will each be governed by a locally operated blockchain.  Due to the regulatory challenges involved, dig splits itself up into many chains which can each follow appropriate legislation.  This is the beginning of the "Dig Network."
+```
+starport chain serve
+```
 
+`serve` command installs dependencies, builds, initializes, and starts your blockchain in development.
 
-Here's a little light background reading:
+### Configure
 
-* https://blurt.blog/blurt/@jacobgadikian/baby-blockchains
-* https://blurt.blog/blurt/@jacobgadikian/blockchain-application-tco
-* https://1729.com/miami/
-* https://podclips.com/ct/gBhDsq
-* https://twitter.com/gadikian/status/1424392074078523397
+Your blockchain in development can be configured with `config.yml`. To learn more, see the [Starport docs](https://docs.starport.network).
 
+### Launch
 
-## Status
-We're entering a fourth testnet, which is just for testing mainnet code.  We are bundling the block explorer and wallet with this release. 
+To launch your blockchain live on multiple nodes, use `starport network` commands. Learn more about [Starport Network](https://github.com/tendermint/spn).
 
+### Web Frontend
 
-## [Join Testnet](networks/testnet-4)
+Starport has scaffolded a Vue.js-based web app in the `vue` directory. Run the following commands to install dependencies and start the app:
 
+```
+cd vue
+npm install
+npm run serve
+```
 
+The frontend app is built using the `@starport/vue` and `@starport/vuex` packages. For details, see the [monorepo for Starport front-end development](https://github.com/tendermint/vue).
 
-## Design
+## Release
+To release a new version of your blockchain, create and push a new tag with `v` prefix. A new draft release with the configured targets will be created.
 
-**form**
-* Software-wise, dig is a monorepo.  All of its essential code lives in this repository:
-  * Genesis
-  * Go App Code
-  * Javascript Front End Code
-  * Mobile App
-  * Block explorer
+```
+git tag v0.1
+git push origin v0.1
+```
 
-**function**
-* The dig mainnet is as minimal as possible.  While we may add a few things before mainnet, it's our preference to remove things.  The dig mainnet is for coordinating the efforts of like-minded people who'd like to see:
-  * Liquid Land: Blockchain style real estate investing
-  * Charter Cities: Land where the rules are laid out on the chain that constitutes them
-  * Hierarchical transparent governance: The trouble with hierarchical orgs is opacity, not hierarchy itself.
-  * Research and development of blockchain governance in physical and virtual spaces.    
+After a draft release is created, make your final changes from the release page and publish it.
 
+### Install
+To install the latest version of your blockchain node's binary, execute the following command on your machine:
 
-* Chains in the dig network will launch from the code in this repository, as well.   
+```
+curl https://get.starport.network/notional-labs/dig@latest! | sudo bash
+```
+`notional-labs/dig` should match the `username` and `repo_name` of the Github repository to which the source code was pushed. Learn more about [the install process](https://github.com/allinbits/starport-installer).
 
+## Learn more
 
-## Financing
-
-We're comitted to transparency in all matters, including the composition of genesis allocations.  Dig has raised $0.  Adam has funded development work.  If we take funding, informaiton on that will go right here.  We will only accept funding from parties who are aligned with the long-term vision of the project and willing to have their tokens on exactly the same terms as those who get them in an airdrop.
-
-## Roadmap
-
-- [x] Concept development by Jacob Gadikian and Adam Christopher Chaplin
-- [x] Prototype
-- [x] Airdrop Prototype code and OpenAPI spec
-- [x] Testnet-1:  Results showed that we needed to work on the genesis parameters in Testnet-2
-- [x] Omniflix Testnet-1: Participating in the OmniFlix testnet proved the viablity of a large validator set.  Testnet-2 allows 500 validators.
-- [x] Upgrade to Cosmos SDK 0.43.0
-- [x] IBC Testing
-- [x] NFT Implementation by Khanh Nguyen (not included in testnet-2)
-- [x] Genesis transactions for testnet-2: Completed August 14, 2021
-- [x] Keplr integration
-- [x] Akash-based Bus bar
-- [x] Launch testnet-2
-- [x] IPFS-based genesis hosting and download
-- [x] Configuration overrides
-- [x] Clean airdrop code https://github.com/notional-labs/c17 and https://github.com/notional-labs/staking-data-collection
-  - [x] Test airdrop code for ethereum-style addresses using the Khanh's Cosmos SDK fork
-  - [x] Refactor airdrop if this works
-- [ ] Community Security Audit: 0.1% of Dig tokens reserved for community members who provide a detailed, contextual audit
-- [x] Block explorers
-  - [x] gex
-  - [x] big dipper
-- [ ] Ionization 
-- [ ] Mainnet Launch
-- [ ] IBC Integration via Notional and Chandra Station Relayers
-  - [ ] Osmosis Integration
-  - [ ] Emeris Integration
-  - [ ] Microtick Integration
-- [ ] Announcement of candidate Real Estate development sites and their regulatory requirements
-- [ ] DFY Integration
-- [ ] Blurt Integration
-- [ ] First update to dig mainnet
-- [ ] First launch of a chain adjacent to dig with live real estate, governed and developed by the chain.
+- [Starport](https://github.com/tendermint/starport)
+- [Starport Docs](https://docs.starport.network)
+- [Cosmos SDK documentation](https://docs.cosmos.network)
+- [Cosmos SDK Tutorials](https://tutorials.cosmos.network)
+- [Discord](https://discord.gg/cosmosnetwork)
