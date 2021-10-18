@@ -19,10 +19,7 @@ Here's a little light background reading:
 
 
 ## Status
-We're entering a fourth testnet, which is just for testing mainnet code.  We are bundling the block explorer and wallet with this release. 
-
-
-## [Join Testnet](networks/testnet-4)
+Mainnet is ready, We'll launch once dtails are finalized.
 
 
 
@@ -84,4 +81,8 @@ We're comitted to transparency in all matters, including the composition of gene
 - [ ] DFY Integration
 - [ ] Blurt Integration
 - [ ] First update to dig mainnet
-- [ ] First launch of a chain adjacent to dig with live real estate, governed and developed by the chain.
+
+## Jurisdictionally compatible chains
+- [ ] First launch of a chain adjacent to dig with live real estate, governed and developed by the chain.  These chains will be re-instantiations of dig with compatible code.  
+ - [ ] Thailand
+ - [ ] Laos
