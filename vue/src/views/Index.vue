@@ -2,7 +2,7 @@
 	<div>
 		<div class="container">
 			<SpWelcome />
-			<SpTokenSend :address="address" />
+			<SpTokenSend :address="address" refresh="true" />
 			<SpTransferList :address="address" />
 		</div>
 	</div>

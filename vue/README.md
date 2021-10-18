@@ -1,8 +1,7 @@
-App UI
+## App UI Template
 
-This is the [vuejs](https://vuejs.org/) user interface for your app.
+[Vue.js](https://vuejs.org/)-based web app template for your Cosmos SDK blockchain. Use the template to quickly bootstrap your app. To learn more, check out the components in `@starport/vue` and the [Starport documentation](https://docs.starport.network/).
 
-The vue.js framework for building your user interface helps with rapid app development. The framework provides UI components including a login and an HTML-based template.
 
 ## Project setup
 
@@ -10,10 +9,10 @@ The vue.js framework for building your user interface helps with rapid app devel
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compiles and reloads the app on save for development
 
 ```
-npm run serve
+npm run dev
 ```
 
 ### Compiles and minifies for production
