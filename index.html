@@ -1,1 +1,50 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/favicon.ico"><title>@starport/template</title><link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"><link href="/css/app.cb1d33cd.css" rel="preload" as="style"><link href="/css/chunk-vendors.cae87027.css" rel="preload" as="style"><link href="/js/app.4fec0880.js" rel="preload" as="script"><link href="/js/chunk-vendors.8de7be83.js" rel="preload" as="script"><link href="/css/chunk-vendors.cae87027.css" rel="stylesheet"><link href="/css/app.cb1d33cd.css" rel="stylesheet"></head><body><noscript><strong>We're sorry but @starport/template doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app" class="app"></div><script src="/js/chunk-vendors.8de7be83.js"></script><script src="/js/app.4fec0880.js"></script></body></html>
+<h1>Dig</h1>
+
+
+<script>
+    await window.keplr.experimentalSuggestChain({
+    chainId: "dig",
+    chainName: "dig",
+    rpc: "http://165.232.167.156:26657",
+    rest: "http://165.232.167.156:1317",
+    bip44: {
+        coinType: 118,
+    },
+    bech32Config: {
+        bech32PrefixAccAddr: "dig",
+        bech32PrefixAccPub: "dig" + "pub",
+        bech32PrefixValAddr: "dig" + "valoper",
+        bech32PrefixValPub: "dig" + "valoperpub",
+        bech32PrefixConsAddr: "dig" + "valcons",
+        bech32PrefixConsPub: "dig" + "valconspub",
+    },
+    currencies: [ 
+        { 
+            coinDenom: "DIG", 
+            coinMinimalDenom: "udig", 
+            coinDecimals: 6, 
+            coinGeckoId: "cosmos", 
+        }, 
+    ],
+    feeCurrencies: [
+        {
+            coinDenom: "DIG",
+            coinMinimalDenom: "udig",
+            coinDecimals: 6,
+            coinGeckoId: "cosmos",
+        },
+    ],
+    stakeCurrency: {
+        coinDenom: "DIG",
+        coinMinimalDenom: "udig",
+        coinDecimals: 6,
+        coinGeckoId: "cosmos",
+    },
+    coinType: 118,
+    gasPriceStep: {
+        low: 0.01,
+        average: 0.025,
+        high: 0.03,
+    },
+});
+</script>
