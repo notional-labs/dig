@@ -1,15 +1,15 @@
 /* eslint-disable */
-import { Reader, Writer } from "protobufjs/minimal";
-import { Grant } from "../../../cosmos/feegrant/v1beta1/feegrant";
-import { PageRequest, PageResponse, } from "../../../cosmos/base/query/v1beta1/pagination";
-export const protobufPackage = "cosmos.feegrant.v1beta1";
-const baseQueryAllowanceRequest = { granter: "", grantee: "" };
+import { Reader, Writer } from 'protobufjs/minimal';
+import { Grant } from '../../../cosmos/feegrant/v1beta1/feegrant';
+import { PageRequest, PageResponse } from '../../../cosmos/base/query/v1beta1/pagination';
+export const protobufPackage = 'cosmos.feegrant.v1beta1';
+const baseQueryAllowanceRequest = { granter: '', grantee: '' };
 export const QueryAllowanceRequest = {
     encode(message, writer = Writer.create()) {
-        if (message.granter !== "") {
+        if (message.granter !== '') {
             writer.uint32(10).string(message.granter);
         }
-        if (message.grantee !== "") {
+        if (message.grantee !== '') {
             writer.uint32(18).string(message.grantee);
         }
         return writer;
@@ -40,13 +40,13 @@ export const QueryAllowanceRequest = {
             message.granter = String(object.granter);
         }
         else {
-            message.granter = "";
+            message.granter = '';
         }
         if (object.grantee !== undefined && object.grantee !== null) {
             message.grantee = String(object.grantee);
         }
         else {
-            message.grantee = "";
+            message.grantee = '';
         }
         return message;
     },
@@ -62,16 +62,16 @@ export const QueryAllowanceRequest = {
             message.granter = object.granter;
         }
         else {
-            message.granter = "";
+            message.granter = '';
         }
         if (object.grantee !== undefined && object.grantee !== null) {
             message.grantee = object.grantee;
         }
         else {
-            message.grantee = "";
+            message.grantee = '';
         }
         return message;
-    },
+    }
 };
 const baseQueryAllowanceResponse = {};
 export const QueryAllowanceResponse = {
@@ -110,10 +110,7 @@ export const QueryAllowanceResponse = {
     },
     toJSON(message) {
         const obj = {};
-        message.allowance !== undefined &&
-            (obj.allowance = message.allowance
-                ? Grant.toJSON(message.allowance)
-                : undefined);
+        message.allowance !== undefined && (obj.allowance = message.allowance ? Grant.toJSON(message.allowance) : undefined);
         return obj;
     },
     fromPartial(object) {
@@ -125,12 +122,12 @@ export const QueryAllowanceResponse = {
             message.allowance = undefined;
         }
         return message;
-    },
+    }
 };
-const baseQueryAllowancesRequest = { grantee: "" };
+const baseQueryAllowancesRequest = { grantee: '' };
 export const QueryAllowancesRequest = {
     encode(message, writer = Writer.create()) {
-        if (message.grantee !== "") {
+        if (message.grantee !== '') {
             writer.uint32(10).string(message.grantee);
         }
         if (message.pagination !== undefined) {
@@ -164,7 +161,7 @@ export const QueryAllowancesRequest = {
             message.grantee = String(object.grantee);
         }
         else {
-            message.grantee = "";
+            message.grantee = '';
         }
         if (object.pagination !== undefined && object.pagination !== null) {
             message.pagination = PageRequest.fromJSON(object.pagination);
@@ -177,10 +174,7 @@ export const QueryAllowancesRequest = {
     toJSON(message) {
         const obj = {};
         message.grantee !== undefined && (obj.grantee = message.grantee);
-        message.pagination !== undefined &&
-            (obj.pagination = message.pagination
-                ? PageRequest.toJSON(message.pagination)
-                : undefined);
+        message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
         return obj;
     },
     fromPartial(object) {
@@ -189,7 +183,7 @@ export const QueryAllowancesRequest = {
             message.grantee = object.grantee;
         }
         else {
-            message.grantee = "";
+            message.grantee = '';
         }
         if (object.pagination !== undefined && object.pagination !== null) {
             message.pagination = PageRequest.fromPartial(object.pagination);
@@ -198,7 +192,7 @@ export const QueryAllowancesRequest = {
             message.pagination = undefined;
         }
         return message;
-    },
+    }
 };
 const baseQueryAllowancesResponse = {};
 export const QueryAllowancesResponse = {
@@ -214,9 +208,7 @@ export const QueryAllowancesResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = {
-            ...baseQueryAllowancesResponse,
-        };
+        const message = { ...baseQueryAllowancesResponse };
         message.allowances = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -235,9 +227,7 @@ export const QueryAllowancesResponse = {
         return message;
     },
     fromJSON(object) {
-        const message = {
-            ...baseQueryAllowancesResponse,
-        };
+        const message = { ...baseQueryAllowancesResponse };
         message.allowances = [];
         if (object.allowances !== undefined && object.allowances !== null) {
             for (const e of object.allowances) {
@@ -255,21 +245,16 @@ export const QueryAllowancesResponse = {
     toJSON(message) {
         const obj = {};
         if (message.allowances) {
-            obj.allowances = message.allowances.map((e) => e ? Grant.toJSON(e) : undefined);
+            obj.allowances = message.allowances.map((e) => (e ? Grant.toJSON(e) : undefined));
         }
         else {
             obj.allowances = [];
         }
-        message.pagination !== undefined &&
-            (obj.pagination = message.pagination
-                ? PageResponse.toJSON(message.pagination)
-                : undefined);
+        message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
         return obj;
     },
     fromPartial(object) {
-        const message = {
-            ...baseQueryAllowancesResponse,
-        };
+        const message = { ...baseQueryAllowancesResponse };
         message.allowances = [];
         if (object.allowances !== undefined && object.allowances !== null) {
             for (const e of object.allowances) {
@@ -283,7 +268,7 @@ export const QueryAllowancesResponse = {
             message.pagination = undefined;
         }
         return message;
-    },
+    }
 };
 export class QueryClientImpl {
     constructor(rpc) {
@@ -291,12 +276,12 @@ export class QueryClientImpl {
     }
     Allowance(request) {
         const data = QueryAllowanceRequest.encode(request).finish();
-        const promise = this.rpc.request("cosmos.feegrant.v1beta1.Query", "Allowance", data);
+        const promise = this.rpc.request('cosmos.feegrant.v1beta1.Query', 'Allowance', data);
         return promise.then((data) => QueryAllowanceResponse.decode(new Reader(data)));
     }
     Allowances(request) {
         const data = QueryAllowancesRequest.encode(request).finish();
-        const promise = this.rpc.request("cosmos.feegrant.v1beta1.Query", "Allowances", data);
+        const promise = this.rpc.request('cosmos.feegrant.v1beta1.Query', 'Allowances', data);
         return promise.then((data) => QueryAllowancesResponse.decode(new Reader(data)));
     }
 }

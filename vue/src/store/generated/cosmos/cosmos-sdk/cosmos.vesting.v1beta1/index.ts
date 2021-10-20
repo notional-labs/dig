@@ -1,4 +1,4 @@
-import { txClient, queryClient, MissingWalletError , registry} from './module'
+import { txClient, queryClient, MissingWalletError } from './module'
 // @ts-ignore
 import { SpVuexError } from '@starport/vuex'
 
@@ -58,7 +58,6 @@ const getDefaultState = () => {
 						PermanentLockedAccount: getStructure(PermanentLockedAccount.fromPartial({})),
 						
 		},
-		_Registry: registry,
 		_Subscriptions: new Set(),
 	}
 }
@@ -77,19 +76,16 @@ export default {
 			state[query][JSON.stringify(key)] = value
 		},
 		SUBSCRIBE(state, subscription) {
-			state._Subscriptions.add(JSON.stringify(subscription))
+			state._Subscriptions.add(subscription)
 		},
 		UNSUBSCRIBE(state, subscription) {
-			state._Subscriptions.delete(JSON.stringify(subscription))
+			state._Subscriptions.delete(subscription)
 		}
 	},
 	getters: {
 				
 		getTypeStructure: (state) => (type) => {
 			return state._Structure[type].fields
-		},
-		getRegistry: (state) => {
-			return state._Registry
 		}
 	},
 	actions: {
@@ -110,8 +106,7 @@ export default {
 		async StoreUpdate({ state, dispatch }) {
 			state._Subscriptions.forEach(async (subscription) => {
 				try {
-					const sub=JSON.parse(subscription)
-					await dispatch(sub.action, sub.payload)
+					await dispatch(subscription.action, subscription.payload)
 				}catch(e) {
 					throw new SpVuexError('Subscriptions: ' + e.message)
 				}

@@ -11,7 +11,7 @@ app.use(store).use(router).use(vueLib).mount('#app')
 document.addEventListener("DOMContentLoaded", function(event) {
     async function connect() {
         await window.keplr.experimentalSuggestChain({
-            chainId: "dig-4",
+            chainId: "dig",
             chainName: "Dig",
             rpc: "http://165.232.167.156:26657",
             rest: "http://165.232.167.156:1317",
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 bech32PrefixValPub: "dig" + "valoperpub",
                 bech32PrefixConsAddr: "dig" + "valcons",
                 bech32PrefixConsPub: "dig" + "valconspub",
-            },
+           },
             currencies: [
                 {
                     coinDenom: "DIG",
@@ -58,4 +58,4 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
     connect();
 
-});
+}); 

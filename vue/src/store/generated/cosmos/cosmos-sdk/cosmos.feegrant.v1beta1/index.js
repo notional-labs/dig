@@ -1,4 +1,4 @@
-import { txClient, queryClient, MissingWalletError, registry } from './module';
+import { txClient, queryClient, MissingWalletError } from './module';
 // @ts-ignore
 import { SpVuexError } from '@starport/vuex';
 import { BasicAllowance } from "./module/types/cosmos/feegrant/v1beta1/feegrant";
@@ -47,7 +47,6 @@ const getDefaultState = () => {
             AllowedMsgAllowance: getStructure(AllowedMsgAllowance.fromPartial({})),
             Grant: getStructure(Grant.fromPartial({})),
         },
-        _Registry: registry,
         _Subscriptions: new Set(),
     };
 };
@@ -64,10 +63,10 @@ export default {
             state[query][JSON.stringify(key)] = value;
         },
         SUBSCRIBE(state, subscription) {
-            state._Subscriptions.add(JSON.stringify(subscription));
+            state._Subscriptions.add(subscription);
         },
         UNSUBSCRIBE(state, subscription) {
-            state._Subscriptions.delete(JSON.stringify(subscription));
+            state._Subscriptions.delete(subscription);
         }
     },
     getters: {
@@ -85,9 +84,6 @@ export default {
         },
         getTypeStructure: (state) => (type) => {
             return state._Structure[type].fields;
-        },
-        getRegistry: (state) => {
-            return state._Registry;
         }
     },
     actions: {
@@ -108,17 +104,15 @@ export default {
         async StoreUpdate({ state, dispatch }) {
             state._Subscriptions.forEach(async (subscription) => {
                 try {
-                    const sub = JSON.parse(subscription);
-                    await dispatch(sub.action, sub.payload);
+                    await dispatch(subscription.action, subscription.payload);
                 }
                 catch (e) {
                     throw new SpVuexError('Subscriptions: ' + e.message);
                 }
             });
         },
-        async QueryAllowance({ commit, rootGetters, getters }, { options: { subscribe, all } = { subscribe: false, all: false }, params, query = null }) {
+        async QueryAllowance({ commit, rootGetters, getters }, { options: { subscribe, all } = { subscribe: false, all: false }, params: { ...key }, query = null }) {
             try {
-                const key = params ?? {};
                 const queryClient = await initQueryClient(rootGetters);
                 let value = (await queryClient.queryAllowance(key.granter, key.grantee)).data;
                 commit('QUERY', { query: 'Allowance', key: { params: { ...key }, query }, value });
@@ -130,13 +124,12 @@ export default {
                 throw new SpVuexError('QueryClient:QueryAllowance', 'API Node Unavailable. Could not perform query: ' + e.message);
             }
         },
-        async QueryAllowances({ commit, rootGetters, getters }, { options: { subscribe, all } = { subscribe: false, all: false }, params, query = null }) {
+        async QueryAllowances({ commit, rootGetters, getters }, { options: { subscribe, all } = { subscribe: false, all: false }, params: { ...key }, query = null }) {
             try {
-                const key = params ?? {};
                 const queryClient = await initQueryClient(rootGetters);
                 let value = (await queryClient.queryAllowances(key.grantee, query)).data;
-                while (all && value.pagination && value.pagination.next_key != null) {
-                    let next_values = (await queryClient.queryAllowances(key.grantee, { ...query, 'pagination.key': value.pagination.next_key })).data;
+                while (all && value.pagination && value.pagination.nextKey != null) {
+                    let next_values = (await queryClient.queryAllowances(key.grantee, { ...query, 'pagination.key': value.pagination.nextKey })).data;
                     value = mergeResults(value, next_values);
                 }
                 commit('QUERY', { query: 'Allowances', key: { params: { ...key }, query }, value });

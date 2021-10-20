@@ -1,20 +1,15 @@
 /* eslint-disable */
-import { Reader, util, configure, Writer } from "protobufjs/minimal";
-import * as Long from "long";
-import { Coin } from "../../../cosmos/base/v1beta1/coin";
-export const protobufPackage = "cosmos.vesting.v1beta1";
-const baseMsgCreateVestingAccount = {
-    fromAddress: "",
-    toAddress: "",
-    endTime: 0,
-    delayed: false,
-};
+import { Reader, util, configure, Writer } from 'protobufjs/minimal';
+import * as Long from 'long';
+import { Coin } from '../../../cosmos/base/v1beta1/coin';
+export const protobufPackage = 'cosmos.vesting.v1beta1';
+const baseMsgCreateVestingAccount = { fromAddress: '', toAddress: '', endTime: 0, delayed: false };
 export const MsgCreateVestingAccount = {
     encode(message, writer = Writer.create()) {
-        if (message.fromAddress !== "") {
+        if (message.fromAddress !== '') {
             writer.uint32(10).string(message.fromAddress);
         }
-        if (message.toAddress !== "") {
+        if (message.toAddress !== '') {
             writer.uint32(18).string(message.toAddress);
         }
         for (const v of message.amount) {
@@ -31,9 +26,7 @@ export const MsgCreateVestingAccount = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = {
-            ...baseMsgCreateVestingAccount,
-        };
+        const message = { ...baseMsgCreateVestingAccount };
         message.amount = [];
         while (reader.pos < end) {
             const tag = reader.uint32();
@@ -61,21 +54,19 @@ export const MsgCreateVestingAccount = {
         return message;
     },
     fromJSON(object) {
-        const message = {
-            ...baseMsgCreateVestingAccount,
-        };
+        const message = { ...baseMsgCreateVestingAccount };
         message.amount = [];
         if (object.fromAddress !== undefined && object.fromAddress !== null) {
             message.fromAddress = String(object.fromAddress);
         }
         else {
-            message.fromAddress = "";
+            message.fromAddress = '';
         }
         if (object.toAddress !== undefined && object.toAddress !== null) {
             message.toAddress = String(object.toAddress);
         }
         else {
-            message.toAddress = "";
+            message.toAddress = '';
         }
         if (object.amount !== undefined && object.amount !== null) {
             for (const e of object.amount) {
@@ -98,8 +89,7 @@ export const MsgCreateVestingAccount = {
     },
     toJSON(message) {
         const obj = {};
-        message.fromAddress !== undefined &&
-            (obj.fromAddress = message.fromAddress);
+        message.fromAddress !== undefined && (obj.fromAddress = message.fromAddress);
         message.toAddress !== undefined && (obj.toAddress = message.toAddress);
         if (message.amount) {
             obj.amount = message.amount.map((e) => (e ? Coin.toJSON(e) : undefined));
@@ -112,21 +102,19 @@ export const MsgCreateVestingAccount = {
         return obj;
     },
     fromPartial(object) {
-        const message = {
-            ...baseMsgCreateVestingAccount,
-        };
+        const message = { ...baseMsgCreateVestingAccount };
         message.amount = [];
         if (object.fromAddress !== undefined && object.fromAddress !== null) {
             message.fromAddress = object.fromAddress;
         }
         else {
-            message.fromAddress = "";
+            message.fromAddress = '';
         }
         if (object.toAddress !== undefined && object.toAddress !== null) {
             message.toAddress = object.toAddress;
         }
         else {
-            message.toAddress = "";
+            message.toAddress = '';
         }
         if (object.amount !== undefined && object.amount !== null) {
             for (const e of object.amount) {
@@ -146,7 +134,7 @@ export const MsgCreateVestingAccount = {
             message.delayed = false;
         }
         return message;
-    },
+    }
 };
 const baseMsgCreateVestingAccountResponse = {};
 export const MsgCreateVestingAccountResponse = {
@@ -156,9 +144,7 @@ export const MsgCreateVestingAccountResponse = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = {
-            ...baseMsgCreateVestingAccountResponse,
-        };
+        const message = { ...baseMsgCreateVestingAccountResponse };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -170,9 +156,7 @@ export const MsgCreateVestingAccountResponse = {
         return message;
     },
     fromJSON(_) {
-        const message = {
-            ...baseMsgCreateVestingAccountResponse,
-        };
+        const message = { ...baseMsgCreateVestingAccountResponse };
         return message;
     },
     toJSON(_) {
@@ -180,11 +164,9 @@ export const MsgCreateVestingAccountResponse = {
         return obj;
     },
     fromPartial(_) {
-        const message = {
-            ...baseMsgCreateVestingAccountResponse,
-        };
+        const message = { ...baseMsgCreateVestingAccountResponse };
         return message;
-    },
+    }
 };
 export class MsgClientImpl {
     constructor(rpc) {
@@ -192,24 +174,24 @@ export class MsgClientImpl {
     }
     CreateVestingAccount(request) {
         const data = MsgCreateVestingAccount.encode(request).finish();
-        const promise = this.rpc.request("cosmos.vesting.v1beta1.Msg", "CreateVestingAccount", data);
+        const promise = this.rpc.request('cosmos.vesting.v1beta1.Msg', 'CreateVestingAccount', data);
         return promise.then((data) => MsgCreateVestingAccountResponse.decode(new Reader(data)));
     }
 }
 var globalThis = (() => {
-    if (typeof globalThis !== "undefined")
+    if (typeof globalThis !== 'undefined')
         return globalThis;
-    if (typeof self !== "undefined")
+    if (typeof self !== 'undefined')
         return self;
-    if (typeof window !== "undefined")
+    if (typeof window !== 'undefined')
         return window;
-    if (typeof global !== "undefined")
+    if (typeof global !== 'undefined')
         return global;
-    throw "Unable to locate global object";
+    throw 'Unable to locate global object';
 })();
 function longToNumber(long) {
     if (long.gt(Number.MAX_SAFE_INTEGER)) {
-        throw new globalThis.Error("Value is larger than Number.MAX_SAFE_INTEGER");
+        throw new globalThis.Error('Value is larger than Number.MAX_SAFE_INTEGER');
     }
     return long.toNumber();
 }

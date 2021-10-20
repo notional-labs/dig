@@ -13,7 +13,7 @@ const types = [
 ];
 export const MissingWalletError = new Error("wallet is required");
 
-export const registry = new Registry(<any>types);
+const registry = new Registry(<any>types);
 
 const defaultFee = {
   amount: [],
@@ -31,17 +31,13 @@ interface SignAndBroadcastOptions {
 
 const txClient = async (wallet: OfflineSigner, { addr: addr }: TxClientOptions = { addr: "http://localhost:26657" }) => {
   if (!wallet) throw MissingWalletError;
-  let client;
-  if (addr) {
-    client = await SigningStargateClient.connectWithSigner(addr, wallet, { registry });
-  }else{
-    client = await SigningStargateClient.offline( wallet, { registry });
-  }
+
+  const client = await SigningStargateClient.connectWithSigner(addr, wallet, { registry });
   const { address } = (await wallet.getAccounts())[0];
 
   return {
     signAndBroadcast: (msgs: EncodeObject[], { fee, memo }: SignAndBroadcastOptions = {fee: defaultFee, memo: ""}) => client.signAndBroadcast(address, msgs, fee,memo),
-    msgSubmitEvidence: (data: MsgSubmitEvidence): EncodeObject => ({ typeUrl: "/cosmos.evidence.v1beta1.MsgSubmitEvidence", value: MsgSubmitEvidence.fromPartial( data ) }),
+    msgSubmitEvidence: (data: MsgSubmitEvidence): EncodeObject => ({ typeUrl: "/cosmos.evidence.v1beta1.MsgSubmitEvidence", value: data }),
     
   };
 };

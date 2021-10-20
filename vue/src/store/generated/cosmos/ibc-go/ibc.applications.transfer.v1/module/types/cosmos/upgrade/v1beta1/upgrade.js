@@ -1,12 +1,12 @@
 /* eslint-disable */
-import { Timestamp } from "../../../google/protobuf/timestamp";
-import * as Long from "long";
-import { util, configure, Writer, Reader } from "protobufjs/minimal";
-export const protobufPackage = "cosmos.upgrade.v1beta1";
-const basePlan = { name: "", height: 0, info: "" };
+import { Timestamp } from '../../../google/protobuf/timestamp';
+import * as Long from 'long';
+import { util, configure, Writer, Reader } from 'protobufjs/minimal';
+export const protobufPackage = 'cosmos.upgrade.v1beta1';
+const basePlan = { name: '', height: 0, info: '' };
 export const Plan = {
     encode(message, writer = Writer.create()) {
-        if (message.name !== "") {
+        if (message.name !== '') {
             writer.uint32(10).string(message.name);
         }
         if (message.time !== undefined) {
@@ -15,7 +15,7 @@ export const Plan = {
         if (message.height !== 0) {
             writer.uint32(24).int64(message.height);
         }
-        if (message.info !== "") {
+        if (message.info !== '') {
             writer.uint32(34).string(message.info);
         }
         return writer;
@@ -52,7 +52,7 @@ export const Plan = {
             message.name = String(object.name);
         }
         else {
-            message.name = "";
+            message.name = '';
         }
         if (object.time !== undefined && object.time !== null) {
             message.time = fromJsonTimestamp(object.time);
@@ -70,16 +70,14 @@ export const Plan = {
             message.info = String(object.info);
         }
         else {
-            message.info = "";
+            message.info = '';
         }
         return message;
     },
     toJSON(message) {
         const obj = {};
         message.name !== undefined && (obj.name = message.name);
-        message.time !== undefined &&
-            (obj.time =
-                message.time !== undefined ? message.time.toISOString() : null);
+        message.time !== undefined && (obj.time = message.time !== undefined ? message.time.toISOString() : null);
         message.height !== undefined && (obj.height = message.height);
         message.info !== undefined && (obj.info = message.info);
         return obj;
@@ -90,7 +88,7 @@ export const Plan = {
             message.name = object.name;
         }
         else {
-            message.name = "";
+            message.name = '';
         }
         if (object.time !== undefined && object.time !== null) {
             message.time = object.time;
@@ -108,18 +106,18 @@ export const Plan = {
             message.info = object.info;
         }
         else {
-            message.info = "";
+            message.info = '';
         }
         return message;
-    },
+    }
 };
-const baseSoftwareUpgradeProposal = { title: "", description: "" };
+const baseSoftwareUpgradeProposal = { title: '', description: '' };
 export const SoftwareUpgradeProposal = {
     encode(message, writer = Writer.create()) {
-        if (message.title !== "") {
+        if (message.title !== '') {
             writer.uint32(10).string(message.title);
         }
-        if (message.description !== "") {
+        if (message.description !== '') {
             writer.uint32(18).string(message.description);
         }
         if (message.plan !== undefined) {
@@ -130,9 +128,7 @@ export const SoftwareUpgradeProposal = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = {
-            ...baseSoftwareUpgradeProposal,
-        };
+        const message = { ...baseSoftwareUpgradeProposal };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -153,20 +149,18 @@ export const SoftwareUpgradeProposal = {
         return message;
     },
     fromJSON(object) {
-        const message = {
-            ...baseSoftwareUpgradeProposal,
-        };
+        const message = { ...baseSoftwareUpgradeProposal };
         if (object.title !== undefined && object.title !== null) {
             message.title = String(object.title);
         }
         else {
-            message.title = "";
+            message.title = '';
         }
         if (object.description !== undefined && object.description !== null) {
             message.description = String(object.description);
         }
         else {
-            message.description = "";
+            message.description = '';
         }
         if (object.plan !== undefined && object.plan !== null) {
             message.plan = Plan.fromJSON(object.plan);
@@ -179,27 +173,23 @@ export const SoftwareUpgradeProposal = {
     toJSON(message) {
         const obj = {};
         message.title !== undefined && (obj.title = message.title);
-        message.description !== undefined &&
-            (obj.description = message.description);
-        message.plan !== undefined &&
-            (obj.plan = message.plan ? Plan.toJSON(message.plan) : undefined);
+        message.description !== undefined && (obj.description = message.description);
+        message.plan !== undefined && (obj.plan = message.plan ? Plan.toJSON(message.plan) : undefined);
         return obj;
     },
     fromPartial(object) {
-        const message = {
-            ...baseSoftwareUpgradeProposal,
-        };
+        const message = { ...baseSoftwareUpgradeProposal };
         if (object.title !== undefined && object.title !== null) {
             message.title = object.title;
         }
         else {
-            message.title = "";
+            message.title = '';
         }
         if (object.description !== undefined && object.description !== null) {
             message.description = object.description;
         }
         else {
-            message.description = "";
+            message.description = '';
         }
         if (object.plan !== undefined && object.plan !== null) {
             message.plan = Plan.fromPartial(object.plan);
@@ -208,18 +198,15 @@ export const SoftwareUpgradeProposal = {
             message.plan = undefined;
         }
         return message;
-    },
+    }
 };
-const baseCancelSoftwareUpgradeProposal = {
-    title: "",
-    description: "",
-};
+const baseCancelSoftwareUpgradeProposal = { title: '', description: '' };
 export const CancelSoftwareUpgradeProposal = {
     encode(message, writer = Writer.create()) {
-        if (message.title !== "") {
+        if (message.title !== '') {
             writer.uint32(10).string(message.title);
         }
-        if (message.description !== "") {
+        if (message.description !== '') {
             writer.uint32(18).string(message.description);
         }
         return writer;
@@ -227,9 +214,7 @@ export const CancelSoftwareUpgradeProposal = {
     decode(input, length) {
         const reader = input instanceof Uint8Array ? new Reader(input) : input;
         let end = length === undefined ? reader.len : reader.pos + length;
-        const message = {
-            ...baseCancelSoftwareUpgradeProposal,
-        };
+        const message = { ...baseCancelSoftwareUpgradeProposal };
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
@@ -247,59 +232,54 @@ export const CancelSoftwareUpgradeProposal = {
         return message;
     },
     fromJSON(object) {
-        const message = {
-            ...baseCancelSoftwareUpgradeProposal,
-        };
+        const message = { ...baseCancelSoftwareUpgradeProposal };
         if (object.title !== undefined && object.title !== null) {
             message.title = String(object.title);
         }
         else {
-            message.title = "";
+            message.title = '';
         }
         if (object.description !== undefined && object.description !== null) {
             message.description = String(object.description);
         }
         else {
-            message.description = "";
+            message.description = '';
         }
         return message;
     },
     toJSON(message) {
         const obj = {};
         message.title !== undefined && (obj.title = message.title);
-        message.description !== undefined &&
-            (obj.description = message.description);
+        message.description !== undefined && (obj.description = message.description);
         return obj;
     },
     fromPartial(object) {
-        const message = {
-            ...baseCancelSoftwareUpgradeProposal,
-        };
+        const message = { ...baseCancelSoftwareUpgradeProposal };
         if (object.title !== undefined && object.title !== null) {
             message.title = object.title;
         }
         else {
-            message.title = "";
+            message.title = '';
         }
         if (object.description !== undefined && object.description !== null) {
             message.description = object.description;
         }
         else {
-            message.description = "";
+            message.description = '';
         }
         return message;
-    },
+    }
 };
 var globalThis = (() => {
-    if (typeof globalThis !== "undefined")
+    if (typeof globalThis !== 'undefined')
         return globalThis;
-    if (typeof self !== "undefined")
+    if (typeof self !== 'undefined')
         return self;
-    if (typeof window !== "undefined")
+    if (typeof window !== 'undefined')
         return window;
-    if (typeof global !== "undefined")
+    if (typeof global !== 'undefined')
         return global;
-    throw "Unable to locate global object";
+    throw 'Unable to locate global object';
 })();
 function toTimestamp(date) {
     const seconds = date.getTime() / 1000;
@@ -315,7 +295,7 @@ function fromJsonTimestamp(o) {
     if (o instanceof Date) {
         return o;
     }
-    else if (typeof o === "string") {
+    else if (typeof o === 'string') {
         return new Date(o);
     }
     else {
@@ -324,7 +304,7 @@ function fromJsonTimestamp(o) {
 }
 function longToNumber(long) {
     if (long.gt(Number.MAX_SAFE_INTEGER)) {
-        throw new globalThis.Error("Value is larger than Number.MAX_SAFE_INTEGER");
+        throw new globalThis.Error('Value is larger than Number.MAX_SAFE_INTEGER');
     }
     return long.toNumber();
 }

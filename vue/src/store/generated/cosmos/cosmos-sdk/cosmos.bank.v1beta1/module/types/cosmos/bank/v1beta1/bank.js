@@ -1,7 +1,7 @@
 /* eslint-disable */
-import { Coin } from "../../../cosmos/base/v1beta1/coin";
-import { Writer, Reader } from "protobufjs/minimal";
-export const protobufPackage = "cosmos.bank.v1beta1";
+import { Coin } from '../../../cosmos/base/v1beta1/coin';
+import { Writer, Reader } from 'protobufjs/minimal';
+export const protobufPackage = 'cosmos.bank.v1beta1';
 const baseParams = { defaultSendEnabled: false };
 export const Params = {
     encode(message, writer = Writer.create()) {
@@ -42,8 +42,7 @@ export const Params = {
                 message.sendEnabled.push(SendEnabled.fromJSON(e));
             }
         }
-        if (object.defaultSendEnabled !== undefined &&
-            object.defaultSendEnabled !== null) {
+        if (object.defaultSendEnabled !== undefined && object.defaultSendEnabled !== null) {
             message.defaultSendEnabled = Boolean(object.defaultSendEnabled);
         }
         else {
@@ -54,13 +53,12 @@ export const Params = {
     toJSON(message) {
         const obj = {};
         if (message.sendEnabled) {
-            obj.sendEnabled = message.sendEnabled.map((e) => e ? SendEnabled.toJSON(e) : undefined);
+            obj.sendEnabled = message.sendEnabled.map((e) => (e ? SendEnabled.toJSON(e) : undefined));
         }
         else {
             obj.sendEnabled = [];
         }
-        message.defaultSendEnabled !== undefined &&
-            (obj.defaultSendEnabled = message.defaultSendEnabled);
+        message.defaultSendEnabled !== undefined && (obj.defaultSendEnabled = message.defaultSendEnabled);
         return obj;
     },
     fromPartial(object) {
@@ -71,20 +69,19 @@ export const Params = {
                 message.sendEnabled.push(SendEnabled.fromPartial(e));
             }
         }
-        if (object.defaultSendEnabled !== undefined &&
-            object.defaultSendEnabled !== null) {
+        if (object.defaultSendEnabled !== undefined && object.defaultSendEnabled !== null) {
             message.defaultSendEnabled = object.defaultSendEnabled;
         }
         else {
             message.defaultSendEnabled = false;
         }
         return message;
-    },
+    }
 };
-const baseSendEnabled = { denom: "", enabled: false };
+const baseSendEnabled = { denom: '', enabled: false };
 export const SendEnabled = {
     encode(message, writer = Writer.create()) {
-        if (message.denom !== "") {
+        if (message.denom !== '') {
             writer.uint32(10).string(message.denom);
         }
         if (message.enabled === true) {
@@ -118,7 +115,7 @@ export const SendEnabled = {
             message.denom = String(object.denom);
         }
         else {
-            message.denom = "";
+            message.denom = '';
         }
         if (object.enabled !== undefined && object.enabled !== null) {
             message.enabled = Boolean(object.enabled);
@@ -140,7 +137,7 @@ export const SendEnabled = {
             message.denom = object.denom;
         }
         else {
-            message.denom = "";
+            message.denom = '';
         }
         if (object.enabled !== undefined && object.enabled !== null) {
             message.enabled = object.enabled;
@@ -149,12 +146,12 @@ export const SendEnabled = {
             message.enabled = false;
         }
         return message;
-    },
+    }
 };
-const baseInput = { address: "" };
+const baseInput = { address: '' };
 export const Input = {
     encode(message, writer = Writer.create()) {
-        if (message.address !== "") {
+        if (message.address !== '') {
             writer.uint32(10).string(message.address);
         }
         for (const v of message.coins) {
@@ -190,7 +187,7 @@ export const Input = {
             message.address = String(object.address);
         }
         else {
-            message.address = "";
+            message.address = '';
         }
         if (object.coins !== undefined && object.coins !== null) {
             for (const e of object.coins) {
@@ -217,7 +214,7 @@ export const Input = {
             message.address = object.address;
         }
         else {
-            message.address = "";
+            message.address = '';
         }
         if (object.coins !== undefined && object.coins !== null) {
             for (const e of object.coins) {
@@ -225,12 +222,12 @@ export const Input = {
             }
         }
         return message;
-    },
+    }
 };
-const baseOutput = { address: "" };
+const baseOutput = { address: '' };
 export const Output = {
     encode(message, writer = Writer.create()) {
-        if (message.address !== "") {
+        if (message.address !== '') {
             writer.uint32(10).string(message.address);
         }
         for (const v of message.coins) {
@@ -266,7 +263,7 @@ export const Output = {
             message.address = String(object.address);
         }
         else {
-            message.address = "";
+            message.address = '';
         }
         if (object.coins !== undefined && object.coins !== null) {
             for (const e of object.coins) {
@@ -293,7 +290,7 @@ export const Output = {
             message.address = object.address;
         }
         else {
-            message.address = "";
+            message.address = '';
         }
         if (object.coins !== undefined && object.coins !== null) {
             for (const e of object.coins) {
@@ -301,7 +298,7 @@ export const Output = {
             }
         }
         return message;
-    },
+    }
 };
 const baseSupply = {};
 export const Supply = {
@@ -358,12 +355,12 @@ export const Supply = {
             }
         }
         return message;
-    },
+    }
 };
-const baseDenomUnit = { denom: "", exponent: 0, aliases: "" };
+const baseDenomUnit = { denom: '', exponent: 0, aliases: '' };
 export const DenomUnit = {
     encode(message, writer = Writer.create()) {
-        if (message.denom !== "") {
+        if (message.denom !== '') {
             writer.uint32(10).string(message.denom);
         }
         if (message.exponent !== 0) {
@@ -405,7 +402,7 @@ export const DenomUnit = {
             message.denom = String(object.denom);
         }
         else {
-            message.denom = "";
+            message.denom = '';
         }
         if (object.exponent !== undefined && object.exponent !== null) {
             message.exponent = Number(object.exponent);
@@ -439,7 +436,7 @@ export const DenomUnit = {
             message.denom = object.denom;
         }
         else {
-            message.denom = "";
+            message.denom = '';
         }
         if (object.exponent !== undefined && object.exponent !== null) {
             message.exponent = object.exponent;
@@ -453,33 +450,27 @@ export const DenomUnit = {
             }
         }
         return message;
-    },
+    }
 };
-const baseMetadata = {
-    description: "",
-    base: "",
-    display: "",
-    name: "",
-    symbol: "",
-};
+const baseMetadata = { description: '', base: '', display: '', name: '', symbol: '' };
 export const Metadata = {
     encode(message, writer = Writer.create()) {
-        if (message.description !== "") {
+        if (message.description !== '') {
             writer.uint32(10).string(message.description);
         }
         for (const v of message.denomUnits) {
             DenomUnit.encode(v, writer.uint32(18).fork()).ldelim();
         }
-        if (message.base !== "") {
+        if (message.base !== '') {
             writer.uint32(26).string(message.base);
         }
-        if (message.display !== "") {
+        if (message.display !== '') {
             writer.uint32(34).string(message.display);
         }
-        if (message.name !== "") {
+        if (message.name !== '') {
             writer.uint32(42).string(message.name);
         }
-        if (message.symbol !== "") {
+        if (message.symbol !== '') {
             writer.uint32(50).string(message.symbol);
         }
         return writer;
@@ -524,7 +515,7 @@ export const Metadata = {
             message.description = String(object.description);
         }
         else {
-            message.description = "";
+            message.description = '';
         }
         if (object.denomUnits !== undefined && object.denomUnits !== null) {
             for (const e of object.denomUnits) {
@@ -535,34 +526,33 @@ export const Metadata = {
             message.base = String(object.base);
         }
         else {
-            message.base = "";
+            message.base = '';
         }
         if (object.display !== undefined && object.display !== null) {
             message.display = String(object.display);
         }
         else {
-            message.display = "";
+            message.display = '';
         }
         if (object.name !== undefined && object.name !== null) {
             message.name = String(object.name);
         }
         else {
-            message.name = "";
+            message.name = '';
         }
         if (object.symbol !== undefined && object.symbol !== null) {
             message.symbol = String(object.symbol);
         }
         else {
-            message.symbol = "";
+            message.symbol = '';
         }
         return message;
     },
     toJSON(message) {
         const obj = {};
-        message.description !== undefined &&
-            (obj.description = message.description);
+        message.description !== undefined && (obj.description = message.description);
         if (message.denomUnits) {
-            obj.denomUnits = message.denomUnits.map((e) => e ? DenomUnit.toJSON(e) : undefined);
+            obj.denomUnits = message.denomUnits.map((e) => (e ? DenomUnit.toJSON(e) : undefined));
         }
         else {
             obj.denomUnits = [];
@@ -580,7 +570,7 @@ export const Metadata = {
             message.description = object.description;
         }
         else {
-            message.description = "";
+            message.description = '';
         }
         if (object.denomUnits !== undefined && object.denomUnits !== null) {
             for (const e of object.denomUnits) {
@@ -591,26 +581,26 @@ export const Metadata = {
             message.base = object.base;
         }
         else {
-            message.base = "";
+            message.base = '';
         }
         if (object.display !== undefined && object.display !== null) {
             message.display = object.display;
         }
         else {
-            message.display = "";
+            message.display = '';
         }
         if (object.name !== undefined && object.name !== null) {
             message.name = object.name;
         }
         else {
-            message.name = "";
+            message.name = '';
         }
         if (object.symbol !== undefined && object.symbol !== null) {
             message.symbol = object.symbol;
         }
         else {
-            message.symbol = "";
+            message.symbol = '';
         }
         return message;
-    },
+    }
 };
