@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: cosmos/gov/v1beta1/query.proto
 //
-// @dart = 2.3
+// @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
 import 'dart:async' as $async;
@@ -64,54 +64,54 @@ class QueryClient extends $grpc.Client {
           $0.QueryTallyResultResponse.fromBuffer(value));
 
   QueryClient($grpc.ClientChannel channel,
-      {$grpc.CallOptions options,
-      $core.Iterable<$grpc.ClientInterceptor> interceptors})
+      {$grpc.CallOptions? options,
+      $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
   $grpc.ResponseFuture<$0.QueryProposalResponse> proposal(
       $0.QueryProposalRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$proposal, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryProposalsResponse> proposals(
       $0.QueryProposalsRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$proposals, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryVoteResponse> vote($0.QueryVoteRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$vote, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryVotesResponse> votes(
       $0.QueryVotesRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$votes, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryParamsResponse> params(
       $0.QueryParamsRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$params, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryDepositResponse> deposit(
       $0.QueryDepositRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$deposit, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryDepositsResponse> deposits(
       $0.QueryDepositsRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$deposits, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryTallyResultResponse> tallyResult(
       $0.QueryTallyResultRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$tallyResult, request, options: options);
   }
 }

@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: cosmos/feegrant/v1beta1/tx.proto
 //
-// @dart = 2.3
+// @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
 import 'dart:async' as $async;
@@ -28,19 +28,19 @@ class MsgClient extends $grpc.Client {
               $1.MsgRevokeAllowanceResponse.fromBuffer(value));
 
   MsgClient($grpc.ClientChannel channel,
-      {$grpc.CallOptions options,
-      $core.Iterable<$grpc.ClientInterceptor> interceptors})
+      {$grpc.CallOptions? options,
+      $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
   $grpc.ResponseFuture<$1.MsgGrantAllowanceResponse> grantAllowance(
       $1.MsgGrantAllowance request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$grantAllowance, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.MsgRevokeAllowanceResponse> revokeAllowance(
       $1.MsgRevokeAllowance request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$revokeAllowance, request, options: options);
   }
 }

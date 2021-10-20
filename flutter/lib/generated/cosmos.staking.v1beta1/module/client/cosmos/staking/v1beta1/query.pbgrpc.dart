@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: cosmos/staking/v1beta1/query.proto
 //
-// @dart = 2.3
+// @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
 import 'dart:async' as $async;
@@ -109,94 +109,94 @@ class QueryClient extends $grpc.Client {
               $0.QueryParamsResponse.fromBuffer(value));
 
   QueryClient($grpc.ClientChannel channel,
-      {$grpc.CallOptions options,
-      $core.Iterable<$grpc.ClientInterceptor> interceptors})
+      {$grpc.CallOptions? options,
+      $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
   $grpc.ResponseFuture<$0.QueryValidatorsResponse> validators(
       $0.QueryValidatorsRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$validators, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryValidatorResponse> validator(
       $0.QueryValidatorRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$validator, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryValidatorDelegationsResponse>
       validatorDelegations($0.QueryValidatorDelegationsRequest request,
-          {$grpc.CallOptions options}) {
+          {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$validatorDelegations, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryValidatorUnbondingDelegationsResponse>
       validatorUnbondingDelegations(
           $0.QueryValidatorUnbondingDelegationsRequest request,
-          {$grpc.CallOptions options}) {
+          {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$validatorUnbondingDelegations, request,
         options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryDelegationResponse> delegation(
       $0.QueryDelegationRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$delegation, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryUnbondingDelegationResponse> unbondingDelegation(
       $0.QueryUnbondingDelegationRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$unbondingDelegation, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryDelegatorDelegationsResponse>
       delegatorDelegations($0.QueryDelegatorDelegationsRequest request,
-          {$grpc.CallOptions options}) {
+          {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$delegatorDelegations, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryDelegatorUnbondingDelegationsResponse>
       delegatorUnbondingDelegations(
           $0.QueryDelegatorUnbondingDelegationsRequest request,
-          {$grpc.CallOptions options}) {
+          {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$delegatorUnbondingDelegations, request,
         options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryRedelegationsResponse> redelegations(
       $0.QueryRedelegationsRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$redelegations, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryDelegatorValidatorsResponse> delegatorValidators(
       $0.QueryDelegatorValidatorsRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$delegatorValidators, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryDelegatorValidatorResponse> delegatorValidator(
       $0.QueryDelegatorValidatorRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$delegatorValidator, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryHistoricalInfoResponse> historicalInfo(
       $0.QueryHistoricalInfoRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$historicalInfo, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryPoolResponse> pool($0.QueryPoolRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$pool, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryParamsResponse> params(
       $0.QueryParamsRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$params, request, options: options);
   }
 }

@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: cosmos/gov/v1beta1/tx.proto
 //
-// @dart = 2.3
+// @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
 import 'dart:async' as $async;
@@ -38,29 +38,29 @@ class MsgClient extends $grpc.Client {
               $1.MsgDepositResponse.fromBuffer(value));
 
   MsgClient($grpc.ClientChannel channel,
-      {$grpc.CallOptions options,
-      $core.Iterable<$grpc.ClientInterceptor> interceptors})
+      {$grpc.CallOptions? options,
+      $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
   $grpc.ResponseFuture<$1.MsgSubmitProposalResponse> submitProposal(
       $1.MsgSubmitProposal request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$submitProposal, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.MsgVoteResponse> vote($1.MsgVote request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$vote, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.MsgVoteWeightedResponse> voteWeighted(
       $1.MsgVoteWeighted request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$voteWeighted, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.MsgDepositResponse> deposit($1.MsgDeposit request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$deposit, request, options: options);
   }
 }

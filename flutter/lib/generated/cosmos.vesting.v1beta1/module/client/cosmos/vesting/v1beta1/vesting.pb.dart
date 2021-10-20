@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: cosmos/vesting/v1beta1/vesting.proto
 //
-// @dart = 2.3
+// @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
 import 'dart:core' as $core;
@@ -14,85 +14,66 @@ import '../../auth/v1beta1/auth.pb.dart' as $3;
 import '../../base/v1beta1/coin.pb.dart' as $1;
 
 class BaseVestingAccount extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'BaseVestingAccount',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.vesting.v1beta1'),
-      createEmptyInstance: create)
-    ..aOM<$3.BaseAccount>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'baseAccount',
-        subBuilder: $3.BaseAccount.create)
-    ..pc<$1.Coin>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'originalVesting',
-        $pb.PbFieldType.PM,
-        subBuilder: $1.Coin.create)
-    ..pc<$1.Coin>(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'delegatedFree',
-        $pb.PbFieldType.PM,
-        subBuilder: $1.Coin.create)
-    ..pc<$1.Coin>(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'delegatedVesting',
-        $pb.PbFieldType.PM,
-        subBuilder: $1.Coin.create)
-    ..aInt64(
-        5,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'endTime')
-    ..hasRequiredFields = false;
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BaseVestingAccount', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.vesting.v1beta1'), createEmptyInstance: create)
+    ..aOM<$3.BaseAccount>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'baseAccount', subBuilder: $3.BaseAccount.create)
+    ..pc<$1.Coin>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'originalVesting', $pb.PbFieldType.PM, subBuilder: $1.Coin.create)
+    ..pc<$1.Coin>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'delegatedFree', $pb.PbFieldType.PM, subBuilder: $1.Coin.create)
+    ..pc<$1.Coin>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'delegatedVesting', $pb.PbFieldType.PM, subBuilder: $1.Coin.create)
+    ..aInt64(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'endTime')
+    ..hasRequiredFields = false
+  ;
 
   BaseVestingAccount._() : super();
-  factory BaseVestingAccount() => create();
-  factory BaseVestingAccount.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory BaseVestingAccount.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
+  factory BaseVestingAccount({
+    $3.BaseAccount? baseAccount,
+    $core.Iterable<$1.Coin>? originalVesting,
+    $core.Iterable<$1.Coin>? delegatedFree,
+    $core.Iterable<$1.Coin>? delegatedVesting,
+    $fixnum.Int64? endTime,
+  }) {
+    final _result = create();
+    if (baseAccount != null) {
+      _result.baseAccount = baseAccount;
+    }
+    if (originalVesting != null) {
+      _result.originalVesting.addAll(originalVesting);
+    }
+    if (delegatedFree != null) {
+      _result.delegatedFree.addAll(delegatedFree);
+    }
+    if (delegatedVesting != null) {
+      _result.delegatedVesting.addAll(delegatedVesting);
+    }
+    if (endTime != null) {
+      _result.endTime = endTime;
+    }
+    return _result;
+  }
+  factory BaseVestingAccount.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory BaseVestingAccount.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
   BaseVestingAccount clone() => BaseVestingAccount()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  BaseVestingAccount copyWith(void Function(BaseVestingAccount) updates) =>
-      super.copyWith((message) => updates(
-          message as BaseVestingAccount)); // ignore: deprecated_member_use
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  BaseVestingAccount copyWith(void Function(BaseVestingAccount) updates) => super.copyWith((message) => updates(message as BaseVestingAccount)) as BaseVestingAccount; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static BaseVestingAccount create() => BaseVestingAccount._();
   BaseVestingAccount createEmptyInstance() => create();
-  static $pb.PbList<BaseVestingAccount> createRepeated() =>
-      $pb.PbList<BaseVestingAccount>();
+  static $pb.PbList<BaseVestingAccount> createRepeated() => $pb.PbList<BaseVestingAccount>();
   @$core.pragma('dart2js:noInline')
-  static BaseVestingAccount getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<BaseVestingAccount>(create);
-  static BaseVestingAccount _defaultInstance;
+  static BaseVestingAccount getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<BaseVestingAccount>(create);
+  static BaseVestingAccount? _defaultInstance;
 
   @$pb.TagNumber(1)
   $3.BaseAccount get baseAccount => $_getN(0);
   @$pb.TagNumber(1)
-  set baseAccount($3.BaseAccount v) {
-    setField(1, v);
-  }
-
+  set baseAccount($3.BaseAccount v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasBaseAccount() => $_has(0);
   @$pb.TagNumber(1)
@@ -112,10 +93,7 @@ class BaseVestingAccount extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   $fixnum.Int64 get endTime => $_getI64(4);
   @$pb.TagNumber(5)
-  set endTime($fixnum.Int64 v) {
-    $_setInt64(4, v);
-  }
-
+  set endTime($fixnum.Int64 v) { $_setInt64(4, v); }
   @$pb.TagNumber(5)
   $core.bool hasEndTime() => $_has(4);
   @$pb.TagNumber(5)
@@ -123,66 +101,51 @@ class BaseVestingAccount extends $pb.GeneratedMessage {
 }
 
 class ContinuousVestingAccount extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'ContinuousVestingAccount',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.vesting.v1beta1'),
-      createEmptyInstance: create)
-    ..aOM<BaseVestingAccount>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'baseVestingAccount',
-        subBuilder: BaseVestingAccount.create)
-    ..aInt64(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'startTime')
-    ..hasRequiredFields = false;
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ContinuousVestingAccount', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.vesting.v1beta1'), createEmptyInstance: create)
+    ..aOM<BaseVestingAccount>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'baseVestingAccount', subBuilder: BaseVestingAccount.create)
+    ..aInt64(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'startTime')
+    ..hasRequiredFields = false
+  ;
 
   ContinuousVestingAccount._() : super();
-  factory ContinuousVestingAccount() => create();
-  factory ContinuousVestingAccount.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory ContinuousVestingAccount.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  ContinuousVestingAccount clone() =>
-      ContinuousVestingAccount()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  ContinuousVestingAccount copyWith(
-          void Function(ContinuousVestingAccount) updates) =>
-      super.copyWith((message) => updates(message
-          as ContinuousVestingAccount)); // ignore: deprecated_member_use
+  factory ContinuousVestingAccount({
+    BaseVestingAccount? baseVestingAccount,
+    $fixnum.Int64? startTime,
+  }) {
+    final _result = create();
+    if (baseVestingAccount != null) {
+      _result.baseVestingAccount = baseVestingAccount;
+    }
+    if (startTime != null) {
+      _result.startTime = startTime;
+    }
+    return _result;
+  }
+  factory ContinuousVestingAccount.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ContinuousVestingAccount.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ContinuousVestingAccount clone() => ContinuousVestingAccount()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ContinuousVestingAccount copyWith(void Function(ContinuousVestingAccount) updates) => super.copyWith((message) => updates(message as ContinuousVestingAccount)) as ContinuousVestingAccount; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static ContinuousVestingAccount create() => ContinuousVestingAccount._();
   ContinuousVestingAccount createEmptyInstance() => create();
-  static $pb.PbList<ContinuousVestingAccount> createRepeated() =>
-      $pb.PbList<ContinuousVestingAccount>();
+  static $pb.PbList<ContinuousVestingAccount> createRepeated() => $pb.PbList<ContinuousVestingAccount>();
   @$core.pragma('dart2js:noInline')
-  static ContinuousVestingAccount getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<ContinuousVestingAccount>(create);
-  static ContinuousVestingAccount _defaultInstance;
+  static ContinuousVestingAccount getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ContinuousVestingAccount>(create);
+  static ContinuousVestingAccount? _defaultInstance;
 
   @$pb.TagNumber(1)
   BaseVestingAccount get baseVestingAccount => $_getN(0);
   @$pb.TagNumber(1)
-  set baseVestingAccount(BaseVestingAccount v) {
-    setField(1, v);
-  }
-
+  set baseVestingAccount(BaseVestingAccount v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasBaseVestingAccount() => $_has(0);
   @$pb.TagNumber(1)
@@ -193,10 +156,7 @@ class ContinuousVestingAccount extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $fixnum.Int64 get startTime => $_getI64(1);
   @$pb.TagNumber(2)
-  set startTime($fixnum.Int64 v) {
-    $_setInt64(1, v);
-  }
-
+  set startTime($fixnum.Int64 v) { $_setInt64(1, v); }
   @$pb.TagNumber(2)
   $core.bool hasStartTime() => $_has(1);
   @$pb.TagNumber(2)
@@ -204,61 +164,46 @@ class ContinuousVestingAccount extends $pb.GeneratedMessage {
 }
 
 class DelayedVestingAccount extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'DelayedVestingAccount',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.vesting.v1beta1'),
-      createEmptyInstance: create)
-    ..aOM<BaseVestingAccount>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'baseVestingAccount',
-        subBuilder: BaseVestingAccount.create)
-    ..hasRequiredFields = false;
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DelayedVestingAccount', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.vesting.v1beta1'), createEmptyInstance: create)
+    ..aOM<BaseVestingAccount>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'baseVestingAccount', subBuilder: BaseVestingAccount.create)
+    ..hasRequiredFields = false
+  ;
 
   DelayedVestingAccount._() : super();
-  factory DelayedVestingAccount() => create();
-  factory DelayedVestingAccount.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory DelayedVestingAccount.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  DelayedVestingAccount clone() =>
-      DelayedVestingAccount()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  DelayedVestingAccount copyWith(
-          void Function(DelayedVestingAccount) updates) =>
-      super.copyWith((message) => updates(
-          message as DelayedVestingAccount)); // ignore: deprecated_member_use
+  factory DelayedVestingAccount({
+    BaseVestingAccount? baseVestingAccount,
+  }) {
+    final _result = create();
+    if (baseVestingAccount != null) {
+      _result.baseVestingAccount = baseVestingAccount;
+    }
+    return _result;
+  }
+  factory DelayedVestingAccount.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory DelayedVestingAccount.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  DelayedVestingAccount clone() => DelayedVestingAccount()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  DelayedVestingAccount copyWith(void Function(DelayedVestingAccount) updates) => super.copyWith((message) => updates(message as DelayedVestingAccount)) as DelayedVestingAccount; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static DelayedVestingAccount create() => DelayedVestingAccount._();
   DelayedVestingAccount createEmptyInstance() => create();
-  static $pb.PbList<DelayedVestingAccount> createRepeated() =>
-      $pb.PbList<DelayedVestingAccount>();
+  static $pb.PbList<DelayedVestingAccount> createRepeated() => $pb.PbList<DelayedVestingAccount>();
   @$core.pragma('dart2js:noInline')
-  static DelayedVestingAccount getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<DelayedVestingAccount>(create);
-  static DelayedVestingAccount _defaultInstance;
+  static DelayedVestingAccount getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DelayedVestingAccount>(create);
+  static DelayedVestingAccount? _defaultInstance;
 
   @$pb.TagNumber(1)
   BaseVestingAccount get baseVestingAccount => $_getN(0);
   @$pb.TagNumber(1)
-  set baseVestingAccount(BaseVestingAccount v) {
-    setField(1, v);
-  }
-
+  set baseVestingAccount(BaseVestingAccount v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasBaseVestingAccount() => $_has(0);
   @$pb.TagNumber(1)
@@ -268,63 +213,51 @@ class DelayedVestingAccount extends $pb.GeneratedMessage {
 }
 
 class Period extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'Period',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.vesting.v1beta1'),
-      createEmptyInstance: create)
-    ..aInt64(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'length')
-    ..pc<$1.Coin>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'amount',
-        $pb.PbFieldType.PM,
-        subBuilder: $1.Coin.create)
-    ..hasRequiredFields = false;
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Period', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.vesting.v1beta1'), createEmptyInstance: create)
+    ..aInt64(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'length')
+    ..pc<$1.Coin>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'amount', $pb.PbFieldType.PM, subBuilder: $1.Coin.create)
+    ..hasRequiredFields = false
+  ;
 
   Period._() : super();
-  factory Period() => create();
-  factory Period.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory Period.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
+  factory Period({
+    $fixnum.Int64? length,
+    $core.Iterable<$1.Coin>? amount,
+  }) {
+    final _result = create();
+    if (length != null) {
+      _result.length = length;
+    }
+    if (amount != null) {
+      _result.amount.addAll(amount);
+    }
+    return _result;
+  }
+  factory Period.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Period.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
   Period clone() => Period()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  Period copyWith(void Function(Period) updates) => super.copyWith(
-      (message) => updates(message as Period)); // ignore: deprecated_member_use
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  Period copyWith(void Function(Period) updates) => super.copyWith((message) => updates(message as Period)) as Period; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static Period create() => Period._();
   Period createEmptyInstance() => create();
   static $pb.PbList<Period> createRepeated() => $pb.PbList<Period>();
   @$core.pragma('dart2js:noInline')
-  static Period getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Period>(create);
-  static Period _defaultInstance;
+  static Period getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Period>(create);
+  static Period? _defaultInstance;
 
   @$pb.TagNumber(1)
   $fixnum.Int64 get length => $_getI64(0);
   @$pb.TagNumber(1)
-  set length($fixnum.Int64 v) {
-    $_setInt64(0, v);
-  }
-
+  set length($fixnum.Int64 v) { $_setInt64(0, v); }
   @$pb.TagNumber(1)
   $core.bool hasLength() => $_has(0);
   @$pb.TagNumber(1)
@@ -335,73 +268,56 @@ class Period extends $pb.GeneratedMessage {
 }
 
 class PeriodicVestingAccount extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'PeriodicVestingAccount',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.vesting.v1beta1'),
-      createEmptyInstance: create)
-    ..aOM<BaseVestingAccount>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'baseVestingAccount',
-        subBuilder: BaseVestingAccount.create)
-    ..aInt64(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'startTime')
-    ..pc<Period>(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'vestingPeriods',
-        $pb.PbFieldType.PM,
-        subBuilder: Period.create)
-    ..hasRequiredFields = false;
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PeriodicVestingAccount', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.vesting.v1beta1'), createEmptyInstance: create)
+    ..aOM<BaseVestingAccount>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'baseVestingAccount', subBuilder: BaseVestingAccount.create)
+    ..aInt64(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'startTime')
+    ..pc<Period>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'vestingPeriods', $pb.PbFieldType.PM, subBuilder: Period.create)
+    ..hasRequiredFields = false
+  ;
 
   PeriodicVestingAccount._() : super();
-  factory PeriodicVestingAccount() => create();
-  factory PeriodicVestingAccount.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory PeriodicVestingAccount.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  PeriodicVestingAccount clone() =>
-      PeriodicVestingAccount()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  PeriodicVestingAccount copyWith(
-          void Function(PeriodicVestingAccount) updates) =>
-      super.copyWith((message) => updates(
-          message as PeriodicVestingAccount)); // ignore: deprecated_member_use
+  factory PeriodicVestingAccount({
+    BaseVestingAccount? baseVestingAccount,
+    $fixnum.Int64? startTime,
+    $core.Iterable<Period>? vestingPeriods,
+  }) {
+    final _result = create();
+    if (baseVestingAccount != null) {
+      _result.baseVestingAccount = baseVestingAccount;
+    }
+    if (startTime != null) {
+      _result.startTime = startTime;
+    }
+    if (vestingPeriods != null) {
+      _result.vestingPeriods.addAll(vestingPeriods);
+    }
+    return _result;
+  }
+  factory PeriodicVestingAccount.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PeriodicVestingAccount.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  PeriodicVestingAccount clone() => PeriodicVestingAccount()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  PeriodicVestingAccount copyWith(void Function(PeriodicVestingAccount) updates) => super.copyWith((message) => updates(message as PeriodicVestingAccount)) as PeriodicVestingAccount; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static PeriodicVestingAccount create() => PeriodicVestingAccount._();
   PeriodicVestingAccount createEmptyInstance() => create();
-  static $pb.PbList<PeriodicVestingAccount> createRepeated() =>
-      $pb.PbList<PeriodicVestingAccount>();
+  static $pb.PbList<PeriodicVestingAccount> createRepeated() => $pb.PbList<PeriodicVestingAccount>();
   @$core.pragma('dart2js:noInline')
-  static PeriodicVestingAccount getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<PeriodicVestingAccount>(create);
-  static PeriodicVestingAccount _defaultInstance;
+  static PeriodicVestingAccount getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PeriodicVestingAccount>(create);
+  static PeriodicVestingAccount? _defaultInstance;
 
   @$pb.TagNumber(1)
   BaseVestingAccount get baseVestingAccount => $_getN(0);
   @$pb.TagNumber(1)
-  set baseVestingAccount(BaseVestingAccount v) {
-    setField(1, v);
-  }
-
+  set baseVestingAccount(BaseVestingAccount v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasBaseVestingAccount() => $_has(0);
   @$pb.TagNumber(1)
@@ -412,10 +328,7 @@ class PeriodicVestingAccount extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $fixnum.Int64 get startTime => $_getI64(1);
   @$pb.TagNumber(2)
-  set startTime($fixnum.Int64 v) {
-    $_setInt64(1, v);
-  }
-
+  set startTime($fixnum.Int64 v) { $_setInt64(1, v); }
   @$pb.TagNumber(2)
   $core.bool hasStartTime() => $_has(1);
   @$pb.TagNumber(2)
@@ -426,61 +339,46 @@ class PeriodicVestingAccount extends $pb.GeneratedMessage {
 }
 
 class PermanentLockedAccount extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'PermanentLockedAccount',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.vesting.v1beta1'),
-      createEmptyInstance: create)
-    ..aOM<BaseVestingAccount>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'baseVestingAccount',
-        subBuilder: BaseVestingAccount.create)
-    ..hasRequiredFields = false;
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PermanentLockedAccount', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.vesting.v1beta1'), createEmptyInstance: create)
+    ..aOM<BaseVestingAccount>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'baseVestingAccount', subBuilder: BaseVestingAccount.create)
+    ..hasRequiredFields = false
+  ;
 
   PermanentLockedAccount._() : super();
-  factory PermanentLockedAccount() => create();
-  factory PermanentLockedAccount.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory PermanentLockedAccount.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  PermanentLockedAccount clone() =>
-      PermanentLockedAccount()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  PermanentLockedAccount copyWith(
-          void Function(PermanentLockedAccount) updates) =>
-      super.copyWith((message) => updates(
-          message as PermanentLockedAccount)); // ignore: deprecated_member_use
+  factory PermanentLockedAccount({
+    BaseVestingAccount? baseVestingAccount,
+  }) {
+    final _result = create();
+    if (baseVestingAccount != null) {
+      _result.baseVestingAccount = baseVestingAccount;
+    }
+    return _result;
+  }
+  factory PermanentLockedAccount.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PermanentLockedAccount.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  PermanentLockedAccount clone() => PermanentLockedAccount()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  PermanentLockedAccount copyWith(void Function(PermanentLockedAccount) updates) => super.copyWith((message) => updates(message as PermanentLockedAccount)) as PermanentLockedAccount; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static PermanentLockedAccount create() => PermanentLockedAccount._();
   PermanentLockedAccount createEmptyInstance() => create();
-  static $pb.PbList<PermanentLockedAccount> createRepeated() =>
-      $pb.PbList<PermanentLockedAccount>();
+  static $pb.PbList<PermanentLockedAccount> createRepeated() => $pb.PbList<PermanentLockedAccount>();
   @$core.pragma('dart2js:noInline')
-  static PermanentLockedAccount getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<PermanentLockedAccount>(create);
-  static PermanentLockedAccount _defaultInstance;
+  static PermanentLockedAccount getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PermanentLockedAccount>(create);
+  static PermanentLockedAccount? _defaultInstance;
 
   @$pb.TagNumber(1)
   BaseVestingAccount get baseVestingAccount => $_getN(0);
   @$pb.TagNumber(1)
-  set baseVestingAccount(BaseVestingAccount v) {
-    setField(1, v);
-  }
-
+  set baseVestingAccount(BaseVestingAccount v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasBaseVestingAccount() => $_has(0);
   @$pb.TagNumber(1)
@@ -488,3 +386,4 @@ class PermanentLockedAccount extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   BaseVestingAccount ensureBaseVestingAccount() => $_ensure(0);
 }
+

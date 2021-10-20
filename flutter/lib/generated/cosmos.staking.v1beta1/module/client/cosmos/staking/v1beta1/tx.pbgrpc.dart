@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: cosmos/staking/v1beta1/tx.proto
 //
-// @dart = 2.3
+// @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
 import 'dart:async' as $async;
@@ -46,36 +46,36 @@ class MsgClient extends $grpc.Client {
               $1.MsgUndelegateResponse.fromBuffer(value));
 
   MsgClient($grpc.ClientChannel channel,
-      {$grpc.CallOptions options,
-      $core.Iterable<$grpc.ClientInterceptor> interceptors})
+      {$grpc.CallOptions? options,
+      $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
   $grpc.ResponseFuture<$1.MsgCreateValidatorResponse> createValidator(
       $1.MsgCreateValidator request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$createValidator, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.MsgEditValidatorResponse> editValidator(
       $1.MsgEditValidator request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$editValidator, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.MsgDelegateResponse> delegate($1.MsgDelegate request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$delegate, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.MsgBeginRedelegateResponse> beginRedelegate(
       $1.MsgBeginRedelegate request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$beginRedelegate, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.MsgUndelegateResponse> undelegate(
       $1.MsgUndelegate request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$undelegate, request, options: options);
   }
 }

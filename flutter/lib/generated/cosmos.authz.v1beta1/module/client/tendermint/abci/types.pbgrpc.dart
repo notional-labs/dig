@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: tendermint/abci/types.proto
 //
-// @dart = 2.3
+// @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
 import 'dart:async' as $async;
@@ -97,90 +97,90 @@ class ABCIApplicationClient extends $grpc.Client {
           $1.ResponseApplySnapshotChunk.fromBuffer(value));
 
   ABCIApplicationClient($grpc.ClientChannel channel,
-      {$grpc.CallOptions options,
-      $core.Iterable<$grpc.ClientInterceptor> interceptors})
+      {$grpc.CallOptions? options,
+      $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
   $grpc.ResponseFuture<$1.ResponseEcho> echo($1.RequestEcho request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$echo, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.ResponseFlush> flush($1.RequestFlush request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$flush, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.ResponseInfo> info($1.RequestInfo request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$info, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.ResponseSetOption> setOption(
       $1.RequestSetOption request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$setOption, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.ResponseDeliverTx> deliverTx(
       $1.RequestDeliverTx request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$deliverTx, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.ResponseCheckTx> checkTx($1.RequestCheckTx request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$checkTx, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.ResponseQuery> query($1.RequestQuery request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$query, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.ResponseCommit> commit($1.RequestCommit request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$commit, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.ResponseInitChain> initChain(
       $1.RequestInitChain request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$initChain, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.ResponseBeginBlock> beginBlock(
       $1.RequestBeginBlock request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$beginBlock, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.ResponseEndBlock> endBlock($1.RequestEndBlock request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$endBlock, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.ResponseListSnapshots> listSnapshots(
       $1.RequestListSnapshots request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$listSnapshots, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.ResponseOfferSnapshot> offerSnapshot(
       $1.RequestOfferSnapshot request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$offerSnapshot, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.ResponseLoadSnapshotChunk> loadSnapshotChunk(
       $1.RequestLoadSnapshotChunk request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$loadSnapshotChunk, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.ResponseApplySnapshotChunk> applySnapshotChunk(
       $1.RequestApplySnapshotChunk request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$applySnapshotChunk, request, options: options);
   }
 }

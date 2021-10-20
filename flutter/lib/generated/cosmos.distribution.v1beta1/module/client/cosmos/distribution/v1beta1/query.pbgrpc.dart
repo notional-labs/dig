@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: cosmos/distribution/v1beta1/query.proto
 //
-// @dart = 2.3
+// @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
 import 'dart:async' as $async;
@@ -76,65 +76,65 @@ class QueryClient extends $grpc.Client {
           $0.QueryCommunityPoolResponse.fromBuffer(value));
 
   QueryClient($grpc.ClientChannel channel,
-      {$grpc.CallOptions options,
-      $core.Iterable<$grpc.ClientInterceptor> interceptors})
+      {$grpc.CallOptions? options,
+      $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
   $grpc.ResponseFuture<$0.QueryParamsResponse> params(
       $0.QueryParamsRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$params, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryValidatorOutstandingRewardsResponse>
       validatorOutstandingRewards(
           $0.QueryValidatorOutstandingRewardsRequest request,
-          {$grpc.CallOptions options}) {
+          {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$validatorOutstandingRewards, request,
         options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryValidatorCommissionResponse> validatorCommission(
       $0.QueryValidatorCommissionRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$validatorCommission, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryValidatorSlashesResponse> validatorSlashes(
       $0.QueryValidatorSlashesRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$validatorSlashes, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryDelegationRewardsResponse> delegationRewards(
       $0.QueryDelegationRewardsRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$delegationRewards, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryDelegationTotalRewardsResponse>
       delegationTotalRewards($0.QueryDelegationTotalRewardsRequest request,
-          {$grpc.CallOptions options}) {
+          {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$delegationTotalRewards, request,
         options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryDelegatorValidatorsResponse> delegatorValidators(
       $0.QueryDelegatorValidatorsRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$delegatorValidators, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryDelegatorWithdrawAddressResponse>
       delegatorWithdrawAddress($0.QueryDelegatorWithdrawAddressRequest request,
-          {$grpc.CallOptions options}) {
+          {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$delegatorWithdrawAddress, request,
         options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryCommunityPoolResponse> communityPool(
       $0.QueryCommunityPoolRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$communityPool, request, options: options);
   }
 }

@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: cosmos/authz/v1beta1/query.proto
 //
-// @dart = 2.3
+// @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
 import 'dart:async' as $async;
@@ -22,13 +22,13 @@ class QueryClient extends $grpc.Client {
               $0.QueryGrantsResponse.fromBuffer(value));
 
   QueryClient($grpc.ClientChannel channel,
-      {$grpc.CallOptions options,
-      $core.Iterable<$grpc.ClientInterceptor> interceptors})
+      {$grpc.CallOptions? options,
+      $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
   $grpc.ResponseFuture<$0.QueryGrantsResponse> grants(
       $0.QueryGrantsRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$grants, request, options: options);
   }
 }

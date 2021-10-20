@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: cosmos/bank/v1beta1/query.proto
 //
-// @dart = 2.3
+// @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
 import 'dart:async' as $async;
@@ -58,49 +58,49 @@ class QueryClient extends $grpc.Client {
           $0.QueryDenomsMetadataResponse.fromBuffer(value));
 
   QueryClient($grpc.ClientChannel channel,
-      {$grpc.CallOptions options,
-      $core.Iterable<$grpc.ClientInterceptor> interceptors})
+      {$grpc.CallOptions? options,
+      $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
   $grpc.ResponseFuture<$0.QueryBalanceResponse> balance(
       $0.QueryBalanceRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$balance, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryAllBalancesResponse> allBalances(
       $0.QueryAllBalancesRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$allBalances, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryTotalSupplyResponse> totalSupply(
       $0.QueryTotalSupplyRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$totalSupply, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QuerySupplyOfResponse> supplyOf(
       $0.QuerySupplyOfRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$supplyOf, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryParamsResponse> params(
       $0.QueryParamsRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$params, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryDenomMetadataResponse> denomMetadata(
       $0.QueryDenomMetadataRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$denomMetadata, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.QueryDenomsMetadataResponse> denomsMetadata(
       $0.QueryDenomsMetadataRequest request,
-      {$grpc.CallOptions options}) {
+      {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$denomsMetadata, request, options: options);
   }
 }
