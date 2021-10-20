@@ -22,6 +22,7 @@
     "core-js": "^3.11.2",
     "crypto-js": "^4.0.0",
     "file-saver": "^2.0.5",
+    "typescript": "^4.4.4",
     "vue": "^3.0.11",
     "vue-router": "^4.0.3",
     "vue-uuid": "^2.0.2",
