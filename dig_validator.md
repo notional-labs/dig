@@ -49,7 +49,7 @@ digd keys show validator_name --bech val
 
 If it contains `"digvaloper"`, then you are. If not:
 ```bash
-digd tx staking create-validator --moniker=validator_name --from=validator_name --pubkey="$(digd tendermint show-validator)" --amount="1000000udig" --commission-max-rate="0.10" --commission-max-change-rate="0.05" --commission-rate="0.05" --fees 40000udig --gas 500000 --min-self-delegation 1 --chain-id dig-testnet-3
+digd tx staking create-validator --moniker=validator_name --from=validator_name --pubkey="$(digd tendermint show-validator)" --amount="1000000udig" --commission-max-rate="0.10" --commission-max-change-rate="0.05" --commission-rate="0.05" --fees 40000udig --gas 40000 --min-self-delegation 1 --chain-id dig-testnet-3
 
 # You can change the params if you like
 ```
@@ -66,12 +66,12 @@ digd tx staking delegate $(digd keys show validator_name --bech val -a) 50000udi
 
 Receive rewards:
 ```bash
-digd tx distribution withdraw-rewards $(digd keys show --bech=val -a validator_name) --from validator_name --gas-prices 0.25udig
+digd tx distribution withdraw-rewards $(digd keys show --bech=val -a validator_name) --from validator_name --fees 40000udig --gas 40000 
 ```
 
 Receive rewards and commission:
 ```bash
-digd tx distribution withdraw-rewards $(digd keys show --bech=val -a validator_name) --from validator_name --commission --gas-prices 0.25udig
+digd tx distribution withdraw-rewards $(digd keys show --bech=val -a validator_name) --from validator_name --commission --fees 40000udig --gas 40000
 ```
 
 Check your validator status with:
@@ -81,7 +81,7 @@ digd status
 
 if your validator is jailed, try unjailing it with this:
 ```bash
-digd tx slashing unjail --from=$(digd keys show validator_name -a) --chain-id dig-testnet-3 --gas-prices 50udig
+digd tx slashing unjail --from=$(digd keys show validator_name -a) --chain-id dig-testnet-3 --fees 40000udig --gas 40000
 # There is some reasons when your account is jailed, and Jacob are going to change in the next build
 ```
 
