@@ -1,0 +1,75 @@
+run:
+  tests: false
+#   # timeout for analysis, e.g. 30s, 5m, default is 1m
+#   timeout: 5m
+
+
+#  enable:
+#    - bodyclose
+#    - deadcode
+#    - depguard
+#    - dogsled
+#    - errcheck
+#    - goconst
+#    - gocritic
+#    - gofmt
+#    - goimports
+#    - revive
+#    - gosec
+#    - gosimple
+#    - govet
+#    - ineffassign
+#    - interfacer
+#    - govet
+#    - misspell
+#    - nakedret
+#    - prealloc
+#    - exportloopref
+#    - staticcheck
+#    - structcheck
+#    - stylecheck
+#    - typecheck
+#    - unconvert
+#    - unused
+#    - unparam
+#    - wsl
+#    - nolintlint
+#
+#issues:
+#  exclude-rules:
+#    - text: "Use of weak random number generator"
+#      linters:
+#        - gosec
+#    - text: "comment on exported var"
+#      linters:
+#        - golint
+#    - text: "don't use an underscore in package name"
+#      linters:
+#        - golint
+#    - text: "put a space between `//` and comment text"
+#      linters:
+#        - gocritic
+#    - text: "ST1003:"
+#      linters:
+#        - stylecheck
+#    # FIXME: Disabled until golangci-lint updates stylecheck with this fix:
+#    # https://github.com/dominikh/go-tools/issues/389
+#    - text: "ST1016:"
+#      linters:
+#        - stylecheck
+#    - text: "SA1019: codec.LegacyAmino is deprecated"
+#      linters:
+#        - staticcheck
+
+
+linters-settings:
+  dogsled:
+    max-blank-identifiers: 3
+  maligned:
+    # print struct with more effective memory layout or not, false by default
+    suggest-new: true
+  nolintlint:
+    allow-unused: false
+    allow-leading-space: true
+    require-explanation: false
+    require-specific: false
