@@ -19,7 +19,7 @@ Here's a little light background reading:
 
 
 ## Status
-Mainnet is ready, We'll launch once dtails are finalized.
+Mainnet is ready, We'll launch once details are finalized.
 
 
 
@@ -46,7 +46,7 @@ Mainnet is ready, We'll launch once dtails are finalized.
 
 ## Financing
 
-We're comitted to transparency in all matters, including the composition of genesis allocations.  Dig has raised $0.  Adam has funded development work.  If we take funding, informaiton on that will go right here.  We will only accept funding from parties who are aligned with the long-term vision of the project and willing to have their tokens on exactly the same terms as those who get them in an airdrop.
+We're comitted to transparency in all matters, including the composition of genesis allocations.  Adam has raised funds for Dig's development work.  Pre-launch we'll post the final tally.  We will only accept funding from parties who are aligned with the long-term vision of the project and willing to have their tokens on exactly the same terms as those who get them in an airdrop.
 
 ## Roadmap
 
@@ -83,6 +83,6 @@ We're comitted to transparency in all matters, including the composition of gene
 - [ ] First update to dig mainnet
 
 ## Jurisdictionally compatible chains
-- [ ] First launch of a chain adjacent to dig with live real estate, governed and developed by the chain.  These chains will be re-instantiations of dig with compatible code.  
+ - [ ] [Crypto Cruise Ship](https://github.com/notional-labs/ccs)
  - [ ] Thailand
  - [ ] Laos
