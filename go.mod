@@ -12,7 +12,9 @@ require (
 	github.com/tendermint/spm v0.1.8-0.20211026072440-6f215802f3ec
 	github.com/tendermint/tendermint v0.34.14
 	github.com/tendermint/tm-db v0.6.4
+	github.com/spf13/cobra v1.2.1
 )
+
 
 require (
 	filippo.io/edwards25519 v1.0.0-beta.2 // indirect
@@ -92,7 +94,6 @@ require (
 	github.com/rs/zerolog v1.23.0 // indirect
 	github.com/sasha-s/go-deadlock v0.2.1-0.20190427202633-1595213edefa // indirect
 	github.com/spf13/afero v1.6.0 // indirect
-	github.com/spf13/cobra v1.2.1 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/spf13/viper v1.8.1 // indirect

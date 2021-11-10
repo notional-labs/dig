@@ -1,4 +1,4 @@
-# /etc/systemd/system/gaia.service
+# /etc/systemd/system/dig.service
 [Unit]
 Description=Dig
 After=firstboot.service
