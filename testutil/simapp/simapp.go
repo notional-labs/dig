@@ -4,7 +4,6 @@ import (
 	"time"
 
 	"github.com/cosmos/cosmos-sdk/simapp"
-	"github.com/tendermint/spm/cosmoscmd"
 	abci "github.com/tendermint/tendermint/abci/types"
 	"github.com/tendermint/tendermint/libs/log"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
@@ -12,14 +11,15 @@ import (
 	tmdb "github.com/tendermint/tm-db"
 
 	"github.com/notional-labs/dig/app"
+	"github.com/notional-labs/dig/app/params"
 )
 
 // New creates application instance with in-memory database and disabled logging.
-func New(dir string) cosmoscmd.App {
+func New(dir string) app.App {
 	db := tmdb.NewMemDB()
 	logger := log.NewNopLogger()
 
-	encoding := cosmoscmd.MakeEncodingConfig(app.ModuleBasics)
+	encoding := params.MakeEncodingConfig()
 
 	a := app.New(logger, db, nil, true, map[int64]bool{}, dir, 0, encoding,
 		simapp.EmptyAppOptions{})
@@ -28,7 +28,7 @@ func New(dir string) cosmoscmd.App {
 		ConsensusParams: defaultConsensusParams,
 		AppStateBytes:   []byte("{}"),
 	})
-	return a
+	return *a
 }
 
 var defaultConsensusParams = &abci.ConsensusParams{

@@ -9,12 +9,11 @@ require (
 	github.com/google/go-cmp v0.5.6 // indirect
 	github.com/gorilla/mux v1.8.0
 	github.com/spf13/cast v1.4.1
+	github.com/spf13/cobra v1.2.1
 	github.com/tendermint/spm v0.1.8-0.20211026072440-6f215802f3ec
 	github.com/tendermint/tendermint v0.34.14
 	github.com/tendermint/tm-db v0.6.4
-	github.com/spf13/cobra v1.2.1
 )
-
 
 require (
 	filippo.io/edwards25519 v1.0.0-beta.2 // indirect

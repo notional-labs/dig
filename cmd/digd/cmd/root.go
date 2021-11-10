@@ -52,6 +52,7 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 		WithHomeDir(dig.DefaultNodeHome).
 		WithViper("")
 
+		// Many thanks to the team at e-money, who made code worth copying.
 	rootCmd := &cobra.Command{
 		Use:   "digd",
 		Short: "Stargate Cosmos Hub App",
@@ -69,7 +70,9 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 				return err
 			}
 
-			return server.InterceptConfigsPreRunHandler(cmd, "", nil)
+			if err := server.InterceptConfigsPreRunHandler(cmd, "", nil); err != nil {
+				return err
+			}
 
 			srvCtx := server.GetServerContextFromCmd(cmd)
 
@@ -206,6 +209,7 @@ func (ac appCreator) newApp(
 	}
 
 	snapshotDir := filepath.Join(cast.ToString(appOpts.Get(flags.FlagHome)), "data", "snapshots")
+
 	snapshotDB, err := sdk.NewLevelDB("metadata", snapshotDir)
 	if err != nil {
 		panic(err)
