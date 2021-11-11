@@ -53,5 +53,5 @@ go.sum: go.mod
 
 lint:
 	@echo "--> Running linter"
-	@golangci-lint run
+	@golangci-lint run ./...
 	@go mod verify
