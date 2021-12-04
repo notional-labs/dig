@@ -1,8 +1,6 @@
 # dig
 
-[![Software Release](https://github.com/notional-labs/dig/actions/workflows/release.yml/badge.svg)](https://github.com/notional-labs/dig/actions/workflows/release.yml)
 [![dig blockchain](https://github.com/notional-labs/dig/actions/workflows/build.yml/badge.svg)](https://github.com/notional-labs/dig/actions/workflows/build.yml)
-[![Android](https://github.com/notional-labs/dig/actions/workflows/flutter.yml/badge.svg)](https://github.com/notional-labs/dig/actions/workflows/flutter.yml)
 [![Raspberry Pi](https://github.com/notional-labs/dig/actions/workflows/pi.yml/badge.svg)](https://github.com/notional-labs/dig/actions/workflows/pi.yml)
 [![Security Check](https://github.com/notional-labs/dig/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/notional-labs/dig/actions/workflows/codeql-analysis.yml)
 
@@ -28,7 +26,6 @@ Mainnet is ready, We'll launch once details are finalized.
 **form**
 * Software-wise, dig is a monorepo.  All of its essential code lives in this repository:
   * Genesis
-  * Go App Code
   * Javascript Front End Code
   * Mobile App
   * Block explorer
