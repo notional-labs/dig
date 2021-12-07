@@ -1,6 +1,6 @@
 APP_NAME = dig
 DAEMON_NAME = digd
-LEDGER_ENABLED ?= true
+LEDGER_ENABLED = true
 
 PACKAGES=$(shell go list ./... | grep -v '/simulation')
 VERSION := $(shell echo $(shell git describe --tags --always) | sed 's/^v//')
