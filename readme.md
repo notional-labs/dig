@@ -17,12 +17,10 @@ Here's a little light background reading:
 
 
 ## Status
-Mainnet is ready, We'll launch once details are finalized.
-
+SoonTM
 
 
 ## Design
-
 **form**
 * Software-wise, dig is a monorepo.  All of its essential code lives in this repository:
   * Genesis
@@ -42,8 +40,20 @@ Mainnet is ready, We'll launch once details are finalized.
 
 
 ## Financing
-
 We're comitted to transparency in all matters, including the composition of genesis allocations.  Adam has raised funds for Dig's development work.  Pre-launch we'll post the final tally.  We will only accept funding from parties who are aligned with the long-term vision of the project and willing to have their tokens on exactly the same terms as those who get them in an airdrop.
+
+
+## Confirmed-ish SoonTM Digs
+These will launch rapidly after Dig.  Their paths will converge and diverge.  All of them will heavily leverage IBC, and some may leverage CosmWasm.
+
+
+* Dig Vietnam
+* Dig UK
+* Dig Thailand
+* Dig Laos
+* Dig Marine
+
+
 
 ## Roadmap
 
@@ -73,13 +83,8 @@ We're comitted to transparency in all matters, including the composition of gene
 - [ ] IBC Integration via Notional and Chandra Station Relayers
   - [ ] Osmosis Integration
   - [ ] Emeris Integration
-  - [ ] Microtick Integration
+  - [ ] Sif Integration
 - [ ] Announcement of candidate Real Estate development sites and their regulatory requirements
 - [ ] DFY Integration
 - [ ] Blurt Integration
 - [ ] First update to dig mainnet
-
-## Jurisdictionally compatible chains
- - [ ] [Crypto Cruise Ship](https://github.com/notional-labs/ccs)
- - [ ] Thailand
- - [ ] Laos
