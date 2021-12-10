@@ -40,7 +40,7 @@ SoonTM
 
 
 ## Financing
-We're comitted to transparency in all matters, including the composition of genesis allocations.  Adam has raised funds for Dig's development work.  Pre-launch we'll post the final tally.  We will only accept funding from parties who are aligned with the long-term vision of the project and willing to have their tokens on exactly the same terms as those who get them in an airdrop.
+We're comitted to transparency in all matters, including the composition of genesis allocations.  Adam has raised funds for Dig's development work.  Pre-launch we'll post the final tally.  We will only accept funding from parties who are aligned with the long-term vision of the project. Investors in the project will have their coins unvested, while DFY airdrop participants will be vested over a 24 month period. 
 
 
 ## Confirmed-ish SoonTM Digs
