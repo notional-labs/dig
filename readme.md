@@ -74,17 +74,25 @@ These will launch rapidly after Dig.  Their paths will converge and diverge.  Al
 - [x] Clean airdrop code https://github.com/notional-labs/c17 and https://github.com/notional-labs/staking-data-collection
   - [x] Test airdrop code for ethereum-style addresses using the Khanh's Cosmos SDK fork
   - [x] Refactor airdrop if this works
-- [ ] Community Security Audit: 0.1% of Dig tokens reserved for community members who provide a detailed, contextual audit
+- [x] Community Security Audit: 0.1% of Dig tokens reserved for community members who provide a detailed, contextual audit (seems no one voluneered, and we've audited, but no one will be recieving this bounty. 
 - [x] Block explorers
   - [x] gex
-  - [x] big dipper
-- [ ] Ionization 
+  - [x] big dipper 1.0
+- [x] Upgrade to ibc-go v2
+- [x] Upgrade to cosmos-sdk v0.44.5
+- [x] Upgrade to tendermint v0.34.15
+- [x] Announcement of candidate Real Estate development sites and their regulatory requirements
+  - [x] UK
+  - [x] Ukraine
+  - [x] Vietnam
+  - [x] Thailand
+  - [x] [Dig Marine](https://github.com/notional-labs/ccs)
+- [ ] Ionization  🧿 
 - [ ] Mainnet Launch
-- [ ] IBC Integration via Notional and Chandra Station Relayers
-  - [ ] Osmosis Integration
-  - [ ] Emeris Integration
-  - [ ] Sif Integration
-- [ ] Announcement of candidate Real Estate development sites and their regulatory requirements
+- [ ] IBC Integration
+  - [ ] Osmosis 
+  - [ ] Emeris 
+  - [ ] Sif 
 - [ ] DFY Integration
 - [ ] Blurt Integration
 - [ ] First update to dig mainnet
