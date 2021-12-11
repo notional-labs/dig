@@ -63,7 +63,7 @@ digd keys add <key-name> --recover
 ```
 
 ## Instructions for NEW Genesis Validators
-If you have validated dig already, you do not need to follow these directions and should find yourself in possession of about 6.5m dig.  Thank you!
+
 
 ### GenTx Creation
 
@@ -73,6 +73,9 @@ If you have validated dig already, you do not need to follow these directions an
 ```
 digd add-genesis-account <key-name> 10000000udig
 ```
+Note: If you have validated dig already, you do not need to follow these directions and should find yourself in possession of about 675372 dig.  Thank you!
+If the chain hasn't yet started the `digd q bank balances` command won't function, you will have to check the genesis.json manually for your allocation:
+https://github.com/notional-labs/dig/blob/master/networks/mainnet/genesis.json
 
 #### Create Gentx
 ```
@@ -100,5 +103,30 @@ priv_validator_key.json
 ```
 
 
+# For people who've already validated
+If you were in the testnets, but didn't have a gentx in testnet-3 this one is for you!
+
+
+```bash
+git clone https://github.com/notional-labs/dig
+cd dig
+go install ./...
+cp networks/mainnet/genesis.json ~/.dig/config
+digd gentx <key-name> 10000000udig \
+--chain-id dig-1 \
+--moniker="<moniker>" \
+--commission-max-change-rate=0.01 \
+--commission-max-rate=0.20 \
+--commission-rate=0.05 \
+--details="XXXXXXXX" \
+--security-contact="XXXXXXXX" \
+--website="XXXXXXXX"
+cp ~/.dig/config/gentx/* networks/mainnet/gentx
+git add .
+git commit -m "Gentx submission for xyz validator"
+git push
+```
+
+NB: You can set the commission max change rate, commission-max-rate, and commission-rate values to whatever you'd like though the chain begins with a minimum comission of 5% (0.05), so don't set it below that.
 
 
