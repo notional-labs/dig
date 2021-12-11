@@ -63,9 +63,7 @@ digd keys add <key-name> --recover
 ```
 
 ## Instructions for NEW Genesis Validators
-If you have validated dig already, you do not need to follow these directions and should find yourself in possession of about 675372 dig.  Thank you!
-Note if the chain hasn't yet started the `digd q bank balances` command won't function, you will have to check the genesis.json manually for your allocation:
-https://github.com/notional-labs/dig/blob/master/networks/mainnet/genesis.json
+
 
 ### GenTx Creation
 
@@ -75,6 +73,9 @@ https://github.com/notional-labs/dig/blob/master/networks/mainnet/genesis.json
 ```
 digd add-genesis-account <key-name> 10000000udig
 ```
+Note: If you have validated dig already, you do not need to follow these directions and should find yourself in possession of about 675372 dig.  Thank you!
+If the chain hasn't yet started the `digd q bank balances` command won't function, you will have to check the genesis.json manually for your allocation:
+https://github.com/notional-labs/dig/blob/master/networks/mainnet/genesis.json
 
 #### Create Gentx
 ```
