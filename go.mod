@@ -10,8 +10,8 @@ require (
 	github.com/gorilla/mux v1.8.0
 	github.com/spf13/cast v1.4.1
 	github.com/tendermint/spm v0.1.9-0.20211206114358-21d4f153c688
-	github.com/tendermint/tendermint v0.34.14
-	github.com/tendermint/tm-db v0.6.4
+	github.com/tendermint/tendermint v0.34.15
+	github.com/tendermint/tm-db v0.6.6
 )
 
 require (
