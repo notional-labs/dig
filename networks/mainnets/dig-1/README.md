@@ -62,10 +62,19 @@ digd keys add <key-name>
 digd keys add <key-name> --recover
 ```
 
+## Check your allocation
+If you think you have some allocation, double check this repository's [./genesis.json](./genesis.json). If you do, you should see `675372278571udig` associated with your address. In that case, follow the `"For people who've already validate section"` below (where you skip the `digd add-genesis-account` step). Otherwise, follow the `"Instructions for NEW Genesis Validators"` section below.
+
 ## Instructions for NEW Genesis Validators
 
-
 ### GenTx Creation
+
+## Genesis file
+Available in this repository: [./genesis.json](./genesis.json)
+
+```bash
+curl -s https://raw.githubusercontent.com/notional-labs/dig/master/networks/mainnets/dig-1/genesis.json > ~/.dig/config/genesis.json
+```
 
 ### Create Gentx
 
