@@ -19,8 +19,8 @@ Follow the instructions [here](https://golang.org/doc/install) to install Go.
 
 Alternatively, for Ubuntu LTS, you can do:
 ```bash:
-wget https://golang.org/dl/go1.17.3.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.17.3.linux-amd64.tar.gz
+wget https://golang.org/dl/go1.17.5.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.17.5.linux-amd64.tar.gz
 ```
 
 Unless you want to configure in a non standard way, then set these in the `.profile` in the user's home (i.e. `~/`) folder.
@@ -35,7 +35,7 @@ EOF
 source ~/.profile
 go version
 ```
-Output should be: `go version go1.17.3 linux/amd64`
+Output should be: `go version go1.17.5 linux/amd64`
 
 ### Install Dig from source
 
@@ -62,7 +62,8 @@ digd keys add <key-name>
 digd keys add <key-name> --recover
 ```
 
-## Instructions for Genesis Validators
+## Instructions for NEW Genesis Validators
+If you have validated dig already, you do not need to follow these directions and should find yourself in possession of about 6.5m dig.  Thank you!
 
 ### GenTx Creation
 
@@ -97,4 +98,7 @@ digd gentx <key-name> 10000000udig \
 ```bash:
 priv_validator_key.json
 ```
+
+
+
 
