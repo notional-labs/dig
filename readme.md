@@ -87,6 +87,9 @@ These will launch rapidly after Dig.  Their paths will converge and diverge.  Al
   - [x] Vietnam
   - [x] Thailand
   - [x] [Dig Marine](https://github.com/notional-labs/ccs)
+- [ ] Vesting for validators
+- [ ] Epoch y/n
+- [ ] variable block time y/n
 - [ ] Ionization  🧿 
 - [ ] Mainnet Launch
 - [ ] IBC Integration
