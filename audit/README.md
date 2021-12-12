@@ -12,3 +12,4 @@ Also searched for duplicate amount and address and no duplicate found.
 ### Spot check Validator allocations
 Checked dig1wd02ktcvpananlvd9u6jm3x3ap3vmw59rhen8u with required allocation of 675372 DIG, address exists on genesis.json with amount
 675372278571 udig =  675372 DIG and there are no duplicates on address.
+@thecryptodrive 13/12/2021 
