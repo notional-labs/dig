@@ -92,7 +92,7 @@ These will launch rapidly after Dig.  Their paths will converge and diverge.  Al
   - [ ] debug epoch
 - [x] variable block time y/n (no)
 - [x] Ionization 🧿: Fully Ionized
-  - [ ] 30m dig distributed to ion holders who've claimed their ion, whose ions are not in the liquidity pool. 
+  - [ ] 30m dig distributed to ion holders who've claimed their ion, whose ions have not been cast into the liquidity pool. 
 - [ ] Mainnet Launch
 - [ ] IBC Integration
   - [ ] Osmosis 
