@@ -123,7 +123,7 @@ require (
 
 replace (
 	github.com/99designs/keyring => github.com/cosmos/keyring v1.1.7-0.20210622111912-ef00f8ac3d76
-	github.com/cosmos/cosmos-sdk => github.com/notional-labs/cosmos-sdk v0.44.1-0.20211211034254-45a120f19107
+	github.com/cosmos/cosmos-sdk => github.com/notional-labs/cosmos-sdk v0.44.1-0.20211211173255-7bd2df7e550f
 	github.com/cosmos/ibc-go/v2 => github.com/notional-labs/ibc-go/v2 v2.0.0-rc0.0.20211209061020-fb13f23d3b8d
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
 	github.com/tendermint/spm => github.com/notional-labs/spm v0.1.8-0.20211212065431-201f33f1cf2d

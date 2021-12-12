@@ -743,6 +743,8 @@ github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e/go.mod h1:zD1mROLA
 github.com/nishanths/predeclared v0.0.0-20200524104333-86fad755b4d3/go.mod h1:nt3d53pc1VYcphSCIaYAJtnPYnr3Zyn8fMq2wvPGPso=
 github.com/notional-labs/cosmos-sdk v0.44.1-0.20211211034254-45a120f19107 h1:JCKImX6B4N+9Z5os5jd9RjLq8kkDFK3saw9Pc6c8NEY=
 github.com/notional-labs/cosmos-sdk v0.44.1-0.20211211034254-45a120f19107/go.mod h1:oxMRkqbUMlOaIhmQHOny0PEBSXbz881SANTMGRsYt0A=
+github.com/notional-labs/cosmos-sdk v0.44.1-0.20211211173255-7bd2df7e550f h1:mfVYOTBWLbreL/odsutVnvuoldcZ0GPInUFVBpJ5zlM=
+github.com/notional-labs/cosmos-sdk v0.44.1-0.20211211173255-7bd2df7e550f/go.mod h1:oxMRkqbUMlOaIhmQHOny0PEBSXbz881SANTMGRsYt0A=
 github.com/notional-labs/ibc-go/v2 v2.0.0-rc0.0.20211209061020-fb13f23d3b8d h1:8nFTgKaAhVP+99sYwR0ZAlhnfFKggZyIgJoPXiULbEQ=
 github.com/notional-labs/ibc-go/v2 v2.0.0-rc0.0.20211209061020-fb13f23d3b8d/go.mod h1:XUmW7wmubCRhIEAGtMGS+5IjiSSmcAwihoN/yPGd6Kk=
 github.com/notional-labs/spm v0.1.8-0.20211212065431-201f33f1cf2d h1:h5xTZzzU1AiSeO4zWsAMvXzsbLrYk/MAxKGDV7Su0+w=
