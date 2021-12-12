@@ -17,6 +17,35 @@ Checked dig1wd02ktcvpananlvd9u6jm3x3ap3vmw59rhen8u with required allocation of 6
 @thecryptodrive 13/12/2021 
 
 
+# Epochs
+
+The epoch module was at the end of 
+
+```go
+	app.mm.SetOrderInitGenesis(
+		capabilitytypes.ModuleName,
+		authtypes.ModuleName,
+		banktypes.ModuleName,
+		distrtypes.ModuleName,
+		stakingtypes.ModuleName,
+		slashingtypes.ModuleName,
+		govtypes.ModuleName,
+		minttypes.ModuleName,
+		crisistypes.ModuleName,
+		ibchost.ModuleName,
+		genutiltypes.ModuleName,
+		evidencetypes.ModuleName,
+		ibctransfertypes.ModuleName,
+		epochstypes.ModuleName,
+		// this line is used by starport scaffolding # stargate/app/initGenesis
+	)
+```
+So it also needed to be at the end of genesis.json.  The genesis file now comes outy valid, but the genesis balance is still too high. 
+
+
+
+
+
 # Genesis.json git history: Jacob
 
 
