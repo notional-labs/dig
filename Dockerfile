@@ -19,6 +19,6 @@ ENV DIG_P2P_SEED_MODE=true
 RUN pacman -Syyu --noconfirm 
 
 COPY --from=builder /go/bin/digd /usr/bin/digd
-COPY --from=builder /dig/networks/testnet-2/genesis.json /genesis.json
+COPY --from=builder /dig/networks/mainnets/dig-1/genesis.json /genesis.json
 
 CMD /usr/bin/digd init busbar && cp /genesis.json /root/.dig/config/genesis.json && /usr/bin/digd start
