@@ -35,15 +35,8 @@ jobs:
           go build .
           go install .
 
-      - name: Compile airdrop
-        run: |
-          cd airdrop
-          go mod download
-          go build .
-          go install .
+
         
-          
-          
 # now uploads genesis.json and bin
       - uses: actions/upload-artifact@v2
         with:
