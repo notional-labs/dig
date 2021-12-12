@@ -63,7 +63,7 @@ digd keys add <key-name> --recover
 ```
 
 ## Check your allocation
-If you think you have some allocation, double check this repository's [./genesis.json](./genesis.json). If you do, you should see `675372278571udig` associated with your address. In that case, follow the `"For people who've already validate section"` below (where you skip the `digd add-genesis-account` step). Otherwise, follow the `"Instructions for NEW Genesis Validators"` section below.
+If you think you have some allocation, find your address in this repository's [./genesis.json](./genesis.json). If you do, you should see `675372278571udig` associated with your address. In that case, follow the `"For people who've already validate section"` below (where you skip the `digd add-genesis-account` step). Otherwise, follow the `"Instructions for NEW Genesis Validators"` section below.
 
 ## Instructions for NEW Genesis Validators
 
