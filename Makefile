@@ -43,9 +43,9 @@ BUILD_FLAGS := -ldflags '$(ldflags)'
 all: go.sum install
 
 install: go.sum
-		go install $(BUILD_FLAGS) ./cmd/digd/
+		go install $(BUILD_FLAGS) ./digapp/digd
 build:
-		go build $(BUILD_FLAGS) -o ${GOPATH}/bin/${DAEMON_NAME} ./cmd/digd/
+		go build $(BUILD_FLAGS) -o ${GOPATH}/bin/${DAEMON_NAME} ./digapp/digd
 
 go.sum: go.mod
 		@echo "--> Ensure dependencies have not been modified"
