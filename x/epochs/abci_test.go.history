@@ -109,7 +109,7 @@ func TestEpochInfoChangesBeginBlockerAndInitGenesis(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		app = simapp.New(false)
+		app = simapp
 		ctx = app.BaseApp.NewContext(false, tmproto.Header{})
 
 		// On init genesis, default epochs information is set
