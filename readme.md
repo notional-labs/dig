@@ -40,7 +40,7 @@ SoonTM
 
 
 ## Financing
-We're comitted to transparency in all matters, including the composition of genesis allocations.  Adam has raised funds for Dig's development work.  Pre-launch we'll post the final tally.  We will only accept funding from parties who are aligned with the long-term vision of the project and willing to have their tokens on exactly the same terms as those who get them in an airdrop.
+We're comitted to transparency in all matters, including the composition of genesis allocations.  Adam has raised funds for Dig's development work.  Pre-launch we'll post the final tally.  We will only accept funding from parties who are aligned with the long-term vision of the project. Investors in the project will have their coins unvested, while DFY airdrop participants will be vested over a 24 month period. 
 
 
 ## Confirmed-ish SoonTM Digs
@@ -74,17 +74,28 @@ These will launch rapidly after Dig.  Their paths will converge and diverge.  Al
 - [x] Clean airdrop code https://github.com/notional-labs/c17 and https://github.com/notional-labs/staking-data-collection
   - [x] Test airdrop code for ethereum-style addresses using the Khanh's Cosmos SDK fork
   - [x] Refactor airdrop if this works
-- [ ] Community Security Audit: 0.1% of Dig tokens reserved for community members who provide a detailed, contextual audit
+- [x] Community Security Audit: 0.1% of Dig tokens reserved for community members who provide a detailed, contextual audit (seems no one voluneered, and we've audited, but no one will be recieving this bounty. 
 - [x] Block explorers
   - [x] gex
-  - [x] big dipper
-- [ ] Ionization 
+  - [x] big dipper 1.0
+- [x] Upgrade to ibc-go v2
+- [x] Upgrade to cosmos-sdk v0.44.5
+- [x] Upgrade to tendermint v0.34.15
+- [x] Announcement of candidate Real Estate development sites and their regulatory requirements
+  - [x] UK
+  - [x] Ukraine
+  - [x] Vietnam
+  - [x] Thailand
+  - [x] [Dig Marine](https://github.com/notional-labs/ccs)
+- [ ] Vesting for validators
+- [ ] Epoch y/n
+- [ ] variable block time y/n
+- [ ] Ionization  🧿 
 - [ ] Mainnet Launch
-- [ ] IBC Integration via Notional and Chandra Station Relayers
-  - [ ] Osmosis Integration
-  - [ ] Emeris Integration
-  - [ ] Sif Integration
-- [ ] Announcement of candidate Real Estate development sites and their regulatory requirements
+- [ ] IBC Integration
+  - [ ] Osmosis 
+  - [ ] Emeris 
+  - [ ] Sif 
 - [ ] DFY Integration
 - [ ] Blurt Integration
 - [ ] First update to dig mainnet
