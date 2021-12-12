@@ -10,7 +10,7 @@ require (
 	github.com/gorilla/mux v1.8.0
 	github.com/spf13/cast v1.4.1
 	github.com/tendermint/spm v0.1.9-0.20211206114358-21d4f153c688
-	github.com/tendermint/tendermint v0.34.14
+	github.com/tendermint/tendermint v0.35.0
 	github.com/tendermint/tm-db v0.6.4
 )
 
@@ -32,6 +32,7 @@ require (
 	github.com/cosmos/btcutil v1.0.4 // indirect
 	github.com/cosmos/go-bip39 v1.0.0 // indirect
 	github.com/cosmos/iavl v0.17.3 // indirect
+	github.com/cosmos/ibc-go v1.2.4
 	github.com/cosmos/ledger-cosmos-go v0.11.1 // indirect
 	github.com/cosmos/ledger-go v0.9.2 // indirect
 	github.com/danieljoos/wincred v1.0.2 // indirect
@@ -86,7 +87,7 @@ require (
 	github.com/prometheus/client_model v0.2.0 // indirect
 	github.com/prometheus/common v0.29.0 // indirect
 	github.com/prometheus/procfs v0.6.0 // indirect
-	github.com/rakyll/statik v0.1.7 // indirect
+	github.com/rakyll/statik v0.1.7
 	github.com/rcrowley/go-metrics v0.0.0-20200313005456-10cdbea86bc0 // indirect
 	github.com/regen-network/cosmos-proto v0.3.1 // indirect
 	github.com/rs/cors v1.7.0 // indirect; indirectss

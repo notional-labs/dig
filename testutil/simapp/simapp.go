@@ -1,9 +1,9 @@
-package simapp
+package digapp
 
 import (
 	"time"
 
-	"github.com/cosmos/cosmos-sdk/simapp"
+	"github.com/cosmos/cosmos-sdk/digapp"
 	"github.com/tendermint/spm/cosmoscmd"
 	abci "github.com/tendermint/tendermint/abci/types"
 	"github.com/tendermint/tendermint/libs/log"
@@ -22,7 +22,7 @@ func New(dir string) cosmoscmd.App {
 	encoding := cosmoscmd.MakeEncodingConfig(app.ModuleBasics)
 
 	a := app.New(logger, db, nil, true, map[int64]bool{}, dir, 0, encoding,
-		simapp.EmptyAppOptions{})
+		digapp.EmptyAppOptions{})
 	// InitChain updates deliverState which is required when app.NewContext is called
 	a.InitChain(abci.RequestInitChain{
 		ConsensusParams: defaultConsensusParams,
