@@ -90,7 +90,7 @@ These will launch rapidly after Dig.  Their paths will converge and diverge.  Al
 - [ ] Vesting for validators
 - [x] Epoch y/n (yes)
 - [x] variable block time y/n (no)
-- [x] Ionization  🧿: Underway 
+- [x] Ionization 🧿: Fully Ionized
 - [ ] Mainnet Launch
 - [ ] IBC Integration
   - [ ] Osmosis 
