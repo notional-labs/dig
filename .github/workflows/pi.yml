@@ -1,6 +1,6 @@
 name: dig pi
 
-on: [push,pull_request,workflow_dispatch]
+on: [workflow_dispatch]
 
 jobs:
   pi:
