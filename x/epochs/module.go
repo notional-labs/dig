@@ -4,10 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"math/rand"
-
-	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
-
 	"github.com/gorilla/mux"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"github.com/spf13/cobra"
@@ -22,7 +18,7 @@ import (
 	"github.com/notional-labs/dig/x/epochs/client/cli"
 	"github.com/notional-labs/dig/x/epochs/client/rest"
 	"github.com/notional-labs/dig/x/epochs/keeper"
-	"github.com/notional-labs/dig/x/epochs/simulation"
+	//	"github.com/notional-labs/dig/x/epochs/simulation"
 	"github.com/notional-labs/dig/x/epochs/types"
 )
 
@@ -170,12 +166,16 @@ func (am AppModule) EndBlock(ctx sdk.Context, _ abci.RequestEndBlock) []abci.Val
 	return []abci.ValidatorUpdate{}
 }
 
+// ConsensusVersion implements AppModule/ConsensusVersion.
+func (AppModule) ConsensusVersion() uint64 { return 1 }
+
 // ___________________________________________________________________________
 
 // AppModuleSimulation functions
 
-// GenerateGenesisState creates a randomized GenState of the pool-incentives module.
-func (AppModule) GenerateGenesisState(simState *module.SimulationState) {
+/*
+ GenerateGenesisState creates a randomized GenState of the pool-incentives module.
+ func (AppModule) GenerateGenesisState(simState *module.SimulationState) {
 	simulation.RandomizedGenState(simState)
 }
 
@@ -195,8 +195,6 @@ func (am AppModule) RegisterStoreDecoder(sdr sdk.StoreDecoderRegistry) {
 
 // WeightedOperations returns the all the gov module operations with their respective weights.
 func (am AppModule) WeightedOperations(simState module.SimulationState) []simtypes.WeightedOperation {
-	return nil // TODO
+	return nil
 }
-
-// ConsensusVersion implements AppModule/ConsensusVersion.
-func (AppModule) ConsensusVersion() uint64 { return 1 }
+*/
