@@ -681,6 +681,8 @@ github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e/go.mod h1:zD1mROLA
 github.com/nishanths/predeclared v0.0.0-20200524104333-86fad755b4d3/go.mod h1:nt3d53pc1VYcphSCIaYAJtnPYnr3Zyn8fMq2wvPGPso=
 github.com/notional-labs/cosmos-sdk v0.44.1-0.20211211034254-45a120f19107 h1:JCKImX6B4N+9Z5os5jd9RjLq8kkDFK3saw9Pc6c8NEY=
 github.com/notional-labs/cosmos-sdk v0.44.1-0.20211211034254-45a120f19107/go.mod h1:oxMRkqbUMlOaIhmQHOny0PEBSXbz881SANTMGRsYt0A=
+github.com/notional-labs/cosmos-sdk v0.44.1-0.20211211173255-7bd2df7e550f h1:mfVYOTBWLbreL/odsutVnvuoldcZ0GPInUFVBpJ5zlM=
+github.com/notional-labs/cosmos-sdk v0.44.1-0.20211211173255-7bd2df7e550f/go.mod h1:oxMRkqbUMlOaIhmQHOny0PEBSXbz881SANTMGRsYt0A=
 github.com/nxadm/tail v1.4.4/go.mod h1:kenIhsEOeOJmVchQTgglprH7qJGnHDVpk1VPCcaMI8A=
 github.com/nxadm/tail v1.4.8 h1:nPr65rt6Y5JFSKQO7qToXr7pePgD6Gwiw05lkbyAQTE=
 github.com/nxadm/tail v1.4.8/go.mod h1:+ncqLTQzXmGhMZNUePPaPqPvBxHAIsmXswZKocGu+AU=
