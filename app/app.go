@@ -88,9 +88,9 @@ import (
 
 	"github.com/notional-labs/dig/docs"
 
-	"github.com/cosmos/cosmos-sdk/x/epochs"
-	epochskeeper "github.com/cosmos/cosmos-sdk/x/epochs/keeper"
-	epochstypes "github.com/cosmos/cosmos-sdk/x/epochs/types"
+	"github.com/notional-labs/dig/x/epochs"
+	epochskeeper "github.com/notional-labs/dig/x/epochs/keeper"
+	epochstypes "github.com/notional-labs/dig/x/epochs/types"
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 )
 
@@ -309,7 +309,7 @@ func New(
 	epochsKeeper := epochskeeper.NewKeeper(appCodec, keys[epochstypes.StoreKey])
 	app.EpochsKeeper = *epochsKeeper.SetHooks(
 		epochstypes.NewMultiEpochHooks(
-		// insert epoch hooks receivers here
+			// insert epoch hooks receivers here
 		),
 	)
 
