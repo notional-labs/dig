@@ -40,14 +40,18 @@ The epoch module was at the end of
 		// this line is used by starport scaffolding # stargate/app/initGenesis
 	)
 ```
-So it also needed to be at the end of genesis.json.  The genesis file now comes outy valid, but the genesis balance is still too high. 
+So it also needed to be at the end of genesis.json.  The genesis file now comes outy valid, but the genesis balance is still too high. This is resolved in commit 
 
+```
+commit a90e321783e970e22775bc081695b7c1c7f73801
+Author: Jacob Gadikian <jacobgadikian@gmail.com>
+Date:   Mon Dec 13 06:54:47 2021 +0700
 
+    Epochs needed to be at the end of genesis.json (per position in app.go)
+```
 
 
 
 # Genesis.json git history: Jacob
 
-
-
-
+Going through git history to ensure that we didn't miss any balance changes in pull requests.  
