@@ -59,4 +59,5 @@ Date:   Mon Dec 13 06:54:47 2021 +0700
 
 Going through git history to ensure that we didn't miss any balance changes in pull requests.  
 
-I have go through all the commit history of the genesis.json file and add sum all the amounts of the balances. So the total are 1.5b (1520335742748590udig to be exact) from the first commit c7748b5143a8d60ff91f56f3d665868c986d43e7 and change to 1521011114748590 at commit a53c4b87be702883860447c3d9e12091f28f32bc
+I have go through all the commit history of the genesis.json file and add sum all the amounts of the balances. So the total are 1.5b (1520335742748590udig to be exact) from the first commit c7748b5143a8d60ff91f56f3d665868c986d43e7 and change to 1521011114748590 at commit a53c4b87be702883860447c3d9e12091f28f32bc 
+@Son 
