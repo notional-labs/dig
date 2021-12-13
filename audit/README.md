@@ -40,7 +40,7 @@ The epoch module was at the end of
 		// this line is used by starport scaffolding # stargate/app/initGenesis
 	)
 ```
-So it also needed to be at the end of genesis.json.  The genesis file now comes outy valid, but the genesis balance is still too high. 
+So it also needed to be at the end of genesis.json.  The genesis file now comes out valid, but the genesis balance is still too high. 
 
 
 
