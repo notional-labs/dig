@@ -21,6 +21,7 @@ Checked dig1wd02ktcvpananlvd9u6jm3x3ap3vmw59rhen8u with required allocation of 6
 ```digd unsafe-reset-all``` is required, all coin denomination in genesis.json must be changed from "stake" to "udig". Chain works well after that.
 
 ### Vesting test
+Continuous vesting accounts work as expected.
 
 # Epochs
 
