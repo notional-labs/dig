@@ -50,8 +50,6 @@ Date:   Mon Dec 13 06:54:47 2021 +0700
     Epochs needed to be at the end of genesis.json (per position in app.go)
 ```
 
-
-
 # Genesis.json git history: Jacob
 
 Going through git history to ensure that we didn't miss any balance changes in pull requests.  
