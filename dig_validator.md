@@ -1,131 +1,75 @@
-Here is how you install dig on Testnet-3 and setup as a validator.
+# Guide to set up a full node and create validator for dig mainnet
 
-Remember, replace "`validator_name`" by your desired name in these following steps.
+Replace `<name>` with your desired name.
 
-# Clone the repo and install
+## Clone the repo and install
 
 ```bash
 git clone https://github.com/notional-labs/dig
-cd dig/cmd/digd
-go install .
+cd dig/
+git checkout v1.0.0
+go install ./...
+cd ~
 export PATH=$PATH:~/go/bin
 export GOPATH=~/go
 ```
 
-# Set up the dig account
-
-If you don't have a validator yet
+## Key
+Generate a new key:
 ```
-digd keys add validator_name
-digd init validator_name --chain-id dig-testnet-3
+digd keys add <keyname>
 ```
 
-If you have a validator, and want to migrate to your new node
+If you already have a key or a validator, skip the creat-validator step and do:
 ```bash
 # To prevent double signing, you should stop the validator node.
 digd keys add validator_name --recover
-# You will be prompted to type your mnemonic key
+# Insert you mnemonic seed.
 
-# Then, copy content of file `~/.dig/config/priv_validator_key.json` from old machine to new machine, same location.
+# Then move the ~/.dig/config/priv_validator_key.json file from your old validating machine to the new one, same location.
 ```
 
-# Start digging
+## Running the node
 
 ```bash
-digd init validator_name -o --chain-id dig-testnet-3
+digd init <nodename> --chain-id dig-1
 
-wget -O ~/.dig/config/genesis.json https://raw.githubusercontent.com/notional-labs/dig/master/networks/testnet-3/genesis.json
+wget -O ~/.dig/config/genesis.json https://github.com/notional-labs/dig/raw/master/networks/mainnets/dig-1/genesis.json
 
 digd keys show validator_name
 # This will show detail of your account. Keep them in safe place.
 
-digd start --p2p.persistent_peers d13bb8332dd3b6acdbf5a34c26980e8194b11d7a@95.217.131.55:26656,1a0f4a6ead797ddce80fadf58e0092cbe152c2f8@65.21.74.62:2090
+digd start
 ```
-# For validators
-If you want to check if you are validator or not, run this
+## Create-validator
+To check the validator operating address:
 ```
-digd keys show validator_name --bech val
+digd keys show <keyname> -a --bech val
 ```
 
-If it contains `"digvaloper"`, then you are. If not:
+Creating validator:
 ```bash
-digd tx staking create-validator --moniker=validator_name --from=validator_name --pubkey="$(digd tendermint show-validator)" --amount="1000000udig" --commission-max-rate="0.10" --commission-max-change-rate="0.05" --commission-rate="0.05" --fees 40000udig --gas 40000 --min-self-delegation 1 --chain-id dig-testnet-3
+digd tx staking create-validator --moniker <validatorname> --from <keyname> --pubkey="$(digd tendermint show-validator)" --amount="1000000udig" --commission-max-rate="0.10" --commission-max-change-rate="0.05" --commission-rate="0.05" --min-self-delegation 1 --chain-id dig-1
 
-# You can change the params if you like
+# Customize the params as you want
 ```
-You can check your balance with:
+
+Claim rewards:
 ```bash
-digd q bank balances $(digd keys show validator_name -a)
+digd tx distribution withdraw-rewards $(digd keys show --bech=val -a <keyname>) --from <keyname> --chain-id dig-1
 ```
-If you want to delegate:
+
+Claim rewards and commission as a validator:
 ```bash
-digd tx staking delegate $(digd keys show validator_name --bech val -a) 50000udig --chain-id dig-testnet-3 --from $(digd keys show validator_name -a)
-
-# You can change the params if you like
+digd tx distribution withdraw-rewards $(digd keys show --bech=val -a <keyname>) --from <keyname> --chain-id dig-1 --commission
 ```
 
-Receive rewards:
-```bash
-digd tx distribution withdraw-rewards $(digd keys show --bech=val -a validator_name) --from validator_name --fees 40000udig --gas 40000 
-```
-
-Receive rewards and commission:
-```bash
-digd tx distribution withdraw-rewards $(digd keys show --bech=val -a validator_name) --from validator_name --commission --fees 40000udig --gas 40000
-```
-
-Check your validator status with:
+Check your node's status:
 ```bash
 digd status
 ```
 
-if your validator is jailed, try unjailing it with this:
+If the validator is jailed, try unjailing it with:
 ```bash
-digd tx slashing unjail --from=$(digd keys show validator_name -a) --chain-id dig-testnet-3 --fees 40000udig --gas 40000
-# There is some reasons when your account is jailed, and Jacob are going to change in the next build
+digd tx slashing unjail --from=$(digd keys show <keyname> -a) --chain-id dig-1 --fees 200000udig --gas 200000
 ```
-
-For RPi users, if you want dig to run in background, create `dig.service` at `/etc/systemd/system/` and edit like this. The parameters are depend on each user, so you can modify to fit your need.
-```
-[Unit]
-
-Description=Dig Node
-
-After=network.target
-
-[Service]
-
-Type=simple
-
-User=root
-
-WorkingDirectory=/root
-
-ExecStart=/root/go/bin/digd start --p2p.persistent_peers d13bb8332dd3b6acdbf5a34c26980e8194b11d7a@95.217.131.55:26656,1a0f4a6ead797ddce80fadf58e0092cbe152c2f8@65.21.74.62:2090
-
-Restart=on-failure
-
-StartLimitInterval=0
-
-RestartSec=3
-
-LimitNOFILE=65535
-
-LimitMEMLOCK=209715200
-
-[Install]
-
-WantedBy=multi-user.target
-```
-After that, get dig to work by running:
-```bash
-systemctl daemon-reload
-systemctl enable dig
-systemctl start dig
-```
-You can check if it is running or not by:
-```bash
-journalctl -u dig -f | grep height
-```
-
-This is a guide based on actual install of dig, so some minor errors on the others is inevitable. If you have some problems, create an issue or ask a question in Discord. Thank you!
