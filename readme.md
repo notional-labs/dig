@@ -89,10 +89,11 @@ These will launch rapidly after Dig.  Their paths will converge and diverge.  Al
   - [x] [Dig Marine](https://github.com/notional-labs/ccs)
 - [x] Vesting for validators
 - [x] Epoch y/n (yes)
-  - [ ] debug epoch
+  - [x] debug epoch
 - [x] variable block time y/n (no)
 - [x] Ionization 🧿: Fully Ionized
-  - [ ] 30m dig distributed to ion holders who've claimed their ion, whose ions have not been cast into the liquidity pool. 
+  - [x] 30m dig distributed to ion holders who've claimed their ion, whose ions have not been cast into the liquidity pool. 
+- [ ] 2nd genesis audit
 - [ ] Mainnet Launch
 - [ ] IBC Integration
   - [ ] Osmosis 
