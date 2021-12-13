@@ -5,7 +5,6 @@ go 1.17
 require (
 	github.com/cosmos/cosmos-sdk v0.44.5
 	github.com/cosmos/ibc-go/v2 v2.0.1
-	github.com/ethereum/go-ethereum v1.10.13
 	github.com/gorilla/mux v1.8.0
 	github.com/spf13/cast v1.4.1
 	github.com/tendermint/spm v0.1.9-0.20211206114358-21d4f153c688
@@ -13,7 +12,9 @@ require (
 	github.com/tendermint/tm-db v0.6.6
 )
 
+
 require (
+	github.com/ethereum/go-ethereum v1.10.13 // indirect
 	filippo.io/edwards25519 v1.0.0-beta.2 // indirect
 	github.com/99designs/keyring v1.1.6 // indirect
 	github.com/ChainSafe/go-schnorrkel v0.0.0-20200405005733-88cbf1b4c40d // indirect
