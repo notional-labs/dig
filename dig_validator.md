@@ -23,7 +23,7 @@ digd keys add <keyname>
 If you already have a key or a validator, skip the creat-validator step and do:
 ```bash
 # To prevent double signing, you should stop the validator node.
-digd keys add validator_name --recover
+digd keys add <keyname> --recover
 # Insert you mnemonic seed.
 
 # Then move the ~/.dig/config/priv_validator_key.json file from your old validating machine to the new one, same location.
