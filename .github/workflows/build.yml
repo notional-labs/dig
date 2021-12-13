@@ -39,7 +39,7 @@ jobs:
         run: |
           cd cmd/digd
           ./digd init validate
-          cp networks/mainnets/genesis.json ~/.dig/config
+          cp ../../networks/mainnets/genesis.json ~/.dig/config
           ./digd validate-genesis
 
 
