@@ -8,19 +8,19 @@ require (
 	github.com/spf13/cast v1.4.1
 	github.com/tendermint/tendermint v0.35.0
 	github.com/tendermint/tm-db v0.6.6
-		github.com/cosmos/cosmos-proto v0.0.0-20211123144845-528f5002c9f8 // indirect
-    	github.com/golang/glog v1.0.0 // indirect
-    	github.com/google/uuid v1.3.0 // indirect
-    	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0 // indirect
-    	github.com/lazyledger/smt v0.2.1-0.20210709230900-03ea40719554 // indirect
-    	github.com/oasisprotocol/curve25519-voi v0.0.0-20210609091139-0a56a4bca00b // indirect
-    	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
-    	sigs.k8s.io/yaml v1.3.0 // indirect
 )
 
 
 
 require (
+	github.com/cosmos/cosmos-proto v0.0.0-20211123144845-528f5002c9f8 // indirect
+	github.com/golang/glog v1.0.0 // indirect
+	github.com/google/uuid v1.3.0 // indirect
+	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0 // indirect
+	github.com/lazyledger/smt v0.2.1-0.20210709230900-03ea40719554 // indirect
+	github.com/oasisprotocol/curve25519-voi v0.0.0-20210609091139-0a56a4bca00b // indirect
+	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
+	sigs.k8s.io/yaml v1.3.0 // indirect
 	filippo.io/edwards25519 v1.0.0-rc.1 // indirect
 	github.com/99designs/keyring v1.1.6 // indirect
 	github.com/ChainSafe/go-schnorrkel v1.0.0 // indirect
