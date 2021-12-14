@@ -36,7 +36,7 @@ digd init <nodename> --chain-id dig-1
 
 wget -O ~/.dig/config/genesis.json https://github.com/notional-labs/dig/raw/master/networks/mainnets/dig-1/genesis.json
 
-digd keys show validator_name
+digd keys show <keyname>
 # This will show detail of your account. Keep them in safe place.
 
 digd start
