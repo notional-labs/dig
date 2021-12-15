@@ -44,7 +44,14 @@ digd keys show <keyname> -a --bech val
 ```
 
 Creating validator:
+
+**NOTE**: The wallet must have a starting balance otherwise the transaction will not be created.
+
 ```bash
+# check wallet balance
+digd q bank balances <wallet-address>
+
+# create a validator
 digd tx staking create-validator --moniker <validatorname> --from <keyname> --pubkey="$(digd tendermint show-validator)" --amount="1000000udig" --commission-max-rate="0.10" --commission-max-change-rate="0.05" --commission-rate="0.05" --min-self-delegation 1 --chain-id dig-1
 
 # Customize the params as you want
