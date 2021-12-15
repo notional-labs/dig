@@ -1,6 +1,6 @@
 # Guide to set up a full node and create validator for dig mainnet
 
-Replace `<name>` with your desired name.
+Replace `<name>` with your desired string name.
 
 ## Clone the repo and install
 
@@ -67,5 +67,5 @@ digd status
 
 If the validator is jailed, try unjailing it with:
 ```bash
-digd tx slashing unjail --from=$(digd keys show <keyname> -a) --chain-id dig-1 --fees 200000udig --gas 200000
+digd tx slashing unjail --from=$(digd keys show <keyname> -a) --chain-id dig-1 --fees 10000udig --gas 10000
 ```
