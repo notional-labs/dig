@@ -4,15 +4,13 @@ go 1.17
 
 require (
 	github.com/cosmos/cosmos-sdk v0.44.5
-	github.com/cosmos/ibc-go/v2 v2.0.1
+	github.com/cosmos/ibc-go/v2 v2.0.2
 	github.com/gorilla/mux v1.8.0
 	github.com/spf13/cast v1.4.1
 	github.com/tendermint/spm v0.1.9-0.20211206114358-21d4f153c688
 	github.com/tendermint/tendermint v0.34.15
 	github.com/tendermint/tm-db v0.6.6
 )
-
-require github.com/cenkalti/backoff/v4 v4.1.1 // indirect
 
 require (
 	filippo.io/edwards25519 v1.0.0-beta.3 // indirect
@@ -24,6 +22,7 @@ require (
 	github.com/bgentry/speakeasy v0.1.0 // indirect
 	github.com/btcsuite/btcd v0.22.0-beta // indirect
 	github.com/btcsuite/btcutil v1.0.3-0.20201208143702-a53e38424cce // indirect
+	github.com/cenkalti/backoff/v4 v4.1.1 // indirect
 	github.com/cespare/xxhash v1.1.0 // indirect
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/coinbase/rosetta-sdk-go v0.7.0 // indirect
@@ -124,7 +123,7 @@ require (
 
 replace (
 	github.com/99designs/keyring => github.com/cosmos/keyring v1.1.7-0.20210622111912-ef00f8ac3d76
-	github.com/cosmos/cosmos-sdk => github.com/notional-labs/cosmos-sdk v0.44.5-whisky.0.20211213163000-f847b9c48011
+	github.com/cosmos/cosmos-sdk => github.com/notional-labs/cosmos-sdk v0.44.5-whisky.0.20211216142735-8368a4a982f5
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
 	github.com/tendermint/spm => github.com/notional-labs/spm v0.1.8-0.20211212065431-201f33f1cf2d
 	github.com/tendermint/tm-db => github.com/tendermint/tm-db v0.6.6

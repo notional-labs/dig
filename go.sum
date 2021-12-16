@@ -230,8 +230,9 @@ github.com/cosmos/go-bip39 v1.0.0 h1:pcomnQdrdH22njcAatO0yWojsUnCO3y2tNoV1cb6hHY
 github.com/cosmos/go-bip39 v1.0.0/go.mod h1:RNJv0H/pOIVgxw6KS7QeX2a0Uo0aKUlfhZ4xuwvCdJw=
 github.com/cosmos/iavl v0.17.3 h1:s2N819a2olOmiauVa0WAhoIJq9EhSXE9HDBAoR9k+8Y=
 github.com/cosmos/iavl v0.17.3/go.mod h1:prJoErZFABYZGDHka1R6Oay4z9PrNeFFiMKHDAMOi4w=
-github.com/cosmos/ibc-go/v2 v2.0.1 h1:9UqlTV/3M3JO4x71Hm26yzzYnUryMecvvX+gXyAtXic=
 github.com/cosmos/ibc-go/v2 v2.0.1/go.mod h1:ZfePiHyAVzWvRafjDCI00huUnPjRgOn1FsOklO68AF0=
+github.com/cosmos/ibc-go/v2 v2.0.2 h1:y7eUgggMEVe43wHLw9XrGbeaTWtfkJYMoL3m6YW4fIY=
+github.com/cosmos/ibc-go/v2 v2.0.2/go.mod h1:XUmW7wmubCRhIEAGtMGS+5IjiSSmcAwihoN/yPGd6Kk=
 github.com/cosmos/keyring v1.1.7-0.20210622111912-ef00f8ac3d76 h1:DdzS1m6o/pCqeZ8VOAit/gyATedRgjvkVI+UCrLpyuU=
 github.com/cosmos/keyring v1.1.7-0.20210622111912-ef00f8ac3d76/go.mod h1:0mkLWIoZuQ7uBoospo5Q9zIpqq6rYCPJDSUdeCJvPM8=
 github.com/cosmos/ledger-cosmos-go v0.11.1 h1:9JIYsGnXP613pb2vPjFeMMjBI5lEDsEaF6oYorTy6J4=
@@ -757,8 +758,8 @@ github.com/nats-io/nuid v1.0.1/go.mod h1:19wcPz3Ph3q0Jbyiqsd0kePYG7A95tJPxeL+1OS
 github.com/neilotoole/errgroup v0.1.5/go.mod h1:Q2nLGf+594h0CLBs/Mbg6qOr7GtqDK7C2S41udRnToE=
 github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e/go.mod h1:zD1mROLANZcx1PVRCS0qkT7pwLkGfwJo4zjcN/Tysno=
 github.com/nishanths/predeclared v0.0.0-20200524104333-86fad755b4d3/go.mod h1:nt3d53pc1VYcphSCIaYAJtnPYnr3Zyn8fMq2wvPGPso=
-github.com/notional-labs/cosmos-sdk v0.44.5-whisky.0.20211213163000-f847b9c48011 h1:m6p2ZlINnEdBzrOWx5zUd4eoRGSTWkhBtpJw4tjJ7Lk=
-github.com/notional-labs/cosmos-sdk v0.44.5-whisky.0.20211213163000-f847b9c48011/go.mod h1:KLdUj5xHEeBx/YIf7TVvgrqz3mV2tJ2vK5RL3z+YbDo=
+github.com/notional-labs/cosmos-sdk v0.44.5-whisky.0.20211216142735-8368a4a982f5 h1:wPJgnO6g22/Q+6NC8F9yilYxy8j/9aMWFz3k+8LkCw4=
+github.com/notional-labs/cosmos-sdk v0.44.5-whisky.0.20211216142735-8368a4a982f5/go.mod h1:KLdUj5xHEeBx/YIf7TVvgrqz3mV2tJ2vK5RL3z+YbDo=
 github.com/notional-labs/spm v0.1.8-0.20211212065431-201f33f1cf2d h1:h5xTZzzU1AiSeO4zWsAMvXzsbLrYk/MAxKGDV7Su0+w=
 github.com/notional-labs/spm v0.1.8-0.20211212065431-201f33f1cf2d/go.mod h1:xwQg/qB1cIJ3ShOVaHYyGt5NiHSxhdCyz81oyNI1iUc=
 github.com/nxadm/tail v1.4.4/go.mod h1:kenIhsEOeOJmVchQTgglprH7qJGnHDVpk1VPCcaMI8A=
