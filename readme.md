@@ -101,8 +101,8 @@ These will launch rapidly after Dig.  Their paths will converge and diverge.  Al
 - [x] variable block time y/n (no)
 - [x] Ionization 🧿: Fully Ionized
   - [x] 30m dig distributed to ion holders who've claimed their ion, whose ions have not been cast into the liquidity pool. 
-- [ ] 2nd genesis audit
-- [ ] Mainnet Launch
+- [x] 2nd genesis audit
+- [x] Mainnet Launch
 - [ ] IBC Integration
   - [ ] Osmosis 
   - [ ] Emeris 
