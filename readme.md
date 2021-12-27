@@ -103,6 +103,11 @@ These will launch rapidly after Dig.  Their paths will converge and diverge.  Al
   - [x] 30m dig distributed to ion holders who've claimed their ion, whose ions have not been cast into the liquidity pool. 
 - [x] 2nd genesis audit
 - [x] Mainnet Launch
+- [x] Chain Registry
+- [ ] block explorers
+ - [x] ping.pub
+ - [x] chill validation
+ - [ ] mintscan
 - [ ] IBC Integration
   - [ ] Osmosis 
   - [ ] Emeris 
