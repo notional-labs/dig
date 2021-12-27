@@ -35,15 +35,15 @@ jobs:
           go build .
           go install .
 
-      - name: Compile airdrop
+      - name: validate genesis
         run: |
-          cd airdrop
-          go mod download
-          go build .
-          go install .
+          cd cmd/digd
+          ./digd init validate
+          cp ../../networks/mainnets/dig-1/genesis.json ~/.dig/config
+          ./digd validate-genesis
+
+
         
-          
-          
 # now uploads genesis.json and bin
       - uses: actions/upload-artifact@v2
         with:
