@@ -117,11 +117,10 @@ require (
 	gopkg.in/ini.v1 v1.63.2 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
+	require github.com/cenkalti/backoff/v4 v4.1.1 // indirect
 	nhooyr.io/websocket v1.8.6 // indirect
-
 )
 
-require github.com/cenkalti/backoff/v4 v4.1.1 // indirect
 
 replace (
 	github.com/99designs/keyring => github.com/cosmos/keyring v1.1.7-0.20210622111912-ef00f8ac3d76
