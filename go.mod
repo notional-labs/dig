@@ -124,7 +124,7 @@ require github.com/cenkalti/backoff/v4 v4.1.1 // indirect
 
 replace (
 	github.com/99designs/keyring => github.com/cosmos/keyring v1.1.7-0.20210622111912-ef00f8ac3d76
-	github.com/cosmos/cosmos-sdk => github.com/notional-labs/cosmos-sdk v0.44.5-whisky.0.20211217153604-b5538c15e051
+	github.com/cosmos/cosmos-sdk => github.com/notional-labs/cosmos-sdk v0.44.5-whisky.0.20220103110749-36a14c1734ef
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
 	github.com/tendermint/spm => github.com/notional-labs/spm v0.1.8-0.20211212065431-201f33f1cf2d
 	github.com/tendermint/tm-db => github.com/tendermint/tm-db v0.6.6
