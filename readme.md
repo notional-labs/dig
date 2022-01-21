@@ -118,4 +118,4 @@ These will launch rapidly after Dig.  Their paths will converge and diverge.  Al
   - [ ] Sif 
 - [ ] DFY Integration
 - [ ] Blurt Integration
-- [ ] First update to dig mainnet
+- [x] First update to dig mainnet
