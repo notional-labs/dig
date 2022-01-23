@@ -17,12 +17,6 @@ jobs:
       - uses: actions/setup-go@v2.1.3
         with: 
           go-version: '^1.17'
-      - name: validate genesis
-        run: |
-          cd cmd/digd
-          ./digd init validate
-          cp ../../networks/mainnets/dig-1/genesis.json ~/.dig/config
-          ./digd validate-genesis
       - name: state sync
         run: |
            git clone https://github.com/facebook/rocksdb
