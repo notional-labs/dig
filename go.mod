@@ -7,7 +7,7 @@ require (
 	github.com/cosmos/ibc-go/v2 v2.0.2
 	github.com/gorilla/mux v1.8.0
 	github.com/spf13/cast v1.4.1
-	github.com/tendermint/spm v0.1.9-0.20211206114358-21d4f153c688
+	github.com/tendermint/spm v0.1.9
 	github.com/tendermint/tendermint v0.34.15
 	github.com/tendermint/tm-db v0.6.6
 )
@@ -125,6 +125,6 @@ replace (
 	github.com/cosmos/cosmos-sdk => github.com/notional-labs/cosmos-sdk v0.44.5-whisky.0.20220103174826-d743126145e7
 	github.com/cosmos/cosmos-sdk/crypto/keys/ethsecp256k1 => ./crypto/keys/ethsecp256k1
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
-	github.com/tecbot/gorocksdb => github.com/cosmos/gorocksdb v1.1.1
+	github.com/tecbot/gorocksdb => github.com/cosmos/gorocksdb v1.2.0
 	google.golang.org/grpc => google.golang.org/grpc v1.33.2
 )
