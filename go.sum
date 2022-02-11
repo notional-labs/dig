@@ -769,8 +769,8 @@ github.com/nats-io/nuid v1.0.1/go.mod h1:19wcPz3Ph3q0Jbyiqsd0kePYG7A95tJPxeL+1OS
 github.com/neilotoole/errgroup v0.1.5/go.mod h1:Q2nLGf+594h0CLBs/Mbg6qOr7GtqDK7C2S41udRnToE=
 github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e/go.mod h1:zD1mROLANZcx1PVRCS0qkT7pwLkGfwJo4zjcN/Tysno=
 github.com/nishanths/predeclared v0.0.0-20200524104333-86fad755b4d3/go.mod h1:nt3d53pc1VYcphSCIaYAJtnPYnr3Zyn8fMq2wvPGPso=
-github.com/notional-labs/cosmos-sdk v0.44.5-whisky.0.20220122235415-b7761d6c05b4 h1:IXIsiGVVnwvpBPTQo9/cAHWLWV4VFGIm+Vu2svoGKjM=
-github.com/notional-labs/cosmos-sdk v0.44.5-whisky.0.20220122235415-b7761d6c05b4/go.mod h1:KLdUj5xHEeBx/YIf7TVvgrqz3mV2tJ2vK5RL3z+YbDo=
+github.com/notional-labs/cosmos-sdk v0.44.5-whisky.0.20220103174826-d743126145e7 h1:8faJ1ICMAFI6MeT2k8ihCUiFBZzTrrT4pNCjvrk3jDo=
+github.com/notional-labs/cosmos-sdk v0.44.5-whisky.0.20220103174826-d743126145e7/go.mod h1:KLdUj5xHEeBx/YIf7TVvgrqz3mV2tJ2vK5RL3z+YbDo=
 github.com/nxadm/tail v1.4.4/go.mod h1:kenIhsEOeOJmVchQTgglprH7qJGnHDVpk1VPCcaMI8A=
 github.com/nxadm/tail v1.4.8 h1:nPr65rt6Y5JFSKQO7qToXr7pePgD6Gwiw05lkbyAQTE=
 github.com/nxadm/tail v1.4.8/go.mod h1:+ncqLTQzXmGhMZNUePPaPqPvBxHAIsmXswZKocGu+AU=
