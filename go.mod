@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/cosmos/cosmos-sdk v0.45.1
-	github.com/cosmos/ibc-go/v2 v2.0.2
+	github.com/cosmos/ibc-go/v2 v2.0.3
 	github.com/spf13/cast v1.4.1
 	github.com/tendermint/spm v0.1.9
 	github.com/tendermint/tendermint v0.34.15
