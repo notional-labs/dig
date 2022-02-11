@@ -7,9 +7,7 @@ import (
 )
 
 func RunForkLogic(ctx sdk.Context, gov *govkeeper.Keeper, staking *stakingkeeper.Keeper) {
-	ctx.Logger().Info("Applying Osmosis v3 upgrade." +
-		" Fixing governance deposit so proposals can be voted upon," +
-		" and fixing validator min commission rate.")
+	ctx.Logger().Info("Applying dig v2 upgrade")
 	FixMinCommisionRate(ctx, staking)
 }
 
