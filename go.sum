@@ -281,6 +281,7 @@ github.com/envoyproxy/go-control-plane v0.9.4/go.mod h1:6rpuAdCZL397s3pYoYcLgu1m
 github.com/envoyproxy/go-control-plane v0.10.1/go.mod h1:AY7fTTXNdv/aJ2O5jwpxAPOWUZ7hQAEvzN5Pf27BkQQ=
 github.com/envoyproxy/protoc-gen-validate v0.1.0/go.mod h1:iSmxcyjqTsJpI2R4NaDN7+kN2VEUnK/pcBlmesArF7c=
 github.com/envoyproxy/protoc-gen-validate v0.6.2/go.mod h1:2t7qjJNvHPx8IjnBOzl9E9/baC+qXE/TeeyBRzgJDws=
+github.com/ethereum/go-ethereum v1.9.25 h1:mMiw/zOOtCLdGLWfcekua0qPrJTe7FVIiHJ4IKNTfR0=
 github.com/ethereum/go-ethereum v1.9.25/go.mod h1:vMkFiYLHI4tgPw4k2j4MHKoovchFE8plZ0M9VMk4/oM=
 github.com/facebookgo/ensure v0.0.0-20160127193407-b4ab57deab51/go.mod h1:Yg+htXGokKKdzcwhuNDwVvN+uBxDGXJ7G/VN1d8fa64=
 github.com/facebookgo/ensure v0.0.0-20200202191622-63f1cf65ac4c h1:8ISkoahWXwZR41ois5lSJBSVw4D0OV19Ht/JSTzvSv0=
@@ -706,8 +707,8 @@ github.com/nats-io/nuid v1.0.1/go.mod h1:19wcPz3Ph3q0Jbyiqsd0kePYG7A95tJPxeL+1OS
 github.com/neilotoole/errgroup v0.1.5/go.mod h1:Q2nLGf+594h0CLBs/Mbg6qOr7GtqDK7C2S41udRnToE=
 github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e/go.mod h1:zD1mROLANZcx1PVRCS0qkT7pwLkGfwJo4zjcN/Tysno=
 github.com/nishanths/predeclared v0.0.0-20200524104333-86fad755b4d3/go.mod h1:nt3d53pc1VYcphSCIaYAJtnPYnr3Zyn8fMq2wvPGPso=
-github.com/notional-labs/cosmos-sdk v0.45.1-digv2 h1:T9oDd5ksykgToF3m0i8BQmrbuO3oB9Q+jzxlPTvtDLc=
-github.com/notional-labs/cosmos-sdk v0.45.1-digv2/go.mod h1:AxzPBEEd2LpTUOJOVGW9TTzmctuJN4yQBGuNCVg5xJA=
+github.com/notional-labs/cosmos-sdk v0.45.2-0.20220212173125-607bf67d1036 h1:yjrsMU/lvUod6vPH2fwTs2gEMRsG2dslHFaParCRlVw=
+github.com/notional-labs/cosmos-sdk v0.45.2-0.20220212173125-607bf67d1036/go.mod h1:AxzPBEEd2LpTUOJOVGW9TTzmctuJN4yQBGuNCVg5xJA=
 github.com/notional-labs/spm v0.1.8-0.20211212065431-201f33f1cf2d h1:h5xTZzzU1AiSeO4zWsAMvXzsbLrYk/MAxKGDV7Su0+w=
 github.com/notional-labs/spm v0.1.8-0.20211212065431-201f33f1cf2d/go.mod h1:xwQg/qB1cIJ3ShOVaHYyGt5NiHSxhdCyz81oyNI1iUc=
 github.com/nxadm/tail v1.4.4/go.mod h1:kenIhsEOeOJmVchQTgglprH7qJGnHDVpk1VPCcaMI8A=
