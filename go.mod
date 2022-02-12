@@ -3,7 +3,7 @@ module github.com/notional-labs/dig
 go 1.17
 
 require (
-	github.com/CosmWasm/wasmd v0.0.0-00010101000000-000000000000
+	github.com/CosmWasm/wasmd v0.23.0
 	github.com/cosmos/cosmos-sdk v0.45.1
 	github.com/cosmos/ibc-go/v2 v2.0.3
 	github.com/spf13/cast v1.4.1
@@ -13,7 +13,7 @@ require (
 )
 
 require (
-	github.com/CosmWasm/wasmvm v1.0.0-beta2 // indirect
+	github.com/CosmWasm/wasmvm v1.0.0-beta4 // indirect
 	github.com/google/gofuzz v1.2.0 // indirect
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 )
@@ -128,7 +128,7 @@ require (
 
 replace (
 	github.com/99designs/keyring => github.com/cosmos/keyring v1.1.7-0.20210622111912-ef00f8ac3d76
-	github.com/CosmWasm/wasmd => github.com/cosmoscontracts/wasmd v1.0.0-juno5
+	github.com/CosmWasm/wasmd => github.com/cosmoscontracts/wasmd v1.0.0-juno6
 	github.com/cosmos/cosmos-sdk => ../cosmos-sdk
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
 	github.com/tecbot/gorocksdb => github.com/cosmos/gorocksdb v1.2.0
