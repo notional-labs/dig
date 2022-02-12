@@ -129,7 +129,7 @@ require (
 replace (
 	github.com/99designs/keyring => github.com/cosmos/keyring v1.1.7-0.20210622111912-ef00f8ac3d76
 	github.com/CosmWasm/wasmd => github.com/cosmoscontracts/wasmd v1.0.0-juno6
-	github.com/cosmos/cosmos-sdk => github.com/notional-labs/cosmos-sdk v0.45.1-0.20220207101818-ea83cc790f5a
+	github.com/cosmos/cosmos-sdk => github.com/notional-labs/cosmos-sdk v0.45.1-digv2
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
 	github.com/tecbot/gorocksdb => github.com/cosmos/gorocksdb v1.2.0
 	github.com/tendermint/spm => github.com/notional-labs/spm v0.1.8-0.20211212065431-201f33f1cf2d
