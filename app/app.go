@@ -404,7 +404,6 @@ func New(
 		&app.IBCKeeper.PortKeeper,
 		scopedWasmKeeper,
 		app.TransferKeeper,
-		app.Router(),
 		app.MsgServiceRouter(),
 		app.GRPCQueryRouter(),
 		wasmDir,
@@ -495,7 +494,6 @@ func New(
 		feegrant.ModuleName,
 		paramstypes.ModuleName, vestingtypes.ModuleName, ibchost.ModuleName, ibctransfertypes.ModuleName, wasm.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/initGenesis
-		wasm.ModuleName,
 	)
 
 	app.mm.RegisterInvariants(&app.CrisisKeeper)
