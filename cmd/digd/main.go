@@ -7,7 +7,7 @@ import (
 	wasmcli "github.com/CosmWasm/wasmd/x/wasm/client/cli"
 	"github.com/cosmos/cosmos-sdk/client"
 	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
-	"github.com/notional-labs/dig/app"
+	"github.com/notional-labs/dig/v2/app"
 	"github.com/spf13/cobra"
 	tmcmds "github.com/tendermint/tendermint/cmd/tendermint/commands"
 
