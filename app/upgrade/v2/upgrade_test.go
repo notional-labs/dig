@@ -46,7 +46,7 @@ func (suite *UpgradeTestSuite) TestUpgrade() {
 		expPass bool
 	}{
 		{
-			"Test dig upgrade",
+			"Test digv2 upgrade",
 			func() {
 				// run upgrade
 				suite.ctx = suite.ctx.WithBlockHeight(dummyUpgradeHeight - 1)
