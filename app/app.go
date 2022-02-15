@@ -315,8 +315,6 @@ func NewDigApp(
 		memKeys:           memKeys,
 	}
 
-	app.setupUpgradeStoreLoaders()
-	app.setupUpgradeHandlers()
 	app.ParamsKeeper = initParamsKeeper(appCodec, cdc, keys[paramstypes.StoreKey], tkeys[paramstypes.TStoreKey])
 
 	// set the BaseApp's parameter store
@@ -451,6 +449,9 @@ func NewDigApp(
 
 	// NOTE: Any module instantiated in the module manager that is later modified
 	// must be passed by reference here.
+
+	app.setupUpgradeStoreLoaders()
+	app.setupUpgradeHandlers()
 
 	app.mm = module.NewManager(
 		genutil.NewAppModule(
