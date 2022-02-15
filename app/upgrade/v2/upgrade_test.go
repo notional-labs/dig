@@ -33,7 +33,7 @@ func TestKeeperTestSuite(t *testing.T) {
 
 const dummyUpgradeHeight = 5
 
-func (suite *UpgradeTestSuite) TestUpgradePayments() {
+func (suite *UpgradeTestSuite) TestUpgrade() {
 	testCases := []struct {
 		msg     string
 		update  func()
