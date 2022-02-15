@@ -40,11 +40,10 @@ func Setup(isCheckTx bool) cosmoscmd.App {
 
 // SetupTestingAppWithLevelDb initializes a new App intended for testing,
 // with LevelDB as a db
-func SetupTestingAppWithLevelDb(isCheckTx bool) (digapp cosmoscmd.App, cleanupFn func()) {
-	dir := "dig_test"
+func SetupTestingAppWithLevelDb(isCheckTx bool, dir string) (digapp cosmoscmd.App, cleanupFn func()) {
 	encCdc := cosmoscmd.MakeEncodingConfig(app.ModuleBasics)
 
-	db, err := sdk.NewLevelDB("osmosis_leveldb_testing", dir)
+	db, err := sdk.NewLevelDB("dig_leveldb_testing", dir)
 	if err != nil {
 		panic(err)
 	}
