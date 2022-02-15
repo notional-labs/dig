@@ -7,6 +7,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
+	appv1 "github.com/notional-labs/dig/app"
 	"github.com/notional-labs/dig/v2/app"
 	"github.com/stretchr/testify/suite"
 	abci "github.com/tendermint/tendermint/abci/types"
@@ -16,14 +17,19 @@ import (
 type UpgradeTestSuite struct {
 	suite.Suite
 
-	ctx sdk.Context
-	app *app.App
+	ctx   sdk.Context
+	app   *app.App
+	appv1 *appv1.App
 }
 
 func (suite *UpgradeTestSuite) SetupTest() {
 	cmdapp := app.Setup(false)
 	suite.app = cmdapp.(*app.App)
-	suite.ctx = suite.app.NewContext(false, tmproto.Header{Height: 1, ChainID: "dig-1", Time: time.Now().UTC()})
+
+	cmdappv1 := app.SetupAppv1(false)
+	suite.appv1 = cmdappv1.(*appv1.App)
+
+	suite.ctx = suite.appv1.NewContext(false, tmproto.Header{Height: 1, ChainID: "dig-1", Time: time.Now().UTC()})
 
 }
 
@@ -45,15 +51,19 @@ func (suite *UpgradeTestSuite) TestUpgrade() {
 				// run upgrade
 				suite.ctx = suite.ctx.WithBlockHeight(dummyUpgradeHeight - 1)
 				plan := upgradetypes.Plan{Name: "v2", Height: dummyUpgradeHeight}
-				err := suite.app.UpgradeKeeper.ScheduleUpgrade(suite.ctx, plan)
+
+				err := suite.appv1.UpgradeKeeper.ScheduleUpgrade(suite.ctx, plan)
 				suite.Require().NoError(err)
-				plan, exists := suite.app.UpgradeKeeper.GetUpgradePlan(suite.ctx)
+				plan, exists := suite.appv1.UpgradeKeeper.GetUpgradePlan(suite.ctx)
 				suite.Require().True(exists)
 				suite.ctx = suite.ctx.WithBlockHeight(dummyUpgradeHeight)
 
+				ctx2 := suite.app.NewContext(false, tmproto.Header{Height: dummyUpgradeHeight, ChainID: "dig-1", Time: time.Now().UTC()})
+				ctx2 = ctx2.WithConsensusParams(suite.ctx.ConsensusParams())
+
 				suite.Require().NotPanics(func() {
 					beginBlockRequest := abci.RequestBeginBlock{}
-					suite.app.BeginBlocker(suite.ctx, beginBlockRequest)
+					suite.app.BeginBlocker(ctx2, beginBlockRequest)
 				})
 			},
 			true,

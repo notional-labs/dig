@@ -560,20 +560,6 @@ func NewDigApp(
 
 	app.ScopedIBCKeeper = scopedIBCKeeper
 	app.ScopedTransferKeeper = scopedTransferKeeper
-	// this line is used by starport scaffolding # stargate/app/beforeInitReturn
-	// upgradeInfo, err := app.UpgradeKeeper.ReadUpgradeInfoFromDisk()
-	// if err != nil {
-	// 	panic(err)
-	// }
-
-	// if upgradeInfo.Name == "digv2" && !app.UpgradeKeeper.IsSkipHeight(upgradeInfo.Height) {
-	// 	storeUpgrades := store.StoreUpgrades{
-	// 		Added: []string{authz.ModuleName, feegrant.ModuleName, wasm.ModuleName},
-	// 	}
-
-	// 	// configure store loader that checks if version == upgradeHeight and applies store upgrades
-	// 	app.SetStoreLoader(upgradetypes.UpgradeStoreLoader(upgradeInfo.Height, &storeUpgrades))
-	// }
 
 	app.scopedWasmKeeper = scopedWasmKeeper
 

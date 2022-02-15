@@ -7,6 +7,7 @@ import (
 	"github.com/CosmWasm/wasmd/app"
 	"github.com/cosmos/cosmos-sdk/simapp"
 	sdk "github.com/cosmos/cosmos-sdk/types"
+	appv1 "github.com/notional-labs/dig/app"
 	"github.com/tendermint/spm/cosmoscmd"
 	abci "github.com/tendermint/tendermint/abci/types"
 	"github.com/tendermint/tendermint/libs/log"
@@ -19,6 +20,31 @@ func Setup(isCheckTx bool) cosmoscmd.App {
 	encCdc := cosmoscmd.MakeEncodingConfig(app.ModuleBasics)
 
 	digapp := NewDigApp(log.NewNopLogger(), db, nil, true, map[int64]bool{}, DefaultNodeHome, 5, encCdc, simapp.EmptyAppOptions{})
+	if !isCheckTx {
+		genesisState := NewDefaultGenesisState(encCdc.Marshaler)
+		stateBytes, err := json.MarshalIndent(genesisState, "", " ")
+		if err != nil {
+			panic(err)
+		}
+
+		digapp.InitChain(
+			abci.RequestInitChain{
+				Validators:      []abci.ValidatorUpdate{},
+				ConsensusParams: simapp.DefaultConsensusParams,
+				AppStateBytes:   stateBytes,
+			},
+		)
+	}
+
+	return digapp
+}
+
+func SetupAppv1(isCheckTx bool) cosmoscmd.App {
+	db := dbm.NewMemDB()
+	encCdc := cosmoscmd.MakeEncodingConfig(app.ModuleBasics)
+
+	digapp := appv1.New(log.NewNopLogger(), db, nil, true, map[int64]bool{}, DefaultNodeHome, 5, encCdc, simapp.EmptyAppOptions{})
+
 	if !isCheckTx {
 		genesisState := NewDefaultGenesisState(encCdc.Marshaler)
 		stateBytes, err := json.MarshalIndent(genesisState, "", " ")

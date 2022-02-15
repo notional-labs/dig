@@ -15,9 +15,8 @@ require (
 require (
 	github.com/CosmWasm/wasmvm v1.0.0-beta5 // indirect
 	github.com/btcsuite/btcutil v1.0.3-0.20201208143702-a53e38424cce // indirect
-	github.com/ethereum/go-ethereum v1.9.25 // indirect
+	github.com/ethereum/go-ethereum v1.10.13 // indirect
 	github.com/google/gofuzz v1.2.0 // indirect
-	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 )
 
 require (
@@ -85,6 +84,7 @@ require (
 	github.com/minio/highwayhash v1.0.2 // indirect
 	github.com/mitchellh/mapstructure v1.4.3 // indirect
 	github.com/mtibben/percent v0.2.1 // indirect
+	github.com/notional-labs/dig v1.1.0
 	github.com/pelletier/go-toml v1.9.4 // indirect
 	github.com/petermattis/goid v0.0.0-20180202154549-b0b1615b78e5 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
