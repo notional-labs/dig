@@ -271,8 +271,8 @@ type App struct {
 	configurator module.Configurator
 }
 
-// New returns a reference to an initialized Gaia.
-func New(
+// NewDigApp returns a reference to an initialized Gaia.
+func NewDigApp(
 	logger log.Logger,
 	db dbm.DB,
 	traceStore io.Writer,
