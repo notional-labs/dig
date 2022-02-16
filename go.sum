@@ -802,8 +802,8 @@ github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e/go.mod h1:zD1mROLA
 github.com/nishanths/predeclared v0.0.0-20200524104333-86fad755b4d3/go.mod h1:nt3d53pc1VYcphSCIaYAJtnPYnr3Zyn8fMq2wvPGPso=
 github.com/notional-labs/cosmos-sdk v0.45.2-0.20220212173125-607bf67d1036 h1:yjrsMU/lvUod6vPH2fwTs2gEMRsG2dslHFaParCRlVw=
 github.com/notional-labs/cosmos-sdk v0.45.2-0.20220212173125-607bf67d1036/go.mod h1:AxzPBEEd2LpTUOJOVGW9TTzmctuJN4yQBGuNCVg5xJA=
-github.com/notional-labs/dig v1.1.1 h1:L0y6cZDF3qD19IiYQ/6uTrYpLa8JoemMyFqL5BpanAs=
-github.com/notional-labs/dig v1.1.1/go.mod h1:iKtBZZZWrDb2SrWIoBMEdAO9ymUai9o11JzinFE+zyU=
+github.com/notional-labs/dig v1.1.1-0.20220216211125-985eb1902314 h1:Lj0FKwOGfUIsGJyg1qvVvAZCWc84NjaFlZxj2TMoVDk=
+github.com/notional-labs/dig v1.1.1-0.20220216211125-985eb1902314/go.mod h1:iKtBZZZWrDb2SrWIoBMEdAO9ymUai9o11JzinFE+zyU=
 github.com/notional-labs/spm v0.1.8-0.20211212065431-201f33f1cf2d h1:h5xTZzzU1AiSeO4zWsAMvXzsbLrYk/MAxKGDV7Su0+w=
 github.com/notional-labs/spm v0.1.8-0.20211212065431-201f33f1cf2d/go.mod h1:xwQg/qB1cIJ3ShOVaHYyGt5NiHSxhdCyz81oyNI1iUc=
 github.com/nxadm/tail v1.4.4/go.mod h1:kenIhsEOeOJmVchQTgglprH7qJGnHDVpk1VPCcaMI8A=
