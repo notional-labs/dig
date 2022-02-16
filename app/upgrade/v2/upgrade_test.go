@@ -59,7 +59,9 @@ func (suite *UpgradeTestSuite) TestUpgrade() {
 				suite.ctx = suite.ctx.WithBlockHeight(dummyUpgradeHeight)
 
 				ctx2 := suite.app.NewContext(false, tmproto.Header{Height: dummyUpgradeHeight, ChainID: "dig-1", Time: time.Now().UTC()})
+
 				ctx2 = ctx2.WithConsensusParams(suite.ctx.ConsensusParams())
+				ctx2 = ctx2.WithContext(suite.ctx.Context())
 
 				suite.Require().NotPanics(func() {
 					beginBlockRequest := abci.RequestBeginBlock{}

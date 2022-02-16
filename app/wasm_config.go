@@ -5,21 +5,21 @@ import (
 )
 
 const (
-	// DefaultJunoInstanceCost is initially set the same as in wasmd
-	DefaultJunoInstanceCost uint64 = 60_000
-	// DefaultJunoCompileCost set to a large number for testing
-	DefaultJunoCompileCost uint64 = 100
+	//DefaultInstanceCost is initially set the same as in wasmd
+	DefaultInstanceCost uint64 = 60_000
+	//DefaultCompileCost set to a large number for testing
+	DefaultCompileCost uint64 = 100
 )
 
-// JunoGasRegisterConfig is defaults plus a custom compile amount
-func JunoGasRegisterConfig() wasmkeeper.WasmGasRegisterConfig {
+// GasRegisterConfig is defaults plus a custom compile amount
+func GasRegisterConfig() wasmkeeper.WasmGasRegisterConfig {
 	gasConfig := wasmkeeper.DefaultGasRegisterConfig()
-	gasConfig.InstanceCost = DefaultJunoInstanceCost
-	gasConfig.CompileCost = DefaultJunoCompileCost
+	gasConfig.InstanceCost = DefaultInstanceCost
+	gasConfig.CompileCost = DefaultCompileCost
 
 	return gasConfig
 }
 
-func NewJunoWasmGasRegister() wasmkeeper.WasmGasRegister {
-	return wasmkeeper.NewWasmGasRegister(JunoGasRegisterConfig())
+func NewWasmGasRegister() wasmkeeper.WasmGasRegister {
+	return wasmkeeper.NewWasmGasRegister(GasRegisterConfig())
 }
