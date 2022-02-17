@@ -123,4 +123,14 @@ jobs:
         run: |
           make test-sim-multi-seed-short
         if: "env.GIT_DIFF != ''"
-
+  test-simulator:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v2.1.4
+        with:
+          go-version: 1.17
+      - name: Display go version
+        run: go version
+      - name: Run simulation
+        run: go test ./simapp
