@@ -56,7 +56,7 @@ func main() {
 		app.DefaultNodeHome,
 		app.Name,
 		app.ModuleBasics,
-		app.New,
+		app.NewDigApp,
 		// this line is used by starport scaffolding # root/arguments
 		cmdOptions...,
 	)

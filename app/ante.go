@@ -1,6 +1,7 @@
 package app
 
 import (
+	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	"github.com/cosmos/cosmos-sdk/x/auth/ante"
@@ -9,6 +10,7 @@ import (
 
 	wasmkeeper "github.com/CosmWasm/wasmd/x/wasm/keeper"
 	wasmTypes "github.com/CosmWasm/wasmd/x/wasm/types"
+	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 )
 
 // HandlerOptions extends the SDK's AnteHandler options by requiring the IBC
@@ -19,6 +21,56 @@ type HandlerOptions struct {
 	IBCChannelkeeper  channelkeeper.Keeper
 	TxCounterStoreKey sdk.StoreKey
 	WasmConfig        wasmTypes.WasmConfig
+	Cdc               codec.BinaryCodec
+}
+
+type MinCommissionDecorator struct {
+	cdc codec.BinaryCodec
+}
+
+func NewMinCommissionDecorator(cdc codec.BinaryCodec) MinCommissionDecorator {
+	return MinCommissionDecorator{cdc}
+}
+
+func (min MinCommissionDecorator) AnteHandle(
+	ctx sdk.Context, tx sdk.Tx,
+	simulate bool, next sdk.AnteHandler) (newCtx sdk.Context, err error) {
+	msgs := tx.GetMsgs()
+	minCommissionRate := sdk.NewDecWithPrec(0, 0)
+
+	validMsg := func(m sdk.Msg) error {
+		switch msg := m.(type) {
+		case *stakingtypes.MsgCreateValidator:
+			// prevent new validators joining the set with
+			// commission set below 5%
+			c := msg.Commission
+			if c.Rate.LT(minCommissionRate) {
+				return sdkerrors.Wrap(sdkerrors.ErrUnauthorized, "commission can't be lower than 0%")
+			}
+		case *stakingtypes.MsgEditValidator:
+			// if commission rate is nil, it means only
+			// other fields are affected - skip
+			if msg.CommissionRate == nil {
+				break
+			}
+			if msg.CommissionRate.LT(minCommissionRate) {
+				return sdkerrors.Wrap(sdkerrors.ErrUnauthorized, "commission can't be lower than 0%")
+			}
+		}
+
+		return nil
+	}
+
+	for _, m := range msgs {
+
+		// validate normal msgs
+		err = validMsg(m)
+		if err != nil {
+			return ctx, err
+		}
+	}
+
+	return next(ctx, tx, simulate)
 }
 
 // NewAnteHandler returns an AnteHandler that checks and increments sequence
@@ -44,6 +96,7 @@ func NewAnteHandler(options HandlerOptions) (sdk.AnteHandler, error) {
 
 	anteDecorators := []sdk.AnteDecorator{
 		ante.NewSetUpContextDecorator(), // outermost AnteDecorator. SetUpContext must be called first
+		NewMinCommissionDecorator(options.Cdc),
 		wasmkeeper.NewLimitSimulationGasDecorator(options.WasmConfig.SimulationGasLimit),
 		wasmkeeper.NewCountTXDecorator(options.TxCounterStoreKey),
 		ante.NewRejectExtensionOptionsDecorator(),
