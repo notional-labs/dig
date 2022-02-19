@@ -8,7 +8,6 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 
 	"github.com/CosmWasm/wasmd/x/wasm"
-	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
 )
 
 // Fixes an error where validators can be created with a commission rate
@@ -43,22 +42,30 @@ func CreateUpgradeHandler(mm *module.Manager, configurator module.Configurator,
 		// Set wasm old version to 1 if we want to call wasm's InitGenesis ourselves
 		// in this upgrade logic ourselves
 		// vm[wasm.ModuleName] = wasm.ConsensusVersion
+		// fmt.Println(vm)
+		// // otherwise we run this, which will run wasm.InitGenesis(wasm.DefaultGenesis())
+		// // and then override it after
+		// newVM, err := mm.RunMigrations(ctx, configurator, vm)
+		// fmt.Println("====================")
 
-		// otherwise we run this, which will run wasm.InitGenesis(wasm.DefaultGenesis())
-		// and then override it after
-		newVM, err := mm.RunMigrations(ctx, configurator, vm)
-		if err != nil {
-			return newVM, err
-		}
+		// if err != nil {
+		// 	fmt.Println("====================")
+		// 	return newVM, err
+		// }
+		// fmt.Println("=====================")
+		// fmt.Println("=====================")
+		// fmt.Println(err)
+		// fmt.Println("=====================")
+		// fmt.Println("=====================")
 
-		// Since we provide custom DefaultGenesis (privileges StoreCode) in app/genesis.go rather than
-		// the wasm module, we need to set the params here when migrating (is it is not customized).
+		// // Since we provide custom DefaultGenesis (privileges StoreCode) in app/genesis.go rather than
+		// // the wasm module, we need to set the params here when migrating (is it is not customized).
 
-		params := wasmKeeper.GetParams(ctx)
-		params.CodeUploadAccess = wasmtypes.AllowNobody
-		wasmKeeper.SetParams(ctx, params)
+		// params := wasmKeeper.GetParams(ctx)
+		// params.CodeUploadAccess = wasmtypes.AllowNobody
+		// wasmKeeper.SetParams(ctx, params)
 
-		// override here
-		return newVM, err
+		// // override here
+		return vm, nil
 	}
 }
