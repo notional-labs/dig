@@ -53,7 +53,7 @@ func CreateUpgradeHandler(mm *module.Manager, configurator module.Configurator,
 		// the wasm module, we need to set the params here when migrating (is it is not customized).
 
 		params := wasmKeeper.GetParams(ctx)
-		params.CodeUploadAccess = wasmtypes.AllowNobody
+		params.CodeUploadAccess = wasmtypes.AllowEverybody
 		wasmKeeper.SetParams(ctx, params)
 
 		// override here
