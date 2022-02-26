@@ -354,7 +354,7 @@
         "max_deposit_period": "172800s"
       },
       "voting_params": {
-        "voting_period": "600s"
+        "voting_period": "86400s"
       },
       "tally_params": {
         "quorum": "0.334000000000000000",
@@ -403,10 +403,10 @@
       "params": {
         "mint_denom": "udix",
         "inflation_rate_change": "0.00000000000000010",
-        "inflation_max": "0.000000000000001000",
-        "inflation_min": "0.070000000000000100",
+        "inflation_max": "0.00000000008000000",
+        "inflation_min": "0.000000000000000100",
         "goal_bonded": "0.670000000000000000",
-        "blocks_per_year": "6311520"
+        "blocks_per_year": "5311520"
       }
     },
     "params": null,
