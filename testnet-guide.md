@@ -22,6 +22,9 @@ digd start --p2p.seeds fec3524b68e228ac1f1f87ba287de9b4f04a8690@168.119.91.22:12
 digd keys add <key-name> --home /$HOME/digtest
 ```
 If you have validator address before, add `--recover` flag and type your mnemonic to recover.
+
+Then, go to Faucet channel in Discord to get your token: https://discord.com/channels/873378800199684107/946267035355189248. Send your wallet address to receive tokens.
+
 5. Create validator! 
  ```
  digd tx staking create-validator \
