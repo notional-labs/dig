@@ -10,7 +10,7 @@ digd init <moniker> --chain-id digtest-5 --home ~/digtest
 ```
 2. Download new genesis:
 ```
-wget -O ~/digtest/config/genesis.json https://github.com/notional-labs/dig/blob/master/networks/testnets/testnet-5/genesis.json
+wget -O ~/digtest/config/genesis.json https://raw.githubusercontent.com/notional-labs/dig/master/networks/testnets/testnet-5/genesis.json
 ```
 3. Join the testnet with new seeds:
 ```
