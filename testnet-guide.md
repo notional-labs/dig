@@ -14,7 +14,7 @@ wget -O ~/digtest/config/genesis.json https://raw.githubusercontent.com/notional
 ```
 3. Join the testnet with new seeds:
 ```
-digd start --p2p.seeds fec3524b68e228ac1f1f87ba287de9b4f04a8690@168.119.91.22:1230 --home ~/digtest
+digd start --p2p.seeds fec3524b68e228ac1f1f87ba287de9b4f04a8690@168.119.91.22:1230,5618592c2d7a5215e1e8607e4dae8ad56254592e@65.108.65.6:26656,f6d92f29243e260df4513b74eabcb10124853405@95.217.121.243:26656 --home ~/digtest
 ```
 4. Generate new keys or restore the existing one;
 ```
