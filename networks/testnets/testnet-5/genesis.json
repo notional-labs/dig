@@ -1,6 +1,6 @@
 {
-  "genesis_time": "2022-02-20T04:59:50.795604529Z",
-  "chain_id": "digtest-5",
+  "genesis_time": "2022-03-04T07:28:22.799982584Z",
+  "chain_id": "digtestnet-5",
   "initial_height": "1",
   "consensus_params": {
     "block": {
@@ -40,14 +40,14 @@
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "dig1ewylr0pme3dfys88chy2nmpa95ys2q0pd6vgxf",
+          "address": "dig1l9zumx534f0unlejde0l936z09933uut8gyq2r",
           "pub_key": null,
           "account_number": "0",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "dig1l9zumx534f0unlejde0l936z09933uut8gyq2r",
+          "address": "dig1ewylr0pme3dfys88chy2nmpa95ys2q0pd6vgxf",
           "pub_key": null,
           "account_number": "0",
           "sequence": "0"
@@ -63,7 +63,7 @@
             },
             "original_vesting": [
               {
-                "denom": "udig",
+                "denom": "udix",
                 "amount": "12384722624"
               }
             ],
@@ -84,7 +84,7 @@
             },
             "original_vesting": [
               {
-                "denom": "udig",
+                "denom": "udix",
                 "amount": "12384722624"
               }
             ],
@@ -105,7 +105,7 @@
             },
             "original_vesting": [
               {
-                "denom": "udig",
+                "denom": "udix",
                 "amount": "12384722624"
               }
             ],
@@ -126,7 +126,7 @@
             },
             "original_vesting": [
               {
-                "denom": "udig",
+                "denom": "udix",
                 "amount": "12384722624"
               }
             ],
@@ -147,7 +147,7 @@
             },
             "original_vesting": [
               {
-                "denom": "udig",
+                "denom": "udix",
                 "amount": "12384722624"
               }
             ],
@@ -168,7 +168,7 @@
             },
             "original_vesting": [
               {
-                "denom": "udig",
+                "denom": "udix",
                 "amount": "12384722624"
               }
             ],
@@ -191,7 +191,7 @@
           "coins": [
             {
               "denom": "udix",
-              "amount": "100000000000000000000000000"
+              "amount": "1000000000000000"
             }
           ]
         },
@@ -200,7 +200,7 @@
           "coins": [
             {
               "denom": "udix",
-              "amount": "10000000"
+              "amount": "1000000000000000"
             }
           ]
         },
@@ -209,7 +209,7 @@
           "coins": [
             {
               "denom": "udix",
-              "amount": "10000000000000"
+              "amount": "1000000000000000"
             }
           ]
         }
@@ -224,7 +224,7 @@
     "crisis": {
       "constant_fee": {
         "denom": "udix",
-        "amount": "1000000"
+        "amount": "1000"
       }
     },
     "distribution": {
@@ -294,19 +294,19 @@
                   "max_change_rate": "0.010000000000000000"
                 },
                 "min_self_delegation": "1",
-                "delegator_address": "dig1ewylr0pme3dfys88chy2nmpa95ys2q0pd6vgxf",
-                "validator_address": "digvaloper1ewylr0pme3dfys88chy2nmpa95ys2q0pj59jwu",
+                "delegator_address": "dig1gdwmpjde9ke008jt7w2nt0d929vgh55797gw7k",
+                "validator_address": "digvaloper1gdwmpjde9ke008jt7w2nt0d929vgh5576sp5kr",
                 "pubkey": {
                   "@type": "/cosmos.crypto.ed25519.PubKey",
-                  "key": "ubxU6vEu3XZcgfR+ORcE0DL4p+rqS8gE6gokQAI36Mo="
+                  "key": "Eaun9MxflwYC3YoDWtRb1OQcnmsTsSVNn7gF0Uh8rCE="
                 },
                 "value": {
                   "denom": "udix",
-                  "amount": "1000000"
+                  "amount": "10000000000000"
                 }
               }
             ],
-            "memo": "fec3524b68e228ac1f1f87ba287de9b4f04a8690@168.119.91.22:26656",
+            "memo": "e830ed691a14b717ab1c623e3446c411d20ff2fb@168.119.91.22:26656",
             "timeout_height": "0",
             "extension_options": [],
             "non_critical_extension_options": []
@@ -316,7 +316,7 @@
               {
                 "public_key": {
                   "@type": "/cosmos.crypto.secp256k1.PubKey",
-                  "key": "AuzwMyhKTivhnILvssKw6ysXX+axQPFTB0bEtE+d5wrD"
+                  "key": "AiamSrTAENCj0UzHXXanPLjDIGpuTT2QvFqb39L6GTM1"
                 },
                 "mode_info": {
                   "single": {
@@ -334,7 +334,7 @@
             }
           },
           "signatures": [
-            "xkEfane6aiP3RxZ+RVlMEmhtcK7wV1cpcSpIvqDlhhACr95vorc8LjsVYVQmN0LvO42Z+yEYX2wlqiY9zqeN5Q=="
+            "5jO4CXj8FQ/2K87QIFyIX+C3GMt5WKqbEq2WUs0h6/QFPQrPuW42PmHqUIGWtxmeuh+iVM0hoo/hzKVVmiwJVw=="
           ]
         }
       ]
@@ -348,7 +348,7 @@
         "min_deposit": [
           {
             "denom": "udix",
-            "amount": "10000000"
+            "amount": "10000000000"
           }
         ],
         "max_deposit_period": "172800s"
@@ -402,11 +402,11 @@
       },
       "params": {
         "mint_denom": "udix",
-        "inflation_rate_change": "0.00000000000000010",
-        "inflation_max": "0.00000000008000000",
-        "inflation_min": "0.000000000000000100",
+        "inflation_rate_change": "0.130000000000000000",
+        "inflation_max": "0.200000000000000000",
+        "inflation_min": "0.070000000000000000",
         "goal_bonded": "0.670000000000000000",
-        "blocks_per_year": "5311520"
+        "blocks_per_year": "6311520"
       }
     },
     "params": null,
