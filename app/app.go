@@ -655,7 +655,7 @@ func (app *App) setupUpgradeStoreLoaders() {
 	if upgradeInfo.Name == v2.UpgradeName && !app.UpgradeKeeper.IsSkipHeight(upgradeInfo.Height) {
 		// @Frey do we do this for Cosmwasm?
 		storeUpgrades := store.StoreUpgrades{
-			Added:   []string{wasm.ModuleName},
+			Added:   []string{wasm.ModuleName, authz.ModuleName},
 			Deleted: []string{"epoch"},
 		}
 
