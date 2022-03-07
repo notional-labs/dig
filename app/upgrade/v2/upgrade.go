@@ -5,10 +5,9 @@ import (
 	stakingkeeper "github.com/cosmos/cosmos-sdk/x/staking/keeper"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 
-	"github.com/cosmos/cosmos-sdk/types/module"
-
 	"github.com/CosmWasm/wasmd/x/wasm"
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
+	"github.com/cosmos/cosmos-sdk/types/module"
 )
 
 // Fixes an error where validators can be created with a commission rate
@@ -39,7 +38,6 @@ func CreateUpgradeHandler(mm *module.Manager, configurator module.Configurator,
 ) upgradetypes.UpgradeHandler {
 	return func(ctx sdk.Context, plan upgradetypes.Plan, vm module.VersionMap) (module.VersionMap, error) {
 		FixMinCommisionRate(ctx, staking)
-
 		// Set wasm old version to 1 if we want to call wasm's InitGenesis ourselves
 		// in this upgrade logic ourselves
 		// vm[wasm.ModuleName] = wasm.ConsensusVersion
@@ -55,10 +53,11 @@ func CreateUpgradeHandler(mm *module.Manager, configurator module.Configurator,
 		// the wasm module, we need to set the params here when migrating (is it is not customized).
 
 		params := wasmKeeper.GetParams(ctx)
-		params.CodeUploadAccess = wasmtypes.AllowNobody
+		params.CodeUploadAccess = wasmtypes.AllowEverybody
 		wasmKeeper.SetParams(ctx, params)
 
 		// override here
 		return newVM, err
 	}
+
 }

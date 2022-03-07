@@ -32,6 +32,9 @@ import (
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	"github.com/cosmos/cosmos-sdk/x/auth/vesting"
 	vestingtypes "github.com/cosmos/cosmos-sdk/x/auth/vesting/types"
+	"github.com/cosmos/cosmos-sdk/x/authz"
+	authzkeeper "github.com/cosmos/cosmos-sdk/x/authz/keeper"
+	authzmodule "github.com/cosmos/cosmos-sdk/x/authz/module"
 	"github.com/cosmos/cosmos-sdk/x/bank"
 	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
@@ -80,6 +83,7 @@ import (
 	ibctransfertypes "github.com/cosmos/ibc-go/v2/modules/apps/transfer/types"
 	ibc "github.com/cosmos/ibc-go/v2/modules/core"
 	ibcclient "github.com/cosmos/ibc-go/v2/modules/core/02-client"
+	ibcclientclient "github.com/cosmos/ibc-go/v2/modules/core/02-client/client"
 	ibcporttypes "github.com/cosmos/ibc-go/v2/modules/core/05-port/types"
 	ibchost "github.com/cosmos/ibc-go/v2/modules/core/24-host"
 	ibckeeper "github.com/cosmos/ibc-go/v2/modules/core/keeper"
@@ -90,8 +94,6 @@ import (
 	"github.com/tendermint/tendermint/libs/log"
 	tmos "github.com/tendermint/tendermint/libs/os"
 	dbm "github.com/tendermint/tm-db"
-
-	ibcclientclient "github.com/cosmos/ibc-go/v2/modules/core/02-client/client"
 
 	"github.com/tendermint/spm/cosmoscmd"
 	"github.com/tendermint/spm/openapiconsole"
@@ -192,6 +194,7 @@ var (
 		evidence.AppModuleBasic{},
 		transfer.AppModuleBasic{},
 		vesting.AppModuleBasic{},
+		authzmodule.AppModuleBasic{},
 		// this line is used by starport scaffolding # stargate/app/moduleBasic
 		wasm.AppModuleBasic{},
 	)
@@ -256,6 +259,7 @@ type App struct {
 	IBCKeeper        *ibckeeper.Keeper // IBC Keeper must be a pointer in the app, so we can SetRouter on it correctly
 	EvidenceKeeper   evidencekeeper.Keeper
 	TransferKeeper   ibctransferkeeper.Keeper
+	AuthzKeeper      authzkeeper.Keeper
 	FeeGrantKeeper   feegrantkeeper.Keeper
 
 	// make scoped keepers public for test purposes
@@ -303,6 +307,7 @@ func NewDigApp(
 		minttypes.StoreKey, distrtypes.StoreKey, slashingtypes.StoreKey,
 		govtypes.StoreKey, paramstypes.StoreKey, ibchost.StoreKey, upgradetypes.StoreKey, feegrant.StoreKey,
 		evidencetypes.StoreKey, ibctransfertypes.StoreKey, capabilitytypes.StoreKey,
+		authzkeeper.StoreKey,
 		// this line is used by starport scaffolding # stargate/app/storeKey
 		wasm.StoreKey,
 	)
@@ -360,6 +365,7 @@ func NewDigApp(
 
 	app.FeeGrantKeeper = feegrantkeeper.NewKeeper(appCodec, keys[feegrant.StoreKey], app.AccountKeeper)
 	app.UpgradeKeeper = upgradekeeper.NewKeeper(skipUpgradeHeights, keys[upgradetypes.StoreKey], appCodec, homePath, app.BaseApp)
+	app.AuthzKeeper = authzkeeper.NewKeeper(keys[authzkeeper.StoreKey], appCodec, app.BaseApp.MsgServiceRouter())
 
 	// register the staking hooks
 	// NOTE: stakingKeeper above is passed by reference, so that it will contain these hooks
@@ -456,7 +462,6 @@ func NewDigApp(
 	// must be passed by reference here.
 
 	app.setupUpgradeStoreLoaders()
-	app.setupUpgradeHandlers()
 
 	app.mm = module.NewManager(
 		genutil.NewAppModule(
@@ -478,6 +483,7 @@ func NewDigApp(
 		evidence.NewAppModule(app.EvidenceKeeper),
 		ibc.NewAppModule(app.IBCKeeper),
 		params.NewAppModule(app.ParamsKeeper),
+		authzmodule.NewAppModule(appCodec, app.AuthzKeeper, app.AccountKeeper, app.BankKeeper, app.interfaceRegistry),
 		transferModule,
 		// this line is used by starport scaffolding # stargate/app/appModule
 		wasm.NewAppModule(appCodec, &app.wasmKeeper, app.StakingKeeper),
@@ -488,20 +494,47 @@ func NewDigApp(
 	// CanWithdrawInvariant invariant.
 	// NOTE: staking module is required if HistoricalEntries param > 0
 	app.mm.SetOrderBeginBlockers(
-		upgradetypes.ModuleName, capabilitytypes.ModuleName, minttypes.ModuleName, distrtypes.ModuleName, stakingtypes.ModuleName, slashingtypes.ModuleName,
+		upgradetypes.ModuleName,
+		capabilitytypes.ModuleName,
+		minttypes.ModuleName,
+		distrtypes.ModuleName,
+		stakingtypes.ModuleName,
+		slashingtypes.ModuleName,
 		evidencetypes.ModuleName,
-		authtypes.ModuleName, banktypes.ModuleName, govtypes.ModuleName, crisistypes.ModuleName, genutiltypes.ModuleName,
+		authtypes.ModuleName,
+		banktypes.ModuleName,
+		govtypes.ModuleName,
+		crisistypes.ModuleName,
+		genutiltypes.ModuleName,
+		authz.ModuleName,
 		feegrant.ModuleName,
-		paramstypes.ModuleName, vestingtypes.ModuleName, ibchost.ModuleName, ibctransfertypes.ModuleName, wasm.ModuleName,
+		paramstypes.ModuleName,
+		vestingtypes.ModuleName,
+		ibchost.ModuleName,
+		ibctransfertypes.ModuleName,
+		wasm.ModuleName,
 	)
 
 	app.mm.SetOrderEndBlockers(
-		crisistypes.ModuleName, govtypes.ModuleName, stakingtypes.ModuleName,
-		capabilitytypes.ModuleName, authtypes.ModuleName, banktypes.ModuleName, distrtypes.ModuleName,
-		slashingtypes.ModuleName, minttypes.ModuleName,
-		genutiltypes.ModuleName, evidencetypes.ModuleName,
+		crisistypes.ModuleName,
+		govtypes.ModuleName,
+		stakingtypes.ModuleName,
+		capabilitytypes.ModuleName,
+		authtypes.ModuleName,
+		banktypes.ModuleName,
+		distrtypes.ModuleName,
+		slashingtypes.ModuleName,
+		minttypes.ModuleName,
+		genutiltypes.ModuleName,
+		evidencetypes.ModuleName,
+		authz.ModuleName,
 		feegrant.ModuleName,
-		paramstypes.ModuleName, upgradetypes.ModuleName, vestingtypes.ModuleName, ibchost.ModuleName, ibctransfertypes.ModuleName, wasm.ModuleName,
+		paramstypes.ModuleName,
+		upgradetypes.ModuleName,
+		vestingtypes.ModuleName,
+		ibchost.ModuleName,
+		ibctransfertypes.ModuleName,
+		wasm.ModuleName,
 	)
 
 	// NOTE: The genutils module must occur after staking so that pools are
@@ -510,17 +543,32 @@ func NewDigApp(
 	// so that other modules that want to create or claim capabilities afterwards in InitChain
 	// can do so safely.
 	app.mm.SetOrderInitGenesis(
-		capabilitytypes.ModuleName, authtypes.ModuleName, banktypes.ModuleName, distrtypes.ModuleName, stakingtypes.ModuleName,
-		slashingtypes.ModuleName, govtypes.ModuleName, minttypes.ModuleName, crisistypes.ModuleName,
-		genutiltypes.ModuleName, evidencetypes.ModuleName,
+		capabilitytypes.ModuleName,
+		authtypes.ModuleName,
+		banktypes.ModuleName,
+		distrtypes.ModuleName,
+		stakingtypes.ModuleName,
+		slashingtypes.ModuleName,
+		govtypes.ModuleName,
+		minttypes.ModuleName,
+		crisistypes.ModuleName,
+		genutiltypes.ModuleName,
+		evidencetypes.ModuleName,
+		authz.ModuleName,
 		feegrant.ModuleName,
-		paramstypes.ModuleName, upgradetypes.ModuleName, vestingtypes.ModuleName, ibchost.ModuleName, ibctransfertypes.ModuleName, wasm.ModuleName,
+		paramstypes.ModuleName,
+		upgradetypes.ModuleName,
+		vestingtypes.ModuleName,
+		ibchost.ModuleName,
+		ibctransfertypes.ModuleName,
+		wasm.ModuleName,
 	)
 
 	app.mm.RegisterInvariants(&app.CrisisKeeper)
 	app.mm.RegisterRoutes(app.Router(), app.QueryRouter(), encodingConfig.Amino)
 	app.configurator = module.NewConfigurator(app.AppCodec(), app.MsgServiceRouter(), app.GRPCQueryRouter())
-	app.mm.RegisterServices(module.NewConfigurator(app.appCodec, app.MsgServiceRouter(), app.GRPCQueryRouter()))
+	app.mm.RegisterServices(app.configurator)
+	app.setupUpgradeHandlers()
 
 	// create the simulation manager and define the order of the modules for deterministic simulations
 	//
@@ -540,6 +588,7 @@ func NewDigApp(
 		params.NewAppModule(app.ParamsKeeper),
 		evidence.NewAppModule(app.EvidenceKeeper),
 		ibc.NewAppModule(app.IBCKeeper),
+		authzmodule.NewAppModule(appCodec, app.AuthzKeeper, app.AccountKeeper, app.BankKeeper, app.interfaceRegistry),
 		transferModule,
 	)
 	app.sm.RegisterStoreDecoders()
@@ -606,7 +655,7 @@ func (app *App) setupUpgradeStoreLoaders() {
 	if upgradeInfo.Name == v2.UpgradeName && !app.UpgradeKeeper.IsSkipHeight(upgradeInfo.Height) {
 		// @Frey do we do this for Cosmwasm?
 		storeUpgrades := store.StoreUpgrades{
-			Added:   []string{wasm.ModuleName},
+			Added:   []string{wasm.ModuleName, authz.ModuleName},
 			Deleted: []string{"epoch"},
 		}
 

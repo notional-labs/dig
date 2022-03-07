@@ -125,3 +125,6 @@ flutter/!/dev/ci/**/Gemfile.lock
 # Staking data collection
 airdrop/sdc/node_modules
 airdrop/sdc/.DS_Store
+
+#vendor
+vendor
