@@ -14,7 +14,7 @@ wget -O ~/.digtestnet/config/genesis.json https://raw.githubusercontent.com/noti
 ```
 3. Join the testnet with new seeds:
 ```
-digd start --p2p.seeds e1aa4f816fe06b613066772415405ccfe5e58a17@168.119.91.22:1230 --home ~/.digtestnet
+digd start --p2p.seeds e1aa4f816fe06b613066772415405ccfe5e58a17@168.119.91.22:1230, 0f91f9bb230150ce056f1f94f088aa776b392406@142.132.196.223:20000 --home ~/.digtestnet
 ```
 4. Generate new keys or restore the existing one;
 ```
