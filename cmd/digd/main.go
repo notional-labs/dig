@@ -11,7 +11,7 @@ import (
 	"github.com/spf13/cobra"
 	tmcmds "github.com/tendermint/tendermint/cmd/tendermint/commands"
 
-	"github.com/tendermint/spm/cosmoscmd"
+	"github.com/tendermint/starport/starport/pkg/cosmoscmd"
 )
 
 func AddGenesisWasmMsgCmd(defaultNodeHome string) *cobra.Command {

@@ -4,6 +4,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	stakingkeeper "github.com/cosmos/cosmos-sdk/x/staking/keeper"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
+	icamodule "github.com/cosmos/ibc-go/v3/modules/apps/27-interchain-accounts"
+	icacontrollertypes "github.com/cosmos/ibc-go/v3/modules/apps/27-interchain-accounts/controller/types"
+	icahosttypes "github.com/cosmos/ibc-go/v3/modules/apps/27-interchain-accounts/host/types"
+	icatypes "github.com/cosmos/ibc-go/v3/modules/apps/27-interchain-accounts/types"
 
 	"github.com/CosmWasm/wasmd/x/wasm"
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
@@ -44,10 +48,26 @@ func CreateUpgradeHandler(mm *module.Manager, configurator module.Configurator,
 
 		// otherwise we run this, which will run wasm.InitGenesis(wasm.DefaultGenesis())
 		// and then override it after
+		// set the ICS27 consensus version so InitGenesis is not run
+		fromVM[icatypes.ModuleName] = icamodule.ConsensusVersion
+		// create ICS27 Controller submodule params
+		controllerParams := icacontrollertypes.Params{
+			ControllerEnabled: true,
+		}
+
 		newVM, err := mm.RunMigrations(ctx, configurator, vm)
 		if err != nil {
 			return newVM, err
 		}
+
+		// create ICS27 Host submodule params
+		hostParams := icahosttypes.Params{
+			HostEnabled:   true,
+			AllowMessages: []string{"/cosmos.bank.v1beta1.MsgSend"},
+		}
+
+		// initialize ICS27 module
+		icamodule.InitModule(ctx, controllerParams, hostParams)
 
 		// Since we provide custom DefaultGenesis (privileges StoreCode) in app/genesis.go rather than
 		// the wasm module, we need to set the params here when migrating (is it is not customized).

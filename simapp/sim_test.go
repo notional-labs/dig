@@ -15,7 +15,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/simulation"
 	"github.com/notional-labs/dig/v2/app"
 	"github.com/stretchr/testify/require"
-	"github.com/tendermint/spm/cosmoscmd"
+	"github.com/tendermint/starport/starport/pkg/cosmoscmd"
 	"github.com/tendermint/tendermint/libs/log"
 	dbm "github.com/tendermint/tm-db"
 )
