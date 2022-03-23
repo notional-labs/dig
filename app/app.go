@@ -25,6 +25,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/auth"
 	"github.com/cosmos/cosmos-sdk/x/auth/ante"
 
+	"github.com/cosmos/cosmos-sdk/simapp"
 	authrest "github.com/cosmos/cosmos-sdk/x/auth/client/rest"
 	authkeeper "github.com/cosmos/cosmos-sdk/x/auth/keeper"
 	authsims "github.com/cosmos/cosmos-sdk/x/auth/simulation"
@@ -78,15 +79,22 @@ import (
 	upgradeclient "github.com/cosmos/cosmos-sdk/x/upgrade/client"
 	upgradekeeper "github.com/cosmos/cosmos-sdk/x/upgrade/keeper"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
+	ica "github.com/cosmos/ibc-go/v3/modules/apps/27-interchain-accounts"
+	icacontrollertypes "github.com/cosmos/ibc-go/v3/modules/apps/27-interchain-accounts/controller/types"
+	icahost "github.com/cosmos/ibc-go/v3/modules/apps/27-interchain-accounts/host"
+	icahostkeeper "github.com/cosmos/ibc-go/v3/modules/apps/27-interchain-accounts/host/keeper"
+	icahosttypes "github.com/cosmos/ibc-go/v3/modules/apps/27-interchain-accounts/host/types"
 	"github.com/cosmos/ibc-go/v3/modules/apps/transfer"
 	ibctransferkeeper "github.com/cosmos/ibc-go/v3/modules/apps/transfer/keeper"
 	ibctransfertypes "github.com/cosmos/ibc-go/v3/modules/apps/transfer/types"
 	ibc "github.com/cosmos/ibc-go/v3/modules/core"
 	ibcclient "github.com/cosmos/ibc-go/v3/modules/core/02-client"
 	ibcclientclient "github.com/cosmos/ibc-go/v3/modules/core/02-client/client"
-	ibcporttypes "github.com/cosmos/ibc-go/v3/modules/core/05-port/types"
+	porttypes "github.com/cosmos/ibc-go/v3/modules/core/05-port/types"
 	ibchost "github.com/cosmos/ibc-go/v3/modules/core/24-host"
 	ibckeeper "github.com/cosmos/ibc-go/v3/modules/core/keeper"
+	digparams "github.com/notional-labs/dig/v2/app/params"
+	v2 "github.com/notional-labs/dig/v2/app/upgrade/v2"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/spf13/cast"
 	abci "github.com/tendermint/tendermint/abci/types"
@@ -95,10 +103,8 @@ import (
 	tmos "github.com/tendermint/tendermint/libs/os"
 	dbm "github.com/tendermint/tm-db"
 
-	"github.com/tendermint/starport/starport/pkg/cosmoscmd"
 	"github.com/tendermint/starport/starport/pkg/openapiconsole"
 
-	v2 "github.com/notional-labs/dig/v2/app/upgrade/v2"
 	"github.com/notional-labs/dig/v2/docs"
 
 	// this line is used by starport scaffolding # stargate/app/moduleImport
@@ -214,8 +220,8 @@ var (
 )
 
 var (
-	_ cosmoscmd.CosmosApp     = (*App)(nil)
-	_ servertypes.Application = (*App)(nil)
+	_ simapp.App              = (*DigApp)(nil)
+	_ servertypes.Application = (*DigApp)(nil)
 )
 
 func init() {
@@ -230,7 +236,7 @@ func init() {
 // App extends an ABCI application, but with most of its parameters exported.
 // They are exported for convenience in creating helper functions, as object
 // capabilities aren't needed for testing.
-type App struct {
+type DigApp struct {
 	*baseapp.BaseApp
 
 	cdc               *codec.LegacyAmino
@@ -257,6 +263,7 @@ type App struct {
 	UpgradeKeeper    upgradekeeper.Keeper
 	ParamsKeeper     paramskeeper.Keeper
 	IBCKeeper        *ibckeeper.Keeper // IBC Keeper must be a pointer in the app, so we can SetRouter on it correctly
+	ICAHostKeeper    icahostkeeper.Keeper
 	EvidenceKeeper   evidencekeeper.Keeper
 	TransferKeeper   ibctransferkeeper.Keeper
 	AuthzKeeper      authzkeeper.Keeper
@@ -265,6 +272,7 @@ type App struct {
 	// make scoped keepers public for test purposes
 	ScopedIBCKeeper      capabilitykeeper.ScopedKeeper
 	ScopedTransferKeeper capabilitykeeper.ScopedKeeper
+	ScopedICAHostKeeper  capabilitykeeper.ScopedKeeper
 
 	// this line is used by starport scaffolding # stargate/app/keeperDeclaration
 	wasmKeeper       wasm.Keeper
@@ -289,10 +297,10 @@ func NewDigApp(
 	skipUpgradeHeights map[int64]bool,
 	homePath string,
 	invCheckPeriod uint,
-	encodingConfig cosmoscmd.EncodingConfig,
+	encodingConfig digparams.EncodingConfig,
 	appOpts servertypes.AppOptions,
 	baseAppOptions ...func(*baseapp.BaseApp),
-) cosmoscmd.App {
+) *DigApp {
 	appCodec := encodingConfig.Marshaler
 	cdc := encodingConfig.Amino
 	interfaceRegistry := encodingConfig.InterfaceRegistry
@@ -314,7 +322,7 @@ func NewDigApp(
 	tkeys := sdk.NewTransientStoreKeys(paramstypes.TStoreKey)
 	memKeys := sdk.NewMemoryStoreKeys(capabilitytypes.MemStoreKey)
 
-	app := &App{
+	app := &DigApp{
 		BaseApp:           bApp,
 		cdc:               cdc,
 		appCodec:          appCodec,
@@ -338,6 +346,11 @@ func NewDigApp(
 	scopedTransferKeeper := app.CapabilityKeeper.ScopeToModule(ibctransfertypes.ModuleName)
 	// this line is used by starport scaffolding # stargate/app/scopedKeeper
 	scopedWasmKeeper := app.CapabilityKeeper.ScopeToModule(wasm.ModuleName)
+	// add capability keeper and ScopeToModule for ibc module
+	app.CapabilityKeeper = capabilitykeeper.NewKeeper(appCodec, keys[capabilitytypes.StoreKey], memKeys[capabilitytypes.MemStoreKey])
+	scopedICAHostKeeper := app.CapabilityKeeper.ScopeToModule(icahosttypes.SubModuleName)
+	app.CapabilityKeeper.Seal()
+
 	// add keepers
 	app.AccountKeeper = authkeeper.NewAccountKeeper(
 		appCodec, keys[authtypes.StoreKey], app.GetSubspace(authtypes.ModuleName), authtypes.ProtoBaseAccount, maccPerms,
@@ -388,13 +401,31 @@ func NewDigApp(
 		AddRoute(upgradetypes.RouterKey, upgrade.NewSoftwareUpgradeProposalHandler(app.UpgradeKeeper)).
 		AddRoute(ibchost.RouterKey, ibcclient.NewClientProposalHandler(app.IBCKeeper.ClientKeeper))
 
-	// Create Transfer Keepers
 	app.TransferKeeper = ibctransferkeeper.NewKeeper(
-		appCodec, keys[ibctransfertypes.StoreKey], app.GetSubspace(ibctransfertypes.ModuleName),
-		app.IBCKeeper.ChannelKeeper, &app.IBCKeeper.PortKeeper,
-		app.AccountKeeper, app.BankKeeper, scopedTransferKeeper,
+		appCodec,
+		keys[ibctransfertypes.StoreKey],
+		app.GetSubspace(ibctransfertypes.ModuleName),
+		app.IBCKeeper.ChannelKeeper,
+		app.IBCKeeper.ChannelKeeper,
+		&app.IBCKeeper.PortKeeper,
+		app.AccountKeeper,
+		app.BankKeeper,
+		scopedTransferKeeper,
 	)
 	transferModule := transfer.NewAppModule(app.TransferKeeper)
+	transferIBCModule := transfer.NewIBCModule(app.TransferKeeper)
+
+	app.ICAHostKeeper = icahostkeeper.NewKeeper(
+		appCodec, keys[icahosttypes.StoreKey],
+		app.GetSubspace(icahosttypes.SubModuleName),
+		app.IBCKeeper.ChannelKeeper,
+		&app.IBCKeeper.PortKeeper,
+		app.AccountKeeper,
+		scopedICAHostKeeper,
+		app.MsgServiceRouter(),
+	)
+	icaModule := ica.NewAppModule(nil, &app.ICAHostKeeper)
+	icaHostIBCModule := icahost.NewIBCModule(app.ICAHostKeeper)
 
 	// Create evidence Keeper for to register the IBC light client misbehaviour evidence route
 	evidenceKeeper := evidencekeeper.NewKeeper(
@@ -440,12 +471,11 @@ func NewDigApp(
 		govRouter.AddRoute(wasm.RouterKey, wasm.NewWasmProposalHandler(app.wasmKeeper, enabledProposals))
 	}
 
-	// Create static IBC router, add transfer route, then set and seal it
-	ibcRouter := ibcporttypes.NewRouter()
-	ibcRouter.AddRoute(ibctransfertypes.ModuleName, transferModule)
-	// this line is used by starport scaffolding # ibc/app/router
-	ibcRouter.AddRoute(wasm.ModuleName, wasm.NewIBCHandler(app.wasmKeeper, app.IBCKeeper.ChannelKeeper))
-
+	// create static IBC router, add transfer route, then set and seal it
+	ibcRouter := porttypes.NewRouter()
+	ibcRouter.AddRoute(icahosttypes.SubModuleName, icaHostIBCModule).
+		AddRoute(ibctransfertypes.ModuleName, transferIBCModule).
+		AddRoute(wasm.ModuleName, wasm.NewIBCHandler(app.wasmKeeper, app.IBCKeeper.ChannelKeeper))
 	app.IBCKeeper.SetRouter(ibcRouter)
 
 	app.GovKeeper = govkeeper.NewKeeper(
@@ -485,6 +515,7 @@ func NewDigApp(
 		params.NewAppModule(app.ParamsKeeper),
 		authzmodule.NewAppModule(appCodec, app.AuthzKeeper, app.AccountKeeper, app.BankKeeper, app.interfaceRegistry),
 		transferModule,
+		icaModule,
 		// this line is used by starport scaffolding # stargate/app/appModule
 		wasm.NewAppModule(appCodec, &app.wasmKeeper, app.StakingKeeper),
 	)
@@ -614,7 +645,7 @@ func NewDigApp(
 				SignModeHandler: encodingConfig.TxConfig.SignModeHandler(),
 				SigGasConsumer:  ante.DefaultSigVerificationGasConsumer,
 			},
-			IBCChannelkeeper:  app.IBCKeeper.ChannelKeeper,
+			IBCKeeper:         app.IBCKeeper,
 			TxCounterStoreKey: keys[wasm.StoreKey],
 			WasmConfig:        wasmConfig,
 			Cdc:               appCodec,
@@ -646,7 +677,7 @@ func NewDigApp(
 	return app
 }
 
-func (app *App) setupUpgradeStoreLoaders() {
+func (app *DigApp) setupUpgradeStoreLoaders() {
 	upgradeInfo, err := app.UpgradeKeeper.ReadUpgradeInfoFromDisk()
 	if err != nil {
 		panic(fmt.Sprintf("failed to read upgrade info from disk %s", err))
@@ -655,7 +686,7 @@ func (app *App) setupUpgradeStoreLoaders() {
 	if upgradeInfo.Name == v2.UpgradeName && !app.UpgradeKeeper.IsSkipHeight(upgradeInfo.Height) {
 		// @Frey do we do this for Cosmwasm?
 		storeUpgrades := store.StoreUpgrades{
-			Added:   []string{wasm.ModuleName, authz.ModuleName},
+			Added:   []string{wasm.ModuleName, authz.ModuleName, icacontrollertypes.StoreKey, icahosttypes.StoreKey},
 			Deleted: []string{"epoch"},
 		}
 
@@ -664,7 +695,7 @@ func (app *App) setupUpgradeStoreLoaders() {
 	}
 }
 
-func (app *App) setupUpgradeHandlers() {
+func (app *DigApp) setupUpgradeHandlers() {
 	app.UpgradeKeeper.SetUpgradeHandler(
 		v2.UpgradeName,
 		v2.CreateUpgradeHandler(
@@ -673,20 +704,20 @@ func (app *App) setupUpgradeHandlers() {
 }
 
 // Name returns the name of the App
-func (app *App) Name() string { return app.BaseApp.Name() }
+func (app *DigApp) Name() string { return app.BaseApp.Name() }
 
 // BeginBlocker application updates every begin block
-func (app *App) BeginBlocker(ctx sdk.Context, req abci.RequestBeginBlock) abci.ResponseBeginBlock {
+func (app *DigApp) BeginBlocker(ctx sdk.Context, req abci.RequestBeginBlock) abci.ResponseBeginBlock {
 	return app.mm.BeginBlock(ctx, req)
 }
 
 // EndBlocker application updates every end block
-func (app *App) EndBlocker(ctx sdk.Context, req abci.RequestEndBlock) abci.ResponseEndBlock {
+func (app *DigApp) EndBlocker(ctx sdk.Context, req abci.RequestEndBlock) abci.ResponseEndBlock {
 	return app.mm.EndBlock(ctx, req)
 }
 
 // InitChainer application update at chain initialization
-func (app *App) InitChainer(ctx sdk.Context, req abci.RequestInitChain) abci.ResponseInitChain {
+func (app *DigApp) InitChainer(ctx sdk.Context, req abci.RequestInitChain) abci.ResponseInitChain {
 	var genesisState GenesisState
 	if err := tmjson.Unmarshal(req.AppStateBytes, &genesisState); err != nil {
 		panic(err)
@@ -696,12 +727,12 @@ func (app *App) InitChainer(ctx sdk.Context, req abci.RequestInitChain) abci.Res
 }
 
 // LoadHeight loads a particular height
-func (app *App) LoadHeight(height int64) error {
+func (app *DigApp) LoadHeight(height int64) error {
 	return app.LoadVersion(height)
 }
 
 // ModuleAccountAddrs returns all the app's module account addresses.
-func (app *App) ModuleAccountAddrs() map[string]bool {
+func (app *DigApp) ModuleAccountAddrs() map[string]bool {
 	modAccAddrs := make(map[string]bool)
 	for acc := range maccPerms {
 		modAccAddrs[authtypes.NewModuleAddress(acc).String()] = true
@@ -714,7 +745,7 @@ func (app *App) ModuleAccountAddrs() map[string]bool {
 //
 // NOTE: This is solely to be used for testing purposes as it may be desirable
 // for modules to register their own custom testing types.
-func (app *App) LegacyAmino() *codec.LegacyAmino {
+func (app *DigApp) LegacyAmino() *codec.LegacyAmino {
 	return app.cdc
 }
 
@@ -722,52 +753,52 @@ func (app *App) LegacyAmino() *codec.LegacyAmino {
 //
 // NOTE: This is solely to be used for testing purposes as it may be desirable
 // for modules to register their own custom testing types.
-func (app *App) AppCodec() codec.Codec {
+func (app *DigApp) AppCodec() codec.Codec {
 	return app.appCodec
 }
 
 // InterfaceRegistry returns Gaia's InterfaceRegistry
-func (app *App) InterfaceRegistry() types.InterfaceRegistry {
+func (app *DigApp) InterfaceRegistry() types.InterfaceRegistry {
 	return app.interfaceRegistry
 }
 
 // GetKey returns the KVStoreKey for the provided store key.
 //
 // NOTE: This is solely to be used for testing purposes.
-func (app *App) GetKey(storeKey string) *sdk.KVStoreKey {
+func (app *DigApp) GetKey(storeKey string) *sdk.KVStoreKey {
 	return app.keys[storeKey]
 }
 
 // GetTKey returns the TransientStoreKey for the provided store key.
 //
 // NOTE: This is solely to be used for testing purposes.
-func (app *App) GetTKey(storeKey string) *sdk.TransientStoreKey {
+func (app *DigApp) GetTKey(storeKey string) *sdk.TransientStoreKey {
 	return app.tkeys[storeKey]
 }
 
 // GetMemKey returns the MemStoreKey for the provided mem key.
 //
 // NOTE: This is solely used for testing purposes.
-func (app *App) GetMemKey(storeKey string) *sdk.MemoryStoreKey {
+func (app *DigApp) GetMemKey(storeKey string) *sdk.MemoryStoreKey {
 	return app.memKeys[storeKey]
 }
 
 // GetSubspace returns a param subspace for a given module name.
 //
 // NOTE: This is solely to be used for testing purposes.
-func (app *App) GetSubspace(moduleName string) paramstypes.Subspace {
+func (app *DigApp) GetSubspace(moduleName string) paramstypes.Subspace {
 	subspace, _ := app.ParamsKeeper.GetSubspace(moduleName)
 	return subspace
 }
 
 // SimulationManager implements the SimulationApp interface
-func (app *App) SimulationManager() *module.SimulationManager {
+func (app *DigApp) SimulationManager() *module.SimulationManager {
 	return app.sm
 }
 
 // RegisterAPIRoutes registers all application module routes with the provided
 // API server.
-func (app *App) RegisterAPIRoutes(apiSvr *api.Server, apiConfig config.APIConfig) {
+func (app *DigApp) RegisterAPIRoutes(apiSvr *api.Server, apiConfig config.APIConfig) {
 	clientCtx := apiSvr.ClientCtx
 	rpc.RegisterRoutes(clientCtx, apiSvr.Router)
 	// Register legacy tx routes.
@@ -787,12 +818,12 @@ func (app *App) RegisterAPIRoutes(apiSvr *api.Server, apiConfig config.APIConfig
 }
 
 // RegisterTxService implements the Application.RegisterTxService method.
-func (app *App) RegisterTxService(clientCtx client.Context) {
+func (app *DigApp) RegisterTxService(clientCtx client.Context) {
 	authtx.RegisterTxService(app.BaseApp.GRPCQueryRouter(), clientCtx, app.BaseApp.Simulate, app.interfaceRegistry)
 }
 
 // RegisterTendermintService implements the Application.RegisterTendermintService method.
-func (app *App) RegisterTendermintService(clientCtx client.Context) {
+func (app *DigApp) RegisterTendermintService(clientCtx client.Context) {
 	tmservice.RegisterTendermintService(app.BaseApp.GRPCQueryRouter(), clientCtx, app.interfaceRegistry)
 }
 
@@ -819,7 +850,6 @@ func initParamsKeeper(appCodec codec.BinaryCodec, legacyAmino *codec.LegacyAmino
 	paramsKeeper.Subspace(crisistypes.ModuleName)
 	paramsKeeper.Subspace(ibctransfertypes.ModuleName)
 	paramsKeeper.Subspace(ibchost.ModuleName)
-	// this line is used by starport scaffolding # stargate/app/paramSubspace
 	paramsKeeper.Subspace(wasm.ModuleName)
 
 	return paramsKeeper
