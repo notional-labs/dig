@@ -3,18 +3,19 @@ module github.com/notional-labs/dig/v2
 go 1.17
 
 require (
-	github.com/CosmWasm/wasmd v0.22.0
+	github.com/CosmWasm/wasmd v0.24.0
 	github.com/cosmos/cosmos-sdk v0.45.1
 	github.com/cosmos/ibc-go/v2 v2.0.3
 	github.com/spf13/cast v1.4.1
 	github.com/tendermint/spm v0.1.9
-	github.com/tendermint/tendermint v0.34.15
-	github.com/tendermint/tm-db v0.6.6
+	github.com/tendermint/tendermint v0.34.16
+	github.com/tendermint/tm-db v0.6.7
 )
 
 require (
-	github.com/CosmWasm/wasmvm v1.0.0-beta5 // indirect
+	github.com/CosmWasm/wasmvm v1.0.0-beta7 // indirect
 	github.com/btcsuite/btcutil v1.0.3-0.20201208143702-a53e38424cce // indirect
+	github.com/cosmos/gorocksdb v1.2.0 // indirect
 	github.com/ethereum/go-ethereum v1.10.13 // indirect
 	github.com/google/gofuzz v1.2.0 // indirect
 )
@@ -60,7 +61,7 @@ require (
 	github.com/google/orderedcode v0.0.1 // indirect
 	github.com/gorilla/handlers v1.5.1 // indirect
 	github.com/gorilla/mux v1.8.0 // indirect
-	github.com/gorilla/websocket v1.4.2 // indirect
+	github.com/gorilla/websocket v1.5.0 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway v1.16.0 // indirect
 	github.com/gsterjov/go-libsecret v0.0.0-20161001094733-a6f4afe4910c // indirect
@@ -107,7 +108,6 @@ require (
 	github.com/stretchr/testify v1.7.0
 	github.com/subosito/gotenv v1.2.0 // indirect
 	github.com/syndtr/goleveldb v1.0.1-0.20210819022825-2ae1ddf74ef7 // indirect
-	github.com/tecbot/gorocksdb v0.0.0-20191217155057-f0fad39f321c // indirect
 	github.com/tendermint/btcd v0.1.1 // indirect
 	github.com/tendermint/crypto v0.0.0-20191022145703-50d29ede1e15 // indirect
 	github.com/tendermint/go-amino v0.16.0 // indirect
@@ -132,7 +132,5 @@ replace (
 	github.com/99designs/keyring => github.com/cosmos/keyring v1.1.7-0.20210622111912-ef00f8ac3d76
 	github.com/cosmos/cosmos-sdk => github.com/notional-labs/cosmos-sdk v0.45.2-0.20220307131800-bce4ffcf7706
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
-	github.com/tecbot/gorocksdb => github.com/cosmos/gorocksdb v1.2.0
-	github.com/tendermint/spm => github.com/notional-labs/spm v0.1.8-0.20211212065431-201f33f1cf2d
 	google.golang.org/grpc => google.golang.org/grpc v1.33.2
 )
