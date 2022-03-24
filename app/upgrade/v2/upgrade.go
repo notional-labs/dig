@@ -4,11 +4,11 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	stakingkeeper "github.com/cosmos/cosmos-sdk/x/staking/keeper"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
+	icamodule "github.com/cosmos/ibc-go/v3/modules/apps/27-interchain-accounts"
 	icacontrollertypes "github.com/cosmos/ibc-go/v3/modules/apps/27-interchain-accounts/controller/types"
 	icahosttypes "github.com/cosmos/ibc-go/v3/modules/apps/27-interchain-accounts/host/types"
 	icatypes "github.com/cosmos/ibc-go/v3/modules/apps/27-interchain-accounts/types"
 
-	"github.com/CosmWasm/wasmd/x/wasm"
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 )
@@ -36,10 +36,9 @@ func FixMinCommisionRate(ctx sdk.Context, staking *stakingkeeper.Keeper) {
 	}
 }
 
-func CreateUpgradeHandler(mm *module.Manager, configurator module.Configurator,
-	wasmKeeper *wasm.Keeper, staking *stakingkeeper.Keeper,
-) upgradetypes.UpgradeHandler {
-	return func(ctx sdk.Context, plan upgradetypes.Plan, vm module.VersionMap) (module.VersionMap, error) {
+func CreateUpgradeHandler(mm *module.Manager, configurator module.Configurator, bank *bankkeeper.BaseKeeper, staking *stakingkeeper.Keeper, icaModule icamodule.AppModule) upgradetypes.UpgradeHandler {
+	return func(ctx sdk.Context, _ upgradetypes.Plan, fromVM module.VersionMap) (module.VersionMap, error) {
+		fromVM[icatypes.ModuleName] = icaModule.ConsensusVersion()
 		FixMinCommisionRate(ctx, staking)
 		// Set wasm old version to 1 if we want to call wasm's InitGenesis ourselves
 		// in this upgrade logic ourselves
@@ -48,7 +47,7 @@ func CreateUpgradeHandler(mm *module.Manager, configurator module.Configurator,
 		// otherwise we run this, which will run wasm.InitGenesis(wasm.DefaultGenesis())
 		// and then override it after
 		// set the ICS27 consensus version so InitGenesis is not run
-		vm[icatypes.ModuleName] = app.icaModule.ConsensusVersion()
+		vm[icatypes.ModuleName] = mm.Modules[icatypes.ModuleName].ConsensusVersion()
 		// create ICS27 Controller submodule params
 		controllerParams := icacontrollertypes.Params{
 			ControllerEnabled: true,
@@ -91,11 +90,8 @@ func CreateUpgradeHandler(mm *module.Manager, configurator module.Configurator,
 			},
 		}
 
-		mods := mm.Modules
-		icamodule := mods.
-
-			// initialize ICS27 module
-			icamodule.InitModule(ctx, controllerParams, hostParams)
+		// initialize ICS27 module
+		icamodule.InitModule(ctx, controllerParams, hostParams)
 
 		// Since we provide custom DefaultGenesis (privileges StoreCode) in app/genesis.go rather than
 		// the wasm module, we need to set the params here when migrating (is it is not customized).

@@ -424,7 +424,7 @@ func NewDigApp(
 		scopedICAHostKeeper,
 		app.MsgServiceRouter(),
 	)
-	icaModule := ica.NewAppModule(nil, &app.ICAHostKeeper)
+	ICAModule := ica.NewAppModule(nil, &app.ICAHostKeeper)
 	icaHostIBCModule := icahost.NewIBCModule(app.ICAHostKeeper)
 
 	// Create evidence Keeper for to register the IBC light client misbehaviour evidence route
@@ -515,7 +515,7 @@ func NewDigApp(
 		params.NewAppModule(app.ParamsKeeper),
 		authzmodule.NewAppModule(appCodec, app.AuthzKeeper, app.AccountKeeper, app.BankKeeper, app.interfaceRegistry),
 		transferModule,
-		icaModule,
+		ICAModule,
 		// this line is used by starport scaffolding # stargate/app/appModule
 		wasm.NewAppModule(appCodec, &app.wasmKeeper, app.StakingKeeper),
 	)
@@ -671,7 +671,6 @@ func NewDigApp(
 
 	app.ScopedIBCKeeper = scopedIBCKeeper
 	app.ScopedTransferKeeper = scopedTransferKeeper
-
 	app.scopedWasmKeeper = scopedWasmKeeper
 
 	return app
@@ -700,7 +699,7 @@ func (app *DigApp) setupUpgradeHandlers() {
 		v2.UpgradeName,
 		v2.CreateUpgradeHandler(
 			app.mm, app.configurator,
-			&app.wasmKeeper, &app.StakingKeeper))
+			&app.wasmKeeper, &app.StakingKeeper, ICAModule))
 }
 
 // Name returns the name of the App
