@@ -599,7 +599,7 @@ func NewDigApp(
 	app.mm.RegisterRoutes(app.Router(), app.QueryRouter(), encodingConfig.Amino)
 	app.configurator = module.NewConfigurator(app.AppCodec(), app.MsgServiceRouter(), app.GRPCQueryRouter())
 	app.mm.RegisterServices(app.configurator)
-	app.setupUpgradeHandlers()
+	app.setupUpgradeHandlers(ICAModule)
 
 	// create the simulation manager and define the order of the modules for deterministic simulations
 	//
@@ -694,12 +694,10 @@ func (app *DigApp) setupUpgradeStoreLoaders() {
 	}
 }
 
-func (app *DigApp) setupUpgradeHandlers() {
+func (app *DigApp) setupUpgradeHandlers(ICAModule ica.AppModule) {
 	app.UpgradeKeeper.SetUpgradeHandler(
 		v2.UpgradeName,
-		v2.CreateUpgradeHandler(
-			app.mm, app.configurator,
-			&app.wasmKeeper, &app.StakingKeeper, ICAModule))
+		v2.CreateUpgradeHandler(app.mm, app.configurator, &app.StakingKeeper, ICAModule, &app.wasmKeeper))
 }
 
 // Name returns the name of the App

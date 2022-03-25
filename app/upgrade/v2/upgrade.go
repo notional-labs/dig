@@ -9,6 +9,7 @@ import (
 	icahosttypes "github.com/cosmos/ibc-go/v3/modules/apps/27-interchain-accounts/host/types"
 	icatypes "github.com/cosmos/ibc-go/v3/modules/apps/27-interchain-accounts/types"
 
+	wasmkeeper "github.com/CosmWasm/wasmd/x/wasm/keeper"
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 )
@@ -36,7 +37,7 @@ func FixMinCommisionRate(ctx sdk.Context, staking *stakingkeeper.Keeper) {
 	}
 }
 
-func CreateUpgradeHandler(mm *module.Manager, configurator module.Configurator, bank *bankkeeper.BaseKeeper, staking *stakingkeeper.Keeper, icaModule icamodule.AppModule) upgradetypes.UpgradeHandler {
+func CreateUpgradeHandler(mm *module.Manager, configurator module.Configurator, staking *stakingkeeper.Keeper, icaModule icamodule.AppModule, wasmKeeper *wasmkeeper.Keeper) upgradetypes.UpgradeHandler {
 	return func(ctx sdk.Context, _ upgradetypes.Plan, fromVM module.VersionMap) (module.VersionMap, error) {
 		fromVM[icatypes.ModuleName] = icaModule.ConsensusVersion()
 		FixMinCommisionRate(ctx, staking)
@@ -47,13 +48,13 @@ func CreateUpgradeHandler(mm *module.Manager, configurator module.Configurator, 
 		// otherwise we run this, which will run wasm.InitGenesis(wasm.DefaultGenesis())
 		// and then override it after
 		// set the ICS27 consensus version so InitGenesis is not run
-		vm[icatypes.ModuleName] = mm.Modules[icatypes.ModuleName].ConsensusVersion()
+		fromVM[icatypes.ModuleName] = mm.Modules[icatypes.ModuleName].ConsensusVersion()
 		// create ICS27 Controller submodule params
 		controllerParams := icacontrollertypes.Params{
 			ControllerEnabled: true,
 		}
 
-		newVM, err := mm.RunMigrations(ctx, configurator, vm)
+		newVM, err := mm.RunMigrations(ctx, configurator, fromVM)
 		if err != nil {
 			return newVM, err
 		}
@@ -91,7 +92,7 @@ func CreateUpgradeHandler(mm *module.Manager, configurator module.Configurator, 
 		}
 
 		// initialize ICS27 module
-		icamodule.InitModule(ctx, controllerParams, hostParams)
+		icaModule.InitModule(ctx, controllerParams, hostParams)
 
 		// Since we provide custom DefaultGenesis (privileges StoreCode) in app/genesis.go rather than
 		// the wasm module, we need to set the params here when migrating (is it is not customized).

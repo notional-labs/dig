@@ -14,8 +14,8 @@ import (
 	simulation2 "github.com/cosmos/cosmos-sdk/types/simulation"
 	"github.com/cosmos/cosmos-sdk/x/simulation"
 	"github.com/notional-labs/dig/v2/app"
+	digparams "github.com/notional-labs/dig/v2/app/params"
 	"github.com/stretchr/testify/require"
-	"github.com/tendermint/starport/starport/pkg/cosmoscmd"
 	"github.com/tendermint/tendermint/libs/log"
 	dbm "github.com/tendermint/tm-db"
 )
@@ -69,9 +69,9 @@ func fullAppSimulation(tb testing.TB, is_testing bool) {
 		}
 	}
 
-	encCdc := cosmoscmd.MakeEncodingConfig(app.ModuleBasics)
+	encCdc := digparams.MakeEncodingConfig()
 
-	cmd := app.NewDigApp(
+	digapp := app.NewDigApp(
 		logger,
 		db,
 		nil,
@@ -83,7 +83,6 @@ func fullAppSimulation(tb testing.TB, is_testing bool) {
 		sdkSimapp.EmptyAppOptions{},
 		interBlockCacheOpt(),
 		fauxMerkleModeOpt)
-	digapp := cmd.(*app.App)
 
 	// Run randomized simulation:
 	_, simParams, simErr := simulation.SimulateFromSeed(
@@ -135,8 +134,6 @@ func TestAppStateDeterminism(t *testing.T) {
 	numSeeds := 3
 	numTimesToRunPerSeed := 5
 	appHashList := make([]json.RawMessage, numTimesToRunPerSeed)
-	encCdc := cosmoscmd.MakeEncodingConfig(app.ModuleBasics)
-
 	for i := 0; i < numSeeds; i++ {
 		config.Seed = rand.Int63()
 
@@ -149,7 +146,7 @@ func TestAppStateDeterminism(t *testing.T) {
 			}
 
 			db := dbm.NewMemDB()
-			cmd := app.NewDigApp(
+			app := app.NewDigApp(
 				logger,
 				db,
 				nil,
@@ -157,10 +154,9 @@ func TestAppStateDeterminism(t *testing.T) {
 				map[int64]bool{},
 				app.DefaultNodeHome,
 				sdkSimapp.FlagPeriodValue,
-				encCdc,
+				digparams.MakeEncodingConfig(),
 				sdkSimapp.EmptyAppOptions{},
 				interBlockCacheOpt())
-			app := cmd.(*app.App)
 
 			fmt.Printf(
 				"running non-determinism simulation; seed %d: %d/%d, attempt: %d/%d\n",
