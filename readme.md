@@ -89,9 +89,15 @@ These will launch rapidly after Dig.  Their paths will converge and diverge.  Al
 - [x] Block explorers
   - [x] gex
   - [x] big dipper 1.0
-- [x] Upgrade to ibc-go v2
-- [x] Upgrade to cosmos-sdk v0.44.5
-- [x] Upgrade to tendermint v0.34.15
+  - [x] ping.pub
+  - [x] chill validation
+  - [ ] mintscan: pending mintscan team availabity
+- [x] Key Module Versions: This box is ticked if we're up to date
+  - [x] ibc-go v3
+    - [x] Interchain Accounts
+  - [x] cosmos-sdk v0.45.2
+  - [x] tendermint v0.34.16
+  - [x] CosmWasm v0.25.0
 - [x] Announcement of candidate Real Estate development sites and their regulatory requirements
   - [x] UK
   - [x] Ukraine
@@ -107,18 +113,10 @@ These will launch rapidly after Dig.  Their paths will converge and diverge.  Al
 - [x] 2nd genesis audit
 - [x] Mainnet Launch
 - [x] Chain Registry
-- [ ] block explorers
- - [x] ping.pub
- - [x] chill validation
- - [ ] mintscan: pending mintscan team availabity
 - [x] IBC Integration
   - [x] Osmosis 
   - [x] Juno
   - [ ] Emeris 
   - [ ] Sif 
-- [x] Interchain accounts
-- [x] CosmWasm
-- [x] Cosmos SDK v0.45.2
-- [x] Tendermint v0.34.16
 - [ ] Blurt Integration
 - [x] First update to dig mainnet
