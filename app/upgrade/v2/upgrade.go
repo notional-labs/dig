@@ -43,7 +43,7 @@ func FixMinCommisionRate(ctx sdk.Context, staking *stakingkeeper.Keeper) {
 func UnlockAllVestingAccounts(ctx sdk.Context, accKeeper *authkeeper.AccountKeeper) {
 	accounts := accKeeper.GetAllAccounts(ctx)
 	for _, acc := range accounts {
-		vestingAcc, ok := acc.(*vestingtypes.ContinuousVestingAccount)
+		vestingAcc, ok := acc.(*vestingtypes.BaseVestingAccount)
 		if ok {
 			accKeeper.SetAccount(ctx, vestingAcc.BaseAccount)
 		}
