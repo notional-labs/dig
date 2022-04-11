@@ -1115,8 +1115,8 @@ github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e/go.mod h1:zD1mROLA
 github.com/nishanths/predeclared v0.0.0-20200524104333-86fad755b4d3/go.mod h1:nt3d53pc1VYcphSCIaYAJtnPYnr3Zyn8fMq2wvPGPso=
 github.com/notional-labs/cosmos-sdk v0.45.2-0.20220307131800-bce4ffcf7706 h1:PH9+LjugP2iUU4d+sbZcEVUzqPDO2bNeUQnsOewW454=
 github.com/notional-labs/cosmos-sdk v0.45.2-0.20220307131800-bce4ffcf7706/go.mod h1:svNtyVmSFMYDNvc9LUfuIKWoAZshNCyOpSM8RHdO5Kw=
-github.com/notional-labs/wasmd v0.24.1-0.20220323012521-50daae17bc74 h1:1U23+iyWN7BRnXdM68MQmTw/qO1GBK1r49CC825+uuI=
-github.com/notional-labs/wasmd v0.24.1-0.20220323012521-50daae17bc74/go.mod h1:aU3B2qJfPDOHrpKb+E7N7tvZ8BbYKt61YCnqL5iGL+o=
+github.com/notional-labs/wasmd v0.25.0-ica h1:8xVOtjM509a9BzLeLLHVgwSQlwfmRFOw45lxI9NRnHs=
+github.com/notional-labs/wasmd v0.25.0-ica/go.mod h1:B3ZDJ32RbsJVc4EFQKhbgIeLif6Hl6HKisXOrEBy7Ro=
 github.com/nxadm/tail v1.4.4/go.mod h1:kenIhsEOeOJmVchQTgglprH7qJGnHDVpk1VPCcaMI8A=
 github.com/nxadm/tail v1.4.8 h1:nPr65rt6Y5JFSKQO7qToXr7pePgD6Gwiw05lkbyAQTE=
 github.com/nxadm/tail v1.4.8/go.mod h1:+ncqLTQzXmGhMZNUePPaPqPvBxHAIsmXswZKocGu+AU=
@@ -2112,8 +2112,9 @@ google.golang.org/genproto v0.0.0-20211118181313-81c1377c94b1/go.mod h1:5CzLGKJ6
 google.golang.org/genproto v0.0.0-20211129164237-f09f9a12af12/go.mod h1:5CzLGKJ67TSI2B9POpiiyGha0AjJvZIUgRMt1dSmuhc=
 google.golang.org/genproto v0.0.0-20211203200212-54befc351ae9/go.mod h1:5CzLGKJ67TSI2B9POpiiyGha0AjJvZIUgRMt1dSmuhc=
 google.golang.org/genproto v0.0.0-20211206160659-862468c7d6e0/go.mod h1:5CzLGKJ67TSI2B9POpiiyGha0AjJvZIUgRMt1dSmuhc=
-google.golang.org/genproto v0.0.0-20211208223120-3a66f561d7aa h1:I0YcKz0I7OAhddo7ya8kMnvprhcWM045PmkBdMO9zN0=
 google.golang.org/genproto v0.0.0-20211208223120-3a66f561d7aa/go.mod h1:5CzLGKJ67TSI2B9POpiiyGha0AjJvZIUgRMt1dSmuhc=
+google.golang.org/genproto v0.0.0-20211223182754-3ac035c7e7cb h1:ZrsicilzPCS/Xr8qtBZZLpy4P9TYXAfl49ctG1/5tgw=
+google.golang.org/genproto v0.0.0-20211223182754-3ac035c7e7cb/go.mod h1:5CzLGKJ67TSI2B9POpiiyGha0AjJvZIUgRMt1dSmuhc=
 google.golang.org/grpc v1.33.2 h1:EQyQC3sa8M+p6Ulc8yy9SWSS2GVwyRc83gAbG8lrl4o=
 google.golang.org/grpc v1.33.2/go.mod h1:JMHMWHQWaTccqQQlmk3MJZS+GWXOdAesneDmEnv2fbc=
 google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.1.0/go.mod h1:6Kw0yEErY5E/yWrBtf03jp27GLLJujG4z/JK95pnjjw=

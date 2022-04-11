@@ -172,9 +172,12 @@ func (app *DigApp) prepForZeroHeightGenesis(ctx sdk.Context, jailAllowedAddrs []
 		counter++
 	}
 
-	iter.Close()
+	err := iter.Close()
+	if err != nil {
+		panic(err)
+	}
 
-	_, err := app.StakingKeeper.ApplyAndReturnValidatorSetUpdates(ctx)
+	_, err = app.StakingKeeper.ApplyAndReturnValidatorSetUpdates(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
