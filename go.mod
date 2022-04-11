@@ -3,7 +3,7 @@ module github.com/notional-labs/dig/v2
 go 1.18
 
 require (
-	github.com/CosmWasm/wasmd v0.24.0
+	github.com/CosmWasm/wasmd v0.25.0
 	github.com/cosmos/cosmos-sdk v0.45.2
 	github.com/cosmos/ibc-go/v3 v3.0.0
 	github.com/spf13/cast v1.4.1
