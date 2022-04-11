@@ -3,7 +3,7 @@ FROM faddat/archlinux AS builder
 ENV GOPATH /go
 ENV PATH $PATH:/go/bin
 
-RUN pacman -Syyu --noconfirm go base-devel
+RUN pacman -Syyu --noconfirm go base-devel git
 
 COPY . /dig
 
