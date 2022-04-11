@@ -117,6 +117,7 @@ These will launch rapidly after Dig.  Their paths will converge and diverge.  Al
   - [x] Juno
   - [ ] Emeris 
   - [ ] Sif 
-- [ ] DFY Integration
+- [x] Interchain accounts
+- [x] CosmWasm
 - [ ] Blurt Integration
 - [x] First update to dig mainnet
