@@ -9,7 +9,6 @@ import (
 	icahosttypes "github.com/cosmos/ibc-go/v3/modules/apps/27-interchain-accounts/host/types"
 	icatypes "github.com/cosmos/ibc-go/v3/modules/apps/27-interchain-accounts/types"
 
-	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 
 	authkeeper "github.com/cosmos/cosmos-sdk/x/auth/keeper"
@@ -98,10 +97,6 @@ func CreateUpgradeHandler(mm *module.Manager, configurator module.Configurator, 
 
 		// Since we provide custom DefaultGenesis (privileges StoreCode) in app/genesis.go rather than
 		// the wasm module, we need to set the params here when migrating (is it is not customized).
-
-		params := wasmKeeper.GetParams(ctx)
-		params.CodeUploadAccess = wasmtypes.AllowEverybody
-		wasmKeeper.SetParams(ctx, params)
 
 		// override here
 		return newVM, err
