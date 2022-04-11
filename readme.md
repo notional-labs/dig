@@ -118,5 +118,7 @@ These will launch rapidly after Dig.  Their paths will converge and diverge.  Al
   - [ ] Sif 
 - [x] Interchain accounts
 - [x] CosmWasm
+- [x] Cosmos SDK v0.45.2
+- [x] Tendermint v0.34.16
 - [ ] Blurt Integration
 - [x] First update to dig mainnet
