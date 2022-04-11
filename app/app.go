@@ -713,7 +713,7 @@ func (app *DigApp) setupUpgradeStoreLoaders() {
 func (app *DigApp) setupUpgradeHandlers(ICAModule ica.AppModule) {
 	app.UpgradeKeeper.SetUpgradeHandler(
 		v2.UpgradeName,
-		v2.CreateUpgradeHandler(app.mm, app.configurator, &app.StakingKeeper, ICAModule, &app.wasmKeeper))
+		v2.CreateUpgradeHandler(app.mm, app.configurator, &app.AccountKeeper, &app.StakingKeeper, ICAModule, &app.wasmKeeper))
 }
 
 // Name returns the name of the App

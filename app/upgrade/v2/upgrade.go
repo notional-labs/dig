@@ -12,6 +12,9 @@ import (
 	wasmkeeper "github.com/CosmWasm/wasmd/x/wasm/keeper"
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
+
+	authkeeper "github.com/cosmos/cosmos-sdk/x/auth/keeper"
+	vestingtypes "github.com/cosmos/cosmos-sdk/x/auth/vesting/types"
 )
 
 // Fixes an error where validators can be created with a commission rate
@@ -37,9 +40,20 @@ func FixMinCommisionRate(ctx sdk.Context, staking *stakingkeeper.Keeper) {
 	}
 }
 
-func CreateUpgradeHandler(mm *module.Manager, configurator module.Configurator, staking *stakingkeeper.Keeper, icaModule icamodule.AppModule, wasmKeeper *wasmkeeper.Keeper) upgradetypes.UpgradeHandler {
+func UnlockAllVestingAccounts(ctx sdk.Context, accKeeper *authkeeper.AccountKeeper) {
+	accounts := accKeeper.GetAllAccounts(ctx)
+	for _, acc := range accounts {
+		vestingAcc, ok := acc.(*vestingtypes.BaseVestingAccount)
+		if ok {
+			accKeeper.SetAccount(ctx, vestingAcc.BaseAccount)
+		}
+	}
+}
+
+func CreateUpgradeHandler(mm *module.Manager, configurator module.Configurator, accKeeper *authkeeper.AccountKeeper, staking *stakingkeeper.Keeper, icaModule icamodule.AppModule, wasmKeeper *wasmkeeper.Keeper) upgradetypes.UpgradeHandler {
 	return func(ctx sdk.Context, _ upgradetypes.Plan, fromVM module.VersionMap) (module.VersionMap, error) {
 		fromVM[icatypes.ModuleName] = icaModule.ConsensusVersion()
+		UnlockAllVestingAccounts(ctx, accKeeper)
 		FixMinCommisionRate(ctx, staking)
 		// Set wasm old version to 1 if we want to call wasm's InitGenesis ourselves
 		// in this upgrade logic ourselves
@@ -84,10 +98,6 @@ func CreateUpgradeHandler(mm *module.Manager, configurator module.Configurator, 
 				"/cosmos.staking.v1beta1.MsgCreateValidator",
 				"/cosmos.vesting.v1beta1.MsgCreateVestingAccount",
 				"/ibc.applications.transfer.v1.MsgTransfer",
-				"/tendermint.liquidity.v1beta1.MsgCreatePool",
-				"/tendermint.liquidity.v1beta1.MsgSwapWithinBatch",
-				"/tendermint.liquidity.v1beta1.MsgDepositWithinBatch",
-				"/tendermint.liquidity.v1beta1.MsgWithdrawWithinBatch",
 			},
 		}
 
