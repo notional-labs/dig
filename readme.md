@@ -111,9 +111,10 @@ These will launch rapidly after Dig.  Their paths will converge and diverge.  Al
 - [ ] block explorers
  - [x] ping.pub
  - [x] chill validation
- - [ ] mintscan
-- [ ] IBC Integration
-  - [ ] Osmosis 
+ - [ ] mintscan: pending mintscan team availabity
+- [x] IBC Integration
+  - [x] Osmosis 
+  - [x] Juno
   - [ ] Emeris 
   - [ ] Sif 
 - [ ] DFY Integration
