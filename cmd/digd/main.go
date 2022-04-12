@@ -1,9 +1,7 @@
 package main
 
 import (
-	"os"
 
-	"github.com/cosmos/cosmos-sdk/server"
 	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
 
 	app "github.com/notional-labs/dig/v2/app"

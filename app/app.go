@@ -3,7 +3,6 @@ package app
 import (
 	"fmt"
 	"io"
-	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
@@ -106,7 +105,6 @@ import (
 	dbm "github.com/tendermint/tm-db"
 
 
-	"github.com/notional-labs/dig/v2/docs"
 
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 	"github.com/CosmWasm/wasmd/x/wasm"

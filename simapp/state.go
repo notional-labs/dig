@@ -143,7 +143,7 @@ func AppStateRandomizedFn(
 ) (json.RawMessage, []simtypes.Account) {
 	numAccs := int64(len(accs))
 
-	encCdc := cosmoscmd.MakeEncodingConfig(app.ModuleBasics)
+	encCdc := app.MakeEncodingConfig(app.ModuleBasics)
 	genesisState := app.NewDefaultGenesisState(encCdc.Marshaler)
 
 	// generate a random amount of initial stake coins and a random initial
