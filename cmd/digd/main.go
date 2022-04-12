@@ -3,6 +3,8 @@ package main
 import (
 
 	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
+	"os"
+	"github.com/cosmos/cosmos-sdk/server"
 
 	app "github.com/notional-labs/dig/v2/app"
 	"github.com/notional-labs/dig/v2/cmd/digd/cmd"
