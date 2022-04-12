@@ -88,7 +88,15 @@ func CreateUpgradeHandler(mm *module.Manager, configurator module.Configurator, 
 				"/cosmos.staking.v1beta1.MsgBeginRedelegate",
 				"/cosmos.staking.v1beta1.MsgCreateValidator",
 				"/cosmos.vesting.v1beta1.MsgCreateVestingAccount",
+				"/cosmos.slashing.v1beta1.MsgUnjail",
 				"/ibc.applications.transfer.v1.MsgTransfer",
+				"/cosmwasm.wasm.v1.MsgInstantiate",
+				"/cosmwasm.wasm.v1.MsgExecute",
+				"/cosmwasm.wasm.v1.MsgStoreCode",
+				"/cosmwasm.wasm.v1.MsgMigrateContract",
+				"/cosmwasm.wasm.v1.UpdateAdmin",
+				"/cosmwasm.wasm.v1.MsgClearAdmin",
+
 			},
 		}
 
