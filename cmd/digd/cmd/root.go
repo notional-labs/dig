@@ -30,8 +30,37 @@ import (
 	"github.com/tendermint/tendermint/libs/log"
 	dbm "github.com/tendermint/tm-db"
 
+	"github.com/notional-labs/dig/v2/app"
 	dig "github.com/notional-labs/dig/v2/app"
 	"github.com/notional-labs/dig/v2/app/params"
+)
+
+const (
+	// PrefixAccount is the prefix for account keys
+	PrefixAccount = "acc"
+	// PrefixValidator is the prefix for validator keys
+	PrefixValidator = "val"
+	// PrefixConsensus is the prefix for consensus keys
+	PrefixConsensus = "cons"
+	// PrefixPublic is the prefix for public keys
+	PrefixPublic = "pub"
+	// PrefixOperator is the prefix for operator keys
+	PrefixOperator = "oper"
+	// PrefixAddress is the prefix for addresses
+	PrefixAddress = "addr"
+
+	// Bech32PrefixAccAddr defines the Bech32 prefix of an account's address
+	Bech32PrefixAccAddr = app.AccountAddressPrefix
+	// Bech32PrefixAccPub defines the Bech32 prefix of an account's public key
+	Bech32PrefixAccPub = app.AccountAddressPrefix + PrefixPublic
+	// Bech32PrefixValAddr defines the Bech32 prefix of a validator's operator address
+	Bech32PrefixValAddr = app.AccountAddressPrefix + PrefixValidator + PrefixOperator
+	// Bech32PrefixValPub defines the Bech32 prefix of a validator's operator public key
+	Bech32PrefixValPub = app.AccountAddressPrefix + PrefixValidator + PrefixOperator + PrefixPublic
+	// Bech32PrefixConsAddr defines the Bech32 prefix of a consensus node address
+	Bech32PrefixConsAddr = app.AccountAddressPrefix + PrefixValidator + PrefixConsensus
+	// Bech32PrefixConsPub defines the Bech32 prefix of a consensus node public key
+	Bech32PrefixConsPub = app.AccountAddressPrefix + PrefixValidator + PrefixConsensus + PrefixPublic
 )
 
 // NewRootCmd creates a new root command for simd. It is called once in the
@@ -70,7 +99,6 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 			return server.InterceptConfigsPreRunHandler(cmd, customTemplate, customDigConfig)
 		},
 	}
-
 	initRootCmd(rootCmd, encodingConfig)
 
 	return rootCmd, encodingConfig
@@ -96,7 +124,9 @@ func initAppConfig() (string, interface{}) {
 
 func initRootCmd(rootCmd *cobra.Command, encodingConfig params.EncodingConfig) {
 	cfg := sdk.GetConfig()
-
+	cfg.SetBech32PrefixForAccount(app.AccountAddressPrefix, Bech32PrefixAccPub)
+	cfg.SetBech32PrefixForConsensusNode(Bech32PrefixConsAddr, Bech32PrefixConsPub)
+	cfg.SetBech32PrefixForValidator(Bech32PrefixValAddr, Bech32PrefixConsPub)
 	cfg.Seal()
 
 	rootCmd.AddCommand(
