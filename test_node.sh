@@ -1,9 +1,10 @@
 KEY="mykey"
-CHAINID="test-1"
-MONIKER="localtestnet"
+CHAINID="controller"
+MONIKER="localtestnet-controller"
 KEYALGO="secp256k1"
 KEYRING="test"
 LOGLEVEL="info"
+HOME="./.controller"
 # to trace evm
 #TRACE="--trace"
 TRACE=""
@@ -20,7 +21,7 @@ digd config keyring-backend $KEYRING
 digd config chain-id $CHAINID
 
 # if $KEY exists it should be deleted
-digd keys add $KEY --keyring-backend $KEYRING --algo $KEYALGO
+digd keys add $KEY --keyring-backend $KEYRING --algo $KEYALGO --home $HOME --recover
 
 # Set moniker and chain-id for Evmos (Moniker can be anything, chain-id must be an integer)
 digd init $MONIKER --chain-id $CHAINID 
@@ -41,6 +42,5 @@ if [[ $1 == "pending" ]]; then
   echo "pending mode is on, please wait for the first block committed."
 fi
 
-# Start the node (remove the --pruning=nothing flag if historical queries are not needed)
-# digd start --pruning=nothing  --minimum-gas-prices=0.0001stake
-
+Start the node (remove the --pruning=nothing flag if historical queries are not needed)
+digd start --pruning=nothing --log_level info --minimum-gas-prices=0.0001stake --p2p.laddr tcp://0.0.0.0:2280 --rpc.laddr tcp://0.0.0.0:2281 --grpc.address 0.0.0.0:2282 --grpc-web.address 0.0.0.0:2283
