@@ -1122,8 +1122,8 @@ github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e/go.mod h1:zD1mROLA
 github.com/nishanths/predeclared v0.0.0-20200524104333-86fad755b4d3/go.mod h1:nt3d53pc1VYcphSCIaYAJtnPYnr3Zyn8fMq2wvPGPso=
 github.com/notional-labs/cosmos-sdk v0.45.3-dig h1:D9gaRTkc7hDP3yzC83trieAPTBmkM8v26vykBv29O8s=
 github.com/notional-labs/cosmos-sdk v0.45.3-dig/go.mod h1:X7ySiUz5A8Zk3zD81rJgtoj6wirWyuw7jKvg+ZgLcvw=
-github.com/notional-labs/wasmd v0.25.0-ica h1:8xVOtjM509a9BzLeLLHVgwSQlwfmRFOw45lxI9NRnHs=
-github.com/notional-labs/wasmd v0.25.0-ica/go.mod h1:B3ZDJ32RbsJVc4EFQKhbgIeLif6Hl6HKisXOrEBy7Ro=
+github.com/notional-labs/wasmd v0.24.1-0.20220323012521-50daae17bc74 h1:1U23+iyWN7BRnXdM68MQmTw/qO1GBK1r49CC825+uuI=
+github.com/notional-labs/wasmd v0.24.1-0.20220323012521-50daae17bc74/go.mod h1:aU3B2qJfPDOHrpKb+E7N7tvZ8BbYKt61YCnqL5iGL+o=
 github.com/nxadm/tail v1.4.4/go.mod h1:kenIhsEOeOJmVchQTgglprH7qJGnHDVpk1VPCcaMI8A=
 github.com/nxadm/tail v1.4.8 h1:nPr65rt6Y5JFSKQO7qToXr7pePgD6Gwiw05lkbyAQTE=
 github.com/nxadm/tail v1.4.8/go.mod h1:+ncqLTQzXmGhMZNUePPaPqPvBxHAIsmXswZKocGu+AU=
