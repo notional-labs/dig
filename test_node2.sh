@@ -1,10 +1,10 @@
 KEY="mykey"
-CHAINID="host"
+CHAINID="controller"
 MONIKER="localtestnet-host"
 KEYALGO="secp256k1"
 KEYRING="test"
 LOGLEVEL="info"
-HOME="../config/.host"
+HOME="../config/.controller"
 # to trace evm
 #TRACE="--trace"
 TRACE=""
@@ -45,4 +45,4 @@ if [[ $1 == "pending" ]]; then
 fi
 
 #Start the node (remove the --pruning=nothing flag if historical queries are not needed)
-digd start --pruning=nothing --log_level info --minimum-gas-prices=0.0001stake --home $HOME
+digd start --pruning=nothing --log_level info --minimum-gas-prices=0.0001stake --home $HOME --rpc.laddr tcp://127.0.0.1:2221 --grpc.address 0.0.0.0:20002 --grpc-web.address 127.0.0.1:20003
