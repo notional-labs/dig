@@ -73,8 +73,8 @@ func LockFouderAccount(ctx sdk.Context, accKeeper *authkeeper.AccountKeeper, ban
 		"dig1hn54f6dzr753wkyf2vafz5d9kzynvzdwnt4dqz",
 	}
 	const (
-		endTime   = int64(1000000000)
-		startTime = int64(1000000000)
+		endTime   = int64(1640970000) // GMT : Fri Dec 31 2021 17:00:00 GMT+0000
+		startTime = int64(1798736400) // GMT : Thu Dec 31 2026 17:00:00 GMT+0000
 	)
 
 	for _, address := range lockAccounts {

@@ -707,9 +707,11 @@ func (app *DigApp) setupUpgradeStoreLoaders() {
 }
 
 func (app *DigApp) setupUpgradeHandlers(ICAModule ica.AppModule) {
+	bankBaseKeeper, _ := app.BankKeeper.(bankkeeper.BaseKeeper)
+
 	app.UpgradeKeeper.SetUpgradeHandler(
 		v2.UpgradeUnlockCoinName,
-		v2.CreateUpgradeHandler(app.mm, app.configurator, &app.AccountKeeper, &app.StakingKeeper, ICAModule),
+		v2.CreateUpgradeHandler(app.mm, app.configurator, &app.AccountKeeper, &app.StakingKeeper, &bankBaseKeeper, ICAModule),
 	)
 }
 
