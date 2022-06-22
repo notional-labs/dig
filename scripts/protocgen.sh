@@ -13,7 +13,16 @@ proto_dirs=$(find ./proto -path -prune -o -name '*.proto' -print0 | xargs -0 -n1
 for dir in $proto_dirs; do
   for file in $(find "${dir}" -maxdepth 1 -name '*.proto'); do
     if grep go_package $file &>/dev/null; then
-      buf generate --template buf.gen.gogo.yaml $file
+#      protoc -I=. --gogo_out=. --go-grpc_out=require_unimplemented_servers=false:. $file 
+        protoc -I=. -I=third_party/proto --gocosmos_out=plugins=interfacetype+grpc,\
+Mgoogle/protobuf/any.proto=github.com/cosmos/cosmos-sdk/codec/types,\
+Mgoogle/protobuf/duration.proto=github.com/gogo/protobuf/types,\
+Mgoogle/protobuf/struct.proto=github.com/gogo/protobuf/types,\
+Mgoogle/protobuf/timestamp.proto=github.com/gogo/protobuf/types,\
+Mgoogle/protobuf/wrappers.proto=github.com/gogo/protobuf/types,\
+Mcosmos/orm/v1alpha1/orm.proto=github.com/cosmos/cosmos-sdk/api/cosmos/orm/v1alpha1:. \
+        --grpc-gateway_out=logtostderr=true:. \
+        $file 
     fi
   done
 done
@@ -21,10 +30,10 @@ done
 # move proto files to the right places
 #
 # Note: Proto files are suffixed with the current binary version.
-#cp -r github.com/osmosis-labs/osmosis/v7/* ./
-#rm -rf github.com
 
 #go mod tidy -compat=1.18
+cp -r github.com/faddat/dig/x/* x/
+rm -rf github.com
 
 # TODO: Uncomment once ORM/Pulsar support is needed.
 #

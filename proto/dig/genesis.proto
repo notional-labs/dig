@@ -3,6 +3,8 @@ package faddat.dig.dig;
 
 // this line is used by starport scaffolding # genesis/proto/import
 
+import "gogoproto/gogo.proto";
+
 option go_package = "github.com/faddat/dig/x/dig/types";
 
 // GenesisState defines the dig module's genesis state.

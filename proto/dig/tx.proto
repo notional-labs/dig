@@ -11,3 +11,10 @@ service Msg {
 }
 
 // this line is used by starport scaffolding # proto/tx/message
+message tempRequest {
+    string id = 1;
+}
+
+message tempResponse {
+    string id = 1;
+}

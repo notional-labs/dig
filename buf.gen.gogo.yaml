@@ -6,3 +6,13 @@ plugins:
   - name: grpc-gateway
     out: ..
     opt: logtostderr=true,allow_colon_final_segments=true
+
+
+        protoc -I=. --gocosmos_out=plugins=interfacetype+grpc,\
+        Mgoogle/protobuf/any.proto=github.com/cosmos/cosmos-sdk/codec/types,\
+        Mgoogle/protobuf/duration.proto=github.com/gogo/protobuf/types,\
+        Mgoogle/protobuf/struct.proto=github.com/gogo/protobuf/types,\
+        Mgoogle/protobuf/timestamp.proto=github.com/gogo/protobuf/types,\
+        Mgoogle/protobuf/wrappers.proto=github.com/gogo/protobuf/types,\
+        Mcosmos/orm/v1alpha1/orm.proto=github.com/cosmos/cosmos-sdk/api/cosmos/orm/v1alpha1:. \
+        --grpc-gateway_out=logtostderr=true:. \
