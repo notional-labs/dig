@@ -1,8 +1,8 @@
 syntax = "proto3";
 package faddat.dig.dig;
 
-import "google/api/annotations.proto";
-import "cosmos/base/query/v1beta1/pagination.proto";
+//import "google/api/annotations.proto";
+//import "cosmos/base/query/v1beta1/pagination.proto";
 // this line is used by starport scaffolding # 1
 
 option go_package = "github.com/faddat/dig/x/dig/types";
