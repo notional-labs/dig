@@ -1,36 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@GNaD13 
-notional-labs
-/
-dig
-Public
-Code
-Issues
-9
-Pull requests
-2
-Actions
-Projects
-1
-Wiki
-Security
-11
-Insights
-dig/Makefile
-@faddat
-faddat epochs from v0.44.5 osmosis
-Latest commit 7a4ff98 on Dec 12, 2021
- History
- 2 contributors
-@dylanschultzie@faddat
-202 lines (159 sloc)  6.28 KB
-
 APP_NAME = dig
 DAEMON_NAME = digd
 LEDGER_ENABLED ?= true
@@ -237,16 +204,3 @@ tools-clean:
 	rm -f tools-stamp
 
 .PHONY: all tools tools-clean protoc buf protoc-gen-buf-check-breaking protoc-gen-buf-check-lint protoc-gen-gocosmos
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-1
