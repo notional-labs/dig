@@ -1,7 +1,7 @@
 package app
 
 import (
-	"github.com/notional-labs/dig/v2/app/params"
+	"github.com/notional-labs/dig/v3/app/params"
 
 	"github.com/cosmos/cosmos-sdk/std"
 )

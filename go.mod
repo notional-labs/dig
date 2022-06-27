@@ -1,4 +1,4 @@
-module github.com/notional-labs/dig/v2
+module github.com/notional-labs/dig/v3
 
 go 1.18
 
