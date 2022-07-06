@@ -69,7 +69,7 @@ func fullAppSimulation(tb testing.TB, is_testing bool) {
 		}
 	}
 
-	encCdc := digparams.MakeEncodingConfig()
+	encCdc := digparams.MakeEncodingConfig(app.ModuleBasics)
 
 	digapp := app.NewDigApp(
 		logger,
@@ -82,7 +82,8 @@ func fullAppSimulation(tb testing.TB, is_testing bool) {
 		encCdc,
 		sdkSimapp.EmptyAppOptions{},
 		interBlockCacheOpt(),
-		fauxMerkleModeOpt)
+		fauxMerkleModeOpt,
+	)
 
 	// Run randomized simulation:
 	_, simParams, simErr := simulation.SimulateFromSeed(
@@ -154,7 +155,7 @@ func TestAppStateDeterminism(t *testing.T) {
 				map[int64]bool{},
 				app.DefaultNodeHome,
 				sdkSimapp.FlagPeriodValue,
-				digparams.MakeEncodingConfig(),
+				digparams.MakeEncodingConfig(app.ModuleBasics),
 				sdkSimapp.EmptyAppOptions{},
 				interBlockCacheOpt())
 
