@@ -95,6 +95,7 @@ import (
 	ibckeeper "github.com/cosmos/ibc-go/v5/modules/core/keeper"
 	digparams "github.com/notional-labs/dig/v2/app/params"
 	v2 "github.com/notional-labs/dig/v2/app/upgrade/v2"
+
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/spf13/cast"
 	abci "github.com/tendermint/tendermint/abci/types"
@@ -105,7 +106,7 @@ import (
 
 	"github.com/tendermint/starport/starport/pkg/openapiconsole"
 
-	"github.com/notional-labs/dig/v2/docs"
+	"github.com/notional-labs/dig/v3/docs"
 
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 	"github.com/CosmWasm/wasmd/x/wasm"

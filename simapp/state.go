@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"cosmossdk.io/math"
-	"github.com/notional-labs/dig/v2/app"
+	"github.com/notional-labs/dig/v3/app"
 	"github.com/tendermint/starport/starport/pkg/cosmoscmd"
 
 	"github.com/cosmos/cosmos-sdk/codec"
