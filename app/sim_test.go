@@ -18,7 +18,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/store"
 	simulation2 "github.com/cosmos/cosmos-sdk/types/simulation"
 	"github.com/cosmos/cosmos-sdk/x/simulation"
-	gaia "github.com/notional-labs/dig/v3/app"
+	dig "github.com/notional-labs/dig/v3/app"
+	digparams "github.com/notional-labs/dig/v3/app/params"
 )
 
 func init() {
@@ -41,7 +42,7 @@ func BenchmarkFullAppSimulation(b *testing.B) {
 		}
 	}()
 
-	app := app.NewDigApp(logger, db, nil, true, map[int64]bool{}, app.DefaultNodeHome, simapp.FlagPeriodValue, gaia.MakeEncodingConfig(), simapp.EmptyAppOptions{}, interBlockCacheOpt())
+	app := app.NewDigApp(logger, db, nil, true, map[int64]bool{}, app.DefaultNodeHome, simapp.FlagPeriodValue, digparams.MakeEncodingConfig(app.ModuleBasics), simapp.EmptyAppOptions{}, interBlockCacheOpt())
 
 	// Run randomized simulation:w
 	_, simParams, simErr := simulation.SimulateFromSeed(
@@ -106,7 +107,7 @@ func TestAppStateDeterminism(t *testing.T) {
 			}
 
 			db := dbm.NewMemDB()
-			app := app.NewDigApp(logger, db, nil, true, map[int64]bool{}, app.DefaultNodeHome, simapp.FlagPeriodValue, gaia.MakeEncodingConfig(), simapp.EmptyAppOptions{}, interBlockCacheOpt())
+			app := app.NewDigApp(logger, db, nil, true, map[int64]bool{}, app.DefaultNodeHome, simapp.FlagPeriodValue, digparams.MakeEncodingConfig(app.ModuleBasics), simapp.EmptyAppOptions{}, interBlockCacheOpt())
 
 			fmt.Printf(
 				"running non-determinism simulation; seed %d: %d/%d, attempt: %d/%d\n",

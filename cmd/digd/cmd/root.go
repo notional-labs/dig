@@ -31,8 +31,7 @@ import (
 	dbm "github.com/tendermint/tm-db"
 
 	"github.com/notional-labs/dig/v3/app"
-	dig "github.com/notional-labs/dig/v3/app"
-	"github.com/notional-labs/dig/v3/app/params"
+	digparams "github.com/notional-labs/dig/v3/app/params"
 )
 
 const (
@@ -65,8 +64,8 @@ const (
 
 // NewRootCmd creates a new root command for simd. It is called once in the
 // main function.
-func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
-	encodingConfig := dig.MakeEncodingConfig()
+func NewRootCmd() (*cobra.Command, digparams.EncodingConfig) {
+	encodingConfig := digparams.MakeEncodingConfig(app.ModuleBasics)
 	initClientCtx := client.Context{}.
 		WithCodec(encodingConfig.Marshaler).
 		WithInterfaceRegistry(encodingConfig.InterfaceRegistry).
@@ -74,7 +73,7 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 		WithLegacyAmino(encodingConfig.Amino).
 		WithInput(os.Stdin).
 		WithAccountRetriever(types.AccountRetriever{}).
-		WithHomeDir(dig.DefaultNodeHome).
+		WithHomeDir(app.DefaultNodeHome).
 		WithViper("")
 
 	rootCmd := &cobra.Command{
@@ -122,7 +121,7 @@ func initAppConfig() (string, interface{}) {
 	return DigAppTemplate, DigAppCfg
 }
 
-func initRootCmd(rootCmd *cobra.Command, encodingConfig params.EncodingConfig) {
+func initRootCmd(rootCmd *cobra.Command, encodingConfig digparams.EncodingConfig) {
 	cfg := sdk.GetConfig()
 	cfg.SetBech32PrefixForAccount(app.AccountAddressPrefix, Bech32PrefixAccPub)
 	cfg.SetBech32PrefixForConsensusNode(Bech32PrefixConsAddr, Bech32PrefixConsPub)
@@ -130,13 +129,13 @@ func initRootCmd(rootCmd *cobra.Command, encodingConfig params.EncodingConfig) {
 	cfg.Seal()
 
 	rootCmd.AddCommand(
-		genutilcli.InitCmd(dig.ModuleBasics, dig.DefaultNodeHome),
-		genutilcli.CollectGenTxsCmd(banktypes.GenesisBalancesIterator{}, dig.DefaultNodeHome),
-		genutilcli.GenTxCmd(dig.ModuleBasics, encodingConfig.TxConfig, banktypes.GenesisBalancesIterator{}, dig.DefaultNodeHome),
-		genutilcli.ValidateGenesisCmd(dig.ModuleBasics),
-		AddGenesisAccountCmd(dig.DefaultNodeHome),
+		genutilcli.InitCmd(app.ModuleBasics, app.DefaultNodeHome),
+		genutilcli.CollectGenTxsCmd(banktypes.GenesisBalancesIterator{}, app.DefaultNodeHome),
+		genutilcli.GenTxCmd(app.ModuleBasics, encodingConfig.TxConfig, banktypes.GenesisBalancesIterator{}, app.DefaultNodeHome),
+		genutilcli.ValidateGenesisCmd(app.ModuleBasics),
+		AddGenesisAccountCmd(app.DefaultNodeHome),
 		tmcli.NewCompletionCmd(rootCmd, true),
-		testnetCmd(dig.ModuleBasics, banktypes.GenesisBalancesIterator{}),
+		testnetCmd(app.ModuleBasics, banktypes.GenesisBalancesIterator{}),
 		debug.Cmd(),
 		config.Cmd(),
 	)
@@ -144,14 +143,14 @@ func initRootCmd(rootCmd *cobra.Command, encodingConfig params.EncodingConfig) {
 	ac := appCreator{
 		encCfg: encodingConfig,
 	}
-	server.AddCommands(rootCmd, dig.DefaultNodeHome, ac.newApp, ac.appExport, addModuleInitFlags)
+	server.AddCommands(rootCmd, app.DefaultNodeHome, ac.newApp, ac.appExport, addModuleInitFlags)
 
 	// add keybase, auxiliary RPC, query, and tx child commands
 	rootCmd.AddCommand(
 		rpc.StatusCommand(),
 		queryCommand(),
 		txCommand(),
-		keys.Commands(dig.DefaultNodeHome),
+		keys.Commands(app.DefaultNodeHome),
 	)
 }
 
@@ -177,7 +176,7 @@ func queryCommand() *cobra.Command {
 		authcmd.QueryTxCmd(),
 	)
 
-	dig.ModuleBasics.AddQueryCommands(cmd)
+	app.ModuleBasics.AddQueryCommands(cmd)
 	cmd.PersistentFlags().String(flags.FlagChainID, "", "The network chain ID")
 
 	return cmd
@@ -204,14 +203,14 @@ func txCommand() *cobra.Command {
 		authcmd.GetDecodeCommand(),
 	)
 
-	dig.ModuleBasics.AddTxCommands(cmd)
+	app.ModuleBasics.AddTxCommands(cmd)
 	cmd.PersistentFlags().String(flags.FlagChainID, "", "The network chain ID")
 
 	return cmd
 }
 
 type appCreator struct {
-	encCfg params.EncodingConfig
+	encCfg digparams.EncodingConfig
 }
 
 func (ac appCreator) newApp(
@@ -247,7 +246,7 @@ func (ac appCreator) newApp(
 		panic(err)
 	}
 
-	return dig.NewDigApp(
+	return app.NewDigApp(
 		logger, db, traceStore, true, skipUpgradeHeights,
 		cast.ToString(appOpts.Get(flags.FlagHome)),
 		cast.ToUint(appOpts.Get(server.FlagInvCheckPeriod)),
@@ -287,7 +286,7 @@ func (ac appCreator) appExport(
 		loadLatest = true
 	}
 
-	digApp := dig.NewDigApp(
+	digApp := app.NewDigApp(
 		logger,
 		db,
 		traceStore,
