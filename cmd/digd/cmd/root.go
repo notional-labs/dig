@@ -30,8 +30,8 @@ import (
 	"github.com/tendermint/tendermint/libs/log"
 	dbm "github.com/tendermint/tm-db"
 
-	"github.com/notional-labs/dig/v2/app"
-	digparams "github.com/notional-labs/dig/v2/app/params"
+	"github.com/notional-labs/dig/v3/app"
+	digparams "github.com/notional-labs/dig/v3/app/params"
 )
 
 const (
