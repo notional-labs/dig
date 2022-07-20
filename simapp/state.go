@@ -7,6 +7,7 @@ import (
 	"math/rand"
 	"time"
 
+	"cosmossdk.io/math"
 	"github.com/notional-labs/dig/v2/app"
 	"github.com/tendermint/starport/starport/pkg/cosmoscmd"
 
@@ -27,7 +28,6 @@ import (
 func AppStateFn(cdc codec.JSONCodec, simManager *module.SimulationManager) simtypes.AppStateFn {
 	return func(r *rand.Rand, accs []simtypes.Account, config simtypes.Config,
 	) (appState json.RawMessage, simAccs []simtypes.Account, chainID string, genesisTimestamp time.Time) {
-
 		if sdksimapp.FlagGenesisTimeValue == 0 {
 			genesisTimestamp = simtypes.RandTimestamp(r)
 		} else {
@@ -149,18 +149,19 @@ func AppStateRandomizedFn(
 
 	// generate a random amount of initial stake coins and a random initial
 	// number of bonded accounts
-	var initialStake, numInitiallyBonded int64
+	var initialStake, numInitiallyBonded math.Int
 	appParams.GetOrGenerate(
 		cdc, simappparams.StakePerAccount, &initialStake, r,
-		func(r *rand.Rand) { initialStake = r.Int63n(1e6) },
+		func(r *rand.Rand) { initialStake = math.NewInt(r.Int63n(1e6)) },
 	)
 	appParams.GetOrGenerate(
 		cdc, simappparams.InitiallyBondedValidators, &numInitiallyBonded, r,
-		func(r *rand.Rand) { numInitiallyBonded = int64(r.Intn(10)) },
+		func(r *rand.Rand) { numInitiallyBonded = math.NewInt(int64(r.Intn(10))) },
 	)
+	numAccsMath := math.NewInt(numAccs)
 
-	if numInitiallyBonded > numAccs {
-		numInitiallyBonded = numAccs
+	if numInitiallyBonded.GT(numAccsMath) {
+		numInitiallyBonded = numAccsMath
 	}
 
 	log.Printf(
@@ -179,7 +180,7 @@ func AppStateRandomizedFn(
 		GenState:     genesisState,
 		Accounts:     accs,
 		InitialStake: initialStake,
-		NumBonded:    numInitiallyBonded,
+		NumBonded:    numInitiallyBonded.Int64(),
 		GenTimestamp: genesisTimestamp,
 	}
 

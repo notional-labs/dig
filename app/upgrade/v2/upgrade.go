@@ -4,10 +4,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	stakingkeeper "github.com/cosmos/cosmos-sdk/x/staking/keeper"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
-	icamodule "github.com/cosmos/ibc-go/v3/modules/apps/27-interchain-accounts"
-	icacontrollertypes "github.com/cosmos/ibc-go/v3/modules/apps/27-interchain-accounts/controller/types"
-	icahosttypes "github.com/cosmos/ibc-go/v3/modules/apps/27-interchain-accounts/host/types"
-	icatypes "github.com/cosmos/ibc-go/v3/modules/apps/27-interchain-accounts/types"
+	icamodule "github.com/cosmos/ibc-go/v5/modules/apps/27-interchain-accounts"
+	icacontrollertypes "github.com/cosmos/ibc-go/v5/modules/apps/27-interchain-accounts/controller/types"
+	icahosttypes "github.com/cosmos/ibc-go/v5/modules/apps/27-interchain-accounts/host/types"
+	icatypes "github.com/cosmos/ibc-go/v5/modules/apps/27-interchain-accounts/types"
 
 	"github.com/cosmos/cosmos-sdk/types/module"
 	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
@@ -25,7 +25,7 @@ func FixMinCommisionRate(ctx sdk.Context, staking *stakingkeeper.Keeper) {
 	minCommissionRate := staking.GetParams(ctx).MinCommissionRate
 	for _, v := range validators {
 		if v.Commission.Rate.LT(minCommissionRate) {
-			comm, err := staking.MustUpdateValidatorCommission(
+			comm, err := staking.UpdateValidatorCommission(
 				ctx, v, minCommissionRate)
 			if err != nil {
 				panic(err)
@@ -58,7 +58,7 @@ func UnlockAllVestingAccounts(ctx sdk.Context, accKeeper *authkeeper.AccountKeep
 }
 
 func LockFouderAccount(ctx sdk.Context, accKeeper *authkeeper.AccountKeeper, bank *bankkeeper.BaseKeeper, staking *stakingkeeper.Keeper) {
-	var lockAccounts = []string{
+	lockAccounts := []string{
 		"dig1m9vdgzfqvvjtq8827ft9v5jmavpraw28294quj",
 		"dig10c5rjfpkgp35y6klmj6729vhuk7tsnjmxrfa7d",
 		"dig14l4g4lvwl0tg6thmpl5q9337drs3he44zp4zzn",
@@ -201,5 +201,4 @@ func CreateUpgradeHandler(mm *module.Manager, configurator module.Configurator, 
 		// override here
 		return newVM, err
 	}
-
 }
