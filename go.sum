@@ -1454,8 +1454,8 @@ github.com/nishanths/predeclared v0.2.1/go.mod h1:HvkGJcA3naj4lOwnFXFDkFxVtSqQMB
 github.com/nishanths/predeclared v0.2.2/go.mod h1:RROzoN6TnGQupbC+lqggsOlcgysk3LMK/HI84Mp280c=
 github.com/notional-labs/ibc-go/v5 v5.0.0-20220720034028-8dc9b016bcfc h1:UYH5pV39neusJioOAekIeQ/TepD7H3iXybVkpF/MRAE=
 github.com/notional-labs/ibc-go/v5 v5.0.0-20220720034028-8dc9b016bcfc/go.mod h1:V+qB+rgboXe+nLMbaGEW6w+DIkHHhDUeI2Tbkx8QSDg=
-github.com/notional-labs/wasmd v0.25.1-0.20220720081947-068083d043fd h1:M2EVvXDte6bgR8V1niTShPIlI/VwisLYqEJRI/9+awQ=
-github.com/notional-labs/wasmd v0.25.1-0.20220720081947-068083d043fd/go.mod h1:Dkq0EoPdYGTZRgZp+lrjNyxyDC1lLBVwlUhN8oZaTuE=
+github.com/notional-labs/wasmd v0.25.1-0.20220723134713-27bce66187b2 h1:N4KJzNcoC2n4JADTkQA0nvR3BDa+9fr2XGcWdUgS1sk=
+github.com/notional-labs/wasmd v0.25.1-0.20220723134713-27bce66187b2/go.mod h1:XbqXjNZXXENvec6gOgN9hdOSm7mvmePSfF/gLLQnXlY=
 github.com/nxadm/tail v1.4.4/go.mod h1:kenIhsEOeOJmVchQTgglprH7qJGnHDVpk1VPCcaMI8A=
 github.com/nxadm/tail v1.4.8 h1:nPr65rt6Y5JFSKQO7qToXr7pePgD6Gwiw05lkbyAQTE=
 github.com/nxadm/tail v1.4.8/go.mod h1:+ncqLTQzXmGhMZNUePPaPqPvBxHAIsmXswZKocGu+AU=
