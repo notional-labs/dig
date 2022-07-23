@@ -5,13 +5,13 @@ import (
 )
 
 const (
-	// DefaultInstanceCost is initially set the same as in wasmd
+	// DefaultInstanceCost is initially set the same as in wasmd.
 	DefaultInstanceCost uint64 = 60_000
-	// DefaultCompileCost set to a large number for testing
+	// DefaultCompileCost set to a large number for testing.
 	DefaultCompileCost uint64 = 100
 )
 
-// GasRegisterConfig is defaults plus a custom compile amount
+// GasRegisterConfig is defaults plus a custom compile amount.
 func GasRegisterConfig() wasmkeeper.WasmGasRegisterConfig {
 	gasConfig := wasmkeeper.DefaultGasRegisterConfig()
 	gasConfig.InstanceCost = DefaultInstanceCost

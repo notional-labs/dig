@@ -64,7 +64,6 @@ func (min MinCommissionDecorator) AnteHandle(
 	}
 
 	for _, m := range msgs {
-
 		// validate normal msgs
 		err = validMsg(m)
 		if err != nil {

@@ -43,7 +43,7 @@ var (
 	flagStartingIPAddress = "starting-ip-address"
 )
 
-// get cmd to initialize all files for tendermint testnet and application
+// get cmd to initialize all files for tendermint testnet and application.
 func testnetCmd(mbm module.BasicManager, genBalIterator banktypes.GenesisBalancesIterator) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "testnet",
@@ -96,7 +96,7 @@ Example:
 
 const nodeDirPerm = 0o755
 
-// Initialize the testnet
+// Initialize the testnet.
 func InitTestnet(
 	clientCtx client.Context,
 	cmd *cobra.Command,

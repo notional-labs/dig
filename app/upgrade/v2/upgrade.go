@@ -127,7 +127,7 @@ func ClawbackCoinFromAccount(ctx sdk.Context, accAddr sdk.AccAddress, staking *s
 		if !found {
 			continue
 		}
-		_, err := staking.Undelegate(ctx, accAddr, validatorValAddr, delegation.GetShares()) //nolint:errcheck // nolint because otherwise we'd have a time and nothing to do with it.
+		_, err := staking.Undelegate(ctx, accAddr, validatorValAddr, delegation.GetShares())
 		if err != nil {
 			panic(err)
 		}

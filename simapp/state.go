@@ -137,7 +137,7 @@ func AppStateFn(cdc codec.JSONCodec, simManager *module.SimulationManager) simty
 }
 
 // AppStateRandomizedFn creates calls each module's GenesisState generator function
-// and creates the simulation params
+// and creates the simulation params.
 func AppStateRandomizedFn(
 	simManager *module.SimulationManager, r *rand.Rand, cdc codec.JSONCodec,
 	accs []simtypes.Account, genesisTimestamp time.Time, appParams simtypes.AppParams,

@@ -16,7 +16,6 @@ import (
 	"github.com/cosmos/cosmos-sdk/server/api"
 	"github.com/cosmos/cosmos-sdk/server/config"
 	servertypes "github.com/cosmos/cosmos-sdk/server/types"
-	store "github.com/cosmos/cosmos-sdk/store/types"
 	"github.com/cosmos/cosmos-sdk/testutil/testdata"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
@@ -107,7 +106,7 @@ import (
 
 	"github.com/notional-labs/dig/v3/docs"
 
-	// this line is used by starport scaffolding # stargate/app/moduleImport
+	// this line is used by starport scaffolding # stargate/app/moduleImport.
 	"github.com/CosmWasm/wasmd/x/wasm"
 	wasmkeeper "github.com/CosmWasm/wasmd/x/wasm/keeper"
 )
@@ -117,7 +116,7 @@ const (
 	Name                 = "dig"
 )
 
-// this line is used by starport scaffolding # stargate/wasm/app/enabledProposals
+// this line is used by starport scaffolding # stargate/wasm/app/enabledProposals.
 var (
 	// If EnabledSpecificProposals is "", and this is "true", then enable all x/wasm proposals.
 	// If EnabledSpecificProposals is "", and this is not "true", then disable all x/wasm proposals.
@@ -157,7 +156,7 @@ func GetWasmOpts(appOpts servertypes.AppOptions) []wasm.Option {
 }
 
 var (
-	// DefaultNodeHome default home directories for the application daemon
+	// DefaultNodeHome default home directories for the application daemon.
 	DefaultNodeHome string
 
 	// ModuleBasics defines the module BasicManager is in charge of setting up basic,
@@ -193,7 +192,7 @@ var (
 		wasm.AppModuleBasic{},
 	)
 
-	// module account permissions
+	// module account permissions.
 	maccPerms = map[string][]string{
 		authtypes.FeeCollectorName:     nil,
 		distrtypes.ModuleName:          nil,
@@ -691,7 +690,7 @@ func (app *DigApp) setupUpgradeStoreLoaders() {
 
 	if upgradeInfo.Name == v2.UpgradeName && !app.UpgradeKeeper.IsSkipHeight(upgradeInfo.Height) {
 		// @Frey do we do this for Cosmwasm?
-		storeUpgrades := store.StoreUpgrades{
+		storeUpgrades := storetypes.StoreUpgrades{
 			Added:   []string{wasm.ModuleName, authz.ModuleName, icahosttypes.StoreKey},
 			Deleted: []string{"epoch"},
 		}
@@ -701,7 +700,7 @@ func (app *DigApp) setupUpgradeStoreLoaders() {
 	}
 
 	if upgradeInfo.Name == v2.UpgradeUnlockCoinName && !app.UpgradeKeeper.IsSkipHeight(upgradeInfo.Height) {
-		storeUpgrades := store.StoreUpgrades{
+		storeUpgrades := storetypes.StoreUpgrades{
 			Added: []string{icahosttypes.StoreKey},
 		}
 
@@ -718,20 +717,20 @@ func (app *DigApp) setupUpgradeHandlers(ICAModule ica.AppModule) {
 	)
 }
 
-// Name returns the name of the App
+// Name returns the name of the App.
 func (app *DigApp) Name() string { return app.BaseApp.Name() }
 
-// BeginBlocker application updates every begin block
+// BeginBlocker application updates every begin block.
 func (app *DigApp) BeginBlocker(ctx sdk.Context, req abci.RequestBeginBlock) abci.ResponseBeginBlock {
 	return app.mm.BeginBlock(ctx, req)
 }
 
-// EndBlocker application updates every end block
+// EndBlocker application updates every end block.
 func (app *DigApp) EndBlocker(ctx sdk.Context, req abci.RequestEndBlock) abci.ResponseEndBlock {
 	return app.mm.EndBlock(ctx, req)
 }
 
-// InitChainer application update at chain initialization
+// InitChainer application update at chain initialization.
 func (app *DigApp) InitChainer(ctx sdk.Context, req abci.RequestInitChain) abci.ResponseInitChain {
 	var genesisState GenesisState
 	if err := tmjson.Unmarshal(req.AppStateBytes, &genesisState); err != nil {
@@ -741,7 +740,7 @@ func (app *DigApp) InitChainer(ctx sdk.Context, req abci.RequestInitChain) abci.
 	return app.mm.InitGenesis(ctx, app.appCodec, genesisState)
 }
 
-// LoadHeight loads a particular height
+// LoadHeight loads a particular height.
 func (app *DigApp) LoadHeight(height int64) error {
 	return app.LoadVersion(height)
 }
@@ -772,7 +771,7 @@ func (app *DigApp) AppCodec() codec.Codec {
 	return app.appCodec
 }
 
-// InterfaceRegistry returns Gaia's InterfaceRegistry
+// InterfaceRegistry returns Gaia's InterfaceRegistry.
 func (app *DigApp) InterfaceRegistry() types.InterfaceRegistry {
 	return app.interfaceRegistry
 }
@@ -806,7 +805,7 @@ func (app *DigApp) GetSubspace(moduleName string) paramstypes.Subspace {
 	return subspace
 }
 
-// SimulationManager implements the SimulationApp interface
+// SimulationManager implements the SimulationApp interface.
 func (app *DigApp) SimulationManager() *module.SimulationManager {
 	return app.sm
 }
@@ -844,7 +843,7 @@ func (app *DigApp) RegisterTendermintService(clientCtx client.Context) {
 	)
 }
 
-// GetMaccPerms returns a copy of the module account permissions
+// GetMaccPerms returns a copy of the module account permissions.
 func GetMaccPerms() map[string][]string {
 	dupMaccPerms := make(map[string][]string)
 	for k, v := range maccPerms {
@@ -853,7 +852,7 @@ func GetMaccPerms() map[string][]string {
 	return dupMaccPerms
 }
 
-// initParamsKeeper init params keeper and its subspaces
+// initParamsKeeper init params keeper and its subspaces.
 func initParamsKeeper(appCodec codec.BinaryCodec, legacyAmino *codec.LegacyAmino, key, tkey storetypes.StoreKey) paramskeeper.Keeper {
 	paramsKeeper := paramskeeper.NewKeeper(appCodec, legacyAmino, key, tkey)
 
