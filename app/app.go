@@ -708,7 +708,7 @@ func (app *DigApp) setupUpgradeStoreLoaders() {
 	}
 }
 
-func (app *DigApp) setupUpgradeHandlers(ICAModule ica.AppModule) {
+func (app *DigApp) setupUpgradeHandlers(ICAModule ica.AppModule) { //nolint:gocritic // cosmos standard is for this to be capitalized.
 	bankBaseKeeper, _ := app.BankKeeper.(bankkeeper.BaseKeeper)
 
 	app.UpgradeKeeper.SetUpgradeHandler(
