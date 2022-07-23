@@ -9,7 +9,6 @@ import (
 
 	"cosmossdk.io/math"
 	"github.com/notional-labs/dig/v3/app"
-	"github.com/tendermint/starport/starport/pkg/cosmoscmd"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdksimapp "github.com/cosmos/cosmos-sdk/simapp"
@@ -20,6 +19,7 @@ import (
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
+	"github.com/notional-labs/dig/v3/app/params"
 )
 
 // AppStateFn returns the initial application state using a genesis or the simulation parameters.
@@ -144,7 +144,7 @@ func AppStateRandomizedFn(
 ) (json.RawMessage, []simtypes.Account) {
 	numAccs := int64(len(accs))
 
-	encCdc := cosmoscmd.MakeEncodingConfig(app.ModuleBasics)
+	encCdc := params.MakeEncodingConfig(app.ModuleBasics)
 	genesisState := app.NewDefaultGenesisState(encCdc.Marshaler)
 
 	// generate a random amount of initial stake coins and a random initial

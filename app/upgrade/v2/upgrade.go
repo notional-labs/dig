@@ -33,7 +33,10 @@ func FixMinCommisionRate(ctx sdk.Context, staking *stakingkeeper.Keeper) {
 			v.Commission = comm
 
 			// call the before-modification hook since we're about to update the commission
-			staking.BeforeValidatorModified(ctx, v.GetOperator())
+			err = staking.BeforeValidatorModified(ctx, v.GetOperator())
+			if err != nil {
+				panic(err)
+			}
 
 			staking.SetValidator(ctx, v)
 		}
