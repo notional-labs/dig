@@ -18,7 +18,6 @@ import (
 	"github.com/cosmos/cosmos-sdk/store"
 	simulation2 "github.com/cosmos/cosmos-sdk/types/simulation"
 	"github.com/cosmos/cosmos-sdk/x/simulation"
-	dig "github.com/notional-labs/dig/v3/app"
 	digparams "github.com/notional-labs/dig/v3/app/params"
 )
 

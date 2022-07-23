@@ -93,8 +93,8 @@ import (
 	porttypes "github.com/cosmos/ibc-go/v5/modules/core/05-port/types"
 	ibchost "github.com/cosmos/ibc-go/v5/modules/core/24-host"
 	ibckeeper "github.com/cosmos/ibc-go/v5/modules/core/keeper"
-	digparams "github.com/notional-labs/dig/v2/app/params"
-	v2 "github.com/notional-labs/dig/v2/app/upgrade/v2"
+	digparams "github.com/notional-labs/dig/v3/app/params"
+	v2 "github.com/notional-labs/dig/v3/app/upgrade/v2"
 
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/spf13/cast"
