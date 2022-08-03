@@ -18,7 +18,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@v3.2.1
         with:
           go-version: 1.19
       - name: Install runsim
@@ -32,10 +32,10 @@ jobs:
   #    runs-on: ubuntu-latest
   #    needs: Build
   #    steps:
-  #      - uses: actions/checkout@v3
+  #      - uses: actions/checkout@v2
   #      - uses: actions/setup-go@v3.2.1
   #        with:
-  #          go-version: 1.16
+  #          go-version: 1.19
   #      - uses: technote-space/get-diff-action@v4
   #        with:
   #          PATTERNS: |
@@ -56,14 +56,14 @@ jobs:
     runs-on: ubuntu-latest
     needs: Build
     steps:
-      - uses: technote-space/get-diff-action@v6
+      - uses: technote-space/get-diff-action@v4
         with:
           PATTERNS: |
             **/**.go
             go.mod
             go.sum
-      - uses: actions/checkout@v3
-      - uses: actions/setup-go@v3
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v3.2.1
         with:
           go-version: 1.19
       - uses: actions/cache@v3
@@ -82,7 +82,7 @@ jobs:
     steps:
       - uses: actions/setup-go@v3.2.1
         with:
-          go-version: 1.17
+          go-version: 1.19
       - uses: actions/checkout@v2
       - uses: technote-space/get-diff-action@v4
         with:
@@ -104,11 +104,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: Build
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-go@v3
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v3.2.1
         with:
           go-version: 1.19
-      - uses: technote-space/get-diff-action@v6
+      - uses: technote-space/get-diff-action@v4
         with:
           PATTERNS: |
             **/**.go
@@ -126,7 +126,7 @@ jobs:
   test-simulator:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       - uses: actions/setup-go@v3.2.1
         with:
           go-version: 1.19

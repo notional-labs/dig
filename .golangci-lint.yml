@@ -4,28 +4,48 @@ run:
 linters:
   disable-all: true
   enable:
-    - deadcode
+    - asciicheck
+    - bidichk
+    - deadcode 
     - depguard
     - dogsled
-    - exportloopref
+    - dupl
+    - durationcheck
     - errcheck
+    - errname
+    - errorlint 
+    - exhaustive 
+    - exportloopref
     - goconst
-    - gocritic
+    - gocritic 
+    - godot
     - gofmt
     - gofumpt
     - goimports
-    - gosec
-    - gosimple
+    - gomodguard
+    - goprintffuncname
+    - gosec 
+    - gosimple 
     - govet
+    - importas
     - ineffassign
+    - makezero
     - misspell
     - nakedret
-    - prealloc
+    - nilnil
+    - nolintlint 
+    - paralleltest
+    - promlinter
+    - revive 
     - staticcheck
-    - stylecheck
-    - revive
+    - stylecheck 
+    - tenv
+    - testpackage
+    - thelper 
     - typecheck
     - unconvert
-    - unused
-    - misspell
-    - nolintlint
+    - unparam 
+    - unused 
+    - varcheck 
+    - whitespace
+

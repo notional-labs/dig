@@ -12,9 +12,8 @@ import (
 
 func main() {
 	rootCmd, _ := cmd.NewRootCmd()
-
-	if err := svrcmd.Execute(rootCmd, app.DefaultNodeHome); err != nil {
-		switch e := err.(type) {
+	if err := svrcmd.Execute(rootCmd, "DIGD", app.DefaultNodeHome); err != nil {
+		switch e := err.(type) { //nolint:errorlint // this is how we do it...
 		case server.ErrorCode:
 			os.Exit(e.Code)
 

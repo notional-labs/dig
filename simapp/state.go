@@ -2,13 +2,13 @@ package simapp
 
 import (
 	"encoding/json"
-	"io/ioutil"
 	"log"
 	"math/rand"
+	"os"
 	"time"
 
+	"cosmossdk.io/math"
 	"github.com/notional-labs/dig/v3/app"
-	"github.com/tendermint/starport/starport/pkg/cosmoscmd"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdksimapp "github.com/cosmos/cosmos-sdk/simapp"
@@ -19,6 +19,7 @@ import (
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
+	"github.com/notional-labs/dig/v3/app/params"
 )
 
 // AppStateFn returns the initial application state using a genesis or the simulation parameters.
@@ -27,7 +28,6 @@ import (
 func AppStateFn(cdc codec.JSONCodec, simManager *module.SimulationManager) simtypes.AppStateFn {
 	return func(r *rand.Rand, accs []simtypes.Account, config simtypes.Config,
 	) (appState json.RawMessage, simAccs []simtypes.Account, chainID string, genesisTimestamp time.Time) {
-
 		if sdksimapp.FlagGenesisTimeValue == 0 {
 			genesisTimestamp = simtypes.RandTimestamp(r)
 		} else {
@@ -54,7 +54,7 @@ func AppStateFn(cdc codec.JSONCodec, simManager *module.SimulationManager) simty
 
 		case config.ParamsFile != "":
 			appParams := make(simtypes.AppParams)
-			bz, err := ioutil.ReadFile(config.ParamsFile)
+			bz, err := os.ReadFile(config.ParamsFile)
 			if err != nil {
 				panic(err)
 			}
@@ -137,30 +137,31 @@ func AppStateFn(cdc codec.JSONCodec, simManager *module.SimulationManager) simty
 }
 
 // AppStateRandomizedFn creates calls each module's GenesisState generator function
-// and creates the simulation params
+// and creates the simulation params.
 func AppStateRandomizedFn(
 	simManager *module.SimulationManager, r *rand.Rand, cdc codec.JSONCodec,
 	accs []simtypes.Account, genesisTimestamp time.Time, appParams simtypes.AppParams,
 ) (json.RawMessage, []simtypes.Account) {
 	numAccs := int64(len(accs))
 
-	encCdc := cosmoscmd.MakeEncodingConfig(app.ModuleBasics)
+	encCdc := params.MakeEncodingConfig(app.ModuleBasics)
 	genesisState := app.NewDefaultGenesisState(encCdc.Marshaler)
 
 	// generate a random amount of initial stake coins and a random initial
 	// number of bonded accounts
-	var initialStake, numInitiallyBonded int64
+	var initialStake, numInitiallyBonded math.Int
 	appParams.GetOrGenerate(
 		cdc, simappparams.StakePerAccount, &initialStake, r,
-		func(r *rand.Rand) { initialStake = r.Int63n(1e6) },
+		func(r *rand.Rand) { initialStake = math.NewInt(r.Int63n(1e6)) },
 	)
 	appParams.GetOrGenerate(
 		cdc, simappparams.InitiallyBondedValidators, &numInitiallyBonded, r,
-		func(r *rand.Rand) { numInitiallyBonded = int64(r.Intn(10)) },
+		func(r *rand.Rand) { numInitiallyBonded = math.NewInt(int64(r.Intn(10))) },
 	)
+	numAccsMath := math.NewInt(numAccs)
 
-	if numInitiallyBonded > numAccs {
-		numInitiallyBonded = numAccs
+	if numInitiallyBonded.GT(numAccsMath) {
+		numInitiallyBonded = numAccsMath
 	}
 
 	log.Printf(
@@ -179,7 +180,7 @@ func AppStateRandomizedFn(
 		GenState:     genesisState,
 		Accounts:     accs,
 		InitialStake: initialStake,
-		NumBonded:    numInitiallyBonded,
+		NumBonded:    numInitiallyBonded.Int64(),
 		GenTimestamp: genesisTimestamp,
 	}
 
