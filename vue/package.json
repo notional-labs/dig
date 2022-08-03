@@ -15,7 +15,7 @@
     "@cosmjs/launchpad": "0.25.0",
     "@cosmjs/proto-signing": "0.25.0",
     "@cosmjs/stargate": "0.25.0",
-    "@starport/vue": "^0.1.53",
+    "@starport/vue": "^0.3.5",
     "@starport/vuex": "^0.1.53",
     "@vue/compiler-sfc": "^3.0.11",
     "bip39": "^3.0.4",
