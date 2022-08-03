@@ -12,4 +12,11 @@ updates:
     directory: "/vue"
     schedule:
       interval: daily
-
+  - package-ecosystem: npm
+    directory: "/webapp"
+    schedule:
+      interval: daily
+  - package-ecosystem: pub
+    directory: "/mobile"
+    schedule:
+      interval: daily
