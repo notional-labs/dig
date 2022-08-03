@@ -21,7 +21,7 @@
     "@testing-library/user-event": "^14.4.1",
     "antd": "^4.17.3",
     "aos": "^2.3.4",
-    "axios": "^0.24.0",
+    "axios": "^0.27.2",
     "axios-retry": "^3.2.4",
     "boostrap": "^2.0.0",
     "bootstrap": "^5.1.3",
