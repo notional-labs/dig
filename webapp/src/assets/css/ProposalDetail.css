@@ -1,0 +1,39 @@
+.line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+.left {
+  width: 15%;
+  text-align: left;
+  display: inline-block;
+  vertical-align: middle;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.right {
+  width: 85%;
+  text-align: left;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 15px;
+}
+
+@media screen and (max-width: 950px) {
+  .line {
+    flex-direction: column;
+  }
+  .left {
+    width: 100%;
+    text-align: left;
+  }
+  
+  .right {
+    width: 100%;
+    text-align: left;
+  }
+}
+  
+  

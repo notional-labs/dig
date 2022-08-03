@@ -16,7 +16,7 @@
     "@cosmjs/proto-signing": "0.25.0",
     "@cosmjs/stargate": "0.25.0",
     "@starport/vue": "^0.3.5",
-    "@starport/vuex": "^0.1.53",
+    "@starport/vuex": "^0.3.5",
     "@vue/compiler-sfc": "^3.0.11",
     "bip39": "^3.0.4",
     "core-js": "^3.11.2",
@@ -31,17 +31,17 @@
     "@babel/core": "^7.14.0",
     "@babel/node": "^7.13.13",
     "@vue/cli-plugin-babel": "^4.5.12",
-    "@vue/cli-plugin-eslint": "^4.5.12",
-    "@vue/cli-plugin-vuex": "^4.5.12",
+    "@vue/cli-plugin-eslint": "^5.0.8",
+    "@vue/cli-plugin-vuex": "^5.0.8",
     "@vue/cli-service": "^5.0.8",
-    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-prettier": "^7.0.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^6.8.0",
+    "eslint": "^8.21.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-vue": "^7.9.0",
+    "eslint-plugin-vue": "^9.3.0",
     "node-sass": "^7.0.1",
     "prettier": "^2.2.1",
     "protobufjs": "^6.11.2",
-    "sass-loader": "^8.0.2"
+    "sass-loader": "^13.0.2"
   }
 }

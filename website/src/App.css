@@ -1,0 +1,299 @@
+.App {
+  text-align: center;
+  background-image: linear-gradient(180deg, #000000 0%, #4D4D4D 100%);
+  min-height: 100vh;
+  height: auto;
+  padding: 0;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  color: #ffffff;
+  list-style-type: none;
+  font-size: 24px;
+  font-weight: 700;
+  padding: 2em;
+  position: relative;
+  z-index: 2;
+}
+
+.logo {
+  filter: grayscale(100%);
+}
+
+.logo:hover {
+  animation-name: faded;
+  animation-duration: 0.5s;
+  filter: grayscale(0%)
+}
+
+.glow {
+  background: radial-gradient(circle farthest-side, #EEC13F 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+div.react-3d-carousel div.slider-container div.slider-content div.slider-single div.slider-single-content {
+  box-shadow: none;
+}
+
+.preactive>.slider-single-content>div>div>p {
+  display: none;
+}
+
+.proactive>.slider-single-content>div>div>p {
+  display: none;
+}
+
+.css-n4cq1w {
+  --line-color: transparent;
+}
+
+.react-3d-carousel .slider-container .slider-right div {
+  border-radius: 50%;
+  padding: 10px 15px 10px 15px;
+}
+
+.react-3d-carousel .slider-container .slider-left div {
+  border-radius: 50%;
+  padding: 10px 15px 10px 15px;
+}
+
+/* .hover-button:hover {
+  background-image: Linear-Gradient(260.54deg, #FFFFFF 0%, #000000 96.57%);
+  border: solid 2px #EEC13F;
+} */
+
+/* @media only screen and ( min-width: 1519px ) {
+  .content {
+    max-width: 1457.6px;
+  }
+}
+*/
+
+.screen1-title {
+  font-size: 44px;
+}
+
+.screen1-content {
+  font-size: 24px;
+  padding: 250px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.screen2-title {
+  font-size: 64px
+}
+
+.screen2-content {
+  font-size: 20px;
+  padding: 250px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.icon {
+  width: 50px;
+}
+
+#top-content {
+  margin-top: 300px;
+}
+
+#top-content-3 {
+  margin-top: 300px;
+  margin-bottom: 200px;
+}
+
+#top-content-4 {
+  margin-top: 200px;
+  margin-bottom: 100px;
+}
+
+#top-content-5 {
+  margin-top: 300px;
+  margin-bottom: 50px;
+}
+
+#top-content-6 {
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .tree {
+    display: none;
+  }
+
+  .roadmap {
+    display: none;
+  }
+
+}
+
+.member {
+  display: block;
+}
+
+.member-mobile {
+  display: block;
+}
+
+@media only screen and (max-width: 900px) {
+  .App {
+    min-height: 600vh;
+  }
+
+  .nav-bar {
+    font-size: 100%;
+  }
+
+  .screen1-title {
+    font-size: 200%;
+  }
+
+  .screen1-content {
+    font-size: 100%;
+    padding: 50px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .screen2-title {
+    font-size: 200%
+  }
+
+  .icon {
+    width: 6%;
+  }
+
+  .screen2-content {
+    font-size: 100%;
+    padding: 50px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .grid-image {
+    display: none;
+  }
+
+  #top-content {
+    margin-top: 100px;
+  }
+
+  #top-content-3 {
+    margin-top: 100px;
+    margin-bottom: 30px;
+  }
+
+  #top-content-4 {
+    margin-top: 100px;
+    margin-bottom: 30px;
+  }
+
+  #top-content-5 {
+    margin-top: 100px;
+    margin-bottom: 30px;
+  }
+
+  #top-content-6 {
+    margin-top: 300px;
+    margin-bottom: 30px;
+  }
+
+  .partner {
+    display: none;
+  }
+
+  .contact {
+    display: none;
+  }
+
+  .member {
+    display: none;
+  }
+  .effect {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .tree-mobile {
+    display: none;
+  }
+
+  .roadmap-mobile {
+    display: none;
+  }
+
+}
+
+@media only screen and (min-width: 900px) {
+
+  .grid-mobile {
+    display: none;
+  }
+
+  .partner-mobile {
+    display: none;
+  }
+
+  .contact-mobile {
+    display: none;
+  }
+
+  .member-mobile {
+    display: none;
+  }
+  .effect-mobile {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes faded {
+  from {
+    filter: grayscale(100%);
+  }
+
+  to {
+    filter: grayscale(0%);
+  }
+}
