@@ -3,7 +3,7 @@ package simapp
 import (
 	"encoding/json"
 	"io"
-	"io/ioutil"
+	"os"
 
 	"github.com/notional-labs/dig/v3/app"
 
@@ -17,9 +17,9 @@ import (
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 )
 
-//#nosec
+// #nosec
 func AppStateFromGenesisFileFn(r io.Reader, cdc codec.JSONCodec, genesisFile string) (tmtypes.GenesisDoc, []simtypes.Account) {
-	bytes, err := ioutil.ReadFile(genesisFile)
+	bytes, err := os.ReadFile(genesisFile)
 	if err != nil {
 		panic(err)
 	}
