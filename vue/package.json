@@ -38,7 +38,7 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^8.21.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-vue": "^7.9.0",
+    "eslint-plugin-vue": "^9.3.0",
     "node-sass": "^7.0.1",
     "prettier": "^2.2.1",
     "protobufjs": "^6.11.2",
