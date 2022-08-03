@@ -1,0 +1,6 @@
+{
+    "makefile.extensionOutputFolder": "./.vscode",
+    "go.formatTool": "gofumpt",
+    "go.lintTool": "golangci-lint",
+    "go.lintOnSave": "workspace"
+}
