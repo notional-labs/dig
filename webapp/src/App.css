@@ -1,0 +1,233 @@
+.App {
+  text-align: center;
+  background-color: #d49217;
+  background-image: linear-gradient(#141414 0%, #4D4D4D 100%);
+  min-height: 100vh;
+  min-width: 100vh;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.glow {
+  background: radial-gradient(circle farthest-side, #EEC13F 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.hover-button {
+  background-image: Linear-Gradient(#EEC13F 0%, #FFAC38 100%);
+  border: solid 2px #EEC13F;
+  padding: 1em 1em 1em 1em;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.hover-button:hover {
+  background-image: Linear-Gradient(263.6deg, #4D4D4D 0%, #000000 100%);
+}
+
+.description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+.title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+.gridBox {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row-gap: 30px;
+  grid-column-gap: 100px;
+  border-radius: 20px;
+}
+
+.gridBoxAccount {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-row-gap: 30px;
+  grid-column-gap: 100px;
+  border-radius: 30px;
+}
+
+.left {
+  width: 10%;
+  text-align: left;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.right {
+  width: 90%;
+  text-align: left;
+  display: inline-block;
+  vertical-align: middle
+}
+
+.asset-block {
+  margin: auto;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.chart {
+  padding: 2em;
+  margin: auto
+}
+
+.nav-bar {
+  align-items: left;
+  text-align: left;
+}
+
+.nav-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  vertical-align: center;
+  padding-left: 0;
+  padding-top: 4em;
+}
+
+.nav-link:hover {
+  animation-name: faded;
+  animation-fill-mode: forwards;
+  animation-duration: 0.5s;
+}
+
+@media screen and (max-width: 1300px) {
+  .gridBox {
+      grid-template-columns: repeat(2, 1fr);
+  }
+  .gridBoxAccount {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .nav-button {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .gridBox {
+      grid-template-columns: repeat(1, 1fr);
+  }
+  .line {
+    flex-direction: column;
+  }
+  .left {
+    width: 100%;
+    text-align: left;
+  }
+  .right {
+    width: 100%;
+    text-align: left;
+  }
+  .asset-block {
+    flex-direction: column;
+  }
+  .chart {
+    width: 100%;
+  }
+}
+
+.ant-radio-checked .ant-radio-inner{
+  border-color: #ffac38 !important ;
+  background-color: #ffac38 !important ;
+}
+
+.ant-radio-checked .ant-radio-inner:after{
+  background-color: #ffac38;
+}
+
+.ant-radio:hover .ant-radio-inner {
+  border-color: #ffac38 ;
+}
+
+@keyframes faded {
+  from {
+    color: #ffffff;
+  }
+  to {
+    color: #EEC13F;
+  }
+}
+
+.ant-modal-content {
+  border-radius: 20px !important;
+  background: #4D4D4D !important;
+}
+
+.ant-input {
+  background-color: transparent !important;
+  color: white !important;
+}
+
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  border-radius: 10px !important;
+}
+
+button.val-select-button:hover {
+  background-color: #E4BA40 !important;
+}
+
+.ant-empty-description {
+  color: white !important;
+}
+
+.hover-sort-button:hover {
+  background-color: rgb(242, 242, 242, 0.7) !important;
+}
+
+.anticon-close-circle {
+  color: white !important 
+}
+
+.ant-input-wrapper {
+  height: 100% !important;
+  background-color: transparent !important;
+}
+
+.ant-input-affix-wrapper {
+  border-radius: 10px 0 0 10px !important;
+  height: 100% !important;
+  background-color: transparent !important;
+}
+
+.ant-input-group-addon {
+  background-color: transparent !important;
+}
+
+.ant-input-search-button {
+  border-radius: 0 10px 10px 0 !important;
+  height: 100% !important;
+  background-color: #ED9D26 !important;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  display: none;
+  background: transparent
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: gray; 
+  border-radius: 10px;
+}
