@@ -29,7 +29,7 @@ jobs:
         run: xz -T $(nproc) images/dig.img
 
       - name: Upload image
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: dig pi
           path: images/dig.img.xz
