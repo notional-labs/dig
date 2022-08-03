@@ -6,7 +6,7 @@
     "@ant-design/icons": "^4.7.0",
     "@cosmjs/amino": "^0.25.6",
     "@cosmjs/cosmwasm-stargate": "0.26.5",
-    "@cosmjs/launchpad": "^0.25.6",
+    "@cosmjs/launchpad": "^0.27.1",
     "@cosmjs/proto-signing": "^0.25.6",
     "@cosmjs/stargate": "^0.27.1",
     "@ethereumjs/tx": "^3.4.0",
