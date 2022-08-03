@@ -12,7 +12,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@cosmjs/launchpad": "0.25.0",
+    "@cosmjs/launchpad": "0.27.1",
     "@cosmjs/proto-signing": "0.25.0",
     "@cosmjs/stargate": "0.25.0",
     "@starport/vue": "^0.3.5",
