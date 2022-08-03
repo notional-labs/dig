@@ -1,4 +1,4 @@
-FROM faddat/archlinux AS builder
+FROM ghcr.io/notional-labs/cosmos AS builder
 
 ENV GOPATH /go
 ENV PATH $PATH:/go/bin
@@ -10,7 +10,7 @@ COPY . /dig
 RUN cd /dig/cmd/digd && \
     go install .
 
-FROM faddat/archlinux
+FROM ghcr.io/notional-labs/cosmos
 
 ENV DIG_P2P_MAX_NUM_INBOUND_PEERS=500
 ENV DIG_P2P_MAX_NUM_OUTBOUND_PEERS=60
