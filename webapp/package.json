@@ -12,7 +12,7 @@
     "@ethereumjs/tx": "^3.4.0",
     "@fontsource/merriweather": "^4.5.2",
     "@fontsource/montserrat": "^4.5.11",
-    "@fontsource/roboto": "^4.5.3",
+    "@fontsource/roboto": "^4.5.7",
     "@keplr-wallet/types": "^0.10.14",
     "@metamask/eth-sig-util": "^4.0.0",
     "@patternfly/react-charts": "^6.34.1",
