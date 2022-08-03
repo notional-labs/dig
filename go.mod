@@ -6,7 +6,7 @@ require (
 	github.com/CosmWasm/wasmd v0.25.0
 	github.com/cosmos/cosmos-sdk v0.45.3
 	github.com/cosmos/ibc-go/v3 v3.0.0
-	github.com/spf13/cast v1.4.1
+	github.com/spf13/cast v1.5.0
 	github.com/tendermint/starport v0.19.5
 	github.com/tendermint/tendermint v0.34.19
 	github.com/tendermint/tm-db v0.6.7
