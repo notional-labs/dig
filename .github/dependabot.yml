@@ -3,13 +3,13 @@ updates:
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
-      interval: hourly
+      interval: daily
   - package-ecosystem: gomod
     directory: "/"
     schedule:
-      interval: hourly
+      interval: daily
   - package-ecosystem: npm
     directory: "/vue"
     schedule:
-      interval: hourly
+      interval: daily
 
