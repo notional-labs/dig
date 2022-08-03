@@ -1,13 +1,8 @@
 run:
-  tests: false
-  timeout: 5m
+  timeout: 10m
 
 linters:
-  # Disable all linters.
-  # Default: false
   disable-all: true
-  # Enable specific linter
-  # https://golangci-lint.run/usage/linters/#enabled-by-default-linters
   enable:
     - asciicheck
     - bidichk
@@ -26,7 +21,6 @@ linters:
     - godot
     - gofmt
     - gofumpt
-    - goheader
     - goimports
     - gomodguard
     - goprintffuncname
@@ -53,19 +47,5 @@ linters:
     - unparam 
     - unused 
     - varcheck 
-    #    - varnamelen <- disabled because defies idiom
-    #    - wastedassign
     - whitespace
-#    - wrapcheck
-#    - wsl
 
-issues:
-  exclude-rules:
-    - path: bench_test\.go
-      linters:
-        - errcheck
-    - path: client/docs
-      linters:
-        - all
-  max-issues-per-linter: 10000
-  max-same-issues: 10000
