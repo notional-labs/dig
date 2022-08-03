@@ -18,7 +18,6 @@ import (
 	"github.com/cosmos/cosmos-sdk/store"
 	simulation2 "github.com/cosmos/cosmos-sdk/types/simulation"
 	"github.com/cosmos/cosmos-sdk/x/simulation"
-	dig "github.com/notional-labs/dig/v3/app"
 	digparams "github.com/notional-labs/dig/v3/app/params"
 )
 
@@ -77,8 +76,8 @@ func interBlockCacheOpt() func(*baseapp.BaseApp) {
 	return baseapp.SetInterBlockCache(store.NewCommitKVStoreCacheManager())
 }
 
-//// TODO: Make another test for the fuzzer itself, which just has noOp txs
-//// and doesn't depend on the application.
+// // TODO: Make another test for the fuzzer itself, which just has noOp txs
+// // and doesn't depend on the application.
 func TestAppStateDeterminism(t *testing.T) {
 	if !simapp.FlagEnabledValue {
 		t.Skip("skipping application simulation")
