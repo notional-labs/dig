@@ -1,0 +1,55 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+name: Deploy
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [17.x]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Use Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Cache dependencies
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-node-modules
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+
+    - name: Build the web
+      env:
+        NODE_OPTIONS: --openssl-legacy-provider
+        CI: false
+      run: |
+        npm i --ignore-scripts
+        npm run build
+
+    - name: Transfer /build folder to server
+      uses: garygrossgarten/github-action-scp@release
+      with:
+        local: build
+        remote: /root/digchain.org
+        host: ${{ secrets.WEB_SERVER }}
+        username: ${{ secrets.USERNAME }}
+        privateKey: ${{ secrets.PRIV_KEY }}
+        passphrase: ${{ secrets.PASSPHRASE }}

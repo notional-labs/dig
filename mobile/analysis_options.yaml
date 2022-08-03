@@ -1,0 +1,59 @@
+include: package:pedantic/analysis_options.yaml
+
+analyzer:
+  exclude:
+    - lib/**/*.config.dart
+    - lib/generated/*.dart
+    - lib/generated/*/*.dart
+
+  errors:
+    unawaited_futures: ignore
+    omit_local_variable_types: ignore
+    
+linter:
+  rules:
+    - always_use_package_imports
+    - avoid_print
+    - avoid_types_as_parameter_names
+    - cancel_subscriptions
+    - close_sinks
+    - empty_statements
+    - invariant_booleans
+    - iterable_contains_unrelated_type
+    - list_remove_unrelated_type
+    - literal_only_boolean_expressions
+    - no_duplicate_case_values
+    - no_logic_in_create_state
+    - prefer_void_to_null
+    - use_key_in_widget_constructors
+    - always_declare_return_types
+    - always_put_required_named_parameters_first
+    - annotate_overrides
+    - avoid_single_cascade_in_expression_statements
+    - avoid_unnecessary_containers
+    - avoid_void_async
+    - camel_case_extensions
+    - camel_case_types
+    - cascade_invocations
+    - empty_constructor_bodies
+    - parameter_assignments
+    - prefer_conditional_assignment
+    - prefer_const_constructors
+    - prefer_const_literals_to_create_immutables
+    - prefer_final_fields
+    - prefer_final_in_for_each
+    - prefer_final_locals
+    - prefer_if_elements_to_conditional_expressions
+    - prefer_if_null_operators
+    - prefer_inlined_adds
+    - prefer_interpolation_to_compose_strings
+    - prefer_is_empty
+    - prefer_is_not_empty
+    - prefer_is_not_operator
+    - prefer_null_aware_operators
+    - prefer_single_quotes
+    - recursive_getters
+    - sized_box_for_whitespace
+    - unnecessary_new
+    - unnecessary_this
+    - package_names
