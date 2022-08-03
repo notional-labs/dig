@@ -17,7 +17,7 @@
     "@metamask/eth-sig-util": "^4.0.0",
     "@patternfly/react-charts": "^6.34.1",
     "@testing-library/jest-dom": "^5.16.1",
-    "@testing-library/react": "^12.1.2",
+    "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.4.1",
     "antd": "^4.17.3",
     "aos": "^2.3.4",
