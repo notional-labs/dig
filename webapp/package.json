@@ -22,7 +22,7 @@
     "antd": "^4.22.3",
     "aos": "^2.3.4",
     "axios": "^0.27.2",
-    "axios-retry": "^3.2.4",
+    "axios-retry": "^3.3.1",
     "boostrap": "^2.0.0",
     "bootstrap": "^5.2.0",
     "chart.js": "^3.9.1",
