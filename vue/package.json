@@ -42,6 +42,6 @@
     "node-sass": "^7.0.1",
     "prettier": "^2.2.1",
     "protobufjs": "^6.11.2",
-    "sass-loader": "^8.0.2"
+    "sass-loader": "^13.0.2"
   }
 }
