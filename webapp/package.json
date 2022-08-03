@@ -18,7 +18,7 @@
     "@patternfly/react-charts": "^6.34.1",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/user-event": "^14.4.1",
     "antd": "^4.17.3",
     "aos": "^2.3.4",
     "axios": "^0.24.0",
