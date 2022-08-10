@@ -10,7 +10,7 @@
     "@cosmjs/proto-signing": "^0.28.11",
     "@cosmjs/stargate": "^0.28.11",
     "@ethereumjs/tx": "^3.5.2",
-    "@fontsource/merriweather": "^4.5.12",
+    "@fontsource/merriweather": "^4.5.13",
     "@fontsource/montserrat": "^4.5.11",
     "@fontsource/roboto": "^4.5.7",
     "@keplr-wallet/types": "^0.10.16",
