@@ -41,7 +41,7 @@
     "react-scripts": "^5.0.1",
     "react-select": "^5.4.0",
     "react-spinners": "^0.13.4",
-    "web-vitals": "^2.1.2",
+    "web-vitals": "^3.0.0",
     "web3": "^1.7.5"
   },
   "scripts": {
