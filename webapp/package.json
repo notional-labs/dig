@@ -11,7 +11,7 @@
     "@cosmjs/stargate": "^0.28.13",
     "@ethereumjs/tx": "^3.5.2",
     "@fontsource/merriweather": "^4.5.13",
-    "@fontsource/montserrat": "^4.5.11",
+    "@fontsource/montserrat": "^4.5.12",
     "@fontsource/roboto": "^4.5.8",
     "@keplr-wallet/types": "^0.10.20",
     "@metamask/eth-sig-util": "^4.0.1",
