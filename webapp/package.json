@@ -15,7 +15,7 @@
     "@fontsource/roboto": "^4.5.8",
     "@keplr-wallet/types": "^0.10.22",
     "@metamask/eth-sig-util": "^4.0.1",
-    "@patternfly/react-charts": "^6.88.7",
+    "@patternfly/react-charts": "^6.92.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
