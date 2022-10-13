@@ -13,7 +13,7 @@
     "@fontsource/merriweather": "^4.5.13",
     "@fontsource/montserrat": "^4.5.12",
     "@fontsource/roboto": "^4.5.8",
-    "@keplr-wallet/types": "^0.11.1",
+    "@keplr-wallet/types": "^0.11.10",
     "@metamask/eth-sig-util": "^5.0.0",
     "@patternfly/react-charts": "^6.92.0",
     "@testing-library/jest-dom": "^5.16.5",
