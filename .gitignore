@@ -132,3 +132,4 @@ vendor
 
 # Smart contracts 
 smartcontract/target
+smartcontract/node_modules

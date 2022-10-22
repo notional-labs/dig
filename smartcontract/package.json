@@ -1,0 +1,21 @@
+{
+  "name": "dig",
+  "version": "1.0.0",
+  "description": "NFT smart contracts for dig chain ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kien6034 <trinhtrungkientb99@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@cosmjs/amino": "^0.28.11",
+    "@cosmjs/cosmwasm-stargate": "^0.28.11",
+    "@cosmjs/proto-signing": "^0.28.11",
+    "@cosmjs/stargate": "^0.28.11",
+    "big-number": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.6.5"
+  }
+}
