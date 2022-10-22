@@ -128,3 +128,7 @@ airdrop/sdc/.DS_Store
 
 #vendor
 vendor
+
+
+# Smart contracts 
+smartcontract/target
