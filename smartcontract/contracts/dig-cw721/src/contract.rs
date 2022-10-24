@@ -9,7 +9,7 @@ use url::Url;
 
 use crate::error::ContractError;
 use crate::msg::{
-    ContractInfoResponse, CreateShoeModelMsg, ExecuteMsg, InstantiateMsg, MintMsg,
+    ContractInfoResponse, CreateModelMsg, ExecuteMsg, InstantiateMsg, MintMsg,
     RoyaltyInfoResponse,
 };
 use crate::state::{
@@ -93,7 +93,7 @@ where
     ) -> Result<Response<C>, ContractError> {
         match msg {
             ExecuteMsg::Mint(msg) => self.mint(deps, env, info, msg),
-            ExecuteMsg::CreateShoeModel(msg) => self.create_model(deps, env, info, msg),
+            ExecuteMsg::CreateModel(msg) => self.create_model(deps, env, info, msg),
             ExecuteMsg::Approve {
                 spender,
                 token_id,
@@ -190,7 +190,7 @@ where
         deps: DepsMut,
         _env: Env,
         info: MessageInfo,
-        msg: CreateShoeModelMsg<T>,
+        msg: CreateModelMsg<T>,
     ) -> Result<Response<C>, ContractError> {
         let minter = self.minter.load(deps.storage)?;
 

@@ -39,7 +39,7 @@ pub enum ExecuteMsg<T> {
 
     Mint(MintMsg<T>),
 
-    CreateShoeModel(CreateShoeModelMsg<T>),
+    CreateModel(CreateModelMsg<T>),
 
     Burn { token_id: String },
 
@@ -56,7 +56,7 @@ pub struct MintMsg<T> {
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
-pub struct CreateShoeModelMsg<T> {
+pub struct CreateModelMsg<T> {
     pub model_id: String,
     pub owner: String,
     pub model_uri: String,

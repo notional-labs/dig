@@ -11,24 +11,44 @@ class NFT extends Bot {
         return receipt;
     }
 
-    instantiate = async(sender, code_id)=> {
-        let test_init_msg = {
-            "name": "Test",
-            "symbol": "ANCC",
-            "minter": "wasm1zgwfdu7meqhkgt0c6p039qm57jv6tgkwt5nx6x",
-            "collection_info": {
-                "creator": "wasm1zgwfdu7meqhkgt0c6p039qm57jv6tgkwt5nx6x",
-                "description": "test",
-                "image": "ipfs://bafybeigi3bwpvyvsmnbj46ra4hyffcxdeaj6ntfk5jpic5mx27x6ih2qvq/images/1.png",
-            }
-        } 
-
-        let receipt= await this.instantiate_base(null, code_id, test_init_msg, "nft")
+    instantiate = async(sender, code_id, init_msg)=> {
+        let receipt= await this.instantiate_base(null, code_id, init_msg, "nft")
         return receipt;
     }
 
-    create_model = async(sender, exe_msg) => {
+    deploy = async(sender, init_msg) => {
+        let contract_addr = await this.deploy_base(sender, this.wasm_dir, init_msg, "dig_cw721");
+        return contract_addr;
+    }
+
+    create_model = async(sender, model_id, owner, model_uri, extension) => {
+        const create_model_msg = {
+            "create_model": {
+                "model_id": model_id,
+                "owner": owner, 
+                "model_uri": model_uri,
+                "extension": extension
+            }
+        }
         let receipt = await this.execute_base(
+            sender, 
+            create_model_msg
+        )
+        return receipt;
+    }
+
+    mint = async(sender, token_id, owner, model_id, size, extension) => {
+        const exe_msg = {
+            "mint": {
+                "token_id": token_id,
+                "owner": owner,
+                "model_id": model_id,
+                "size": size,
+                "extension": extension
+            }
+        }
+
+        const receipt = await this.execute_base(
             sender, 
             exe_msg
         )
@@ -47,6 +67,29 @@ class NFT extends Bot {
         return result;
     }
 
+    query_collection_info = async() => {
+        const query_msg = {
+            "collection_info": {
+            }
+        }
+
+        let result = await this.query_base(query_msg);
+        return result;
+    }
+
+    query_all_tokens = async()=> {
+        const query_msg = {
+            "all_tokens": {
+            }
+        }
+
+        let result = await this.query_base(query_msg);
+        return result;
+    }
+
+    query_nft = async()=> {
+        
+    }
 }
 
 module.exports = NFT

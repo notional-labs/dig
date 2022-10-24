@@ -1,4 +1,4 @@
-const env = require("../config");
+let env = require("../config");
 const { makeCosmoshubPath } = require("@cosmjs/amino");
 const { DirectSecp256k1HdWallet } = require("@cosmjs/proto-signing");
 const { SigningCosmWasmClient, CosmWasmClient }= require("@cosmjs/cosmwasm-stargate");
@@ -8,6 +8,9 @@ const BigNumber = require("big-number");
 
 class Bot {
     constructor() {
+        this.network_name = env.NETWORK;
+        this.network = env[this.network_name];
+
         this.signer = null;
         this.signing_client = null;
         this.query_client = null;
@@ -38,7 +41,7 @@ class Bot {
     get_signer = async(menemonic=null) => {
         let seed_phrase = null;
         if (menemonic == null) {
-            seed_phrase = env.MNEMONIC;
+            seed_phrase = this.network.MNEMONIC;
         }
         else {
             seed_phrase = menemonic;
@@ -47,7 +50,7 @@ class Bot {
             seed_phrase,
             {
                 hdPaths: [makeCosmoshubPath(0)],
-                prefix: env.PREFIX,
+                prefix: this.network.PREFIX,
             }
         );
         return signer;
@@ -55,18 +58,18 @@ class Bot {
 
     get_signing_client = async(signer) =>{
         const signing_client = await SigningCosmWasmClient.connectWithSigner(
-            env.RPC,
+            this.network.RPC,
             signer,
             {
-                prefix: env.PREFIX,
-                gasPrice: GasPrice.fromString(env.GAS_PRICE),
+                prefix: this.network.PREFIX,
+                gasPrice: GasPrice.fromString(this.network.GAS_PRICE),
             }
         );
         return signing_client;
     }
 
     get_querying_client = async() => {
-        const query_client = await CosmWasmClient.connect(env.RPC);
+        const query_client = await CosmWasmClient.connect(this.network.RPC);
         return query_client;
     }   
 
@@ -98,7 +101,6 @@ class Bot {
     instantiate_base = async(sender, code_id, init_msg, label)=>{
         const [signing_client, signer_key] = await this._load_signer_client(sender);
 
-        console.log(init_msg)
         let receipt = await signing_client.instantiate(
             signer_key.address,
             code_id,
@@ -108,6 +110,14 @@ class Bot {
         )
 
         return receipt;
+    }
+
+    deploy_base = async(sender, wasm_dir, init_msg, label) => {
+        let upload_tx = await this.upload_base(sender, wasm_dir);
+        let instantiate_tx = await this.instantiate_base(sender, upload_tx.codeId, init_msg, label);
+
+        this.contract_addr = instantiate_tx.contractAddress;
+        return this.contract_addr;
     }
 
     execute_base = async(sender, exe_msg) => {
