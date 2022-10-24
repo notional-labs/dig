@@ -29,19 +29,45 @@ const main = async () => {
     const model_id = "1";
     const model_uri = "ipfs://ipfs/bafybeiaivv62j7jxlkahxobfr5io7h2j56obw5mojljho2ybg7zhah2eue/galaxyfcnCU3/2";
     const owner = deployer_key.address;
-    await nft.create_model(null, model_id, owner, model_uri, null);
+    const extension = {
+        "name": "Hanoi",
+        "image": "Some image url here",
+        "description": "Hanoi which is located in the central of Northern VN, ... ",
+        "coordinate": {
+            "lat": "105.8342° N",
+            "lon": "21.0278° N"
+        },
+        "land_area": "100.5",
+        "construction_area": "200.2",
+        "image_gallary": [
+            "image_1_url",
+            "image_2_url"
+        ],
+        "suppy_limit_per_address": 1
+    }
 
-    const all_models = await nft.query_all_models();
-    console.log(all_models);
+    await nft.create_model(null, model_id, owner, model_uri, extension);
+
+    // const all_models = await nft.query_all_models();
+    // console.log(all_models);
 
 
     const token_id = "1";
-    const size = "38"
-    await nft.mint(null, token_id, owner, model_id, size, null);
+    await nft.mint(null, token_id, owner, model_id, null);
 
-    let all_tokens = await nft.query_all_tokens();
-    console.log(all_tokens)
+    // let all_tokens = await nft.query_all_tokens();
+    // console.log(all_tokens)
 
+
+    console.log("MODEL INFO");
+    const model_info = await nft.query_model(model_id);
+    console.log(model_info)
+    console.log("------------\n Model trait");
+    console.log(model_info.extension.attributes)
+    
+    console.log("\n========================= \n NFT INFO")
+    let nft_info = await nft.query_nft(token_id);
+    console.log(nft_info);
 }
 
 

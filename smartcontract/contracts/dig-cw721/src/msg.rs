@@ -1,10 +1,10 @@
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
-use cosmwasm_std::{Binary, Decimal};
+use cosmwasm_std::{Binary, Decimal, Addr};
 use cw721::Expiration;
 
-use crate::{state::{CollectionInfo, Approval, TokenInfo, ModelInfo}, ContractError};
+use crate::{state::{CollectionInfo, Approval, TokenInfo, ModelInfo, TokenStatus}, ContractError};
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 pub struct InstantiateMsg {
@@ -51,7 +51,6 @@ pub struct MintMsg<T> {
     pub token_id: String,
     pub owner: String,
     pub model_id: String,
-    pub size: String,
     pub extension: T,
 }
 
@@ -217,7 +216,8 @@ pub struct AllNftInfoResponse<T> {
 pub struct NftInfoResponse<T> {
     pub model_id: String,
     pub token_uri: String,
-    pub size: String,
+    pub owner: Addr,
+    pub status: TokenStatus,
     pub extension: T,
 }
 

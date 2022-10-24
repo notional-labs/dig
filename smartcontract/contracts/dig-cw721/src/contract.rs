@@ -13,7 +13,7 @@ use crate::msg::{
     RoyaltyInfoResponse,
 };
 use crate::state::{
-    AnoneCw721Contract, Approval, CollectionInfo, ModelInfo, RoyaltyInfo, TokenInfo,
+    AnoneCw721Contract, Approval, CollectionInfo, ModelInfo, RoyaltyInfo, TokenInfo, TokenStatus,
     COLLECTION_INFO,
 };
 
@@ -161,7 +161,7 @@ where
             approvals: vec![],
             model_id: msg.model_id,
             token_uri: model.model_uri,
-            size: msg.size,
+            status: TokenStatus::NotListing,
             extension: msg.extension,
         };
 

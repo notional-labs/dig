@@ -37,13 +37,12 @@ class NFT extends Bot {
         return receipt;
     }
 
-    mint = async(sender, token_id, owner, model_id, size, extension) => {
+    mint = async(sender, token_id, owner, model_id, extension) => {
         const exe_msg = {
             "mint": {
                 "token_id": token_id,
                 "owner": owner,
                 "model_id": model_id,
-                "size": size,
                 "extension": extension
             }
         }
@@ -87,8 +86,26 @@ class NFT extends Bot {
         return result;
     }
 
-    query_nft = async()=> {
-        
+    query_nft = async(token_id)=> {
+        const query_msg = {
+            "all_nft_info": {
+                "token_id": token_id
+            }
+        }
+
+        let result = await this.query_base(query_msg);
+        return result;
+    }
+
+    query_model = async(model_id)=>{
+        const query_msg = {
+            "model_info": {
+                "model_id": model_id
+            }
+        }
+
+        let result = await this.query_base(query_msg);
+        return result;
     }
 }
 

@@ -3,14 +3,17 @@ mod contract;
 pub mod msg;
 mod query;
 pub mod state;
+pub mod metadata;
 
 pub use crate::error::ContractError;
 pub use crate::msg::{ExecuteMsg, InstantiateMsg, MintMsg, MinterResponse, QueryMsg};
 pub use crate::state::AnoneCw721Contract;
 use cosmwasm_std::Empty;
 
+use crate::metadata::{Metadata};
+
 // This is a simple type to let us handle empty extensions
-pub type Extension = Option<Empty>;
+pub type Extension = Option<Metadata>;
 
 #[cfg(not(feature = "library"))]
 pub mod entry {

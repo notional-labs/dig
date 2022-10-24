@@ -127,6 +127,12 @@ pub struct RoyaltyInfo {
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+pub enum TokenStatus {
+    NotListing,
+    Listing
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 pub struct TokenInfo<T> {
     /// Id of this token
     pub token_id: String,
@@ -142,9 +148,8 @@ pub struct TokenInfo<T> {
 
     /// Token uri will be the same as model_uri of this token's model
     pub token_uri: String,
-
-    /// Here is a unique feature of Anone project.
-    pub size: String,
+    
+    pub status: TokenStatus,
 
     /// You can add any custom metadata here when you extend cw721-base
     pub extension: T,
