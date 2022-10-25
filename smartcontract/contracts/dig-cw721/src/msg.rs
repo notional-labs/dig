@@ -59,6 +59,7 @@ pub struct CreateModelMsg<T> {
     pub model_id: String,
     pub owner: String,
     pub model_uri: String,
+    pub supply_limit: u64,
     pub extension: T,
 }
 
@@ -225,6 +226,8 @@ pub struct NftInfoResponse<T> {
 pub struct ModelInfoResponse<T> {
     pub owner: String,
     pub model_uri: String,
+    pub supply_limit: u64,
+    pub current_supply: u64,
     pub extension: T,
 }
 

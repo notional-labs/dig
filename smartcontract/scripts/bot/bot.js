@@ -106,10 +106,24 @@ class Bot {
             code_id,
             init_msg,
             label,
-            "auto"
+            "auto",
+            {
+                "admin": signer_key.address
+            }
         )
 
         return receipt;
+    }
+
+    migrate_base = async(sender, new_code_id, migrate_msg) => {
+        const [signing_client, signer_key] = await this._load_signer_client(sender);
+        let receipt = await signing_client.migrate(
+            signer_key.address,
+            this.contract_addr,
+            new_code_id,
+            migrate_msg,
+            "auto"
+        )
     }
 
     deploy_base = async(sender, wasm_dir, init_msg, label) => {

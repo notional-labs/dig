@@ -26,7 +26,6 @@ pub struct Metadata {
     pub land_area: Option<String>,
     pub construction_area: Option<String>,
     pub image_gallary: Option<Vec<String>>,
-    pub suppy_limit_per_address: Option<u64>,
     pub attributes: Option<Vec<Trait>>,
 }
 

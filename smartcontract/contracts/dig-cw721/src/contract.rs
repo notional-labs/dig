@@ -153,7 +153,19 @@ where
             return Err(ContractError::Unauthorized {});
         }
 
-        let model = self.models.load(deps.storage, &msg.model_id)?;
+        // Todo: read index map
+        // if !self.models.has(deps.storage, &msg.model_id) {
+        //     return Err(ContractError::ModelNotExisted { });
+        // }
+
+        let mut model = self.models.load(deps.storage, &msg.model_id)?;
+        model.current_supply += 1;
+
+        if model.current_supply > model.suppy_limit {
+            return  Err(ContractError::MaxModelSupplyExceeded {});
+        }
+        self.models.save(deps.storage, &msg.model_id, &model)?;
+
         // create the token
         let token = TokenInfo {
             token_id: msg.token_id.clone(),
@@ -197,6 +209,8 @@ where
         if info.sender != minter {
             return Err(ContractError::Unauthorized {});
         }
+        
+        // Todo: Read field on generic input
 
         let model_uri = Url::parse(&msg.model_uri)?;
         if model_uri.scheme() != "ipfs" {
@@ -208,6 +222,8 @@ where
             model_id: msg.model_id.clone(),
             owner: deps.api.addr_validate(&msg.owner)?,
             model_uri: model_uri.to_string(),
+            suppy_limit: msg.supply_limit,
+            current_supply: 0u64,
             extension: msg.extension,
         };
         self.models

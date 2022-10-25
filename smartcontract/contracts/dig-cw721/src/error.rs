@@ -13,8 +13,17 @@ pub enum ContractError {
     #[error("token_id already claimed")]
     Claimed {},
 
+    #[error("Model not existed")]
+    ModelNotExisted {},
+
+    #[error("Max supply of model exceeded")]
+    MaxModelSupplyExceeded {},
+
     #[error("model_id already claimed")]
     ModelClaimed {},
+
+    #[error("require denominator")]
+    RequireDenominator {},
 
     #[error("Cannot set approval that is already expired")]
     Expired {},

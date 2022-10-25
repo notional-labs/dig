@@ -165,6 +165,10 @@ pub struct ModelInfo<T> {
 
     pub model_uri: String,
 
+    pub suppy_limit: u64,
+
+    pub current_supply: u64,
+
     pub extension: T,
 }
 

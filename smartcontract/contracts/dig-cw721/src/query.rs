@@ -98,6 +98,8 @@ where
         Ok(ModelInfoResponse {
             owner: info.owner.to_string(),
             model_uri: info.model_uri,
+            supply_limit: info.suppy_limit,
+            current_supply: info.current_supply,
             extension: info.extension,
         })
     }

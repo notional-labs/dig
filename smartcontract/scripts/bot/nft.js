@@ -12,7 +12,12 @@ class NFT extends Bot {
     }
 
     instantiate = async(sender, code_id, init_msg)=> {
-        let receipt= await this.instantiate_base(null, code_id, init_msg, "nft")
+        let receipt= await this.instantiate_base(sender, code_id, init_msg, "nft")
+        return receipt;
+    }
+
+    migrate = async(sender, new_code_id)=>{
+        let receipt = await this.migrate_base(sender, new_code_id, {});
         return receipt;
     }
 
@@ -21,12 +26,13 @@ class NFT extends Bot {
         return contract_addr;
     }
 
-    create_model = async(sender, model_id, owner, model_uri, extension) => {
+    create_model = async(sender, model_id, owner, model_uri, supply_limit, extension) => {
         const create_model_msg = {
             "create_model": {
                 "model_id": model_id,
                 "owner": owner, 
                 "model_uri": model_uri,
+                "supply_limit": supply_limit,
                 "extension": extension
             }
         }

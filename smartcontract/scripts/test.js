@@ -5,8 +5,7 @@ const main = async () => {
     let nft = new NFT();
     await nft.load();
 
-    let receipt = await nft.upload();
-    console.log(receipt);
+    console.log(await nft.get_signer_address())
 }
 
 main()

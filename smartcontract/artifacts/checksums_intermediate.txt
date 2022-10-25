@@ -1,3 +1,3 @@
-e2d27121364d9f214bd6dfdc87ed6405efe465bfb41f441ed2b8097fc553c5ef  target/wasm32-unknown-unknown/release/dig_cw721.wasm
+2e9705bf92cc3dfacdfa46a6d68ee8cd315d2af5921ad18e328d861d40393820  target/wasm32-unknown-unknown/release/dig_cw721.wasm
 1dd476fea7017b94277dd0e3e5796594b03e2ce673d5596c1807420b457cf651  target/wasm32-unknown-unknown/release/dig_marketplace.wasm
 e61dfc77f35e8f0fbff5129f4d4033263de359155a52d71f36e4bdc2bb199f77  target/wasm32-unknown-unknown/release/dig_minter.wasm
