@@ -39,7 +39,7 @@
     "react-minimal-pie-chart": "^8.3.0",
     "react-router-dom": "^6.4.0",
     "react-scripts": "^5.0.1",
-    "react-select": "^5.4.0",
+    "react-select": "^5.5.6",
     "react-spinners": "^0.13.4",
     "web-vitals": "^3.0.2",
     "web3": "^1.8.0"
