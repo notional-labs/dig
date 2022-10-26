@@ -276,6 +276,26 @@ where
         Ok(ModelsResponse { models: models? })
     }
 
+    fn model_by_owner(
+        &self,
+        deps: Deps,
+        owner: Addr,
+        start_after: Option<String>,
+        limit: Option<u32>,
+    ) -> StdResult<ModelsResponse> {
+        let limit = limit.unwrap_or(DEFAULT_LIMIT).min(MAX_LIMIT) as usize;
+        let start = start_after.map(Bound::exclusive);
+
+        let models: StdResult<Vec<String>> = self
+            .models
+            .range(deps.storage, start, None, Order::Ascending)
+            .take(limit)
+            .map(|item| item.map(|(k, _)| k))
+            .collect();
+
+        Ok(ModelsResponse { models: models? })
+    }
+
     fn all_models_info(
         &self,
         deps: Deps,

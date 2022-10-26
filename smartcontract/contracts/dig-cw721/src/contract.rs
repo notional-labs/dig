@@ -1,3 +1,4 @@
+
 use serde::de::DeserializeOwned;
 use serde::Serialize;
 
@@ -589,5 +590,60 @@ where
             }
             None => Err(ContractError::Unauthorized {}),
         }
+    }
+}
+
+
+#[cfg(test)]
+mod test {
+    use std::borrow::BorrowMut;
+
+    use cosmwasm_std::{testing::MockStorage, Addr, Empty, Order, StdResult};
+
+    use crate::{state::{TokenInfo, TokenStatus}, AnoneCw721Contract};
+
+
+    #[test]
+    fn test_tokens() {
+        let mut store = MockStorage::new();
+
+        let owner1 = Addr::unchecked("addr1");
+
+        let token1_id = "1".to_string();
+        let token2_id = "2".to_string();
+
+
+        let token1 : TokenInfo<Option<Empty>> = TokenInfo {
+            owner: owner1.clone(),
+            token_id: "1".to_string(),
+            approvals: vec![],
+            model_id: "1".to_string(),
+            token_uri: "abc".to_string(),
+            status: TokenStatus::Listing,
+            extension: None,
+        };
+
+        let token2: TokenInfo<Option<Empty>> = TokenInfo {
+            owner: owner1.clone(),
+            token_id: "2".to_string(),
+            approvals: vec![],
+            model_id: "1".to_string(),
+            token_uri: "abc".to_string(),
+            status: TokenStatus::Listing,
+            extension: None,
+        };
+
+        let sm : AnoneCw721Contract<Option<Empty>, Empty> = AnoneCw721Contract::default();
+
+        sm.tokens.save(store.borrow_mut(), &token1_id, &token1).unwrap();
+        sm.tokens.save(store.borrow_mut(), &token2_id, &token2).unwrap();
+
+        let list: Vec<_> = sm.tokens
+            .idx.owner
+            .prefix(owner1)
+            .range(&store, None, None, Order::Ascending)
+            .collect::<StdResult<_>>().unwrap();
+
+        println!("List {:?}", list);
     }
 }

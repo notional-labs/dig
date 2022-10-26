@@ -32,8 +32,13 @@ const main = async () => {
 
     const network_name = nft.network_name;
 
-    let upload_tx = await nft.upload();
+    //let upload_tx = await nft.upload();
     let deployer_key = await nft.get_signer_address();
+
+    console.log(deployer_key.address)
+    console.log(await nft.query_client.getChainId())
+    console.log(await nft.query_client.getBalance(deployer_key.address, "ujuno"))
+    process.exit(1)
     
     let test_init_msg = {
         "name": "Test",
@@ -46,6 +51,8 @@ const main = async () => {
         }
     } 
     let instantiate_tx = await nft.instantiate(null, upload_tx.codeId, test_init_msg);
+
+    console.log(`Contract deployed to: ${instantiate_tx.contractAddress}`);
     
     if (data[network_name]){
         data[network_name]["dig_cw721"] = instantiate_tx.contractAddress;

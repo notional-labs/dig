@@ -24,8 +24,9 @@ const main = async () => {
     } 
 
     let contract_addr = await nft.deploy(null, test_init_msg);
+    console.log(contract_addr)
     
-    
+    process.exit(1)
     const model_id = "1";
     const model_uri = "ipfs://ipfs/bafybeiaivv62j7jxlkahxobfr5io7h2j56obw5mojljho2ybg7zhah2eue/galaxyfcnCU3/2";
     const owner = deployer_key.address;
