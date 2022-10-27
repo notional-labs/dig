@@ -615,7 +615,7 @@ mod test {
 
         let token1 : TokenInfo<Option<Empty>> = TokenInfo {
             owner: owner1.clone(),
-            token_id: "1".to_string(),
+            token_id: "10".to_string(),
             approvals: vec![],
             model_id: "1".to_string(),
             token_uri: "abc".to_string(),
@@ -625,9 +625,9 @@ mod test {
 
         let token2: TokenInfo<Option<Empty>> = TokenInfo {
             owner: owner1.clone(),
-            token_id: "2".to_string(),
+            token_id: "1".to_string(),
             approvals: vec![],
-            model_id: "1".to_string(),
+            model_id: "2".to_string(),
             token_uri: "abc".to_string(),
             status: TokenStatus::Listing,
             extension: None,
@@ -645,5 +645,14 @@ mod test {
             .collect::<StdResult<_>>().unwrap();
 
         println!("List {:?}", list);
+
+        let list_by_model: Vec<_> = sm.tokens
+        .idx.model
+        .prefix("1".to_string())
+        .range(&store, None, None, Order::Ascending)
+        .collect::<StdResult<_>>().unwrap();
+
+        println!("List by model: {:?}", list_by_model);
+
     }
 }

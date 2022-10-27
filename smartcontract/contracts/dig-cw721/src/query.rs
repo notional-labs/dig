@@ -276,10 +276,10 @@ where
         Ok(ModelsResponse { models: models? })
     }
 
-    fn model_by_owner(
+    fn token_by_model(
         &self,
         deps: Deps,
-        owner: Addr,
+        model_id: String,
         start_after: Option<String>,
         limit: Option<u32>,
     ) -> StdResult<ModelsResponse> {

@@ -39,6 +39,7 @@ where
             "operators",
             "tokens",
             "tokens__owner",
+            "tokens_model",
             "models",
             "models_owner",
         )
@@ -57,11 +58,13 @@ where
         operator_key: &'a str,
         tokens_key: &'a str,
         tokens_owner_key: &'a str,
+        tokens_model_key: &'a str,
         models_key: &'a str,
         models_owner_key: &'a str,
     ) -> Self {
         let indexes = TokenIndexes {
             owner: MultiIndex::new(token_owner_idx, tokens_key, tokens_owner_key),
+            model: MultiIndex::new(token_model_idx, tokens_key, tokens_model_key)
         };
         let model_indexes = ModelIndexes {
             owner: MultiIndex::new(model_owner_idx, models_key, models_owner_key),
@@ -191,6 +194,7 @@ where
     T: Serialize + DeserializeOwned + Clone,
 {
     pub owner: MultiIndex<'a, Addr, TokenInfo<T>, Addr>,
+    pub model: MultiIndex<'a, String, TokenInfo<T>, String>
 }
 
 impl<'a, T> IndexList<TokenInfo<T>> for TokenIndexes<'a, T>
@@ -198,7 +202,7 @@ where
     T: Serialize + DeserializeOwned + Clone,
 {
     fn get_indexes(&'_ self) -> Box<dyn Iterator<Item = &'_ dyn Index<TokenInfo<T>>> + '_> {
-        let v: Vec<&dyn Index<TokenInfo<T>>> = vec![&self.owner];
+        let v: Vec<&dyn Index<TokenInfo<T>>> = vec![&self.owner, &self.model];
         Box::new(v.into_iter())
     }
 }
@@ -207,6 +211,9 @@ pub fn token_owner_idx<T>(d: &TokenInfo<T>) -> Addr {
     d.owner.clone()
 }
 
+pub fn token_model_idx<T>(d: &TokenInfo<T>) -> String {
+    d.model_id.clone()
+}
 pub struct ModelIndexes<'a, T>
 where
     T: Serialize + DeserializeOwned + Clone,
