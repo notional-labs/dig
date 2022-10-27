@@ -11,8 +11,11 @@ use crate::msg::{
     AllModelsResponse, AllNftInfoResponse, AllNftsResponse, ApprovalResponse, ApprovalsResponse,
     CollectionInfoResponse, ContractInfoResponse, MinterResponse, ModelInfoResponse,
     ModelsResponse, NftInfoResponse, NumModelsResponse, NumTokensResponse, OperatorsResponse,
-    OwnerOfResponse, QueryMsg, RoyaltyInfoResponse, TokensResponse,
+    OwnerOfResponse, QueryMsg, TokensResponse,
 };
+
+use dig::cw721::{RoyaltyInfoResponse};
+
 use crate::state::COLLECTION_INFO;
 use crate::state::{AnoneCw721Contract, Approval, ModelInfo, TokenInfo};
 

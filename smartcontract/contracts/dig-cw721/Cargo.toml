@@ -50,6 +50,7 @@ schemars = "0.8"
 serde = { version = "1.0.130", default-features = false, features = ["derive"] }
 thiserror = { version = "1.0.30" }
 url = "2.2.2"
+dig = {version="0.1.0", path="../../packages/dig"}
 
 [dev-dependencies]
 cosmwasm-schema = { version = "1.0.0-beta3" }

@@ -14,6 +14,7 @@ const main = async () => {
     const model_id = "1";  // this need to be created 
     const token_id = "1"; // this need to be unique 
 
+    // Sender = null means that the wallet from the config.js will be used to perform the tx
     await nft.mint(null, token_id, owner, model_id, null);
 
 }

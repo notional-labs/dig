@@ -8,15 +8,17 @@ use cw2::set_contract_version;
 use cw721::{CustomMsg, Cw721Execute, Cw721ReceiveMsg, Expiration};
 use url::Url;
 
-use crate::error::ContractError;
+use dig::errors::{CW721Error};
+use dig::cw721::{InstantiateMsg, RoyaltyInfo, CollectionInfo, RoyaltyInfoResponse};
 use crate::msg::{
-    ContractInfoResponse, CreateModelMsg, ExecuteMsg, InstantiateMsg, MintMsg,
-    RoyaltyInfoResponse,
+    ContractInfoResponse, CreateModelMsg, ExecuteMsg, MintMsg,
 };
 use crate::state::{
-    AnoneCw721Contract, Approval, CollectionInfo, ModelInfo, RoyaltyInfo, TokenInfo, TokenStatus,
+    AnoneCw721Contract, Approval, ModelInfo, TokenInfo, TokenStatus,
     COLLECTION_INFO,
 };
+
+
 
 // version info for migration info
 const CONTRACT_NAME: &str = "crates.io:anone-cw721";
@@ -34,7 +36,7 @@ where
         _env: Env,
         _info: MessageInfo,
         msg: InstantiateMsg,
-    ) -> Result<Response<C>, ContractError> {
+    ) -> Result<Response<C>, CW721Error> {
         set_contract_version(deps.storage, CONTRACT_NAME, CONTRACT_VERSION)?;
 
         let info = ContractInfoResponse {
@@ -46,12 +48,12 @@ where
         self.minter.save(deps.storage, &minter)?;
         // anone-cw721 instantiation
         if msg.collection_info.description.len() > MAX_DESCRIPTION_LENGTH as usize {
-            return Err(ContractError::DescriptionTooLong {});
+            return Err(CW721Error::DescriptionTooLong {});
         }
 
         let image = Url::parse(&msg.collection_info.image)?;
         if image.scheme() != "ipfs" {
-            return Err(ContractError::InvalidBaseURI {});
+            return Err(CW721Error::InvalidBaseURI {});
         }
 
         if let Some(ref external_link) = msg.collection_info.external_link {
@@ -91,7 +93,7 @@ where
         env: Env,
         info: MessageInfo,
         msg: ExecuteMsg<T>,
-    ) -> Result<Response<C>, ContractError> {
+    ) -> Result<Response<C>, CW721Error> {
         match msg {
             ExecuteMsg::Mint(msg) => self.mint(deps, env, info, msg),
             ExecuteMsg::CreateModel(msg) => self.create_model(deps, env, info, msg),
@@ -147,23 +149,23 @@ where
         _env: Env,
         info: MessageInfo,
         msg: MintMsg<T>,
-    ) -> Result<Response<C>, ContractError> {
+    ) -> Result<Response<C>, CW721Error> {
         let minter = self.minter.load(deps.storage)?;
 
         if info.sender != minter {
-            return Err(ContractError::Unauthorized {});
+            return Err(CW721Error::Unauthorized {});
         }
 
         // Todo: read index map
         // if !self.models.has(deps.storage, &msg.model_id) {
-        //     return Err(ContractError::ModelNotExisted { });
+        //     return Err(CW721Error::ModelNotExisted { });
         // }
 
         let mut model = self.models.load(deps.storage, &msg.model_id)?;
         model.current_supply += 1;
 
         if model.current_supply > model.suppy_limit {
-            return  Err(ContractError::MaxModelSupplyExceeded {});
+            return  Err(CW721Error::MaxModelSupplyExceeded {});
         }
         self.models.save(deps.storage, &msg.model_id, &model)?;
 
@@ -180,7 +182,7 @@ where
 
         self.tokens
             .update(deps.storage, &msg.token_id, |old| match old {
-                Some(_) => Err(ContractError::Claimed {}),
+                Some(_) => Err(CW721Error::Claimed {}),
                 None => Ok(token),
             })?;
 
@@ -204,18 +206,18 @@ where
         _env: Env,
         info: MessageInfo,
         msg: CreateModelMsg<T>,
-    ) -> Result<Response<C>, ContractError> {
+    ) -> Result<Response<C>, CW721Error> {
         let minter = self.minter.load(deps.storage)?;
 
         if info.sender != minter {
-            return Err(ContractError::Unauthorized {});
+            return Err(CW721Error::Unauthorized {});
         }
         
         // Todo: Read field on generic input
 
         let model_uri = Url::parse(&msg.model_uri)?;
         if model_uri.scheme() != "ipfs" {
-            return Err(ContractError::InvalidBaseURI {});
+            return Err(CW721Error::InvalidBaseURI {});
         }
 
         // create the shoe model
@@ -229,7 +231,7 @@ where
         };
         self.models
             .update(deps.storage, &msg.model_id, |old| match old {
-                Some(_) => Err(ContractError::ModelClaimed {}),
+                Some(_) => Err(CW721Error::ModelClaimed {}),
                 None => Ok(model),
             })?;
 
@@ -256,11 +258,11 @@ where
         image: Option<String>,
         external_link: Option<String>,
         royalty_info: Option<RoyaltyInfoResponse>,
-    ) -> Result<Response<C>, ContractError> {
+    ) -> Result<Response<C>, CW721Error> {
         let mut collection_info = COLLECTION_INFO.load(deps.storage)?;
         let minter = self.minter.load(deps.storage)?;
         if info.sender != minter {
-            return Err(ContractError::Unauthorized {});
+            return Err(CW721Error::Unauthorized {});
         }
 
         if let Some(i) = description.clone() {
@@ -270,7 +272,7 @@ where
         if let Some(i) = image.clone() {
             let image_url = Url::parse(&i)?;
             if image_url.scheme() != "ipfs" {
-                return Err(ContractError::InvalidBaseURI {});
+                return Err(CW721Error::InvalidBaseURI {});
             }
             collection_info.image = i;
         }
@@ -316,7 +318,7 @@ where
     T: Serialize + DeserializeOwned + Clone,
     C: CustomMsg,
 {
-    type Err = ContractError;
+    type Err = CW721Error;
 
     fn transfer_nft(
         &self,
@@ -325,7 +327,7 @@ where
         info: MessageInfo,
         recipient: String,
         token_id: String,
-    ) -> Result<Response<C>, ContractError> {
+    ) -> Result<Response<C>, CW721Error> {
         self._transfer_nft(deps, &env, &info, &recipient, &token_id)?;
 
         Ok(Response::new()
@@ -343,7 +345,7 @@ where
         contract: String,
         token_id: String,
         msg: Binary,
-    ) -> Result<Response<C>, ContractError> {
+    ) -> Result<Response<C>, CW721Error> {
         // Transfer token
         self._transfer_nft(deps, &env, &info, &contract, &token_id)?;
 
@@ -370,7 +372,7 @@ where
         spender: String,
         token_id: String,
         expires: Option<Expiration>,
-    ) -> Result<Response<C>, ContractError> {
+    ) -> Result<Response<C>, CW721Error> {
         self._update_approvals(deps, &env, &info, &spender, &token_id, true, expires)?;
 
         Ok(Response::new()
@@ -387,7 +389,7 @@ where
         info: MessageInfo,
         spender: String,
         token_id: String,
-    ) -> Result<Response<C>, ContractError> {
+    ) -> Result<Response<C>, CW721Error> {
         self._update_approvals(deps, &env, &info, &spender, &token_id, false, None)?;
 
         Ok(Response::new()
@@ -404,11 +406,11 @@ where
         info: MessageInfo,
         operator: String,
         expires: Option<Expiration>,
-    ) -> Result<Response<C>, ContractError> {
+    ) -> Result<Response<C>, CW721Error> {
         // reject expired data as invalid
         let expires = expires.unwrap_or_default();
         if expires.is_expired(&env.block) {
-            return Err(ContractError::Expired {});
+            return Err(CW721Error::Expired {});
         }
 
         // set the operator for us
@@ -428,7 +430,7 @@ where
         _env: Env,
         info: MessageInfo,
         operator: String,
-    ) -> Result<Response<C>, ContractError> {
+    ) -> Result<Response<C>, CW721Error> {
         let operator_addr = deps.api.addr_validate(&operator)?;
         self.operators
             .remove(deps.storage, (&info.sender, &operator_addr));
@@ -445,7 +447,7 @@ where
         env: Env,
         info: MessageInfo,
         token_id: String,
-    ) -> Result<Response<C>, ContractError> {
+    ) -> Result<Response<C>, CW721Error> {
         let token = self.tokens.load(deps.storage, &token_id)?;
         self.check_can_send(deps.as_ref(), &env, &info, &token)?;
 
@@ -472,7 +474,7 @@ where
         info: &MessageInfo,
         recipient: &str,
         token_id: &str,
-    ) -> Result<TokenInfo<T>, ContractError> {
+    ) -> Result<TokenInfo<T>, CW721Error> {
         let mut token = self.tokens.load(deps.storage, token_id)?;
         // ensure we have permissions
         self.check_can_send(deps.as_ref(), env, info, &token)?;
@@ -494,7 +496,7 @@ where
         // if add == false, remove. if add == true, remove then set with this expiration
         add: bool,
         expires: Option<Expiration>,
-    ) -> Result<TokenInfo<T>, ContractError> {
+    ) -> Result<TokenInfo<T>, CW721Error> {
         let mut token = self.tokens.load(deps.storage, token_id)?;
         // ensure we have permissions
         self.check_can_approve(deps.as_ref(), env, info, &token)?;
@@ -512,7 +514,7 @@ where
             // reject expired data as invalid
             let expires = expires.unwrap_or_default();
             if expires.is_expired(&env.block) {
-                return Err(ContractError::Expired {});
+                return Err(CW721Error::Expired {});
             }
             let approval = Approval {
                 spender: spender_addr,
@@ -533,7 +535,7 @@ where
         env: &Env,
         info: &MessageInfo,
         token: &TokenInfo<T>,
-    ) -> Result<(), ContractError> {
+    ) -> Result<(), CW721Error> {
         // owner can approve
         if token.owner == info.sender {
             return Ok(());
@@ -545,12 +547,12 @@ where
         match op {
             Some(ex) => {
                 if ex.is_expired(&env.block) {
-                    Err(ContractError::Unauthorized {})
+                    Err(CW721Error::Unauthorized {})
                 } else {
                     Ok(())
                 }
             }
-            None => Err(ContractError::Unauthorized {}),
+            None => Err(CW721Error::Unauthorized {}),
         }
     }
 
@@ -561,7 +563,7 @@ where
         env: &Env,
         info: &MessageInfo,
         token: &TokenInfo<T>,
-    ) -> Result<(), ContractError> {
+    ) -> Result<(), CW721Error> {
         // owner can send
         if token.owner == info.sender {
             return Ok(());
@@ -583,12 +585,12 @@ where
         match op {
             Some(ex) => {
                 if ex.is_expired(&env.block) {
-                    Err(ContractError::Unauthorized {})
+                    Err(CW721Error::Unauthorized {})
                 } else {
                     Ok(())
                 }
             }
-            None => Err(ContractError::Unauthorized {}),
+            None => Err(CW721Error::Unauthorized {}),
         }
     }
 }

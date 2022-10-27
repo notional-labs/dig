@@ -3,7 +3,7 @@ use thiserror::Error;
 use url::ParseError;
 
 #[derive(Error, Debug, PartialEq)]
-pub enum ContractError {
+pub enum CW721Error {
     #[error("{0}")]
     Std(#[from] StdError),
 
@@ -42,4 +42,17 @@ pub enum ContractError {
 
     #[error("Invalid base URI (must be an IPFS URI)")]
     InvalidBaseURI {},
+}
+
+
+
+#[derive(Error, Debug, PartialEq)]
+pub enum MinterError {
+    #[error("{0}")]
+    Std(#[from] StdError),
+
+    #[error("Unauthorized")]
+    Unauthorized {},
+
+    
 }

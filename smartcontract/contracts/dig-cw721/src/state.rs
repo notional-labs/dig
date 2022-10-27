@@ -3,12 +3,14 @@ use serde::de::DeserializeOwned;
 use serde::{Deserialize, Serialize};
 use std::marker::PhantomData;
 
-use cosmwasm_std::{Addr, BlockInfo, Decimal, StdResult, Storage};
+use cosmwasm_std::{Addr, BlockInfo, StdResult, Storage};
 use cw721::Expiration;
 
 use cw_storage_plus::{Index, IndexList, IndexedMap, Item, Map, MultiIndex};
 
 use crate::msg::{ContractInfoResponse};
+
+use dig::cw721::{CollectionInfo, RoyaltyInfo};
 
 pub struct AnoneCw721Contract<'a, T, C>
 where
@@ -114,20 +116,6 @@ where
     }
 }
 
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
-pub struct CollectionInfo<T> {
-    pub creator: String,
-    pub description: String,
-    pub image: String,
-    pub external_link: Option<String>,
-    pub royalty_info: Option<T>,
-}
-
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
-pub struct RoyaltyInfo {
-    pub payment_address: Addr,
-    pub share: Decimal,
-}
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 pub enum TokenStatus {

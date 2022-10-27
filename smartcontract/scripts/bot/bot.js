@@ -8,6 +8,7 @@ const BigNumber = require("big-number");
 
 class Bot {
     constructor() {
+        console.log(`--- Running on network: ${env.NETWORK}`)
         this.network_name = env.NETWORK;
         this.network = env[this.network_name];
 
@@ -142,7 +143,6 @@ class Bot {
             process.exit(1);
         }
 
-        console.log(signer_key.address)
         let receipt = await signing_client.execute(
             signer_key.address,
             this.contract_addr,

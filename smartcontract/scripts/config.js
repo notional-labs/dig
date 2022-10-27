@@ -1,6 +1,6 @@
 
 const env = {
-    NETWORK: "notional_testnet",
+    NETWORK: "local_osmosis",
     
     "local_osmosis": {
         MNEMONIC: "notice oak worry limit wrap speak medal online prefer cluster roof addict wrist behave treat actual wasp year salad speed social layer crew genius",
@@ -20,7 +20,6 @@ const env = {
         PREFIX: "juno",
         GAS_PRICE: "0.25ujunox",
     }
-    
 };
 
 

@@ -1,10 +1,11 @@
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
-use cosmwasm_std::{Binary, Decimal, Addr};
+use cosmwasm_std::{Binary, Addr};
 use cw721::Expiration;
 
-use crate::{state::{CollectionInfo, Approval, TokenInfo, ModelInfo, TokenStatus}, ContractError};
+use crate::{state::{Approval, TokenInfo, ModelInfo, TokenStatus}};
+use dig::cw721::{CollectionInfo, RoyaltyInfoResponse};
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 pub struct InstantiateMsg {
@@ -153,21 +154,6 @@ pub struct CollectionInfoResponse {
     pub royalty_info: Option<RoyaltyInfoResponse>,
 }
 
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
-pub struct RoyaltyInfoResponse {
-    pub payment_address: String,
-    pub share: Decimal,
-}
-
-impl RoyaltyInfoResponse {
-    pub fn share_validate(&self) -> Result<Decimal, ContractError> {
-        if self.share > Decimal::percent(20) {
-            return Err(ContractError::InvalidRoyalities {});
-        }
-
-        Ok(self.share)
-    }
-}
 
 
 #[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema, Debug)]

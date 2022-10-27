@@ -1,12 +1,12 @@
-mod error;
 mod contract;
 pub mod msg;
 mod query;
 pub mod state;
 pub mod metadata;
 
-pub use crate::error::ContractError;
-pub use crate::msg::{ExecuteMsg, InstantiateMsg, MintMsg, MinterResponse, QueryMsg};
+pub use dig::errors::CW721Error;
+pub use dig::cw721::{InstantiateMsg};
+pub use crate::msg::{ExecuteMsg, MintMsg, MinterResponse, QueryMsg};
 pub use crate::state::AnoneCw721Contract;
 use cosmwasm_std::Empty;
 
@@ -29,7 +29,7 @@ pub mod entry {
         env: Env,
         info: MessageInfo,
         msg: InstantiateMsg,
-    ) -> Result<Response, ContractError> {
+    ) -> Result<Response, CW721Error> {
         let tract = AnoneCw721Contract::<Extension, Empty>::default();
         tract.instantiate(deps, env, info, msg)
     }
@@ -40,7 +40,7 @@ pub mod entry {
         env: Env,
         info: MessageInfo,
         msg: ExecuteMsg<Extension>,
-    ) -> Result<Response, ContractError> {
+    ) -> Result<Response, CW721Error> {
         let tract = AnoneCw721Contract::<Extension, Empty>::default();
         tract.execute(deps, env, info, msg)
     }
