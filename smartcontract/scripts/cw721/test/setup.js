@@ -32,13 +32,8 @@ const main = async () => {
 
     const network_name = nft.network_name;
 
-    //let upload_tx = await nft.upload();
+    let upload_tx = await nft.upload();
     let deployer_key = await nft.get_signer_address();
-
-    console.log(deployer_key.address)
-    console.log(await nft.query_client.getChainId())
-    console.log(await nft.query_client.getBalance(deployer_key.address, "ujuno"))
-    process.exit(1)
     
     let test_init_msg = {
         "name": "Test",

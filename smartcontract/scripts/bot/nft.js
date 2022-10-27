@@ -36,6 +36,7 @@ class NFT extends Bot {
                 "extension": extension
             }
         }
+
         let receipt = await this.execute_base(
             sender, 
             create_model_msg

@@ -142,6 +142,7 @@ class Bot {
             process.exit(1);
         }
 
+        console.log(signer_key.address)
         let receipt = await signing_client.execute(
             signer_key.address,
             this.contract_addr,

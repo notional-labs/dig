@@ -282,18 +282,16 @@ where
         model_id: String,
         start_after: Option<String>,
         limit: Option<u32>,
-    ) -> StdResult<ModelsResponse> {
+    ) -> StdResult<Vec<(String, TokenInfo<T>)>> {
         let limit = limit.unwrap_or(DEFAULT_LIMIT).min(MAX_LIMIT) as usize;
         let start = start_after.map(Bound::exclusive);
+        
+        let list : Vec<(String, TokenInfo<T>)> = self.
+            tokens.idx.model
+            .prefix(model_id)
+            .range(deps.storage, None, None, Order::Ascending).collect::<StdResult<_>>().unwrap();
 
-        let models: StdResult<Vec<String>> = self
-            .models
-            .range(deps.storage, start, None, Order::Ascending)
-            .take(limit)
-            .map(|item| item.map(|(k, _)| k))
-            .collect();
-
-        Ok(ModelsResponse { models: models? })
+        Ok(list)
     }
 
     fn all_models_info(

@@ -8,10 +8,14 @@ const main = async () => {
     const contract_addr = await get_contract_address(nft.network_name, "dig_cw721")
     await nft.load_contract(contract_addr);
 
+    const deployer = await nft.get_signer_address();
+    const owner = deployer.address;
+    
+    const model_id = "1";  // this need to be created 
+    const token_id = "1"; // this need to be unique 
 
-    console.log("\n =====================\nQuery result is: ");
-    let result = await nft.query_all_models();
-    console.log(result)
+    await nft.mint(null, token_id, owner, model_id, null);
+
 }
 
 main()
