@@ -8,25 +8,7 @@ const prompts = require('prompts');
 const main = async () => {
     const file = fs.readFileSync(deployed_path);
     const data = JSON.parse(file);
-
-
-    // const { gen } = await prompts([
-    //     {
-    //       type: 'confirm',
-    //       name: 'gen',
-    //       message:
-    //         "Yes for true, no for false?",
-    //       initial: true,
-    //     },
-    //   ]);
-
-    // if (gen){
-    //     console.log("Oke");
-    // }
-    // else  {
-    //     console.log("no")
-    // }
-
+    
     let nft = new NFT();
     await nft.load();
 

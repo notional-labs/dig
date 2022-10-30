@@ -24,7 +24,7 @@ use crate::state::{
 const CONTRACT_NAME: &str = "crates.io:anone-minter";
 const CONTRACT_VERSION: &str = env!("CARGO_PKG_VERSION");
 
-const INSTANTIATE_AN721_REPLY_ID: u64 = 1;
+const INSTANTIATE_DIG721_REPLY_ID: u64 = 1;
 
 // governance parameters
 pub const NATIVE_DENOM: &str = "uan1";
@@ -67,7 +67,7 @@ pub fn instantiate(
         admin: info.sender.clone(),
         base_token_uri: msg.base_token_uri,
         num_tokens: msg.num_tokens,
-        dig_cw721_code_id: 10,
+        dig_cw721_code_id: msg.dig_cw721_code_id,
         per_address_limit: msg.per_address_limit
     };
     CONFIG.save(deps.storage, &config)?;
@@ -78,7 +78,7 @@ pub fn instantiate(
         MINTABLE_TOKEN_IDS.save(deps.storage, token_id, &true)?;
     }
 
-    // Submessage to instantiate anone-cw721 contract
+    // Submessage to instantiate dig-cw721 contract
     let sub_msgs: Vec<SubMsg> = vec![SubMsg {
         msg: WasmMsg::Instantiate {
             code_id: msg.dig_cw721_code_id,
@@ -93,7 +93,7 @@ pub fn instantiate(
             label: String::from("Fixed price minter"),
         }
         .into(),
-        id: INSTANTIATE_AN721_REPLY_ID,
+        id: INSTANTIATE_DIG721_REPLY_ID,
         gas_limit: None,
         reply_on: ReplyOn::Success,
     }];
@@ -366,7 +366,7 @@ fn query_mintable_num_tokens(deps: Deps) -> StdResult<MintableNumTokensResponse>
 // Reply callback triggered from cw721 contract instantiation
 #[cfg_attr(not(feature = "library"), entry_point)]
 pub fn reply(deps: DepsMut, _env: Env, msg: Reply) -> Result<Response, ContractError> {
-    if msg.id != INSTANTIATE_AN721_REPLY_ID {
+    if msg.id != INSTANTIATE_DIG721_REPLY_ID {
         return Err(ContractError::InvalidReplyID {});
     }
 

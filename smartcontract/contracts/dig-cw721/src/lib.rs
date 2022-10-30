@@ -5,8 +5,8 @@ pub mod state;
 pub mod metadata;
 
 pub use dig::errors::CW721Error;
-pub use dig::cw721::{InstantiateMsg};
-pub use crate::msg::{ExecuteMsg, MintMsg, MinterResponse, QueryMsg};
+pub use dig::cw721::{InstantiateMsg, QueryMsg};
+pub use crate::msg::{ExecuteMsg, MintMsg, MinterResponse};
 pub use crate::state::AnoneCw721Contract;
 use cosmwasm_std::Empty;
 

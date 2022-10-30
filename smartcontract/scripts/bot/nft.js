@@ -61,6 +61,24 @@ class NFT extends Bot {
         return receipt;
     }
 
+    // Send nft 
+    send_nft = async(sender, contract, token_id, list_price) => {
+        let sell_nft_msg = {
+            "list_price": list_price
+        }
+        const encoded_msg = Buffer.from(JSON.stringify(sell_nft_msg));
+        let encoded_data = encoded_msg.toString("base64");
+        const exe_msg = {
+            "send_nft": {
+                "contract": contract, 
+                "token_id": token_id, 
+                "msg": encoded_data
+            }
+        }
+
+        return await this.execute_base(sender, exe_msg);
+    }
+
     // Querierrrrr 
     query_all_models = async() => {
         const query_msg = {

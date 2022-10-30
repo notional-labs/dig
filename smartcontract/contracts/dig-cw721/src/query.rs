@@ -7,11 +7,12 @@ use cw721::{CustomMsg, Expiration};
 use cw_storage_plus::Bound;
 use cw_utils::maybe_addr;
 
+use dig::cw721::{QueryMsg, CollectionInfoResponse};
 use crate::msg::{
     AllModelsResponse, AllNftInfoResponse, AllNftsResponse, ApprovalResponse, ApprovalsResponse,
-    CollectionInfoResponse, ContractInfoResponse, MinterResponse, ModelInfoResponse,
+    ContractInfoResponse, MinterResponse, ModelInfoResponse,
     ModelsResponse, NftInfoResponse, NumModelsResponse, NumTokensResponse, OperatorsResponse,
-    OwnerOfResponse, QueryMsg, TokensResponse,
+    OwnerOfResponse, TokensResponse,
 };
 
 use dig::cw721::{RoyaltyInfoResponse};
@@ -279,15 +280,16 @@ where
         Ok(ModelsResponse { models: models? })
     }
 
-    fn token_by_model(
+    // This function will be implement if needed for FE to query and indexing 
+    fn _token_by_model(
         &self,
         deps: Deps,
         model_id: String,
         start_after: Option<String>,
         limit: Option<u32>,
     ) -> StdResult<Vec<(String, TokenInfo<T>)>> {
-        let limit = limit.unwrap_or(DEFAULT_LIMIT).min(MAX_LIMIT) as usize;
-        let start = start_after.map(Bound::exclusive);
+        let _limit = limit.unwrap_or(DEFAULT_LIMIT).min(MAX_LIMIT) as usize;
+        let _start = start_after.map(Bound::exclusive);
         
         let list : Vec<(String, TokenInfo<T>)> = self.
             tokens.idx.model

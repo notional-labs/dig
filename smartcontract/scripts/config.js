@@ -3,7 +3,11 @@ const env = {
     NETWORK: "local_osmosis",
     
     "local_osmosis": {
-        MNEMONIC: "notice oak worry limit wrap speak medal online prefer cluster roof addict wrist behave treat actual wasp year salad speed social layer crew genius",
+        MNEMONIC: 
+        [
+            "notice oak worry limit wrap speak medal online prefer cluster roof addict wrist behave treat actual wasp year salad speed social layer crew genius",
+            "quality vacuum heart guard buzz spike sight swarm shove special gym robust assume sudden deposit grid alcohol choice devote leader tilt noodle tide penalty"
+        ],
         RPC: "http://localhost:26657/",
         PREFIX: "osmo",
         GAS_PRICE: "0.25uosmo",

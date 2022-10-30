@@ -2,7 +2,7 @@ let env = require("../config");
 const { makeCosmoshubPath } = require("@cosmjs/amino");
 const { DirectSecp256k1HdWallet } = require("@cosmjs/proto-signing");
 const { SigningCosmWasmClient, CosmWasmClient }= require("@cosmjs/cosmwasm-stargate");
-const { GasPrice } = require("@cosmjs/stargate");
+const { GasPrice} = require("@cosmjs/stargate");
 const fs = require("fs");
 const BigNumber = require("big-number");
 
@@ -39,10 +39,22 @@ class Bot {
         return signer_key[0];
     }
 
+    get_test_signer = async(index)=> {
+        let seed_phrase = this.network.MNEMONIC[index];
+        const signer = await DirectSecp256k1HdWallet.fromMnemonic(
+            seed_phrase,
+            {
+                hdPaths: [makeCosmoshubPath(0)],
+                prefix: this.network.PREFIX,
+            }
+        );
+        return signer;
+    }
+
     get_signer = async(menemonic=null) => {
         let seed_phrase = null;
         if (menemonic == null) {
-            seed_phrase = this.network.MNEMONIC;
+            seed_phrase = this.network.MNEMONIC[0];
         }
         else {
             seed_phrase = menemonic;
@@ -78,8 +90,8 @@ class Bot {
         let signing_client = this.signing_client;
         let signer_key = await this.get_signer_address();
         if (sender != null) {
-            signing_client = await this.get_signing_client(signer);
-            signer_key = await this.get_signer_address(signer);
+            signing_client = await this.get_signing_client(sender);
+            signer_key = await this.get_signer_address(sender);
         }
 
         return [signing_client, signer_key];
@@ -135,7 +147,7 @@ class Bot {
         return this.contract_addr;
     }
 
-    execute_base = async(sender, exe_msg) => {
+    execute_base = async(sender, exe_msg, fund=null) => {
         const [signing_client, signer_key] = await this._load_signer_client(sender);
 
         if (this.contract_addr == null){
@@ -143,11 +155,13 @@ class Bot {
             process.exit(1);
         }
 
+        console.log(fund)
         let receipt = await signing_client.execute(
             signer_key.address,
             this.contract_addr,
             exe_msg,
-            "auto"
+            "auto",
+            JSON.stringify(fund)
         );
         return receipt;
     }

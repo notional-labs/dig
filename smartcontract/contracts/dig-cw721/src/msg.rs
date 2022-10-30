@@ -145,17 +145,6 @@ pub struct MinterResponse {
     pub minter: String,
 }
 
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
-pub struct CollectionInfoResponse {
-    pub creator: String,
-    pub description: String,
-    pub image: String,
-    pub external_link: Option<String>,
-    pub royalty_info: Option<RoyaltyInfoResponse>,
-}
-
-
-
 #[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema, Debug)]
 pub struct OwnerOfResponse {
     pub owner: String,
