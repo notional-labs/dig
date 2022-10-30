@@ -14,8 +14,6 @@ command -v jq > /dev/null 2>&1 || { echo >&2 "jq not installed. More info: https
 # remove existing daemon
 rm -rf ~/.dig*
 
-make install
-
 digd config keyring-backend $KEYRING
 digd config chain-id $CHAINID
 
