@@ -132,6 +132,17 @@ class NFT extends Bot {
         let result = await this.query_base(query_msg);
         return result;
     }
+
+    owner_of = async(token_id)=>{
+        const query_msg = {
+            "owner_of": {
+                "token_id": token_id
+            }
+        }
+
+        let result = await this.query_base(query_msg);
+        return result;
+    }
 }
 
 module.exports = NFT

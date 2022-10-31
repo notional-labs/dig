@@ -155,13 +155,13 @@ class Bot {
             process.exit(1);
         }
 
-        console.log(fund)
         let receipt = await signing_client.execute(
             signer_key.address,
             this.contract_addr,
             exe_msg,
             "auto",
-            JSON.stringify(fund)
+            "no_label",
+            fund
         );
         return receipt;
     }

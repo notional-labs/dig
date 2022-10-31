@@ -3,7 +3,7 @@ const NFT = require("../../bot/nft");
 const fs = require("fs");
 const {get_contract_address} = require("../../utils");
 const { coins } = require("@cosmjs/stargate");
-
+var assert = require("assert");
 
 const deployed_path = "scripts/local_deployed";
 
@@ -57,11 +57,17 @@ const main = async () => {
 
     console.log(`New order was created with the offer id: ${offer_id}`);
 
-    let user2 = await marketplace.get_test_signer(1);
-    console.log(user2)
+    // User 1 make the offer 
+    let user1 = await marketplace.get_test_signer(1);
     const fund = coins("10000", "uosmo");
-    await marketplace.make_offer(user2, offer_id, fund);
-   
+    await marketplace.make_offer(user1, offer_id, fund);
+
+    offerings = await marketplace.get_offerings("price_lowest");
+    console.log(offerings);
+
+    let owner_of_nft = await nft.owner_of(token_id);
+    let user1_addr = await nft.get_signer_address(user1);
+    assert(owner_of_nft.owner == user1_addr.address, "NFT should be transfer to the buyer");
 } 
 
 
