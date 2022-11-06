@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@cosmjs/launchpad": "0.27.1",
-    "@cosmjs/proto-signing": "0.29.0",
+    "@cosmjs/proto-signing": "0.29.3",
     "@cosmjs/stargate": "0.29.0",
     "@starport/vue": "^0.3.5",
     "@starport/vuex": "^0.3.5",
