@@ -28,7 +28,7 @@ jobs:
           
   proof:
     runs-on: ubuntu-latest
-    name: dig 
+    name: prove that v0.46 works
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-go@v3.3.1
