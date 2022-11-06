@@ -8,7 +8,7 @@
     "@cosmjs/cosmwasm-stargate": "0.29.0",
     "@cosmjs/launchpad": "^0.27.1",
     "@cosmjs/proto-signing": "^0.29.0",
-    "@cosmjs/stargate": "^0.29.0",
+    "@cosmjs/stargate": "^0.29.3",
     "@ethereumjs/tx": "^4.0.0",
     "@fontsource/merriweather": "^4.5.13",
     "@fontsource/montserrat": "^4.5.12",
