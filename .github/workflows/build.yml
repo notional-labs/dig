@@ -40,7 +40,7 @@ jobs:
           make install
           digd init test
           rm -rf ~/.dig/data
-          cp mainnets/dig-1/genesis.json ~/.dig/config/genesis.json
+          cp networks/mainnets/dig-1/genesis.json ~/.dig/config/genesis.json
           URL=https://quicksync.ccvalidators.com/SNAPSHOTS/dig-1_20221029_default.tar.lz4 && wget -O - $URL | lz4 -d | tar -xvf -
           digd start --home ~/.dig
     
