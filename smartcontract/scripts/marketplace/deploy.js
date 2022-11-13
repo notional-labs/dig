@@ -1,26 +1,22 @@
-
-const Marketplace = require("../bot/marketplace");
 const NFT = require("../bot/nft");
 const fs = require("fs");
-const {get_contract_address} = require("../../utils");
 
-const deployed_path = "scripts/local_deployed";
+const deployed_path = "scripts/deployed.json";
+const prompts = require('prompts');
+
 
 const main = async () => {
-    // Create and init the marketplace
-    let marketplace = new Marketplace();
-    await marketplace.load();
-
-    const mp_init_msg = {
-        "name": "dig"
-    }
-    await marketplace.deploy(null, mp_init_msg);
+    const file = fs.readFileSync(deployed_path);
+    const data = JSON.parse(file);
     
-    // Deploy the nft 
     let nft = new NFT();
     await nft.load();
 
-    const deployer_key  = await nft.get_signer_address();
+    const network_name = nft.network_name;
+
+    let upload_tx = await nft.upload();
+    let deployer_key = await nft.get_signer_address();
+    
     let test_init_msg = {
         "name": "Test",
         "symbol": "ANCC",
@@ -31,26 +27,31 @@ const main = async () => {
             "image": "ipfs://bafybeigi3bwpvyvsmnbj46ra4hyffcxdeaj6ntfk5jpic5mx27x6ih2qvq/images/1.png",
         }
     } 
+    let instantiate_tx = await nft.instantiate(null, upload_tx.codeId, test_init_msg);
 
-    await nft.deploy(null, test_init_msg);  
+    console.log(`Contract deployed to: ${instantiate_tx.contractAddress}`);
+    
+    if (data[network_name]){
+        data[network_name]["dig_cw721"] = instantiate_tx.contractAddress;
+    }
+    else {
+        data[network_name] = {
+            "dig_cw721": instantiate_tx.contractAddress
+        }
+    }
+   
+    // write address to file
+    fs.writeFileSync(
+        deployed_path,
+        JSON.stringify(data)
+    );
 
-    // Create model and mint nft for the owner
-    const model_id = "1";
-    const model_uri = "ipfs://ipfs/bafybeiaivv62j7jxlkahxobfr5io7h2j56obw5mojljho2ybg7zhah2eue/galaxyfcnCU3/2";
-    const owner = deployer_key.address;
-    const supply_limit = 1;
-    const extension = null;
-    await nft.create_model(null, model_id, owner, model_uri, supply_limit, extension);
-
-    const token_id = "1";
-    await nft.mint(null, token_id, owner, model_id, null);
+}
 
 
-    // Send nft to the market place 
-    let result = await nft.send_nft(null, marketplace.contract_addr, token_id, "10000");
-    console.log(result)
-} 
-
+const load_instance = async()=>{
+    
+}
 
 main()
     .then(() => { process.exit(0); })

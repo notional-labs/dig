@@ -7,7 +7,7 @@ pub mod metadata;
 pub use dig::errors::CW721Error;
 pub use dig::cw721::{InstantiateMsg, QueryMsg};
 pub use crate::msg::{ExecuteMsg, MintMsg, MinterResponse};
-pub use crate::state::AnoneCw721Contract;
+pub use crate::state::DigCW721Contracct;
 use cosmwasm_std::Empty;
 
 use crate::metadata::{Metadata};
@@ -30,7 +30,7 @@ pub mod entry {
         info: MessageInfo,
         msg: InstantiateMsg,
     ) -> Result<Response, CW721Error> {
-        let tract = AnoneCw721Contract::<Extension, Empty>::default();
+        let tract = DigCW721Contracct::<Extension, Empty>::default();
         tract.instantiate(deps, env, info, msg)
     }
 
@@ -41,13 +41,13 @@ pub mod entry {
         info: MessageInfo,
         msg: ExecuteMsg<Extension>,
     ) -> Result<Response, CW721Error> {
-        let tract = AnoneCw721Contract::<Extension, Empty>::default();
+        let tract = DigCW721Contracct::<Extension, Empty>::default();
         tract.execute(deps, env, info, msg)
     }
 
     #[entry_point]
     pub fn query(deps: Deps, env: Env, msg: QueryMsg) -> StdResult<Binary> {
-        let tract = AnoneCw721Contract::<Extension, Empty>::default();
+        let tract = DigCW721Contracct::<Extension, Empty>::default();
         tract.query(deps, env, msg)
     }
 }

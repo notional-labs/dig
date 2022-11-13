@@ -18,12 +18,12 @@ use crate::msg::{
 use dig::cw721::{RoyaltyInfoResponse};
 
 use crate::state::COLLECTION_INFO;
-use crate::state::{AnoneCw721Contract, Approval, ModelInfo, TokenInfo};
+use crate::state::{DigCW721Contracct, Approval, ModelInfo, TokenInfo};
 
 const DEFAULT_LIMIT: u32 = 10;
 const MAX_LIMIT: u32 = 30;
 
-impl<'a, T, C> AnoneCw721Contract<'a, T, C>
+impl<'a, T, C> DigCW721Contracct<'a, T, C>
 where
     T: Serialize + DeserializeOwned + Clone,
     C: CustomMsg,

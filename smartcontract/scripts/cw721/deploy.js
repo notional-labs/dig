@@ -1,4 +1,4 @@
-const NFT = require("../../bot/nft");
+const NFT = require("../bot/nft");
 const fs = require("fs");
 
 const deployed_path = "scripts/deployed.json";
@@ -18,8 +18,8 @@ const main = async () => {
     let deployer_key = await nft.get_signer_address();
     
     let test_init_msg = {
-        "name": "Test",
-        "symbol": "ANCC",
+        "name": "DIG",
+        "symbol": "DIG",
         "minter": deployer_key.address,
         "collection_info": {
             "creator": deployer_key.address,
@@ -48,10 +48,6 @@ const main = async () => {
 
 }
 
-
-const load_instance = async()=>{
-    
-}
 
 main()
     .then(() => { process.exit(0); })

@@ -19,7 +19,7 @@ use crate::package::{ContractInfoResponse, OfferingsResponse, QueryOfferingsResu
 use crate::state::{increment_offerings, Offering, CONTRACT_INFO, OFFERINGS};
 
 // version info for migration info
-const CONTRACT_NAME: &str = "crates.io:anone-nft-marketplace";
+const CONTRACT_NAME: &str = "crates.io:digcw721-nft-marketplace";
 const CONTRACT_VERSION: &str = env!("CARGO_PKG_VERSION");
 
 
@@ -740,7 +740,7 @@ mod tests {
         let env = mock_env();
         let info = mock_info(ADDR1, &[]);
         let msg = InstantiateMsg {
-            name: "Anone NFT Marketplace".to_string(),
+            name: "Dig NFT Marketplace".to_string(),
             native_denom: "junox".to_string()
         };
         // Call instantiate, unwrap to assert success
@@ -750,7 +750,7 @@ mod tests {
             res.attributes,
             vec![
                 attr("action", "instantiate"),
-                attr("name", "Anone NFT Marketplace")
+                attr("name", "Dig NFT Marketplace")
             ]
         )
     }

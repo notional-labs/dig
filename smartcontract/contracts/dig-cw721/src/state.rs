@@ -12,7 +12,7 @@ use crate::msg::{ContractInfoResponse};
 
 use dig::cw721::{CollectionInfo, RoyaltyInfo};
 
-pub struct AnoneCw721Contract<'a, T, C>
+pub struct DigCW721Contracct<'a, T, C>
 where
     T: Serialize + DeserializeOwned + Clone,
 {
@@ -28,7 +28,7 @@ where
     pub(crate) _custom_response: PhantomData<C>,
 }
 
-impl<T, C> Default for AnoneCw721Contract<'static, T, C>
+impl<T, C> Default for DigCW721Contracct<'static, T, C>
 where
     T: Serialize + DeserializeOwned + Clone,
 {
@@ -48,7 +48,7 @@ where
     }
 }
 
-impl<'a, T, C> AnoneCw721Contract<'a, T, C>
+impl<'a, T, C> DigCW721Contracct<'a, T, C>
 where
     T: Serialize + DeserializeOwned + Clone,
 {

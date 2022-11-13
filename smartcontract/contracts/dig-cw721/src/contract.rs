@@ -14,18 +14,18 @@ use crate::msg::{
     ContractInfoResponse, CreateModelMsg, ExecuteMsg, MintMsg,
 };
 use crate::state::{
-    AnoneCw721Contract, Approval, ModelInfo, TokenInfo, TokenStatus,
+    DigCW721Contracct, Approval, ModelInfo, TokenInfo, TokenStatus,
     COLLECTION_INFO,
 };
 
 
 
 // version info for migration info
-const CONTRACT_NAME: &str = "crates.io:anone-cw721";
+const CONTRACT_NAME: &str = "crates.io:dig-cw721";
 const CONTRACT_VERSION: &str = env!("CARGO_PKG_VERSION");
 const MAX_DESCRIPTION_LENGTH: u32 = 512;
 
-impl<'a, T, C> AnoneCw721Contract<'a, T, C>
+impl<'a, T, C> DigCW721Contracct<'a, T, C>
 where
     T: Serialize + DeserializeOwned + Clone,
     C: CustomMsg,
@@ -46,15 +46,15 @@ where
         self.contract_info.save(deps.storage, &info)?;
         let minter = deps.api.addr_validate(&msg.minter)?;
         self.minter.save(deps.storage, &minter)?;
-        // anone-cw721 instantiation
+        // dig-cw721 instantiation
         if msg.collection_info.description.len() > MAX_DESCRIPTION_LENGTH as usize {
             return Err(CW721Error::DescriptionTooLong {});
         }
 
         let image = Url::parse(&msg.collection_info.image)?;
-        if image.scheme() != "ipfs" {
-            return Err(CW721Error::InvalidBaseURI {});
-        }
+        // if image.scheme() != "ipfs" {
+        //     return Err(CW721Error::InvalidBaseURI {});
+        // }
 
         if let Some(ref external_link) = msg.collection_info.external_link {
             Url::parse(external_link)?;
@@ -138,7 +138,7 @@ where
 }
 
 // TODO pull this into some sort of trait extension??
-impl<'a, T, C> AnoneCw721Contract<'a, T, C>
+impl<'a, T, C> DigCW721Contracct<'a, T, C>
 where
     T: Serialize + DeserializeOwned + Clone,
     C: CustomMsg,
@@ -195,7 +195,7 @@ where
     }
 }
 
-impl<'a, T, C> AnoneCw721Contract<'a, T, C>
+impl<'a, T, C> DigCW721Contracct<'a, T, C>
 where
     T: Serialize + DeserializeOwned + Clone,
     C: CustomMsg,
@@ -216,9 +216,9 @@ where
         // Todo: Read field on generic input
 
         let model_uri = Url::parse(&msg.model_uri)?;
-        if model_uri.scheme() != "ipfs" {
-            return Err(CW721Error::InvalidBaseURI {});
-        }
+        // if model_uri.scheme() != "ipfs" {
+        //     return Err(CW721Error::InvalidBaseURI {});
+        // }
 
         // create the shoe model
         let model = ModelInfo {
@@ -244,7 +244,7 @@ where
     }
 }
 
-impl<'a, T, C> AnoneCw721Contract<'a, T, C>
+impl<'a, T, C> DigCW721Contracct<'a, T, C>
 where
     T: Serialize + DeserializeOwned + Clone,
     C: CustomMsg,
@@ -270,10 +270,10 @@ where
         }
 
         if let Some(i) = image.clone() {
-            let image_url = Url::parse(&i)?;
-            if image_url.scheme() != "ipfs" {
-                return Err(CW721Error::InvalidBaseURI {});
-            }
+            // let image_url = Url::parse(&i)?;
+            // if image_url.scheme() != "ipfs" {
+            //     return Err(CW721Error::InvalidBaseURI {});
+            // }
             collection_info.image = i;
         }
 
@@ -313,7 +313,7 @@ where
     }
 }
 
-impl<'a, T, C> Cw721Execute<T, C> for AnoneCw721Contract<'a, T, C>
+impl<'a, T, C> Cw721Execute<T, C> for DigCW721Contracct<'a, T, C>
 where
     T: Serialize + DeserializeOwned + Clone,
     C: CustomMsg,
@@ -462,7 +462,7 @@ where
 }
 
 // helpers
-impl<'a, T, C> AnoneCw721Contract<'a, T, C>
+impl<'a, T, C> DigCW721Contracct<'a, T, C>
 where
     T: Serialize + DeserializeOwned + Clone,
     C: CustomMsg,
@@ -602,7 +602,7 @@ mod test {
 
     use cosmwasm_std::{testing::MockStorage, Addr, Empty, Order, StdResult};
 
-    use crate::{state::{TokenInfo, TokenStatus}, AnoneCw721Contract};
+    use crate::{state::{TokenInfo, TokenStatus}, DigCW721Contracct};
 
 
     #[test]
@@ -635,7 +635,7 @@ mod test {
             extension: None,
         };
 
-        let sm : AnoneCw721Contract<Option<Empty>, Empty> = AnoneCw721Contract::default();
+        let sm : DigCW721Contracct<Option<Empty>, Empty> = DigCW721Contracct::default();
 
         sm.tokens.save(store.borrow_mut(), &token1_id, &token1).unwrap();
         sm.tokens.save(store.borrow_mut(), &token2_id, &token2).unwrap();

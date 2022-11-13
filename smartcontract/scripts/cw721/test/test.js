@@ -57,8 +57,6 @@ const main = async () => {
 
     // let all_tokens = await nft.query_all_tokens();
     // console.log(all_tokens)
-
-
     console.log("MODEL INFO");
     let model_info = await nft.query_model(model_id);
     console.log(model_info)
