@@ -1,4 +1,4 @@
-const NFT = require("../bot/nft");
+const Marketplace = require("../bot/marketplace");
 const fs = require("fs");
 
 const deployed_path = "scripts/deployed.json";
@@ -9,34 +9,25 @@ const main = async () => {
     const file = fs.readFileSync(deployed_path);
     const data = JSON.parse(file);
     
-    let nft = new NFT();
-    await nft.load();
+    let marketplace = new Marketplace();
+    await marketplace.load();
 
-    const network_name = nft.network_name;
+    const network_name = marketplace.network_name;
 
-    let upload_tx = await nft.upload();
-    let deployer_key = await nft.get_signer_address();
+    const mp_init_msg = {
+        "name": "dig",
+        "native_denom": "ujunox"
+    }
+    let contract_addr = await marketplace.deploy(null, mp_init_msg);
     
-    let test_init_msg = {
-        "name": "Test",
-        "symbol": "ANCC",
-        "minter": deployer_key.address,
-        "collection_info": {
-            "creator": deployer_key.address,
-            "description": "test",
-            "image": "ipfs://bafybeigi3bwpvyvsmnbj46ra4hyffcxdeaj6ntfk5jpic5mx27x6ih2qvq/images/1.png",
-        }
-    } 
-    let instantiate_tx = await nft.instantiate(null, upload_tx.codeId, test_init_msg);
+    console.log(`Contract addr: ${contract_addr}`);
 
-    console.log(`Contract deployed to: ${instantiate_tx.contractAddress}`);
-    
     if (data[network_name]){
-        data[network_name]["dig_cw721"] = instantiate_tx.contractAddress;
+        data[network_name]["dig_marketplace"] = contract_addr;
     }
     else {
         data[network_name] = {
-            "dig_cw721": instantiate_tx.contractAddress
+            "dig_marketplace": contract_addr
         }
     }
    
@@ -48,10 +39,6 @@ const main = async () => {
 
 }
 
-
-const load_instance = async()=>{
-    
-}
 
 main()
     .then(() => { process.exit(0); })

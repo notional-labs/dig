@@ -3,6 +3,7 @@
         "dig_cw721": "osmo1v6qjx5smfdxnh5gr8vprswl60rstyprj3wh4gz5mg7gcl7mtl5xqkm7gje"
     },
     "notional_testnet": {
-        "dig_cw721": "juno15hlntvl8dgygpscjjq5h9vn3m3a64get0uurh90ghew3m20x6z2q7c83er"
+        "dig_cw721": "juno1eup854n6x4xawm5mjky3e0esqppl4s545ydlq8yrkfy7q2pcclrs5tt2w3",
+        "dig_marketplace": "juno1tytnp3funk8w6v7rv048vqylpxus7j5p6qrduhxmkjgukf7y4cdskhcyz9"
     }
 }
