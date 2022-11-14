@@ -26,24 +26,24 @@ jobs:
           make install
           
           
-  proof:
-    runs-on: ubuntu-latest
-    name: prove that v0.46 works
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-go@v3.3.1
-        with: 
-          go-version: '^1.19'
+ # proof:
+ #   runs-on: ubuntu-latest
+ #   name: prove that v0.46 works
+ #   steps:
+ #     - uses: actions/checkout@v3
+ #     - uses: actions/setup-go@v3.3.1
+ #       with: 
+ #         go-version: '^1.19'
 
-      - name: Prove dig
-        run: |
-          make install
-          digd init test
-          cp ~/.dig/data/priv_validator_state.json ~/priv_validator_state.json
-          rm -rf ~/.dig/data
-          cp networks/mainnets/dig-1/genesis.json ~/.dig/config/genesis.json
-          cd ~/.dig
-          URL=https://quicksync.ccvalidators.com/SNAPSHOTS/dig-1_20221029_default.tar.lz4 && wget -O - $URL | lz4 -d | tar -xvf -
-          cp ~/priv_validator_state.json ~/.dig/data/priv_validator_state.json
-          digd start --home ~/.dig  --minimum-gas-prices 0.00001udig
+ #     - name: Prove dig
+ #       run: |
+ #         make install
+ #         digd init test
+ #         cp ~/.dig/data/priv_validator_state.json ~/priv_validator_state.json
+ #         rm -rf ~/.dig/data
+ #         cp networks/mainnets/dig-1/genesis.json ~/.dig/config/genesis.json
+ #         cd ~/.dig
+ #         URL=https://quicksync.ccvalidators.com/SNAPSHOTS/dig-1_20221029_default.tar.lz4 && wget -O - $URL | lz4 -d | tar -xvf -
+ #         cp ~/priv_validator_state.json ~/.dig/data/priv_validator_state.json
+ #         digd start --home ~/.dig  --minimum-gas-prices 0.00001udig
     
