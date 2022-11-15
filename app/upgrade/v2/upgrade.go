@@ -17,29 +17,6 @@ import (
 	vestingtypes "github.com/cosmos/cosmos-sdk/x/auth/vesting/types"
 )
 
-// Fixes an error where validators can be created with a commission rate
-// less than the network minimum rate.
-func FixMinCommisionRate(ctx sdk.Context, staking *stakingkeeper.Keeper) {
-	// Upgrade every validators min-commission rate
-	validators := staking.GetAllValidators(ctx)
-	minCommissionRate := staking.GetParams(ctx).MinCommissionRate
-	for _, v := range validators {
-		if v.Commission.Rate.LT(minCommissionRate) {
-			comm, err := staking.MustUpdateValidatorCommission(
-				ctx, v, minCommissionRate)
-			if err != nil {
-				panic(err)
-			}
-			v.Commission = comm
-
-			// call the before-modification hook since we're about to update the commission
-			staking.BeforeValidatorModified(ctx, v.GetOperator())
-
-			staking.SetValidator(ctx, v)
-		}
-	}
-}
-
 func UnlockAllVestingAccounts(ctx sdk.Context, accKeeper *authkeeper.AccountKeeper) {
 	accounts := accKeeper.GetAllAccounts(ctx)
 	for _, acc := range accounts {
@@ -54,7 +31,6 @@ func CreateUpgradeHandler(mm *module.Manager, configurator module.Configurator, 
 	return func(ctx sdk.Context, _ upgradetypes.Plan, fromVM module.VersionMap) (module.VersionMap, error) {
 		fromVM[icatypes.ModuleName] = icaModule.ConsensusVersion()
 		UnlockAllVestingAccounts(ctx, accKeeper)
-		FixMinCommisionRate(ctx, staking)
 		// Set wasm old version to 1 if we want to call wasm's InitGenesis ourselves
 		// in this upgrade logic ourselves
 		// vm[wasm.ModuleName] = wasm.ConsensusVersion
