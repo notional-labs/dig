@@ -5,12 +5,13 @@ go 1.19
 require (
 	cosmossdk.io/math v1.0.0-beta.3
 	github.com/CosmWasm/wasmd v1.1.1
-	github.com/cosmos/cosmos-sdk v0.46.4
 	github.com/cosmos/ibc-go/v5 v5.1.0
 	github.com/spf13/cast v1.5.0
 	github.com/tendermint/tendermint v0.34.23
 	github.com/tendermint/tm-db v0.6.7
 )
+
+require github.com/cosmos/cosmos-sdk v0.46.5-0.20221114064055-2114ec42dfa1 // indirect
 
 require (
 	cloud.google.com/go v0.102.1 // indirect
