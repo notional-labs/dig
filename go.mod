@@ -11,7 +11,7 @@ require (
 	github.com/tendermint/tm-db v0.6.7
 )
 
-require github.com/cosmos/cosmos-sdk v0.46.5-0.20221114064055-2114ec42dfa1 // indirect
+require github.com/cosmos/cosmos-sdk v0.46.5-0.20221114064055-2114ec42dfa1
 
 require (
 	cloud.google.com/go v0.102.1 // indirect
