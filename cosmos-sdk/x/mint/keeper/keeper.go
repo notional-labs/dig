@@ -16,7 +16,16 @@ type Keeper struct {
 	paramSpace       paramtypes.Subspace
 	stakingKeeper    types.StakingKeeper
 	bankKeeper       types.BankKeeper
+	accountKeeper    types.AccountKeeper
 	feeCollectorName string
+}
+
+func (k Keeper) BankKeeper() types.BankKeeper {
+	return k.bankKeeper
+}
+
+func (k Keeper) AccountKeeper() types.AccountKeeper {
+	return k.accountKeeper
 }
 
 // NewKeeper creates a new mint Keeper instance
@@ -41,6 +50,7 @@ func NewKeeper(
 		paramSpace:       paramSpace,
 		stakingKeeper:    sk,
 		bankKeeper:       bk,
+		accountKeeper:    ak,
 		feeCollectorName: feeCollectorName,
 	}
 }

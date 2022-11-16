@@ -25,5 +25,4 @@ func TestItCreatesModuleAccountOnInitBlock(t *testing.T) {
 
 	acc := app.AccountKeeper.GetAccount(ctx, authtypes.NewModuleAddress(types.ModuleName))
 	require.NotNil(t, acc)
-
 }
