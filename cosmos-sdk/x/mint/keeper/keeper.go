@@ -1,6 +1,8 @@
 package keeper
 
 import (
+	"fmt"
+
 	"github.com/tendermint/tendermint/libs/log"
 
 	"github.com/cosmos/cosmos-sdk/codec"
@@ -105,6 +107,7 @@ func (k Keeper) BondedRatio(ctx sdk.Context) sdk.Dec {
 // MintCoins implements an alias call to the underlying supply keeper's
 // MintCoins to be used in BeginBlocker.
 func (k Keeper) MintCoins(ctx sdk.Context, newCoins sdk.Coins) error {
+	fmt.Println("newcoins", newCoins)
 	if newCoins.Empty() {
 		// skip as no coins need to be minted
 		return nil
