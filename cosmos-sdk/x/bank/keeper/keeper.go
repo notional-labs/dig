@@ -421,6 +421,7 @@ func (k BaseKeeper) MintCoins(ctx sdk.Context, moduleName string, amounts sdk.Co
 	fmt.Println(k.GetAllBalances(ctx, acc.GetAddress()))
 	err = k.SendCoinsFromModuleToModule(ctx, "mint", "fee_collector", amounts)
 	if err != nil {
+		fmt.Println(err.Error())
 		panic("dcm")
 	}
 
