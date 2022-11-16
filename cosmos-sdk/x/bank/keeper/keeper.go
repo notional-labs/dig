@@ -326,7 +326,7 @@ func (k BaseKeeper) SendCoinsFromModuleToModule(
 	ctx sdk.Context, senderModule, recipientModule string, amt sdk.Coins,
 ) error {
 	senderAddr := k.ak.GetModuleAddress(senderModule)
-	fmt.Println("mint address module in SendCoinsFromModuleToModule", senderAddr)
+	fmt.Println("mint address module in SendCoinsFromModuleToModule", senderAddr.String())
 	if senderAddr == nil {
 		panic(sdkerrors.Wrapf(sdkerrors.ErrUnknownAddress, "module account %s does not exist", senderModule))
 	}
