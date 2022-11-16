@@ -138,7 +138,7 @@ replace (
 	// dragonberry replkace line per: https://github.com/cosmos/cosmos-sdk/releases/tag/v0.45.9
 	github.com/confio/ics23/go => github.com/cosmos/cosmos-sdk/ics23/go v0.8.0
 	// this is our branch https://github.com/notional-labs/cosmos-sdk/tree/v0.45.11-dig
-	github.com/cosmos/cosmos-sdk => github.com/notional-labs/cosmos-sdk v0.45.4-0.20221115161138-7b0584feff89
+	github.com/cosmos/cosmos-sdk => ./cosmos-sdk
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
 	google.golang.org/grpc => google.golang.org/grpc v1.33.2
 )

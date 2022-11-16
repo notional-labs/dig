@@ -54,12 +54,11 @@ build:
 
 go.sum: go.mod
 		@echo "--> Ensure dependencies have not been modified"
-		GO111MODULE=on go mod verify
 
 lint:
 	@echo "--> Running linter"
 	@golangci-lint run
-	@go mod verify
+
 
 
 
