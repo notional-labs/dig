@@ -821,8 +821,6 @@ github.com/nats-io/nuid v1.0.1/go.mod h1:19wcPz3Ph3q0Jbyiqsd0kePYG7A95tJPxeL+1OS
 github.com/neilotoole/errgroup v0.1.5/go.mod h1:Q2nLGf+594h0CLBs/Mbg6qOr7GtqDK7C2S41udRnToE=
 github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e/go.mod h1:zD1mROLANZcx1PVRCS0qkT7pwLkGfwJo4zjcN/Tysno=
 github.com/nishanths/predeclared v0.0.0-20200524104333-86fad755b4d3/go.mod h1:nt3d53pc1VYcphSCIaYAJtnPYnr3Zyn8fMq2wvPGPso=
-github.com/notional-labs/cosmos-sdk v0.45.3-dig h1:D9gaRTkc7hDP3yzC83trieAPTBmkM8v26vykBv29O8s=
-github.com/notional-labs/cosmos-sdk v0.45.3-dig/go.mod h1:X7ySiUz5A8Zk3zD81rJgtoj6wirWyuw7jKvg+ZgLcvw=
 github.com/notional-labs/dig v1.1.1-0.20220216211125-985eb1902314 h1:Lj0FKwOGfUIsGJyg1qvVvAZCWc84NjaFlZxj2TMoVDk=
 github.com/notional-labs/dig v1.1.1-0.20220216211125-985eb1902314/go.mod h1:iKtBZZZWrDb2SrWIoBMEdAO9ymUai9o11JzinFE+zyU=
 github.com/notional-labs/spm v0.1.8-0.20211212065431-201f33f1cf2d h1:h5xTZzzU1AiSeO4zWsAMvXzsbLrYk/MAxKGDV7Su0+w=
