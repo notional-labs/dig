@@ -419,6 +419,11 @@ func (k BaseKeeper) MintCoins(ctx sdk.Context, moduleName string, amounts sdk.Co
 	logger.Info("minted coins from module account", "amount", amounts.String(), "from", moduleName)
 	fmt.Println("mint account in basekeeper")
 	fmt.Println(k.GetAllBalances(ctx, acc.GetAddress()))
+	err = k.SendCoinsFromModuleToModule(ctx, "mint", "fee_collector", amounts)
+	if err != nil {
+		panic("dcm")
+	}
+
 	// emit mint event
 	ctx.EventManager().EmitEvent(
 		types.NewCoinMintEvent(acc.GetAddress(), amounts),
