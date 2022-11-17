@@ -1,6 +1,6 @@
 module github.com/notional-labs/dig/v3
 
-go 1.19
+go 1.18
 
 require (
 	cosmossdk.io/math v1.0.0-beta.3

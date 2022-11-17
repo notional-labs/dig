@@ -271,6 +271,7 @@ type DigApp struct {
 
 	// module migration manager
 	configurator module.Configurator
+	runMigrate   bool
 }
 
 // NewDigApp returns a reference to an initialized Gaia.
@@ -289,7 +290,6 @@ func NewDigApp(
 	appCodec := encodingConfig.Marshaler
 	cdc := encodingConfig.Amino
 	interfaceRegistry := encodingConfig.InterfaceRegistry
-
 	bApp := baseapp.NewBaseApp(Name, logger, db, encodingConfig.TxConfig.TxDecoder(), baseAppOptions...)
 	bApp.SetCommitMultiStoreTracer(traceStore)
 	bApp.SetVersion(version.Version)
@@ -315,6 +315,7 @@ func NewDigApp(
 		keys:              keys,
 		tkeys:             tkeys,
 		memKeys:           memKeys,
+		runMigrate:        false,
 	}
 
 	app.ParamsKeeper = initParamsKeeper(appCodec, cdc, keys[paramstypes.StoreKey], tkeys[paramstypes.TStoreKey])
@@ -689,7 +690,6 @@ func (app *DigApp) setupUpgradeStoreLoaders() {
 	}
 
 	if upgradeInfo.Name == v2.UpgradeName && !app.UpgradeKeeper.IsSkipHeight(upgradeInfo.Height) {
-		// @Frey do we do this for Cosmwasm?
 		storeUpgrades := storetypes.StoreUpgrades{
 			Added:   []string{wasm.ModuleName, authz.ModuleName, icahosttypes.StoreKey},
 			Deleted: []string{"epoch"},
@@ -722,6 +722,12 @@ func (app *DigApp) Name() string { return app.BaseApp.Name() }
 
 // BeginBlocker application updates every begin block.
 func (app *DigApp) BeginBlocker(ctx sdk.Context, req abci.RequestBeginBlock) abci.ResponseBeginBlock {
+	if app.runMigrate == false {
+		app.mm.RunMigrations(ctx, app.configurator, app.mm.GetVersionMap())
+
+	}
+	app.runMigrate = true
+
 	return app.mm.BeginBlock(ctx, req)
 }
 
