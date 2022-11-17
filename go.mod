@@ -19,7 +19,7 @@ require (
 	github.com/btcsuite/btcutil v1.0.3-0.20201208143702-a53e38424cce // indirect
 	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.0.1 // indirect
 	github.com/ethereum/go-ethereum v1.10.19 // indirect
-	github.com/evmos/ethermint v0.19.3 // indirect
+	github.com/onsi/gomega v1.19.0 // indirect
 )
 
 require (
@@ -177,7 +177,7 @@ replace (
 	// ics23 for dragonberry
 	github.com/confio/ics23/go => github.com/cosmos/cosmos-sdk/ics23/go v0.8.0
 
-	github.com/cosmos/cosmos-sdk => github.com/notional-labs/cosmos-sdk v0.46.0-craft.0.20221117181007-7a334f014167
+	github.com/cosmos/cosmos-sdk => github.com/notional-labs/cosmos-sdk v0.46.0-craft.0.20221117195325-493c7950ca70
 	// cosmos flavored protobufs
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
 )
