@@ -109,7 +109,7 @@ func initAppConfig() (string, interface{}) {
 
 	// Allow overrides to the SDK default server config
 	srvCfg := serverconfig.DefaultConfig()
-	srvCfg.StateSync.SnapshotInterval = 1000
+	srvCfg.StateSync.SnapshotInterval = 0
 	srvCfg.StateSync.SnapshotKeepRecent = 10
 
 	DigAppCfg := CustomAppConfig{Config: *srvCfg}
