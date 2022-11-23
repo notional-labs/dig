@@ -4,6 +4,7 @@ import (
 	"errors"
 	"io"
 	"os"
+	"path/filepath"
 
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/client"
@@ -28,6 +29,9 @@ import (
 	tmcli "github.com/tendermint/tendermint/libs/cli"
 	"github.com/tendermint/tendermint/libs/log"
 	dbm "github.com/tendermint/tm-db"
+	"github.com/cosmos/cosmos-sdk/snapshots"
+	snapshottypes "github.com/cosmos/cosmos-sdk/snapshots/types"
+
 
 	"github.com/notional-labs/dig/v3/app"
 	digparams "github.com/notional-labs/dig/v3/app/params"
@@ -233,6 +237,22 @@ func (ac appCreator) newApp(
 		panic(err)
 	}
 
+	// Add Snapshot for cosmos-sdk v0.46.6
+        snapshotDir := filepath.Join(cast.ToString(appOpts.Get(flags.FlagHome)), "data", "snapshots")
+        snapshotDB, err := dbm.NewDB("metadata", server.GetAppDBBackend(appOpts), snapshotDir)
+        if err != nil {
+                panic(err)
+        }
+        snapshotStore, err := snapshots.NewStore(snapshotDB, snapshotDir)
+        if err != nil {
+                panic(err)
+        }
+
+        snapshotOptions := snapshottypes.NewSnapshotOptions(
+                cast.ToUint64(appOpts.Get(server.FlagStateSyncSnapshotInterval)),
+                cast.ToUint32(appOpts.Get(server.FlagStateSyncSnapshotKeepRecent)),
+        )
+
 	return app.NewDigApp(
 		logger, db, traceStore, true, skipUpgradeHeights,
 		cast.ToString(appOpts.Get(flags.FlagHome)),
@@ -247,6 +267,7 @@ func (ac appCreator) newApp(
 		baseapp.SetInterBlockCache(cache),
 		baseapp.SetTrace(cast.ToBool(appOpts.Get(server.FlagTrace))),
 		baseapp.SetIndexEvents(cast.ToStringSlice(appOpts.Get(server.FlagIndexEvents))),
+		baseapp.SetSnapshot(snapshotStore, snapshotOptions),
 	)
 }
 
