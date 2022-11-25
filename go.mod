@@ -180,4 +180,6 @@ replace (
 	github.com/cosmos/cosmos-sdk => ./cosmos-sdk
 	// cosmos flavored protobufs
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
+
+	github.com/cosmos/iavl => ./iavl
 )
