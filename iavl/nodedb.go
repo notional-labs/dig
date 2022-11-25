@@ -525,6 +525,7 @@ func (ndb *nodeDB) DeleteVersionsRange(fromVersion, toVersion int64) error {
 	defer ndb.mtx.Unlock()
 
 	latest, err := ndb.getLatestVersion()
+	fmt.Println(latest)
 	if err != nil {
 		return err
 	}
