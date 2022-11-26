@@ -422,7 +422,7 @@ func (rs *Store) Commit() types.CommitID {
 		previousHeight = rs.lastCommitInfo.GetVersion()
 		version = previousHeight + 1
 	}
-
+	fmt.Println(version)
 	rs.lastCommitInfo = commitStores(version, rs.stores, rs.removalMap)
 	defer rs.flushMetadata(rs.db, version, rs.lastCommitInfo)
 
@@ -1015,6 +1015,7 @@ func commitStores(version int64, storeMap map[types.StoreKey]types.CommitKVStore
 
 	for key, store := range storeMap {
 		last := store.LastCommitID()
+		fmt.Println(last.Version, "last version")
 
 		// If a commit event execution is interrupted, a new iavl store's version will be larger than the rootmulti's metadata, when the block is replayed, we should avoid committing that iavl store again.
 		var commitID types.CommitID
