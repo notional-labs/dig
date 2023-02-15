@@ -181,3 +181,5 @@ replace (
 	// cosmos flavored protobufs
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
 )
+
+replace github.com/cosmos/iavl => github.com/chillyvee/iavl v0.19.4-blunt.3
