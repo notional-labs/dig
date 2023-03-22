@@ -10,9 +10,9 @@ import (
 	"cosmossdk.io/math"
 	"github.com/notional-labs/dig/v3/app"
 
+	sdksimapp "cosmossdk.io/simapp"
+	simappparams "cosmossdk.io/simapp/params"
 	"github.com/cosmos/cosmos-sdk/codec"
-	sdksimapp "github.com/cosmos/cosmos-sdk/simapp"
-	simappparams "github.com/cosmos/cosmos-sdk/simapp/params"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
