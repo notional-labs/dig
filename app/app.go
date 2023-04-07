@@ -96,6 +96,7 @@ import (
 	porttypes "github.com/cosmos/ibc-go/v5/modules/core/05-port/types"
 	ibchost "github.com/cosmos/ibc-go/v5/modules/core/24-host"
 	ibckeeper "github.com/cosmos/ibc-go/v5/modules/core/keeper"
+	ibctestingtypes "github.com/cosmos/ibc-go/v5/testing/types"
 	digparams "github.com/notional-labs/dig/v3/app/params"
 	v2 "github.com/notional-labs/dig/v3/app/upgrade/v2"
 
@@ -715,6 +716,22 @@ func (app *DigApp) setupUpgradeStoreLoaders() {
 	}
 }
 
+func (app *DigApp) GetBaseApp() *baseapp.BaseApp {
+	return app.BaseApp
+}
+
+func (app *DigApp) GetIBCKeeper() *ibckeeper.Keeper {
+	return app.IBCKeeper
+}
+
+func (app *DigApp) AppCodec() codec.Codec {
+	return app.appCodec
+}
+
+func (app *DigApp) GetScopedIBCKeeper() capabilitykeeper.ScopedKeeper {
+	return app.ScopedIBCFeeKeeper
+}
+
 func (app *DigApp) setupUpgradeHandlers(ICAModule ica.AppModule) { //nolint:gocritic // cosmos standard is for this to be capitalized.
 	bankBaseKeeper, _ := app.BankKeeper.(bankkeeper.BaseKeeper)
 
@@ -780,8 +797,16 @@ func (app *DigApp) LegacyAmino() *codec.LegacyAmino {
 //
 // NOTE: This is solely to be used for testing purposes as it may be desirable
 // for modules to register their own custom testing types.
-func (app *DigApp) AppCodec() codec.Codec {
-	return app.appCodec
+// func (app *DigApp) AppCodec() codec.Codec {
+// 	return app.appCodec
+// }
+
+func (app *DigApp) GetStakingKeeper() ibctestingtypes.StakingKeeper {
+	return app.StakingKeeper
+}
+
+func (app *DigApp) GetTxConfig() client.TxConfig {
+	return digparams.MakeEncodingConfig(ModuleBasics).TxConfig
 }
 
 // InterfaceRegistry returns Gaia's InterfaceRegistry.
