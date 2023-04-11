@@ -2,19 +2,25 @@ package test
 
 import (
 	"encoding/json"
-	"testing"
+	"path/filepath"
+	"strings"
 
 	"github.com/cosmos/cosmos-sdk/simapp"
 	transfertypes "github.com/cosmos/ibc-go/v5/modules/apps/transfer/types"
 	clienttypes "github.com/cosmos/ibc-go/v5/modules/core/02-client/types"
+	channeltypes "github.com/cosmos/ibc-go/v5/modules/core/04-channel/types"
+
 	ibctesting "github.com/cosmos/ibc-go/v5/testing"
 	digapp "github.com/notional-labs/dig/v3/app"
 	digparams "github.com/notional-labs/dig/v3/app/params"
 	"github.com/stretchr/testify/suite"
 	"github.com/tendermint/tendermint/libs/log"
+	tmtypes "github.com/tendermint/tendermint/proto/tendermint/types"
 	dbm "github.com/tendermint/tm-db"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
+
+	"testing"
 )
 
 func SetupTestingApp() (ibctesting.TestingApp, map[string]json.RawMessage) {
@@ -151,4 +157,39 @@ func TestTransferTestSuite(t *testing.T) {
 	ibctesting.DefaultTestingAppInit = SetupTestingApp
 
 	suite.Run(t, new(TransferTestSuite))
+}
+
+func ApplicationDBPathFromRootDir(rootDir string) string {
+	return filepath.Join(rootDir, "data", "application.db")
+}
+
+func openDB(dbPath string) dbm.DB {
+	dbName := strings.Trim(filepath.Base(dbPath), ".db")
+
+	db, err := sdk.NewLevelDB(dbName, filepath.Dir(dbPath))
+	if err != nil {
+		panic(err)
+	}
+	return db
+}
+
+func TestMigrateIAVLStoreToDBStore(t *testing.T) {
+	db := openDB(ApplicationDBPathFromRootDir("/home/catshark/.dig"))
+	encCdc := digparams.MakeEncodingConfig(digapp.ModuleBasics)
+
+	app := digapp.NewDigApp(log.NewNopLogger(), db, nil, true, map[int64]bool{}, digapp.DefaultNodeHome, 5, encCdc, simapp.EmptyAppOptions{})
+	ctx := app.GetBaseApp().NewContext(false, tmtypes.Header{})
+
+	fungiblePacketData := transfertypes.FungibleTokenPacketData{
+		Denom:    "transfer/channel-128/udig",
+		Amount:   "7000000",
+		Receiver: "dig1j3zmqxrz4dcnw4yeaxuylwkvdc9pnrqd66l0jd",
+		Sender:   "osmo1j3zmqxrz4dcnw4yeaxuylwkvdc9pnrqd2495xy",
+	}
+
+	packet := channeltypes.NewPacket(
+		fungiblePacketData.GetBytes(), 9999, "transfer", "channel-128", "transfer", "channel-1", clienttypes.NewHeight(1, 1), 100,
+	)
+
+	app.IBCKeeper.RecvPacket(ctx.Context(), &channeltypes.MsgRecvPacket{Packet: packet, ProofCommitment: nil, ProofHeight: clienttypes.Height{}})
 }
