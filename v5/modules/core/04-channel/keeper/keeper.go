@@ -43,6 +43,7 @@ func NewKeeper(
 	clientKeeper types.ClientKeeper, connectionKeeper types.ConnectionKeeper,
 	portKeeper types.PortKeeper, scopedKeeper capabilitykeeper.ScopedKeeper,
 ) Keeper {
+	fmt.Printf("%v scopedKeeper 154 \n", scopedKeeper)
 	return Keeper{
 		storeKey:         key,
 		cdc:              cdc,

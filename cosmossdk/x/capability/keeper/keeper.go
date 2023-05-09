@@ -64,6 +64,10 @@ func NewKeeper(cdc codec.BinaryCodec, storeKey, memKey storetypes.StoreKey) *Kee
 	}
 }
 
+func (k *Keeper) ChangeMap() {
+	k.capMap[1] = nil
+}
+
 // ScopeToModule attempts to create and return a ScopedKeeper for a given module
 // by name. It will panic if the keeper is already sealed or if the module name
 // already has a ScopedKeeper.
@@ -115,7 +119,7 @@ func (k *Keeper) InitMemStore(ctx sdk.Context) {
 
 	// create context with no block gas meter to ensure we do not consume gas during local initialization logic.
 	noGasCtx := ctx.WithBlockGasMeter(sdk.NewInfiniteGasMeter())
-
+	fmt.Println(k.capMap, "changed capmap")
 	// check if memory store has not been initialized yet by checking if initialized flag is nil.
 	if !k.IsInitialized(noGasCtx) {
 		prefixStore := prefix.NewStore(noGasCtx.KVStore(k.storeKey), types.KeyPrefixIndexCapability)
@@ -126,7 +130,7 @@ func (k *Keeper) InitMemStore(ctx sdk.Context) {
 
 		for ; iterator.Valid(); iterator.Next() {
 			index := types.IndexFromKey(iterator.Key())
-
+			fmt.Println(index, "index 44")
 			var capOwners types.CapabilityOwners
 
 			k.cdc.MustUnmarshal(iterator.Value(), &capOwners)
@@ -137,6 +141,7 @@ func (k *Keeper) InitMemStore(ctx sdk.Context) {
 		memStore := noGasCtx.KVStore(k.memKey)
 		memStore.Set(types.KeyMemInitialized, []byte{1})
 	}
+	fmt.Println("capmap", k.capMap)
 }
 
 // IsInitialized returns true if the keeper is properly initialized, and false otherwise.
@@ -197,6 +202,9 @@ func (k Keeper) GetOwners(ctx sdk.Context, index uint64) (types.CapabilityOwners
 // and sets the fwd and reverse keys for each owner in the memstore.
 // It is used during initialization from genesis.
 func (k Keeper) InitializeCapability(ctx sdk.Context, index uint64, owners types.CapabilityOwners) {
+	fmt.Println("initialize capability", index)
+	fmt.Println("owner", owners)
+
 	memStore := ctx.KVStore(k.memKey)
 
 	cap := types.NewCapability(index)
@@ -388,6 +396,11 @@ func (sk ScopedKeeper) GetCapability(ctx sdk.Context, name string) (*types.Capab
 
 	cap := sk.capMap[index]
 	fmt.Printf("%v cap\n", cap)
+	fmt.Println("===========")
+	for k, v := range sk.capMap {
+		fmt.Println(k, v)
+	}
+	fmt.Println("===========")
 	if cap == nil {
 		panic("capability found in memstore is missing from map")
 	}
