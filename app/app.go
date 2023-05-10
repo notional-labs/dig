@@ -714,6 +714,13 @@ func (app *DigApp) setupUpgradeHandlers(ICAModule ica.AppModule) { //nolint:gocr
 		v2.UpgradeUnlockCoinName,
 		v2.CreateUpgradeHandler(app.mm, app.configurator, &app.AccountKeeper, &app.StakingKeeper, &bankBaseKeeper, ICAModule),
 	)
+
+	app.UpgradeKeeper.SetUpgradeHandler(
+		"ibcfix",
+		func(ctx sdk.Context, _ upgradetypes.Plan, fromVM module.VersionMap) (module.VersionMap, error) {
+			return fromVM, nil
+		},
+	)
 }
 
 // Name returns the name of the App.
