@@ -1,0 +1,5 @@
+{
+    "binaries": {
+        "linux/amd64": "https://github.com/notional-labs/dig/releases/download/v3.6.0/digd?checksum=sha256:082224e3677b2db2764e8b4c73f5411a63e423ba0acbf88cd3eeac51c9ae7731"
+    }
+}
