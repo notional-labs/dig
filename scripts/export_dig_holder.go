@@ -122,7 +122,10 @@ func main() {
 			continue
 		}
 		row := []string{addr, fmt.Sprint(balance)}
-		writer.Write(row)
+		err := writer.Write(row)
+		if err != nil {
+			return
+		}
 	}
 	fmt.Println("total", len(mapAddr))
 	fmt.Printf("Data written to %s\n", csvFilePath)
