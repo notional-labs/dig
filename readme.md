@@ -1,7 +1,9 @@
 # ~dig~
 
 
-Note: we're currently in the process of re-naming and re-launching Dig.  
+Note: we're currently in the process of re-naming and re-launching  what used to be called dig.
+
+It will come back as an application platform, that strictly follows the most generic ways of allowing contract authors to use CosmWasm. 
 
 [![dig blockchain](https://github.com/notional-labs/dig/actions/workflows/build.yml/badge.svg)](https://github.com/notional-labs/dig/actions/workflows/build.yml)
 [![Raspberry Pi](https://github.com/notional-labs/dig/actions/workflows/pi.yml/badge.svg)](https://github.com/notional-labs/dig/actions/workflows/pi.yml)
