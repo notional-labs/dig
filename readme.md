@@ -1,4 +1,7 @@
-# dig
+# ~dig~
+
+
+Note: we're currently in the process of re-naming and re-launching Dig.  
 
 [![dig blockchain](https://github.com/notional-labs/dig/actions/workflows/build.yml/badge.svg)](https://github.com/notional-labs/dig/actions/workflows/build.yml)
 [![Raspberry Pi](https://github.com/notional-labs/dig/actions/workflows/pi.yml/badge.svg)](https://github.com/notional-labs/dig/actions/workflows/pi.yml)
