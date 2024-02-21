@@ -24,7 +24,7 @@
     "axios": "^1.6.0",
     "axios-retry": "^3.3.1",
     "boostrap": "^2.0.0",
-    "bootstrap": "^5.2.2",
+    "bootstrap": "^5.3.3",
     "chart.js": "^3.9.1",
     "cosmjs-types": "^0.5.2",
     "dotenv": "^16.0.3",
